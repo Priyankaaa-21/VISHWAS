@@ -1,0 +1,1228 @@
+image_id,y_true,y_true_name,y_pred,y_pred_name,y_prob
+dermamnist_test_00000,2,benign keratosis-like lesions,2,benign keratosis-like lesions,0.7718639969825745
+dermamnist_test_00001,5,melanocytic nevi,5,melanocytic nevi,0.8631996512413025
+dermamnist_test_00002,2,benign keratosis-like lesions,5,melanocytic nevi,0.5681345462799072
+dermamnist_test_00003,2,benign keratosis-like lesions,5,melanocytic nevi,0.7415266633033752
+dermamnist_test_00004,2,benign keratosis-like lesions,2,benign keratosis-like lesions,0.6897188425064087
+dermamnist_test_00005,2,benign keratosis-like lesions,2,benign keratosis-like lesions,0.8563989996910095
+dermamnist_test_00006,2,benign keratosis-like lesions,4,melanoma,0.6196398735046387
+dermamnist_test_00007,2,benign keratosis-like lesions,5,melanocytic nevi,0.6094799041748047
+dermamnist_test_00008,2,benign keratosis-like lesions,2,benign keratosis-like lesions,0.5115087628364563
+dermamnist_test_00009,2,benign keratosis-like lesions,2,benign keratosis-like lesions,0.35650959610939026
+dermamnist_test_00010,2,benign keratosis-like lesions,2,benign keratosis-like lesions,0.5765076875686646
+dermamnist_test_00011,2,benign keratosis-like lesions,5,melanocytic nevi,0.5057371854782104
+dermamnist_test_00012,2,benign keratosis-like lesions,5,melanocytic nevi,0.6668955683708191
+dermamnist_test_00013,2,benign keratosis-like lesions,5,melanocytic nevi,0.8699613809585571
+dermamnist_test_00014,2,benign keratosis-like lesions,5,melanocytic nevi,0.9469237327575684
+dermamnist_test_00015,2,benign keratosis-like lesions,5,melanocytic nevi,0.9497162103652954
+dermamnist_test_00016,2,benign keratosis-like lesions,2,benign keratosis-like lesions,0.42541512846946716
+dermamnist_test_00017,2,benign keratosis-like lesions,2,benign keratosis-like lesions,0.7249869108200073
+dermamnist_test_00018,2,benign keratosis-like lesions,2,benign keratosis-like lesions,0.45851820707321167
+dermamnist_test_00019,2,benign keratosis-like lesions,5,melanocytic nevi,0.8474479913711548
+dermamnist_test_00020,2,benign keratosis-like lesions,2,benign keratosis-like lesions,0.5747843384742737
+dermamnist_test_00021,2,benign keratosis-like lesions,4,melanoma,0.38875487446784973
+dermamnist_test_00022,2,benign keratosis-like lesions,5,melanocytic nevi,0.8806924819946289
+dermamnist_test_00023,2,benign keratosis-like lesions,2,benign keratosis-like lesions,0.6961535215377808
+dermamnist_test_00024,2,benign keratosis-like lesions,2,benign keratosis-like lesions,0.5535939335823059
+dermamnist_test_00025,2,benign keratosis-like lesions,2,benign keratosis-like lesions,0.5104653239250183
+dermamnist_test_00026,2,benign keratosis-like lesions,2,benign keratosis-like lesions,0.3881556987762451
+dermamnist_test_00027,2,benign keratosis-like lesions,2,benign keratosis-like lesions,0.4420841634273529
+dermamnist_test_00028,2,benign keratosis-like lesions,5,melanocytic nevi,0.4744352400302887
+dermamnist_test_00029,2,benign keratosis-like lesions,4,melanoma,0.3915557861328125
+dermamnist_test_00030,2,benign keratosis-like lesions,5,melanocytic nevi,0.436097651720047
+dermamnist_test_00031,2,benign keratosis-like lesions,2,benign keratosis-like lesions,0.6458332538604736
+dermamnist_test_00032,2,benign keratosis-like lesions,2,benign keratosis-like lesions,0.5622540712356567
+dermamnist_test_00033,2,benign keratosis-like lesions,2,benign keratosis-like lesions,0.646824836730957
+dermamnist_test_00034,2,benign keratosis-like lesions,2,benign keratosis-like lesions,0.39990976452827454
+dermamnist_test_00035,2,benign keratosis-like lesions,1,basal cell carcinoma,0.7831283807754517
+dermamnist_test_00036,2,benign keratosis-like lesions,1,basal cell carcinoma,0.7197713851928711
+dermamnist_test_00037,2,benign keratosis-like lesions,1,basal cell carcinoma,0.34556975960731506
+dermamnist_test_00038,2,benign keratosis-like lesions,1,basal cell carcinoma,0.4033518135547638
+dermamnist_test_00039,2,benign keratosis-like lesions,2,benign keratosis-like lesions,0.5722038745880127
+dermamnist_test_00040,2,benign keratosis-like lesions,0,actinic keratoses and intraepithelial carcinoma,0.5682241320610046
+dermamnist_test_00041,2,benign keratosis-like lesions,2,benign keratosis-like lesions,0.4875376522541046
+dermamnist_test_00042,2,benign keratosis-like lesions,4,melanoma,0.3040429353713989
+dermamnist_test_00043,2,benign keratosis-like lesions,2,benign keratosis-like lesions,0.5578149557113647
+dermamnist_test_00044,2,benign keratosis-like lesions,2,benign keratosis-like lesions,0.815555989742279
+dermamnist_test_00045,2,benign keratosis-like lesions,2,benign keratosis-like lesions,0.7005953192710876
+dermamnist_test_00046,2,benign keratosis-like lesions,2,benign keratosis-like lesions,0.5717675685882568
+dermamnist_test_00047,2,benign keratosis-like lesions,0,actinic keratoses and intraepithelial carcinoma,0.40933629870414734
+dermamnist_test_00048,2,benign keratosis-like lesions,2,benign keratosis-like lesions,0.6210179328918457
+dermamnist_test_00049,2,benign keratosis-like lesions,1,basal cell carcinoma,0.2944409251213074
+dermamnist_test_00050,2,benign keratosis-like lesions,2,benign keratosis-like lesions,0.6696724891662598
+dermamnist_test_00051,2,benign keratosis-like lesions,5,melanocytic nevi,0.43916577100753784
+dermamnist_test_00052,2,benign keratosis-like lesions,2,benign keratosis-like lesions,0.7925700545310974
+dermamnist_test_00053,2,benign keratosis-like lesions,2,benign keratosis-like lesions,0.7651492953300476
+dermamnist_test_00054,2,benign keratosis-like lesions,5,melanocytic nevi,0.6371550559997559
+dermamnist_test_00055,2,benign keratosis-like lesions,2,benign keratosis-like lesions,0.5709723234176636
+dermamnist_test_00056,2,benign keratosis-like lesions,2,benign keratosis-like lesions,0.5517501831054688
+dermamnist_test_00057,2,benign keratosis-like lesions,5,melanocytic nevi,0.8060855269432068
+dermamnist_test_00058,2,benign keratosis-like lesions,5,melanocytic nevi,0.7535577416419983
+dermamnist_test_00059,2,benign keratosis-like lesions,4,melanoma,0.4147435128688812
+dermamnist_test_00060,2,benign keratosis-like lesions,2,benign keratosis-like lesions,0.6468746662139893
+dermamnist_test_00061,2,benign keratosis-like lesions,2,benign keratosis-like lesions,0.5139790177345276
+dermamnist_test_00062,2,benign keratosis-like lesions,5,melanocytic nevi,0.8976459503173828
+dermamnist_test_00063,2,benign keratosis-like lesions,2,benign keratosis-like lesions,0.6760267019271851
+dermamnist_test_00064,2,benign keratosis-like lesions,5,melanocytic nevi,0.7828329801559448
+dermamnist_test_00065,2,benign keratosis-like lesions,1,basal cell carcinoma,0.5855230689048767
+dermamnist_test_00066,2,benign keratosis-like lesions,1,basal cell carcinoma,0.6644604206085205
+dermamnist_test_00067,2,benign keratosis-like lesions,2,benign keratosis-like lesions,0.6991074085235596
+dermamnist_test_00068,2,benign keratosis-like lesions,2,benign keratosis-like lesions,0.8030732274055481
+dermamnist_test_00069,2,benign keratosis-like lesions,2,benign keratosis-like lesions,0.5506407022476196
+dermamnist_test_00070,2,benign keratosis-like lesions,1,basal cell carcinoma,0.31430625915527344
+dermamnist_test_00071,2,benign keratosis-like lesions,2,benign keratosis-like lesions,0.6814769506454468
+dermamnist_test_00072,2,benign keratosis-like lesions,2,benign keratosis-like lesions,0.6301756501197815
+dermamnist_test_00073,2,benign keratosis-like lesions,2,benign keratosis-like lesions,0.6977127194404602
+dermamnist_test_00074,2,benign keratosis-like lesions,2,benign keratosis-like lesions,0.7995582222938538
+dermamnist_test_00075,2,benign keratosis-like lesions,0,actinic keratoses and intraepithelial carcinoma,0.5890038013458252
+dermamnist_test_00076,2,benign keratosis-like lesions,2,benign keratosis-like lesions,0.4283154606819153
+dermamnist_test_00077,2,benign keratosis-like lesions,5,melanocytic nevi,0.5350327491760254
+dermamnist_test_00078,2,benign keratosis-like lesions,2,benign keratosis-like lesions,0.7971254587173462
+dermamnist_test_00079,2,benign keratosis-like lesions,2,benign keratosis-like lesions,0.737307071685791
+dermamnist_test_00080,2,benign keratosis-like lesions,4,melanoma,0.5811367630958557
+dermamnist_test_00081,2,benign keratosis-like lesions,2,benign keratosis-like lesions,0.34214872121810913
+dermamnist_test_00082,2,benign keratosis-like lesions,5,melanocytic nevi,0.6346061825752258
+dermamnist_test_00083,2,benign keratosis-like lesions,2,benign keratosis-like lesions,0.6007656455039978
+dermamnist_test_00084,2,benign keratosis-like lesions,2,benign keratosis-like lesions,0.5937067866325378
+dermamnist_test_00085,2,benign keratosis-like lesions,5,melanocytic nevi,0.9741206765174866
+dermamnist_test_00086,2,benign keratosis-like lesions,5,melanocytic nevi,0.8134483695030212
+dermamnist_test_00087,2,benign keratosis-like lesions,2,benign keratosis-like lesions,0.3895910680294037
+dermamnist_test_00088,2,benign keratosis-like lesions,5,melanocytic nevi,0.49550309777259827
+dermamnist_test_00089,2,benign keratosis-like lesions,2,benign keratosis-like lesions,0.48948031663894653
+dermamnist_test_00090,2,benign keratosis-like lesions,5,melanocytic nevi,0.910188615322113
+dermamnist_test_00091,2,benign keratosis-like lesions,5,melanocytic nevi,0.5438992381095886
+dermamnist_test_00092,2,benign keratosis-like lesions,2,benign keratosis-like lesions,0.5389241576194763
+dermamnist_test_00093,2,benign keratosis-like lesions,5,melanocytic nevi,0.6614058613777161
+dermamnist_test_00094,2,benign keratosis-like lesions,5,melanocytic nevi,0.4376427233219147
+dermamnist_test_00095,2,benign keratosis-like lesions,5,melanocytic nevi,0.6703813672065735
+dermamnist_test_00096,2,benign keratosis-like lesions,5,melanocytic nevi,0.759631872177124
+dermamnist_test_00097,2,benign keratosis-like lesions,2,benign keratosis-like lesions,0.657008707523346
+dermamnist_test_00098,2,benign keratosis-like lesions,5,melanocytic nevi,0.9693447947502136
+dermamnist_test_00099,2,benign keratosis-like lesions,5,melanocytic nevi,0.6006369590759277
+dermamnist_test_00100,2,benign keratosis-like lesions,5,melanocytic nevi,0.8352073431015015
+dermamnist_test_00101,2,benign keratosis-like lesions,2,benign keratosis-like lesions,0.6677437424659729
+dermamnist_test_00102,2,benign keratosis-like lesions,2,benign keratosis-like lesions,0.6608760356903076
+dermamnist_test_00103,2,benign keratosis-like lesions,5,melanocytic nevi,0.572934091091156
+dermamnist_test_00104,2,benign keratosis-like lesions,5,melanocytic nevi,0.40755802392959595
+dermamnist_test_00105,2,benign keratosis-like lesions,5,melanocytic nevi,0.9520968198776245
+dermamnist_test_00106,3,dermatofibroma,1,basal cell carcinoma,0.6243536472320557
+dermamnist_test_00107,3,dermatofibroma,2,benign keratosis-like lesions,0.4080761671066284
+dermamnist_test_00108,3,dermatofibroma,3,dermatofibroma,0.6508651375770569
+dermamnist_test_00109,3,dermatofibroma,5,melanocytic nevi,0.945328950881958
+dermamnist_test_00110,3,dermatofibroma,3,dermatofibroma,0.44037312269210815
+dermamnist_test_00111,3,dermatofibroma,3,dermatofibroma,0.7668102383613586
+dermamnist_test_00112,3,dermatofibroma,3,dermatofibroma,0.6994150280952454
+dermamnist_test_00113,3,dermatofibroma,5,melanocytic nevi,0.9960322976112366
+dermamnist_test_00114,5,melanocytic nevi,5,melanocytic nevi,0.9887121915817261
+dermamnist_test_00115,4,melanoma,5,melanocytic nevi,0.5783012509346008
+dermamnist_test_00116,4,melanoma,4,melanoma,0.9086452126502991
+dermamnist_test_00117,4,melanoma,4,melanoma,0.732803225517273
+dermamnist_test_00118,4,melanoma,2,benign keratosis-like lesions,0.36549580097198486
+dermamnist_test_00119,4,melanoma,5,melanocytic nevi,0.7746589183807373
+dermamnist_test_00120,4,melanoma,5,melanocytic nevi,0.6232277154922485
+dermamnist_test_00121,4,melanoma,4,melanoma,0.932564377784729
+dermamnist_test_00122,4,melanoma,4,melanoma,0.47539567947387695
+dermamnist_test_00123,4,melanoma,4,melanoma,0.8044124245643616
+dermamnist_test_00124,4,melanoma,2,benign keratosis-like lesions,0.38113752007484436
+dermamnist_test_00125,4,melanoma,2,benign keratosis-like lesions,0.6429046988487244
+dermamnist_test_00126,4,melanoma,4,melanoma,0.5011721253395081
+dermamnist_test_00127,4,melanoma,4,melanoma,0.5904160737991333
+dermamnist_test_00128,4,melanoma,2,benign keratosis-like lesions,0.5814063549041748
+dermamnist_test_00129,4,melanoma,4,melanoma,0.8513380885124207
+dermamnist_test_00130,4,melanoma,4,melanoma,0.7608184814453125
+dermamnist_test_00131,4,melanoma,4,melanoma,0.890425980091095
+dermamnist_test_00132,4,melanoma,4,melanoma,0.34969019889831543
+dermamnist_test_00133,4,melanoma,4,melanoma,0.9858294129371643
+dermamnist_test_00134,4,melanoma,5,melanocytic nevi,0.7574591636657715
+dermamnist_test_00135,4,melanoma,4,melanoma,0.7642441391944885
+dermamnist_test_00136,4,melanoma,5,melanocytic nevi,0.713365912437439
+dermamnist_test_00137,4,melanoma,2,benign keratosis-like lesions,0.7596553564071655
+dermamnist_test_00138,4,melanoma,4,melanoma,0.6484714150428772
+dermamnist_test_00139,4,melanoma,4,melanoma,0.9071170687675476
+dermamnist_test_00140,4,melanoma,4,melanoma,0.7291520833969116
+dermamnist_test_00141,4,melanoma,4,melanoma,0.7687157988548279
+dermamnist_test_00142,4,melanoma,4,melanoma,0.773313581943512
+dermamnist_test_00143,4,melanoma,5,melanocytic nevi,0.7737336754798889
+dermamnist_test_00144,4,melanoma,2,benign keratosis-like lesions,0.5964502096176147
+dermamnist_test_00145,4,melanoma,4,melanoma,0.32547906041145325
+dermamnist_test_00146,4,melanoma,5,melanocytic nevi,0.5171754360198975
+dermamnist_test_00147,4,melanoma,1,basal cell carcinoma,0.33917737007141113
+dermamnist_test_00148,4,melanoma,2,benign keratosis-like lesions,0.5641698837280273
+dermamnist_test_00149,4,melanoma,4,melanoma,0.582740068435669
+dermamnist_test_00150,4,melanoma,5,melanocytic nevi,0.5020343661308289
+dermamnist_test_00151,4,melanoma,4,melanoma,0.7407983541488647
+dermamnist_test_00152,4,melanoma,4,melanoma,0.785439670085907
+dermamnist_test_00153,4,melanoma,4,melanoma,0.759033203125
+dermamnist_test_00154,4,melanoma,4,melanoma,0.7219675779342651
+dermamnist_test_00155,4,melanoma,5,melanocytic nevi,0.924318790435791
+dermamnist_test_00156,4,melanoma,5,melanocytic nevi,0.9668055176734924
+dermamnist_test_00157,4,melanoma,5,melanocytic nevi,0.84675133228302
+dermamnist_test_00158,4,melanoma,4,melanoma,0.597492516040802
+dermamnist_test_00159,4,melanoma,1,basal cell carcinoma,0.7283889055252075
+dermamnist_test_00160,4,melanoma,2,benign keratosis-like lesions,0.5286033749580383
+dermamnist_test_00161,4,melanoma,5,melanocytic nevi,0.5081287622451782
+dermamnist_test_00162,4,melanoma,4,melanoma,0.7301046848297119
+dermamnist_test_00163,4,melanoma,4,melanoma,0.5385544896125793
+dermamnist_test_00164,4,melanoma,5,melanocytic nevi,0.3886910676956177
+dermamnist_test_00165,4,melanoma,0,actinic keratoses and intraepithelial carcinoma,0.5794751644134521
+dermamnist_test_00166,4,melanoma,2,benign keratosis-like lesions,0.6967598795890808
+dermamnist_test_00167,4,melanoma,0,actinic keratoses and intraepithelial carcinoma,0.44080016016960144
+dermamnist_test_00168,4,melanoma,4,melanoma,0.45356184244155884
+dermamnist_test_00169,4,melanoma,0,actinic keratoses and intraepithelial carcinoma,0.33720138669013977
+dermamnist_test_00170,4,melanoma,5,melanocytic nevi,0.6244198083877563
+dermamnist_test_00171,4,melanoma,5,melanocytic nevi,0.5837839245796204
+dermamnist_test_00172,4,melanoma,5,melanocytic nevi,0.4715287685394287
+dermamnist_test_00173,4,melanoma,2,benign keratosis-like lesions,0.4242926239967346
+dermamnist_test_00174,4,melanoma,2,benign keratosis-like lesions,0.7500028610229492
+dermamnist_test_00175,4,melanoma,5,melanocytic nevi,0.4642655551433563
+dermamnist_test_00176,4,melanoma,4,melanoma,0.45621615648269653
+dermamnist_test_00177,4,melanoma,4,melanoma,0.6670761108398438
+dermamnist_test_00178,4,melanoma,4,melanoma,0.5757898092269897
+dermamnist_test_00179,4,melanoma,2,benign keratosis-like lesions,0.6262767314910889
+dermamnist_test_00180,4,melanoma,2,benign keratosis-like lesions,0.5876961350440979
+dermamnist_test_00181,4,melanoma,4,melanoma,0.7238022089004517
+dermamnist_test_00182,4,melanoma,2,benign keratosis-like lesions,0.6880073547363281
+dermamnist_test_00183,4,melanoma,0,actinic keratoses and intraepithelial carcinoma,0.5174922943115234
+dermamnist_test_00184,4,melanoma,2,benign keratosis-like lesions,0.4611486792564392
+dermamnist_test_00185,6,vascular lesions,6,vascular lesions,0.9556333422660828
+dermamnist_test_00186,6,vascular lesions,5,melanocytic nevi,0.48956945538520813
+dermamnist_test_00187,6,vascular lesions,1,basal cell carcinoma,0.8140230774879456
+dermamnist_test_00188,6,vascular lesions,6,vascular lesions,0.9174840450286865
+dermamnist_test_00189,6,vascular lesions,6,vascular lesions,0.9990535378456116
+dermamnist_test_00190,6,vascular lesions,6,vascular lesions,0.9994346499443054
+dermamnist_test_00191,6,vascular lesions,6,vascular lesions,0.994200587272644
+dermamnist_test_00192,6,vascular lesions,6,vascular lesions,0.7041903734207153
+dermamnist_test_00193,6,vascular lesions,6,vascular lesions,0.93461012840271
+dermamnist_test_00194,6,vascular lesions,6,vascular lesions,0.9653189182281494
+dermamnist_test_00195,6,vascular lesions,6,vascular lesions,0.7930975556373596
+dermamnist_test_00196,6,vascular lesions,6,vascular lesions,0.9960177540779114
+dermamnist_test_00197,6,vascular lesions,6,vascular lesions,0.9998370409011841
+dermamnist_test_00198,6,vascular lesions,6,vascular lesions,0.5794491767883301
+dermamnist_test_00199,6,vascular lesions,5,melanocytic nevi,0.4568505883216858
+dermamnist_test_00200,6,vascular lesions,6,vascular lesions,0.9985775947570801
+dermamnist_test_00201,6,vascular lesions,6,vascular lesions,0.9993360638618469
+dermamnist_test_00202,1,basal cell carcinoma,1,basal cell carcinoma,0.9621002674102783
+dermamnist_test_00203,1,basal cell carcinoma,1,basal cell carcinoma,0.6143706440925598
+dermamnist_test_00204,1,basal cell carcinoma,3,dermatofibroma,0.7436448931694031
+dermamnist_test_00205,1,basal cell carcinoma,6,vascular lesions,0.4271461069583893
+dermamnist_test_00206,1,basal cell carcinoma,1,basal cell carcinoma,0.8248258829116821
+dermamnist_test_00207,1,basal cell carcinoma,2,benign keratosis-like lesions,0.45357993245124817
+dermamnist_test_00208,1,basal cell carcinoma,3,dermatofibroma,0.5031747221946716
+dermamnist_test_00209,1,basal cell carcinoma,4,melanoma,0.912958025932312
+dermamnist_test_00210,1,basal cell carcinoma,4,melanoma,0.6942858099937439
+dermamnist_test_00211,1,basal cell carcinoma,1,basal cell carcinoma,0.888317883014679
+dermamnist_test_00212,1,basal cell carcinoma,0,actinic keratoses and intraepithelial carcinoma,0.3488446772098541
+dermamnist_test_00213,1,basal cell carcinoma,2,benign keratosis-like lesions,0.4183562397956848
+dermamnist_test_00214,1,basal cell carcinoma,1,basal cell carcinoma,0.9760690927505493
+dermamnist_test_00215,1,basal cell carcinoma,1,basal cell carcinoma,0.9123151302337646
+dermamnist_test_00216,1,basal cell carcinoma,1,basal cell carcinoma,0.7224120497703552
+dermamnist_test_00217,1,basal cell carcinoma,1,basal cell carcinoma,0.9693463444709778
+dermamnist_test_00218,1,basal cell carcinoma,6,vascular lesions,0.3164006471633911
+dermamnist_test_00219,1,basal cell carcinoma,4,melanoma,0.7807894945144653
+dermamnist_test_00220,1,basal cell carcinoma,1,basal cell carcinoma,0.6834568977355957
+dermamnist_test_00221,1,basal cell carcinoma,1,basal cell carcinoma,0.6583554744720459
+dermamnist_test_00222,1,basal cell carcinoma,1,basal cell carcinoma,0.3866604268550873
+dermamnist_test_00223,1,basal cell carcinoma,1,basal cell carcinoma,0.6869089007377625
+dermamnist_test_00224,1,basal cell carcinoma,0,actinic keratoses and intraepithelial carcinoma,0.7502896785736084
+dermamnist_test_00225,1,basal cell carcinoma,1,basal cell carcinoma,0.8561553359031677
+dermamnist_test_00226,1,basal cell carcinoma,2,benign keratosis-like lesions,0.38010144233703613
+dermamnist_test_00227,1,basal cell carcinoma,0,actinic keratoses and intraepithelial carcinoma,0.6515573263168335
+dermamnist_test_00228,1,basal cell carcinoma,1,basal cell carcinoma,0.65276700258255
+dermamnist_test_00229,1,basal cell carcinoma,1,basal cell carcinoma,0.47259804606437683
+dermamnist_test_00230,1,basal cell carcinoma,1,basal cell carcinoma,0.8298212289810181
+dermamnist_test_00231,1,basal cell carcinoma,1,basal cell carcinoma,0.764045774936676
+dermamnist_test_00232,1,basal cell carcinoma,1,basal cell carcinoma,0.6523016691207886
+dermamnist_test_00233,1,basal cell carcinoma,1,basal cell carcinoma,0.46782785654067993
+dermamnist_test_00234,1,basal cell carcinoma,0,actinic keratoses and intraepithelial carcinoma,0.6617007255554199
+dermamnist_test_00235,1,basal cell carcinoma,0,actinic keratoses and intraepithelial carcinoma,0.46234840154647827
+dermamnist_test_00236,1,basal cell carcinoma,1,basal cell carcinoma,0.7460393905639648
+dermamnist_test_00237,1,basal cell carcinoma,0,actinic keratoses and intraepithelial carcinoma,0.8855208158493042
+dermamnist_test_00238,1,basal cell carcinoma,0,actinic keratoses and intraepithelial carcinoma,0.5222269892692566
+dermamnist_test_00239,1,basal cell carcinoma,0,actinic keratoses and intraepithelial carcinoma,0.49471062421798706
+dermamnist_test_00240,1,basal cell carcinoma,1,basal cell carcinoma,0.889045000076294
+dermamnist_test_00241,1,basal cell carcinoma,1,basal cell carcinoma,0.41560444235801697
+dermamnist_test_00242,1,basal cell carcinoma,5,melanocytic nevi,0.5972479581832886
+dermamnist_test_00243,1,basal cell carcinoma,2,benign keratosis-like lesions,0.535405695438385
+dermamnist_test_00244,1,basal cell carcinoma,0,actinic keratoses and intraepithelial carcinoma,0.6910219192504883
+dermamnist_test_00245,1,basal cell carcinoma,1,basal cell carcinoma,0.5281258821487427
+dermamnist_test_00246,5,melanocytic nevi,5,melanocytic nevi,0.9997146725654602
+dermamnist_test_00247,5,melanocytic nevi,5,melanocytic nevi,0.9996045231819153
+dermamnist_test_00248,5,melanocytic nevi,5,melanocytic nevi,0.9979791045188904
+dermamnist_test_00249,5,melanocytic nevi,5,melanocytic nevi,0.995964765548706
+dermamnist_test_00250,5,melanocytic nevi,5,melanocytic nevi,0.998775064945221
+dermamnist_test_00251,5,melanocytic nevi,5,melanocytic nevi,0.9975830316543579
+dermamnist_test_00252,5,melanocytic nevi,5,melanocytic nevi,0.9941224455833435
+dermamnist_test_00253,5,melanocytic nevi,5,melanocytic nevi,0.9984127283096313
+dermamnist_test_00254,5,melanocytic nevi,5,melanocytic nevi,0.9987056255340576
+dermamnist_test_00255,5,melanocytic nevi,5,melanocytic nevi,0.998794436454773
+dermamnist_test_00256,5,melanocytic nevi,5,melanocytic nevi,0.9917045831680298
+dermamnist_test_00257,5,melanocytic nevi,5,melanocytic nevi,0.9946616291999817
+dermamnist_test_00258,5,melanocytic nevi,5,melanocytic nevi,0.9989386200904846
+dermamnist_test_00259,5,melanocytic nevi,5,melanocytic nevi,0.9996005892753601
+dermamnist_test_00260,5,melanocytic nevi,5,melanocytic nevi,0.9997841715812683
+dermamnist_test_00261,5,melanocytic nevi,5,melanocytic nevi,0.9993027448654175
+dermamnist_test_00262,5,melanocytic nevi,5,melanocytic nevi,0.9999915361404419
+dermamnist_test_00263,5,melanocytic nevi,5,melanocytic nevi,0.9997583031654358
+dermamnist_test_00264,5,melanocytic nevi,5,melanocytic nevi,0.995858371257782
+dermamnist_test_00265,5,melanocytic nevi,5,melanocytic nevi,0.9993174076080322
+dermamnist_test_00266,5,melanocytic nevi,5,melanocytic nevi,0.9880838990211487
+dermamnist_test_00267,5,melanocytic nevi,5,melanocytic nevi,0.9955529570579529
+dermamnist_test_00268,5,melanocytic nevi,5,melanocytic nevi,0.9990021586418152
+dermamnist_test_00269,5,melanocytic nevi,5,melanocytic nevi,0.9904376864433289
+dermamnist_test_00270,5,melanocytic nevi,0,actinic keratoses and intraepithelial carcinoma,0.36376309394836426
+dermamnist_test_00271,5,melanocytic nevi,5,melanocytic nevi,0.9918137788772583
+dermamnist_test_00272,5,melanocytic nevi,5,melanocytic nevi,0.9821978211402893
+dermamnist_test_00273,5,melanocytic nevi,5,melanocytic nevi,0.999509334564209
+dermamnist_test_00274,5,melanocytic nevi,5,melanocytic nevi,0.9512504935264587
+dermamnist_test_00275,5,melanocytic nevi,5,melanocytic nevi,0.9873318076133728
+dermamnist_test_00276,5,melanocytic nevi,5,melanocytic nevi,0.9814257621765137
+dermamnist_test_00277,5,melanocytic nevi,5,melanocytic nevi,0.9846099615097046
+dermamnist_test_00278,5,melanocytic nevi,5,melanocytic nevi,0.9964125752449036
+dermamnist_test_00279,5,melanocytic nevi,5,melanocytic nevi,0.9732732176780701
+dermamnist_test_00280,5,melanocytic nevi,5,melanocytic nevi,0.9774649143218994
+dermamnist_test_00281,5,melanocytic nevi,5,melanocytic nevi,0.9946321249008179
+dermamnist_test_00282,5,melanocytic nevi,5,melanocytic nevi,0.979101300239563
+dermamnist_test_00283,5,melanocytic nevi,5,melanocytic nevi,0.9996022582054138
+dermamnist_test_00284,5,melanocytic nevi,5,melanocytic nevi,0.7983079552650452
+dermamnist_test_00285,5,melanocytic nevi,5,melanocytic nevi,0.9899840354919434
+dermamnist_test_00286,5,melanocytic nevi,5,melanocytic nevi,0.9978923201560974
+dermamnist_test_00287,5,melanocytic nevi,5,melanocytic nevi,0.9912273287773132
+dermamnist_test_00288,5,melanocytic nevi,5,melanocytic nevi,0.9998340606689453
+dermamnist_test_00289,5,melanocytic nevi,5,melanocytic nevi,0.9992507100105286
+dermamnist_test_00290,5,melanocytic nevi,5,melanocytic nevi,0.9948931932449341
+dermamnist_test_00291,5,melanocytic nevi,5,melanocytic nevi,0.998853325843811
+dermamnist_test_00292,5,melanocytic nevi,5,melanocytic nevi,0.9999191761016846
+dermamnist_test_00293,5,melanocytic nevi,5,melanocytic nevi,0.989273726940155
+dermamnist_test_00294,5,melanocytic nevi,5,melanocytic nevi,0.9993707537651062
+dermamnist_test_00295,5,melanocytic nevi,5,melanocytic nevi,0.9778079986572266
+dermamnist_test_00296,5,melanocytic nevi,5,melanocytic nevi,0.8629371523857117
+dermamnist_test_00297,5,melanocytic nevi,5,melanocytic nevi,0.9883202314376831
+dermamnist_test_00298,5,melanocytic nevi,5,melanocytic nevi,0.9872029423713684
+dermamnist_test_00299,5,melanocytic nevi,5,melanocytic nevi,0.994965136051178
+dermamnist_test_00300,5,melanocytic nevi,5,melanocytic nevi,0.9991999268531799
+dermamnist_test_00301,5,melanocytic nevi,5,melanocytic nevi,0.9992642998695374
+dermamnist_test_00302,5,melanocytic nevi,5,melanocytic nevi,0.999090313911438
+dermamnist_test_00303,5,melanocytic nevi,5,melanocytic nevi,0.9995573163032532
+dermamnist_test_00304,5,melanocytic nevi,5,melanocytic nevi,0.9998471736907959
+dermamnist_test_00305,5,melanocytic nevi,5,melanocytic nevi,0.9981355667114258
+dermamnist_test_00306,5,melanocytic nevi,5,melanocytic nevi,0.9645828008651733
+dermamnist_test_00307,5,melanocytic nevi,5,melanocytic nevi,0.998110294342041
+dermamnist_test_00308,5,melanocytic nevi,5,melanocytic nevi,0.4464418292045593
+dermamnist_test_00309,5,melanocytic nevi,5,melanocytic nevi,0.9998654127120972
+dermamnist_test_00310,5,melanocytic nevi,5,melanocytic nevi,0.9985203146934509
+dermamnist_test_00311,5,melanocytic nevi,5,melanocytic nevi,0.9999347925186157
+dermamnist_test_00312,5,melanocytic nevi,5,melanocytic nevi,0.9948380589485168
+dermamnist_test_00313,5,melanocytic nevi,5,melanocytic nevi,0.9638231992721558
+dermamnist_test_00314,5,melanocytic nevi,5,melanocytic nevi,0.9985209107398987
+dermamnist_test_00315,5,melanocytic nevi,5,melanocytic nevi,0.9972063899040222
+dermamnist_test_00316,5,melanocytic nevi,5,melanocytic nevi,0.9952065348625183
+dermamnist_test_00317,5,melanocytic nevi,5,melanocytic nevi,0.9980838298797607
+dermamnist_test_00318,5,melanocytic nevi,5,melanocytic nevi,0.7228144407272339
+dermamnist_test_00319,5,melanocytic nevi,5,melanocytic nevi,0.9980790615081787
+dermamnist_test_00320,5,melanocytic nevi,5,melanocytic nevi,0.9508394598960876
+dermamnist_test_00321,5,melanocytic nevi,5,melanocytic nevi,0.941356360912323
+dermamnist_test_00322,5,melanocytic nevi,5,melanocytic nevi,0.9947758913040161
+dermamnist_test_00323,5,melanocytic nevi,5,melanocytic nevi,0.9965025186538696
+dermamnist_test_00324,5,melanocytic nevi,5,melanocytic nevi,0.9974785447120667
+dermamnist_test_00325,5,melanocytic nevi,5,melanocytic nevi,0.9997866749763489
+dermamnist_test_00326,5,melanocytic nevi,5,melanocytic nevi,0.9415287971496582
+dermamnist_test_00327,5,melanocytic nevi,5,melanocytic nevi,0.9822809100151062
+dermamnist_test_00328,5,melanocytic nevi,5,melanocytic nevi,0.9998351335525513
+dermamnist_test_00329,5,melanocytic nevi,5,melanocytic nevi,0.9991305470466614
+dermamnist_test_00330,5,melanocytic nevi,5,melanocytic nevi,0.99916672706604
+dermamnist_test_00331,5,melanocytic nevi,5,melanocytic nevi,0.9976536631584167
+dermamnist_test_00332,5,melanocytic nevi,5,melanocytic nevi,0.9950260519981384
+dermamnist_test_00333,5,melanocytic nevi,5,melanocytic nevi,0.9932014346122742
+dermamnist_test_00334,5,melanocytic nevi,5,melanocytic nevi,0.9966363906860352
+dermamnist_test_00335,5,melanocytic nevi,5,melanocytic nevi,0.9729105830192566
+dermamnist_test_00336,5,melanocytic nevi,5,melanocytic nevi,0.9963201284408569
+dermamnist_test_00337,5,melanocytic nevi,5,melanocytic nevi,0.9858682751655579
+dermamnist_test_00338,5,melanocytic nevi,5,melanocytic nevi,0.9999582767486572
+dermamnist_test_00339,5,melanocytic nevi,5,melanocytic nevi,0.9996738433837891
+dermamnist_test_00340,5,melanocytic nevi,5,melanocytic nevi,0.7806739807128906
+dermamnist_test_00341,5,melanocytic nevi,5,melanocytic nevi,0.9986502528190613
+dermamnist_test_00342,5,melanocytic nevi,5,melanocytic nevi,0.9925904273986816
+dermamnist_test_00343,5,melanocytic nevi,5,melanocytic nevi,0.9970447421073914
+dermamnist_test_00344,5,melanocytic nevi,5,melanocytic nevi,0.9698441624641418
+dermamnist_test_00345,5,melanocytic nevi,5,melanocytic nevi,0.9904334545135498
+dermamnist_test_00346,5,melanocytic nevi,5,melanocytic nevi,0.9203727841377258
+dermamnist_test_00347,5,melanocytic nevi,5,melanocytic nevi,0.9999498128890991
+dermamnist_test_00348,5,melanocytic nevi,5,melanocytic nevi,0.9992614388465881
+dermamnist_test_00349,5,melanocytic nevi,5,melanocytic nevi,0.9999126195907593
+dermamnist_test_00350,5,melanocytic nevi,5,melanocytic nevi,0.9998375177383423
+dermamnist_test_00351,5,melanocytic nevi,5,melanocytic nevi,0.9966961145401001
+dermamnist_test_00352,5,melanocytic nevi,5,melanocytic nevi,0.9999685287475586
+dermamnist_test_00353,5,melanocytic nevi,5,melanocytic nevi,0.9967153072357178
+dermamnist_test_00354,5,melanocytic nevi,5,melanocytic nevi,0.9968974590301514
+dermamnist_test_00355,5,melanocytic nevi,5,melanocytic nevi,0.999645471572876
+dermamnist_test_00356,5,melanocytic nevi,5,melanocytic nevi,0.99497389793396
+dermamnist_test_00357,5,melanocytic nevi,5,melanocytic nevi,0.9876741766929626
+dermamnist_test_00358,5,melanocytic nevi,5,melanocytic nevi,0.9848766326904297
+dermamnist_test_00359,5,melanocytic nevi,5,melanocytic nevi,0.9997381567955017
+dermamnist_test_00360,5,melanocytic nevi,5,melanocytic nevi,0.991487979888916
+dermamnist_test_00361,5,melanocytic nevi,5,melanocytic nevi,0.9886638522148132
+dermamnist_test_00362,5,melanocytic nevi,5,melanocytic nevi,0.9984496831893921
+dermamnist_test_00363,5,melanocytic nevi,5,melanocytic nevi,0.9987691044807434
+dermamnist_test_00364,5,melanocytic nevi,5,melanocytic nevi,0.7085245251655579
+dermamnist_test_00365,5,melanocytic nevi,5,melanocytic nevi,0.9998447895050049
+dermamnist_test_00366,5,melanocytic nevi,5,melanocytic nevi,0.999687671661377
+dermamnist_test_00367,5,melanocytic nevi,5,melanocytic nevi,0.98158860206604
+dermamnist_test_00368,5,melanocytic nevi,5,melanocytic nevi,0.9994465708732605
+dermamnist_test_00369,5,melanocytic nevi,5,melanocytic nevi,0.9980104565620422
+dermamnist_test_00370,5,melanocytic nevi,5,melanocytic nevi,0.9983281493186951
+dermamnist_test_00371,5,melanocytic nevi,5,melanocytic nevi,0.9975674152374268
+dermamnist_test_00372,5,melanocytic nevi,5,melanocytic nevi,0.9987872242927551
+dermamnist_test_00373,5,melanocytic nevi,5,melanocytic nevi,0.9996700286865234
+dermamnist_test_00374,5,melanocytic nevi,5,melanocytic nevi,0.9954598546028137
+dermamnist_test_00375,5,melanocytic nevi,5,melanocytic nevi,0.9998619556427002
+dermamnist_test_00376,5,melanocytic nevi,5,melanocytic nevi,0.9554628133773804
+dermamnist_test_00377,5,melanocytic nevi,5,melanocytic nevi,0.9035108089447021
+dermamnist_test_00378,5,melanocytic nevi,5,melanocytic nevi,0.9978746175765991
+dermamnist_test_00379,5,melanocytic nevi,5,melanocytic nevi,0.9968507885932922
+dermamnist_test_00380,5,melanocytic nevi,5,melanocytic nevi,0.9798647165298462
+dermamnist_test_00381,5,melanocytic nevi,5,melanocytic nevi,0.858363926410675
+dermamnist_test_00382,5,melanocytic nevi,5,melanocytic nevi,0.9945612549781799
+dermamnist_test_00383,5,melanocytic nevi,5,melanocytic nevi,0.9992524981498718
+dermamnist_test_00384,5,melanocytic nevi,5,melanocytic nevi,0.9995031356811523
+dermamnist_test_00385,5,melanocytic nevi,5,melanocytic nevi,0.9851642847061157
+dermamnist_test_00386,5,melanocytic nevi,5,melanocytic nevi,0.9990062117576599
+dermamnist_test_00387,5,melanocytic nevi,5,melanocytic nevi,0.999619722366333
+dermamnist_test_00388,5,melanocytic nevi,5,melanocytic nevi,0.9994044303894043
+dermamnist_test_00389,5,melanocytic nevi,5,melanocytic nevi,0.9997450709342957
+dermamnist_test_00390,5,melanocytic nevi,5,melanocytic nevi,0.9954017400741577
+dermamnist_test_00391,5,melanocytic nevi,5,melanocytic nevi,0.9994795918464661
+dermamnist_test_00392,5,melanocytic nevi,5,melanocytic nevi,0.9874750971794128
+dermamnist_test_00393,5,melanocytic nevi,5,melanocytic nevi,0.9630057215690613
+dermamnist_test_00394,5,melanocytic nevi,5,melanocytic nevi,0.9552623629570007
+dermamnist_test_00395,5,melanocytic nevi,5,melanocytic nevi,0.9997113347053528
+dermamnist_test_00396,5,melanocytic nevi,5,melanocytic nevi,0.9873915314674377
+dermamnist_test_00397,5,melanocytic nevi,5,melanocytic nevi,0.9953674077987671
+dermamnist_test_00398,5,melanocytic nevi,5,melanocytic nevi,0.9996559619903564
+dermamnist_test_00399,5,melanocytic nevi,5,melanocytic nevi,0.9921827912330627
+dermamnist_test_00400,5,melanocytic nevi,5,melanocytic nevi,0.9988664388656616
+dermamnist_test_00401,5,melanocytic nevi,5,melanocytic nevi,0.9962903261184692
+dermamnist_test_00402,5,melanocytic nevi,5,melanocytic nevi,0.9929736852645874
+dermamnist_test_00403,5,melanocytic nevi,5,melanocytic nevi,0.9995726943016052
+dermamnist_test_00404,5,melanocytic nevi,5,melanocytic nevi,0.9991926550865173
+dermamnist_test_00405,5,melanocytic nevi,5,melanocytic nevi,0.9967789053916931
+dermamnist_test_00406,5,melanocytic nevi,5,melanocytic nevi,0.9965155124664307
+dermamnist_test_00407,5,melanocytic nevi,5,melanocytic nevi,0.998276948928833
+dermamnist_test_00408,5,melanocytic nevi,5,melanocytic nevi,0.982526957988739
+dermamnist_test_00409,5,melanocytic nevi,5,melanocytic nevi,0.7411565184593201
+dermamnist_test_00410,5,melanocytic nevi,5,melanocytic nevi,0.9764427542686462
+dermamnist_test_00411,5,melanocytic nevi,5,melanocytic nevi,0.9996888637542725
+dermamnist_test_00412,5,melanocytic nevi,5,melanocytic nevi,0.9999445676803589
+dermamnist_test_00413,5,melanocytic nevi,5,melanocytic nevi,0.999467670917511
+dermamnist_test_00414,5,melanocytic nevi,5,melanocytic nevi,0.9982538819313049
+dermamnist_test_00415,5,melanocytic nevi,5,melanocytic nevi,0.999922513961792
+dermamnist_test_00416,5,melanocytic nevi,5,melanocytic nevi,0.9996737241744995
+dermamnist_test_00417,5,melanocytic nevi,5,melanocytic nevi,0.9997697472572327
+dermamnist_test_00418,5,melanocytic nevi,5,melanocytic nevi,0.9994674324989319
+dermamnist_test_00419,5,melanocytic nevi,5,melanocytic nevi,0.9998615980148315
+dermamnist_test_00420,5,melanocytic nevi,5,melanocytic nevi,0.9986352324485779
+dermamnist_test_00421,5,melanocytic nevi,5,melanocytic nevi,0.9974023103713989
+dermamnist_test_00422,5,melanocytic nevi,5,melanocytic nevi,0.9790984392166138
+dermamnist_test_00423,5,melanocytic nevi,5,melanocytic nevi,0.9989892840385437
+dermamnist_test_00424,5,melanocytic nevi,5,melanocytic nevi,0.9998847246170044
+dermamnist_test_00425,5,melanocytic nevi,5,melanocytic nevi,0.9831218123435974
+dermamnist_test_00426,5,melanocytic nevi,5,melanocytic nevi,0.9952109456062317
+dermamnist_test_00427,5,melanocytic nevi,5,melanocytic nevi,0.9781107902526855
+dermamnist_test_00428,5,melanocytic nevi,5,melanocytic nevi,0.9984595775604248
+dermamnist_test_00429,5,melanocytic nevi,5,melanocytic nevi,0.9971543550491333
+dermamnist_test_00430,5,melanocytic nevi,5,melanocytic nevi,0.9907271862030029
+dermamnist_test_00431,5,melanocytic nevi,5,melanocytic nevi,0.9994267225265503
+dermamnist_test_00432,5,melanocytic nevi,5,melanocytic nevi,0.9987276196479797
+dermamnist_test_00433,5,melanocytic nevi,5,melanocytic nevi,0.9904838800430298
+dermamnist_test_00434,5,melanocytic nevi,5,melanocytic nevi,0.9988222718238831
+dermamnist_test_00435,5,melanocytic nevi,5,melanocytic nevi,0.9992737174034119
+dermamnist_test_00436,5,melanocytic nevi,5,melanocytic nevi,0.9764103889465332
+dermamnist_test_00437,5,melanocytic nevi,5,melanocytic nevi,0.9957265853881836
+dermamnist_test_00438,5,melanocytic nevi,5,melanocytic nevi,0.9978283047676086
+dermamnist_test_00439,5,melanocytic nevi,5,melanocytic nevi,0.9997738003730774
+dermamnist_test_00440,5,melanocytic nevi,5,melanocytic nevi,0.9997466206550598
+dermamnist_test_00441,5,melanocytic nevi,5,melanocytic nevi,0.999518632888794
+dermamnist_test_00442,5,melanocytic nevi,5,melanocytic nevi,0.9954759478569031
+dermamnist_test_00443,5,melanocytic nevi,5,melanocytic nevi,0.9636067152023315
+dermamnist_test_00444,5,melanocytic nevi,5,melanocytic nevi,0.9980802536010742
+dermamnist_test_00445,5,melanocytic nevi,5,melanocytic nevi,0.9998892545700073
+dermamnist_test_00446,5,melanocytic nevi,5,melanocytic nevi,0.9997413754463196
+dermamnist_test_00447,5,melanocytic nevi,5,melanocytic nevi,0.9998213648796082
+dermamnist_test_00448,5,melanocytic nevi,5,melanocytic nevi,0.996864378452301
+dermamnist_test_00449,5,melanocytic nevi,5,melanocytic nevi,0.9991204142570496
+dermamnist_test_00450,5,melanocytic nevi,5,melanocytic nevi,0.9999513626098633
+dermamnist_test_00451,5,melanocytic nevi,5,melanocytic nevi,0.9999128580093384
+dermamnist_test_00452,5,melanocytic nevi,5,melanocytic nevi,0.9971291422843933
+dermamnist_test_00453,5,melanocytic nevi,5,melanocytic nevi,0.9963969588279724
+dermamnist_test_00454,5,melanocytic nevi,5,melanocytic nevi,0.9994882345199585
+dermamnist_test_00455,5,melanocytic nevi,5,melanocytic nevi,0.9998552799224854
+dermamnist_test_00456,5,melanocytic nevi,5,melanocytic nevi,0.9993789196014404
+dermamnist_test_00457,5,melanocytic nevi,5,melanocytic nevi,0.9995816349983215
+dermamnist_test_00458,5,melanocytic nevi,5,melanocytic nevi,0.9964220523834229
+dermamnist_test_00459,5,melanocytic nevi,5,melanocytic nevi,0.999920129776001
+dermamnist_test_00460,5,melanocytic nevi,5,melanocytic nevi,0.9985137581825256
+dermamnist_test_00461,5,melanocytic nevi,5,melanocytic nevi,0.9998921155929565
+dermamnist_test_00462,5,melanocytic nevi,5,melanocytic nevi,0.9948659539222717
+dermamnist_test_00463,5,melanocytic nevi,5,melanocytic nevi,0.9998760223388672
+dermamnist_test_00464,5,melanocytic nevi,5,melanocytic nevi,0.9995020627975464
+dermamnist_test_00465,5,melanocytic nevi,5,melanocytic nevi,0.9998916387557983
+dermamnist_test_00466,5,melanocytic nevi,5,melanocytic nevi,0.9999046325683594
+dermamnist_test_00467,5,melanocytic nevi,5,melanocytic nevi,0.9999544620513916
+dermamnist_test_00468,5,melanocytic nevi,5,melanocytic nevi,0.9996271133422852
+dermamnist_test_00469,5,melanocytic nevi,5,melanocytic nevi,0.9995787739753723
+dermamnist_test_00470,5,melanocytic nevi,5,melanocytic nevi,0.9987053871154785
+dermamnist_test_00471,5,melanocytic nevi,5,melanocytic nevi,0.9999735355377197
+dermamnist_test_00472,5,melanocytic nevi,5,melanocytic nevi,0.9984468817710876
+dermamnist_test_00473,5,melanocytic nevi,5,melanocytic nevi,0.9996944665908813
+dermamnist_test_00474,5,melanocytic nevi,5,melanocytic nevi,0.9997847676277161
+dermamnist_test_00475,5,melanocytic nevi,5,melanocytic nevi,0.9902835488319397
+dermamnist_test_00476,5,melanocytic nevi,5,melanocytic nevi,0.9996787309646606
+dermamnist_test_00477,5,melanocytic nevi,5,melanocytic nevi,0.9998917579650879
+dermamnist_test_00478,5,melanocytic nevi,5,melanocytic nevi,0.9995796084403992
+dermamnist_test_00479,5,melanocytic nevi,5,melanocytic nevi,0.9994577765464783
+dermamnist_test_00480,5,melanocytic nevi,5,melanocytic nevi,0.9849011301994324
+dermamnist_test_00481,5,melanocytic nevi,5,melanocytic nevi,0.9965910911560059
+dermamnist_test_00482,5,melanocytic nevi,5,melanocytic nevi,0.9990426898002625
+dermamnist_test_00483,5,melanocytic nevi,5,melanocytic nevi,0.9998911619186401
+dermamnist_test_00484,5,melanocytic nevi,5,melanocytic nevi,0.9999672174453735
+dermamnist_test_00485,5,melanocytic nevi,5,melanocytic nevi,0.9883018136024475
+dermamnist_test_00486,5,melanocytic nevi,5,melanocytic nevi,0.9999386072158813
+dermamnist_test_00487,5,melanocytic nevi,5,melanocytic nevi,0.998613715171814
+dermamnist_test_00488,5,melanocytic nevi,5,melanocytic nevi,0.5245043039321899
+dermamnist_test_00489,5,melanocytic nevi,5,melanocytic nevi,0.9986023306846619
+dermamnist_test_00490,5,melanocytic nevi,5,melanocytic nevi,0.9978137016296387
+dermamnist_test_00491,5,melanocytic nevi,5,melanocytic nevi,0.9999849796295166
+dermamnist_test_00492,5,melanocytic nevi,5,melanocytic nevi,0.9998175501823425
+dermamnist_test_00493,5,melanocytic nevi,5,melanocytic nevi,0.9927337169647217
+dermamnist_test_00494,5,melanocytic nevi,5,melanocytic nevi,0.9997279047966003
+dermamnist_test_00495,5,melanocytic nevi,5,melanocytic nevi,0.9975881576538086
+dermamnist_test_00496,5,melanocytic nevi,5,melanocytic nevi,0.9958707690238953
+dermamnist_test_00497,5,melanocytic nevi,5,melanocytic nevi,0.998353123664856
+dermamnist_test_00498,5,melanocytic nevi,5,melanocytic nevi,0.9997652173042297
+dermamnist_test_00499,5,melanocytic nevi,5,melanocytic nevi,0.9972230195999146
+dermamnist_test_00500,5,melanocytic nevi,5,melanocytic nevi,0.9711352586746216
+dermamnist_test_00501,5,melanocytic nevi,5,melanocytic nevi,0.9640728235244751
+dermamnist_test_00502,5,melanocytic nevi,5,melanocytic nevi,0.9995373487472534
+dermamnist_test_00503,5,melanocytic nevi,5,melanocytic nevi,0.9986394047737122
+dermamnist_test_00504,5,melanocytic nevi,5,melanocytic nevi,0.9977315068244934
+dermamnist_test_00505,5,melanocytic nevi,5,melanocytic nevi,0.9997391104698181
+dermamnist_test_00506,5,melanocytic nevi,5,melanocytic nevi,0.9998325109481812
+dermamnist_test_00507,5,melanocytic nevi,5,melanocytic nevi,0.9998434782028198
+dermamnist_test_00508,5,melanocytic nevi,5,melanocytic nevi,0.9990829229354858
+dermamnist_test_00509,5,melanocytic nevi,5,melanocytic nevi,0.9999076128005981
+dermamnist_test_00510,5,melanocytic nevi,5,melanocytic nevi,0.9996071457862854
+dermamnist_test_00511,5,melanocytic nevi,5,melanocytic nevi,0.9983652234077454
+dermamnist_test_00512,5,melanocytic nevi,5,melanocytic nevi,0.9999203681945801
+dermamnist_test_00513,5,melanocytic nevi,5,melanocytic nevi,0.9996225833892822
+dermamnist_test_00514,5,melanocytic nevi,5,melanocytic nevi,0.9995156526565552
+dermamnist_test_00515,5,melanocytic nevi,5,melanocytic nevi,0.999958872795105
+dermamnist_test_00516,5,melanocytic nevi,5,melanocytic nevi,0.9995594620704651
+dermamnist_test_00517,5,melanocytic nevi,5,melanocytic nevi,0.9993687272071838
+dermamnist_test_00518,5,melanocytic nevi,5,melanocytic nevi,0.9995170831680298
+dermamnist_test_00519,5,melanocytic nevi,5,melanocytic nevi,0.9997398257255554
+dermamnist_test_00520,5,melanocytic nevi,5,melanocytic nevi,0.9977972507476807
+dermamnist_test_00521,5,melanocytic nevi,5,melanocytic nevi,0.9987072944641113
+dermamnist_test_00522,5,melanocytic nevi,3,dermatofibroma,0.6135500073432922
+dermamnist_test_00523,5,melanocytic nevi,5,melanocytic nevi,0.9984580278396606
+dermamnist_test_00524,5,melanocytic nevi,5,melanocytic nevi,0.9998526573181152
+dermamnist_test_00525,5,melanocytic nevi,5,melanocytic nevi,0.9969802498817444
+dermamnist_test_00526,5,melanocytic nevi,5,melanocytic nevi,0.9999874830245972
+dermamnist_test_00527,5,melanocytic nevi,5,melanocytic nevi,0.7561306357383728
+dermamnist_test_00528,5,melanocytic nevi,5,melanocytic nevi,0.9999508857727051
+dermamnist_test_00529,5,melanocytic nevi,5,melanocytic nevi,0.9992095232009888
+dermamnist_test_00530,5,melanocytic nevi,5,melanocytic nevi,0.999760091304779
+dermamnist_test_00531,5,melanocytic nevi,5,melanocytic nevi,0.9981542229652405
+dermamnist_test_00532,5,melanocytic nevi,5,melanocytic nevi,0.9986080527305603
+dermamnist_test_00533,5,melanocytic nevi,5,melanocytic nevi,0.9999685287475586
+dermamnist_test_00534,5,melanocytic nevi,5,melanocytic nevi,0.9983739852905273
+dermamnist_test_00535,5,melanocytic nevi,5,melanocytic nevi,0.9990546107292175
+dermamnist_test_00536,5,melanocytic nevi,5,melanocytic nevi,0.9998565912246704
+dermamnist_test_00537,5,melanocytic nevi,5,melanocytic nevi,0.9993093013763428
+dermamnist_test_00538,5,melanocytic nevi,5,melanocytic nevi,0.9999411106109619
+dermamnist_test_00539,5,melanocytic nevi,5,melanocytic nevi,0.9999024868011475
+dermamnist_test_00540,5,melanocytic nevi,5,melanocytic nevi,0.9997451901435852
+dermamnist_test_00541,5,melanocytic nevi,5,melanocytic nevi,0.9994381070137024
+dermamnist_test_00542,5,melanocytic nevi,5,melanocytic nevi,0.9987560510635376
+dermamnist_test_00543,5,melanocytic nevi,5,melanocytic nevi,0.9994325041770935
+dermamnist_test_00544,5,melanocytic nevi,5,melanocytic nevi,0.9998962879180908
+dermamnist_test_00545,5,melanocytic nevi,5,melanocytic nevi,0.9993775486946106
+dermamnist_test_00546,5,melanocytic nevi,5,melanocytic nevi,0.9995937943458557
+dermamnist_test_00547,5,melanocytic nevi,5,melanocytic nevi,0.9983823299407959
+dermamnist_test_00548,5,melanocytic nevi,5,melanocytic nevi,0.970940351486206
+dermamnist_test_00549,5,melanocytic nevi,5,melanocytic nevi,0.9997698664665222
+dermamnist_test_00550,5,melanocytic nevi,5,melanocytic nevi,0.9998321533203125
+dermamnist_test_00551,5,melanocytic nevi,5,melanocytic nevi,0.9991718530654907
+dermamnist_test_00552,5,melanocytic nevi,5,melanocytic nevi,0.37177640199661255
+dermamnist_test_00553,5,melanocytic nevi,5,melanocytic nevi,0.9993157386779785
+dermamnist_test_00554,5,melanocytic nevi,5,melanocytic nevi,0.9999654293060303
+dermamnist_test_00555,5,melanocytic nevi,5,melanocytic nevi,0.9953970313072205
+dermamnist_test_00556,5,melanocytic nevi,5,melanocytic nevi,0.9723886251449585
+dermamnist_test_00557,5,melanocytic nevi,5,melanocytic nevi,0.9998077750205994
+dermamnist_test_00558,5,melanocytic nevi,5,melanocytic nevi,0.9945250749588013
+dermamnist_test_00559,5,melanocytic nevi,5,melanocytic nevi,0.9280701279640198
+dermamnist_test_00560,5,melanocytic nevi,5,melanocytic nevi,0.9991565942764282
+dermamnist_test_00561,5,melanocytic nevi,5,melanocytic nevi,0.9908604621887207
+dermamnist_test_00562,5,melanocytic nevi,5,melanocytic nevi,0.9857121109962463
+dermamnist_test_00563,5,melanocytic nevi,5,melanocytic nevi,0.9954147338867188
+dermamnist_test_00564,5,melanocytic nevi,5,melanocytic nevi,0.9964560866355896
+dermamnist_test_00565,5,melanocytic nevi,5,melanocytic nevi,0.9995457530021667
+dermamnist_test_00566,5,melanocytic nevi,5,melanocytic nevi,0.99809330701828
+dermamnist_test_00567,5,melanocytic nevi,5,melanocytic nevi,0.9857558608055115
+dermamnist_test_00568,5,melanocytic nevi,5,melanocytic nevi,0.9997170567512512
+dermamnist_test_00569,5,melanocytic nevi,5,melanocytic nevi,0.9753268957138062
+dermamnist_test_00570,5,melanocytic nevi,5,melanocytic nevi,0.9909103512763977
+dermamnist_test_00571,5,melanocytic nevi,5,melanocytic nevi,0.9992165565490723
+dermamnist_test_00572,5,melanocytic nevi,5,melanocytic nevi,0.9997926354408264
+dermamnist_test_00573,5,melanocytic nevi,5,melanocytic nevi,0.9998223185539246
+dermamnist_test_00574,5,melanocytic nevi,5,melanocytic nevi,0.9803428053855896
+dermamnist_test_00575,5,melanocytic nevi,5,melanocytic nevi,0.9998028874397278
+dermamnist_test_00576,5,melanocytic nevi,5,melanocytic nevi,0.997549831867218
+dermamnist_test_00577,5,melanocytic nevi,5,melanocytic nevi,0.9998828172683716
+dermamnist_test_00578,5,melanocytic nevi,5,melanocytic nevi,0.9997695088386536
+dermamnist_test_00579,5,melanocytic nevi,5,melanocytic nevi,0.9998332262039185
+dermamnist_test_00580,5,melanocytic nevi,5,melanocytic nevi,0.996996283531189
+dermamnist_test_00581,5,melanocytic nevi,5,melanocytic nevi,0.9957757592201233
+dermamnist_test_00582,5,melanocytic nevi,5,melanocytic nevi,0.9999810457229614
+dermamnist_test_00583,5,melanocytic nevi,5,melanocytic nevi,0.9413353204727173
+dermamnist_test_00584,5,melanocytic nevi,5,melanocytic nevi,0.9994980096817017
+dermamnist_test_00585,5,melanocytic nevi,5,melanocytic nevi,0.9910441637039185
+dermamnist_test_00586,5,melanocytic nevi,5,melanocytic nevi,0.9997056126594543
+dermamnist_test_00587,5,melanocytic nevi,5,melanocytic nevi,0.9997695088386536
+dermamnist_test_00588,5,melanocytic nevi,5,melanocytic nevi,0.9999620914459229
+dermamnist_test_00589,5,melanocytic nevi,5,melanocytic nevi,0.9976383447647095
+dermamnist_test_00590,5,melanocytic nevi,5,melanocytic nevi,0.9992268085479736
+dermamnist_test_00591,5,melanocytic nevi,5,melanocytic nevi,0.9999077320098877
+dermamnist_test_00592,5,melanocytic nevi,5,melanocytic nevi,0.9998784065246582
+dermamnist_test_00593,5,melanocytic nevi,5,melanocytic nevi,0.9951489567756653
+dermamnist_test_00594,5,melanocytic nevi,5,melanocytic nevi,0.9995796084403992
+dermamnist_test_00595,5,melanocytic nevi,5,melanocytic nevi,0.9983668923377991
+dermamnist_test_00596,5,melanocytic nevi,5,melanocytic nevi,0.9991602897644043
+dermamnist_test_00597,5,melanocytic nevi,5,melanocytic nevi,0.999496340751648
+dermamnist_test_00598,5,melanocytic nevi,5,melanocytic nevi,0.9998862743377686
+dermamnist_test_00599,5,melanocytic nevi,5,melanocytic nevi,0.9993321299552917
+dermamnist_test_00600,5,melanocytic nevi,5,melanocytic nevi,0.9996720552444458
+dermamnist_test_00601,5,melanocytic nevi,5,melanocytic nevi,0.9997839331626892
+dermamnist_test_00602,5,melanocytic nevi,5,melanocytic nevi,0.994158148765564
+dermamnist_test_00603,5,melanocytic nevi,5,melanocytic nevi,0.9986012578010559
+dermamnist_test_00604,5,melanocytic nevi,5,melanocytic nevi,0.9979871511459351
+dermamnist_test_00605,5,melanocytic nevi,5,melanocytic nevi,0.9992073178291321
+dermamnist_test_00606,5,melanocytic nevi,5,melanocytic nevi,0.9995866417884827
+dermamnist_test_00607,5,melanocytic nevi,5,melanocytic nevi,0.9998869895935059
+dermamnist_test_00608,5,melanocytic nevi,5,melanocytic nevi,0.9999423027038574
+dermamnist_test_00609,5,melanocytic nevi,5,melanocytic nevi,0.999138355255127
+dermamnist_test_00610,5,melanocytic nevi,5,melanocytic nevi,0.9993597865104675
+dermamnist_test_00611,5,melanocytic nevi,5,melanocytic nevi,0.9980496168136597
+dermamnist_test_00612,5,melanocytic nevi,5,melanocytic nevi,0.9978487491607666
+dermamnist_test_00613,5,melanocytic nevi,5,melanocytic nevi,0.9995183944702148
+dermamnist_test_00614,5,melanocytic nevi,4,melanoma,0.5486712455749512
+dermamnist_test_00615,5,melanocytic nevi,5,melanocytic nevi,0.9910406470298767
+dermamnist_test_00616,5,melanocytic nevi,5,melanocytic nevi,0.9998145699501038
+dermamnist_test_00617,5,melanocytic nevi,5,melanocytic nevi,0.9999171495437622
+dermamnist_test_00618,5,melanocytic nevi,5,melanocytic nevi,0.9979656934738159
+dermamnist_test_00619,5,melanocytic nevi,5,melanocytic nevi,0.999826967716217
+dermamnist_test_00620,5,melanocytic nevi,5,melanocytic nevi,0.9997625946998596
+dermamnist_test_00621,5,melanocytic nevi,5,melanocytic nevi,0.9999383687973022
+dermamnist_test_00622,5,melanocytic nevi,5,melanocytic nevi,0.9981675148010254
+dermamnist_test_00623,5,melanocytic nevi,5,melanocytic nevi,0.9942845702171326
+dermamnist_test_00624,5,melanocytic nevi,5,melanocytic nevi,0.9998642206192017
+dermamnist_test_00625,5,melanocytic nevi,5,melanocytic nevi,0.9808890223503113
+dermamnist_test_00626,5,melanocytic nevi,5,melanocytic nevi,0.9990065693855286
+dermamnist_test_00627,5,melanocytic nevi,5,melanocytic nevi,0.9989116191864014
+dermamnist_test_00628,5,melanocytic nevi,5,melanocytic nevi,0.998394787311554
+dermamnist_test_00629,5,melanocytic nevi,5,melanocytic nevi,0.9994288086891174
+dermamnist_test_00630,5,melanocytic nevi,5,melanocytic nevi,0.9998968839645386
+dermamnist_test_00631,5,melanocytic nevi,5,melanocytic nevi,0.9978554844856262
+dermamnist_test_00632,5,melanocytic nevi,5,melanocytic nevi,0.9996836185455322
+dermamnist_test_00633,5,melanocytic nevi,5,melanocytic nevi,0.9998456239700317
+dermamnist_test_00634,5,melanocytic nevi,5,melanocytic nevi,0.9997889399528503
+dermamnist_test_00635,5,melanocytic nevi,5,melanocytic nevi,0.9983959794044495
+dermamnist_test_00636,5,melanocytic nevi,5,melanocytic nevi,0.9996538162231445
+dermamnist_test_00637,5,melanocytic nevi,5,melanocytic nevi,0.9997995495796204
+dermamnist_test_00638,5,melanocytic nevi,5,melanocytic nevi,0.9557962417602539
+dermamnist_test_00639,5,melanocytic nevi,5,melanocytic nevi,0.9986435770988464
+dermamnist_test_00640,5,melanocytic nevi,5,melanocytic nevi,0.9998551607131958
+dermamnist_test_00641,5,melanocytic nevi,5,melanocytic nevi,0.999995231628418
+dermamnist_test_00642,5,melanocytic nevi,5,melanocytic nevi,0.9921029210090637
+dermamnist_test_00643,5,melanocytic nevi,5,melanocytic nevi,0.9982302784919739
+dermamnist_test_00644,5,melanocytic nevi,5,melanocytic nevi,0.999894380569458
+dermamnist_test_00645,5,melanocytic nevi,5,melanocytic nevi,0.9994099140167236
+dermamnist_test_00646,5,melanocytic nevi,5,melanocytic nevi,0.9992154836654663
+dermamnist_test_00647,5,melanocytic nevi,5,melanocytic nevi,0.9991531372070312
+dermamnist_test_00648,5,melanocytic nevi,5,melanocytic nevi,0.9979379773139954
+dermamnist_test_00649,5,melanocytic nevi,5,melanocytic nevi,0.9930428266525269
+dermamnist_test_00650,5,melanocytic nevi,5,melanocytic nevi,0.862554132938385
+dermamnist_test_00651,5,melanocytic nevi,5,melanocytic nevi,0.9998306035995483
+dermamnist_test_00652,5,melanocytic nevi,5,melanocytic nevi,0.9968740940093994
+dermamnist_test_00653,5,melanocytic nevi,5,melanocytic nevi,0.9999017715454102
+dermamnist_test_00654,5,melanocytic nevi,5,melanocytic nevi,0.9997742772102356
+dermamnist_test_00655,5,melanocytic nevi,5,melanocytic nevi,0.999477207660675
+dermamnist_test_00656,5,melanocytic nevi,5,melanocytic nevi,0.9974204301834106
+dermamnist_test_00657,5,melanocytic nevi,5,melanocytic nevi,0.9998279809951782
+dermamnist_test_00658,5,melanocytic nevi,5,melanocytic nevi,0.999256432056427
+dermamnist_test_00659,5,melanocytic nevi,5,melanocytic nevi,0.9999352693557739
+dermamnist_test_00660,5,melanocytic nevi,5,melanocytic nevi,0.9990239143371582
+dermamnist_test_00661,5,melanocytic nevi,5,melanocytic nevi,0.9947901964187622
+dermamnist_test_00662,5,melanocytic nevi,5,melanocytic nevi,0.9992759823799133
+dermamnist_test_00663,5,melanocytic nevi,5,melanocytic nevi,0.998097836971283
+dermamnist_test_00664,5,melanocytic nevi,5,melanocytic nevi,0.9909048676490784
+dermamnist_test_00665,5,melanocytic nevi,5,melanocytic nevi,0.9997875094413757
+dermamnist_test_00666,5,melanocytic nevi,5,melanocytic nevi,0.9941744208335876
+dermamnist_test_00667,5,melanocytic nevi,5,melanocytic nevi,0.9999111890792847
+dermamnist_test_00668,5,melanocytic nevi,5,melanocytic nevi,0.9977699518203735
+dermamnist_test_00669,5,melanocytic nevi,5,melanocytic nevi,0.9999399185180664
+dermamnist_test_00670,5,melanocytic nevi,5,melanocytic nevi,0.9994001388549805
+dermamnist_test_00671,5,melanocytic nevi,5,melanocytic nevi,0.9515666365623474
+dermamnist_test_00672,5,melanocytic nevi,5,melanocytic nevi,0.9990164041519165
+dermamnist_test_00673,5,melanocytic nevi,5,melanocytic nevi,0.999645471572876
+dermamnist_test_00674,5,melanocytic nevi,5,melanocytic nevi,0.997444748878479
+dermamnist_test_00675,5,melanocytic nevi,5,melanocytic nevi,0.9995670914649963
+dermamnist_test_00676,5,melanocytic nevi,5,melanocytic nevi,0.9936791062355042
+dermamnist_test_00677,5,melanocytic nevi,5,melanocytic nevi,0.9991839528083801
+dermamnist_test_00678,5,melanocytic nevi,5,melanocytic nevi,0.9996030926704407
+dermamnist_test_00679,5,melanocytic nevi,5,melanocytic nevi,0.9985767602920532
+dermamnist_test_00680,5,melanocytic nevi,5,melanocytic nevi,0.9991399049758911
+dermamnist_test_00681,5,melanocytic nevi,5,melanocytic nevi,0.999186098575592
+dermamnist_test_00682,5,melanocytic nevi,5,melanocytic nevi,0.9949581027030945
+dermamnist_test_00683,5,melanocytic nevi,5,melanocytic nevi,0.9991102814674377
+dermamnist_test_00684,5,melanocytic nevi,5,melanocytic nevi,0.9999605417251587
+dermamnist_test_00685,5,melanocytic nevi,5,melanocytic nevi,0.9995015859603882
+dermamnist_test_00686,5,melanocytic nevi,5,melanocytic nevi,0.9962899684906006
+dermamnist_test_00687,5,melanocytic nevi,5,melanocytic nevi,0.9458661675453186
+dermamnist_test_00688,5,melanocytic nevi,5,melanocytic nevi,0.9995278120040894
+dermamnist_test_00689,5,melanocytic nevi,5,melanocytic nevi,0.9550219178199768
+dermamnist_test_00690,5,melanocytic nevi,5,melanocytic nevi,0.9998142123222351
+dermamnist_test_00691,5,melanocytic nevi,5,melanocytic nevi,0.9994162321090698
+dermamnist_test_00692,5,melanocytic nevi,5,melanocytic nevi,0.9995934367179871
+dermamnist_test_00693,5,melanocytic nevi,5,melanocytic nevi,0.9981856942176819
+dermamnist_test_00694,5,melanocytic nevi,5,melanocytic nevi,0.9682799577713013
+dermamnist_test_00695,5,melanocytic nevi,5,melanocytic nevi,0.9997443556785583
+dermamnist_test_00696,5,melanocytic nevi,5,melanocytic nevi,0.9968517422676086
+dermamnist_test_00697,5,melanocytic nevi,2,benign keratosis-like lesions,0.549934446811676
+dermamnist_test_00698,5,melanocytic nevi,5,melanocytic nevi,0.999862790107727
+dermamnist_test_00699,5,melanocytic nevi,5,melanocytic nevi,0.9999078512191772
+dermamnist_test_00700,5,melanocytic nevi,5,melanocytic nevi,0.9999765157699585
+dermamnist_test_00701,5,melanocytic nevi,5,melanocytic nevi,0.9998865127563477
+dermamnist_test_00702,5,melanocytic nevi,5,melanocytic nevi,0.9990290403366089
+dermamnist_test_00703,5,melanocytic nevi,5,melanocytic nevi,0.9999277591705322
+dermamnist_test_00704,5,melanocytic nevi,5,melanocytic nevi,0.9967324733734131
+dermamnist_test_00705,5,melanocytic nevi,5,melanocytic nevi,0.9830581545829773
+dermamnist_test_00706,5,melanocytic nevi,5,melanocytic nevi,0.9996200799942017
+dermamnist_test_00707,5,melanocytic nevi,5,melanocytic nevi,0.99941086769104
+dermamnist_test_00708,5,melanocytic nevi,5,melanocytic nevi,0.8254991769790649
+dermamnist_test_00709,5,melanocytic nevi,5,melanocytic nevi,0.9998685121536255
+dermamnist_test_00710,5,melanocytic nevi,5,melanocytic nevi,0.9998613595962524
+dermamnist_test_00711,5,melanocytic nevi,5,melanocytic nevi,0.9945396780967712
+dermamnist_test_00712,5,melanocytic nevi,5,melanocytic nevi,0.9997443556785583
+dermamnist_test_00713,5,melanocytic nevi,5,melanocytic nevi,0.998202919960022
+dermamnist_test_00714,5,melanocytic nevi,5,melanocytic nevi,0.999554455280304
+dermamnist_test_00715,5,melanocytic nevi,5,melanocytic nevi,0.9996984004974365
+dermamnist_test_00716,5,melanocytic nevi,5,melanocytic nevi,0.9989905953407288
+dermamnist_test_00717,5,melanocytic nevi,5,melanocytic nevi,0.9995800852775574
+dermamnist_test_00718,5,melanocytic nevi,5,melanocytic nevi,0.9993554949760437
+dermamnist_test_00719,5,melanocytic nevi,5,melanocytic nevi,0.999897837638855
+dermamnist_test_00720,5,melanocytic nevi,2,benign keratosis-like lesions,0.5359259843826294
+dermamnist_test_00721,5,melanocytic nevi,5,melanocytic nevi,0.9982274174690247
+dermamnist_test_00722,5,melanocytic nevi,5,melanocytic nevi,0.989038348197937
+dermamnist_test_00723,5,melanocytic nevi,5,melanocytic nevi,0.9987795948982239
+dermamnist_test_00724,5,melanocytic nevi,5,melanocytic nevi,0.9879716038703918
+dermamnist_test_00725,5,melanocytic nevi,5,melanocytic nevi,0.9990488886833191
+dermamnist_test_00726,5,melanocytic nevi,5,melanocytic nevi,0.9999339580535889
+dermamnist_test_00727,5,melanocytic nevi,5,melanocytic nevi,0.999313235282898
+dermamnist_test_00728,5,melanocytic nevi,5,melanocytic nevi,0.9998464584350586
+dermamnist_test_00729,5,melanocytic nevi,5,melanocytic nevi,0.9990155696868896
+dermamnist_test_00730,5,melanocytic nevi,5,melanocytic nevi,0.9996895790100098
+dermamnist_test_00731,5,melanocytic nevi,5,melanocytic nevi,0.9976578950881958
+dermamnist_test_00732,5,melanocytic nevi,5,melanocytic nevi,0.9994014501571655
+dermamnist_test_00733,5,melanocytic nevi,5,melanocytic nevi,0.9999195337295532
+dermamnist_test_00734,5,melanocytic nevi,5,melanocytic nevi,0.953783392906189
+dermamnist_test_00735,5,melanocytic nevi,5,melanocytic nevi,0.9975159168243408
+dermamnist_test_00736,5,melanocytic nevi,5,melanocytic nevi,0.9998964071273804
+dermamnist_test_00737,5,melanocytic nevi,5,melanocytic nevi,0.9996228218078613
+dermamnist_test_00738,5,melanocytic nevi,5,melanocytic nevi,0.9990785121917725
+dermamnist_test_00739,5,melanocytic nevi,5,melanocytic nevi,0.9998568296432495
+dermamnist_test_00740,5,melanocytic nevi,5,melanocytic nevi,0.9997101426124573
+dermamnist_test_00741,5,melanocytic nevi,5,melanocytic nevi,0.9997784495353699
+dermamnist_test_00742,5,melanocytic nevi,5,melanocytic nevi,0.9515679478645325
+dermamnist_test_00743,5,melanocytic nevi,5,melanocytic nevi,0.9542624354362488
+dermamnist_test_00744,5,melanocytic nevi,5,melanocytic nevi,0.9740777015686035
+dermamnist_test_00745,5,melanocytic nevi,5,melanocytic nevi,0.9996203184127808
+dermamnist_test_00746,5,melanocytic nevi,5,melanocytic nevi,0.9985367059707642
+dermamnist_test_00747,5,melanocytic nevi,5,melanocytic nevi,0.9935021996498108
+dermamnist_test_00748,5,melanocytic nevi,5,melanocytic nevi,0.9957348704338074
+dermamnist_test_00749,5,melanocytic nevi,5,melanocytic nevi,0.9758666157722473
+dermamnist_test_00750,5,melanocytic nevi,5,melanocytic nevi,0.9991477727890015
+dermamnist_test_00751,5,melanocytic nevi,5,melanocytic nevi,0.999972939491272
+dermamnist_test_00752,5,melanocytic nevi,5,melanocytic nevi,0.9967392086982727
+dermamnist_test_00753,5,melanocytic nevi,5,melanocytic nevi,0.999885082244873
+dermamnist_test_00754,5,melanocytic nevi,5,melanocytic nevi,0.9993867874145508
+dermamnist_test_00755,5,melanocytic nevi,5,melanocytic nevi,0.9997714161872864
+dermamnist_test_00756,5,melanocytic nevi,5,melanocytic nevi,0.9996367692947388
+dermamnist_test_00757,5,melanocytic nevi,5,melanocytic nevi,0.9882810711860657
+dermamnist_test_00758,5,melanocytic nevi,5,melanocytic nevi,0.9999197721481323
+dermamnist_test_00759,5,melanocytic nevi,5,melanocytic nevi,0.986922562122345
+dermamnist_test_00760,5,melanocytic nevi,5,melanocytic nevi,0.9905359148979187
+dermamnist_test_00761,5,melanocytic nevi,5,melanocytic nevi,0.9977110624313354
+dermamnist_test_00762,5,melanocytic nevi,5,melanocytic nevi,0.9996625185012817
+dermamnist_test_00763,5,melanocytic nevi,5,melanocytic nevi,0.9989583492279053
+dermamnist_test_00764,5,melanocytic nevi,5,melanocytic nevi,0.9999504089355469
+dermamnist_test_00765,5,melanocytic nevi,5,melanocytic nevi,0.998898983001709
+dermamnist_test_00766,5,melanocytic nevi,5,melanocytic nevi,0.9990377426147461
+dermamnist_test_00767,5,melanocytic nevi,5,melanocytic nevi,0.9982244372367859
+dermamnist_test_00768,5,melanocytic nevi,5,melanocytic nevi,0.9999392032623291
+dermamnist_test_00769,5,melanocytic nevi,5,melanocytic nevi,0.9997169375419617
+dermamnist_test_00770,5,melanocytic nevi,5,melanocytic nevi,0.9995415210723877
+dermamnist_test_00771,5,melanocytic nevi,5,melanocytic nevi,0.9998431205749512
+dermamnist_test_00772,5,melanocytic nevi,5,melanocytic nevi,0.9994683861732483
+dermamnist_test_00773,5,melanocytic nevi,5,melanocytic nevi,0.9998564720153809
+dermamnist_test_00774,5,melanocytic nevi,5,melanocytic nevi,0.9971035122871399
+dermamnist_test_00775,5,melanocytic nevi,5,melanocytic nevi,0.9998518228530884
+dermamnist_test_00776,5,melanocytic nevi,5,melanocytic nevi,0.913007915019989
+dermamnist_test_00777,5,melanocytic nevi,5,melanocytic nevi,0.9834116101264954
+dermamnist_test_00778,5,melanocytic nevi,5,melanocytic nevi,0.999664306640625
+dermamnist_test_00779,5,melanocytic nevi,5,melanocytic nevi,0.9994720816612244
+dermamnist_test_00780,5,melanocytic nevi,5,melanocytic nevi,0.9998615980148315
+dermamnist_test_00781,5,melanocytic nevi,5,melanocytic nevi,0.9998573064804077
+dermamnist_test_00782,5,melanocytic nevi,5,melanocytic nevi,0.9979773163795471
+dermamnist_test_00783,5,melanocytic nevi,5,melanocytic nevi,0.9848766326904297
+dermamnist_test_00784,5,melanocytic nevi,5,melanocytic nevi,0.9998772144317627
+dermamnist_test_00785,5,melanocytic nevi,5,melanocytic nevi,0.9990191459655762
+dermamnist_test_00786,5,melanocytic nevi,5,melanocytic nevi,0.9834107756614685
+dermamnist_test_00787,5,melanocytic nevi,5,melanocytic nevi,0.999617338180542
+dermamnist_test_00788,5,melanocytic nevi,5,melanocytic nevi,0.999559223651886
+dermamnist_test_00789,5,melanocytic nevi,5,melanocytic nevi,0.9904403686523438
+dermamnist_test_00790,5,melanocytic nevi,5,melanocytic nevi,0.9976473450660706
+dermamnist_test_00791,5,melanocytic nevi,5,melanocytic nevi,0.9995112419128418
+dermamnist_test_00792,5,melanocytic nevi,5,melanocytic nevi,0.9991076588630676
+dermamnist_test_00793,5,melanocytic nevi,5,melanocytic nevi,0.9998830556869507
+dermamnist_test_00794,5,melanocytic nevi,5,melanocytic nevi,0.9998676776885986
+dermamnist_test_00795,5,melanocytic nevi,5,melanocytic nevi,0.9377865195274353
+dermamnist_test_00796,5,melanocytic nevi,5,melanocytic nevi,0.9628052115440369
+dermamnist_test_00797,5,melanocytic nevi,5,melanocytic nevi,0.9998819828033447
+dermamnist_test_00798,5,melanocytic nevi,5,melanocytic nevi,0.985774040222168
+dermamnist_test_00799,5,melanocytic nevi,5,melanocytic nevi,0.9999781847000122
+dermamnist_test_00800,5,melanocytic nevi,5,melanocytic nevi,0.9987792372703552
+dermamnist_test_00801,5,melanocytic nevi,5,melanocytic nevi,0.9983103275299072
+dermamnist_test_00802,5,melanocytic nevi,5,melanocytic nevi,0.9992534518241882
+dermamnist_test_00803,5,melanocytic nevi,5,melanocytic nevi,0.9992141723632812
+dermamnist_test_00804,5,melanocytic nevi,5,melanocytic nevi,0.9994916915893555
+dermamnist_test_00805,5,melanocytic nevi,5,melanocytic nevi,0.9987545013427734
+dermamnist_test_00806,5,melanocytic nevi,5,melanocytic nevi,0.9958164095878601
+dermamnist_test_00807,5,melanocytic nevi,5,melanocytic nevi,0.9999253749847412
+dermamnist_test_00808,5,melanocytic nevi,5,melanocytic nevi,0.999646782875061
+dermamnist_test_00809,5,melanocytic nevi,5,melanocytic nevi,0.9942737221717834
+dermamnist_test_00810,5,melanocytic nevi,5,melanocytic nevi,0.9994431138038635
+dermamnist_test_00811,5,melanocytic nevi,5,melanocytic nevi,0.9998849630355835
+dermamnist_test_00812,5,melanocytic nevi,5,melanocytic nevi,0.9991126656532288
+dermamnist_test_00813,5,melanocytic nevi,5,melanocytic nevi,0.9993011951446533
+dermamnist_test_00814,5,melanocytic nevi,5,melanocytic nevi,0.9985768795013428
+dermamnist_test_00815,5,melanocytic nevi,5,melanocytic nevi,0.9996742010116577
+dermamnist_test_00816,5,melanocytic nevi,5,melanocytic nevi,0.9987266659736633
+dermamnist_test_00817,5,melanocytic nevi,5,melanocytic nevi,0.9992119073867798
+dermamnist_test_00818,5,melanocytic nevi,5,melanocytic nevi,0.999962329864502
+dermamnist_test_00819,5,melanocytic nevi,5,melanocytic nevi,0.9990741014480591
+dermamnist_test_00820,5,melanocytic nevi,5,melanocytic nevi,0.9995272159576416
+dermamnist_test_00821,5,melanocytic nevi,5,melanocytic nevi,0.9998546838760376
+dermamnist_test_00822,5,melanocytic nevi,5,melanocytic nevi,0.9997149109840393
+dermamnist_test_00823,5,melanocytic nevi,5,melanocytic nevi,0.9996557235717773
+dermamnist_test_00824,5,melanocytic nevi,5,melanocytic nevi,0.9920206665992737
+dermamnist_test_00825,5,melanocytic nevi,5,melanocytic nevi,0.9956156015396118
+dermamnist_test_00826,5,melanocytic nevi,5,melanocytic nevi,0.9999401569366455
+dermamnist_test_00827,5,melanocytic nevi,5,melanocytic nevi,0.99996018409729
+dermamnist_test_00828,5,melanocytic nevi,5,melanocytic nevi,0.9997527003288269
+dermamnist_test_00829,5,melanocytic nevi,5,melanocytic nevi,0.9967564940452576
+dermamnist_test_00830,5,melanocytic nevi,5,melanocytic nevi,0.9866530299186707
+dermamnist_test_00831,5,melanocytic nevi,5,melanocytic nevi,0.9955437779426575
+dermamnist_test_00832,5,melanocytic nevi,5,melanocytic nevi,0.9982863068580627
+dermamnist_test_00833,5,melanocytic nevi,5,melanocytic nevi,0.9989666938781738
+dermamnist_test_00834,5,melanocytic nevi,5,melanocytic nevi,0.999525785446167
+dermamnist_test_00835,5,melanocytic nevi,5,melanocytic nevi,0.9998114705085754
+dermamnist_test_00836,5,melanocytic nevi,5,melanocytic nevi,0.9994862079620361
+dermamnist_test_00837,5,melanocytic nevi,5,melanocytic nevi,0.9979616403579712
+dermamnist_test_00838,5,melanocytic nevi,5,melanocytic nevi,0.9448758959770203
+dermamnist_test_00839,5,melanocytic nevi,5,melanocytic nevi,0.9997501969337463
+dermamnist_test_00840,5,melanocytic nevi,5,melanocytic nevi,0.9991592168807983
+dermamnist_test_00841,5,melanocytic nevi,5,melanocytic nevi,0.9998878240585327
+dermamnist_test_00842,5,melanocytic nevi,5,melanocytic nevi,0.9998564720153809
+dermamnist_test_00843,5,melanocytic nevi,5,melanocytic nevi,0.9999492168426514
+dermamnist_test_00844,5,melanocytic nevi,5,melanocytic nevi,0.9995693564414978
+dermamnist_test_00845,5,melanocytic nevi,5,melanocytic nevi,0.9984806180000305
+dermamnist_test_00846,5,melanocytic nevi,5,melanocytic nevi,0.9999444484710693
+dermamnist_test_00847,5,melanocytic nevi,5,melanocytic nevi,0.9990436434745789
+dermamnist_test_00848,5,melanocytic nevi,5,melanocytic nevi,0.9997082352638245
+dermamnist_test_00849,5,melanocytic nevi,5,melanocytic nevi,0.9976654052734375
+dermamnist_test_00850,5,melanocytic nevi,5,melanocytic nevi,0.9980360865592957
+dermamnist_test_00851,5,melanocytic nevi,5,melanocytic nevi,0.996458113193512
+dermamnist_test_00852,5,melanocytic nevi,5,melanocytic nevi,0.9989000558853149
+dermamnist_test_00853,5,melanocytic nevi,5,melanocytic nevi,0.9821718335151672
+dermamnist_test_00854,5,melanocytic nevi,5,melanocytic nevi,0.9999773502349854
+dermamnist_test_00855,5,melanocytic nevi,5,melanocytic nevi,0.9999570846557617
+dermamnist_test_00856,5,melanocytic nevi,5,melanocytic nevi,0.9967148303985596
+dermamnist_test_00857,5,melanocytic nevi,5,melanocytic nevi,0.9997616410255432
+dermamnist_test_00858,5,melanocytic nevi,5,melanocytic nevi,0.9953896999359131
+dermamnist_test_00859,5,melanocytic nevi,5,melanocytic nevi,0.9998687505722046
+dermamnist_test_00860,5,melanocytic nevi,5,melanocytic nevi,0.9997890591621399
+dermamnist_test_00861,5,melanocytic nevi,5,melanocytic nevi,0.9999502897262573
+dermamnist_test_00862,5,melanocytic nevi,5,melanocytic nevi,0.9995632767677307
+dermamnist_test_00863,5,melanocytic nevi,5,melanocytic nevi,0.9997560381889343
+dermamnist_test_00864,5,melanocytic nevi,5,melanocytic nevi,0.9951567053794861
+dermamnist_test_00865,5,melanocytic nevi,5,melanocytic nevi,0.9994372725486755
+dermamnist_test_00866,5,melanocytic nevi,5,melanocytic nevi,0.9994787573814392
+dermamnist_test_00867,5,melanocytic nevi,5,melanocytic nevi,0.9998730421066284
+dermamnist_test_00868,5,melanocytic nevi,5,melanocytic nevi,0.9998028874397278
+dermamnist_test_00869,5,melanocytic nevi,5,melanocytic nevi,0.9959045052528381
+dermamnist_test_00870,5,melanocytic nevi,5,melanocytic nevi,0.9986599683761597
+dermamnist_test_00871,5,melanocytic nevi,5,melanocytic nevi,0.9997273087501526
+dermamnist_test_00872,5,melanocytic nevi,5,melanocytic nevi,0.9999387264251709
+dermamnist_test_00873,5,melanocytic nevi,5,melanocytic nevi,0.9995259046554565
+dermamnist_test_00874,5,melanocytic nevi,5,melanocytic nevi,0.9995063543319702
+dermamnist_test_00875,5,melanocytic nevi,5,melanocytic nevi,0.9995840191841125
+dermamnist_test_00876,5,melanocytic nevi,5,melanocytic nevi,0.9998278617858887
+dermamnist_test_00877,5,melanocytic nevi,5,melanocytic nevi,0.9985363483428955
+dermamnist_test_00878,5,melanocytic nevi,5,melanocytic nevi,0.9994537234306335
+dermamnist_test_00879,5,melanocytic nevi,5,melanocytic nevi,0.990965723991394
+dermamnist_test_00880,5,melanocytic nevi,5,melanocytic nevi,0.9988034963607788
+dermamnist_test_00881,5,melanocytic nevi,5,melanocytic nevi,0.9765326976776123
+dermamnist_test_00882,5,melanocytic nevi,5,melanocytic nevi,0.998313307762146
+dermamnist_test_00883,5,melanocytic nevi,5,melanocytic nevi,0.9997907280921936
+dermamnist_test_00884,5,melanocytic nevi,5,melanocytic nevi,0.9997687935829163
+dermamnist_test_00885,5,melanocytic nevi,5,melanocytic nevi,0.9993368983268738
+dermamnist_test_00886,5,melanocytic nevi,5,melanocytic nevi,0.999683141708374
+dermamnist_test_00887,5,melanocytic nevi,5,melanocytic nevi,0.9996699094772339
+dermamnist_test_00888,5,melanocytic nevi,5,melanocytic nevi,0.9998979568481445
+dermamnist_test_00889,5,melanocytic nevi,5,melanocytic nevi,0.9994828701019287
+dermamnist_test_00890,5,melanocytic nevi,5,melanocytic nevi,0.9992792010307312
+dermamnist_test_00891,5,melanocytic nevi,5,melanocytic nevi,0.9887291193008423
+dermamnist_test_00892,5,melanocytic nevi,5,melanocytic nevi,0.9814360737800598
+dermamnist_test_00893,5,melanocytic nevi,5,melanocytic nevi,0.9998430013656616
+dermamnist_test_00894,5,melanocytic nevi,5,melanocytic nevi,0.9965693950653076
+dermamnist_test_00895,5,melanocytic nevi,5,melanocytic nevi,0.9998880624771118
+dermamnist_test_00896,5,melanocytic nevi,5,melanocytic nevi,0.9996652603149414
+dermamnist_test_00897,5,melanocytic nevi,5,melanocytic nevi,0.9987924098968506
+dermamnist_test_00898,5,melanocytic nevi,5,melanocytic nevi,0.9869242310523987
+dermamnist_test_00899,5,melanocytic nevi,5,melanocytic nevi,0.9993267059326172
+dermamnist_test_00900,5,melanocytic nevi,5,melanocytic nevi,0.999278724193573
+dermamnist_test_00901,5,melanocytic nevi,5,melanocytic nevi,0.9996305704116821
+dermamnist_test_00902,5,melanocytic nevi,5,melanocytic nevi,0.9756404161453247
+dermamnist_test_00903,5,melanocytic nevi,5,melanocytic nevi,0.9998010993003845
+dermamnist_test_00904,5,melanocytic nevi,5,melanocytic nevi,0.9998852014541626
+dermamnist_test_00905,5,melanocytic nevi,5,melanocytic nevi,0.9985645413398743
+dermamnist_test_00906,5,melanocytic nevi,5,melanocytic nevi,0.9894043207168579
+dermamnist_test_00907,5,melanocytic nevi,5,melanocytic nevi,0.9999301433563232
+dermamnist_test_00908,5,melanocytic nevi,5,melanocytic nevi,0.9082236289978027
+dermamnist_test_00909,5,melanocytic nevi,5,melanocytic nevi,0.9999525547027588
+dermamnist_test_00910,5,melanocytic nevi,5,melanocytic nevi,0.9997106194496155
+dermamnist_test_00911,5,melanocytic nevi,5,melanocytic nevi,0.9995991587638855
+dermamnist_test_00912,5,melanocytic nevi,5,melanocytic nevi,0.9983752965927124
+dermamnist_test_00913,5,melanocytic nevi,5,melanocytic nevi,0.9996994733810425
+dermamnist_test_00914,5,melanocytic nevi,5,melanocytic nevi,0.9997652173042297
+dermamnist_test_00915,5,melanocytic nevi,5,melanocytic nevi,0.9995187520980835
+dermamnist_test_00916,5,melanocytic nevi,5,melanocytic nevi,0.9999350309371948
+dermamnist_test_00917,5,melanocytic nevi,5,melanocytic nevi,0.9993451237678528
+dermamnist_test_00918,5,melanocytic nevi,5,melanocytic nevi,0.9545167088508606
+dermamnist_test_00919,5,melanocytic nevi,5,melanocytic nevi,0.9998669624328613
+dermamnist_test_00920,5,melanocytic nevi,5,melanocytic nevi,0.9997983574867249
+dermamnist_test_00921,5,melanocytic nevi,5,melanocytic nevi,0.9790626764297485
+dermamnist_test_00922,5,melanocytic nevi,5,melanocytic nevi,0.9556471705436707
+dermamnist_test_00923,5,melanocytic nevi,5,melanocytic nevi,0.9993465542793274
+dermamnist_test_00924,5,melanocytic nevi,5,melanocytic nevi,0.9994320273399353
+dermamnist_test_00925,5,melanocytic nevi,5,melanocytic nevi,0.9885446429252625
+dermamnist_test_00926,5,melanocytic nevi,5,melanocytic nevi,0.9997870326042175
+dermamnist_test_00927,5,melanocytic nevi,5,melanocytic nevi,0.9985513091087341
+dermamnist_test_00928,5,melanocytic nevi,5,melanocytic nevi,0.9916959404945374
+dermamnist_test_00929,5,melanocytic nevi,5,melanocytic nevi,0.9990315437316895
+dermamnist_test_00930,5,melanocytic nevi,5,melanocytic nevi,0.9979506134986877
+dermamnist_test_00931,5,melanocytic nevi,5,melanocytic nevi,0.9944209456443787
+dermamnist_test_00932,5,melanocytic nevi,5,melanocytic nevi,0.9973515272140503
+dermamnist_test_00933,5,melanocytic nevi,5,melanocytic nevi,0.9999642372131348
+dermamnist_test_00934,5,melanocytic nevi,5,melanocytic nevi,0.9976020455360413
+dermamnist_test_00935,5,melanocytic nevi,5,melanocytic nevi,0.9999138116836548
+dermamnist_test_00936,5,melanocytic nevi,5,melanocytic nevi,0.9998564720153809
+dermamnist_test_00937,5,melanocytic nevi,5,melanocytic nevi,0.9999368190765381
+dermamnist_test_00938,5,melanocytic nevi,5,melanocytic nevi,0.9999502897262573
+dermamnist_test_00939,5,melanocytic nevi,5,melanocytic nevi,0.9995753169059753
+dermamnist_test_00940,5,melanocytic nevi,5,melanocytic nevi,0.9968873858451843
+dermamnist_test_00941,5,melanocytic nevi,5,melanocytic nevi,0.9996514320373535
+dermamnist_test_00942,5,melanocytic nevi,5,melanocytic nevi,0.9966213703155518
+dermamnist_test_00943,5,melanocytic nevi,5,melanocytic nevi,0.9997544884681702
+dermamnist_test_00944,5,melanocytic nevi,5,melanocytic nevi,0.9941761493682861
+dermamnist_test_00945,5,melanocytic nevi,5,melanocytic nevi,0.9999310970306396
+dermamnist_test_00946,5,melanocytic nevi,5,melanocytic nevi,0.9897478818893433
+dermamnist_test_00947,5,melanocytic nevi,5,melanocytic nevi,0.9997132420539856
+dermamnist_test_00948,5,melanocytic nevi,5,melanocytic nevi,0.9999438524246216
+dermamnist_test_00949,5,melanocytic nevi,5,melanocytic nevi,0.9999096393585205
+dermamnist_test_00950,5,melanocytic nevi,5,melanocytic nevi,0.9997064471244812
+dermamnist_test_00951,5,melanocytic nevi,5,melanocytic nevi,0.9998965263366699
+dermamnist_test_00952,5,melanocytic nevi,5,melanocytic nevi,0.9999052286148071
+dermamnist_test_00953,5,melanocytic nevi,5,melanocytic nevi,0.9999223947525024
+dermamnist_test_00954,5,melanocytic nevi,5,melanocytic nevi,0.9972019195556641
+dermamnist_test_00955,5,melanocytic nevi,5,melanocytic nevi,0.9978955984115601
+dermamnist_test_00956,5,melanocytic nevi,5,melanocytic nevi,0.9998952150344849
+dermamnist_test_00957,5,melanocytic nevi,5,melanocytic nevi,0.9998501539230347
+dermamnist_test_00958,5,melanocytic nevi,5,melanocytic nevi,0.9998733997344971
+dermamnist_test_00959,5,melanocytic nevi,5,melanocytic nevi,0.9999116659164429
+dermamnist_test_00960,5,melanocytic nevi,5,melanocytic nevi,0.9988088607788086
+dermamnist_test_00961,5,melanocytic nevi,5,melanocytic nevi,0.9906300902366638
+dermamnist_test_00962,5,melanocytic nevi,5,melanocytic nevi,0.9998894929885864
+dermamnist_test_00963,5,melanocytic nevi,5,melanocytic nevi,0.9984292387962341
+dermamnist_test_00964,5,melanocytic nevi,5,melanocytic nevi,0.9966503977775574
+dermamnist_test_00965,5,melanocytic nevi,5,melanocytic nevi,0.9957932233810425
+dermamnist_test_00966,5,melanocytic nevi,5,melanocytic nevi,0.9997344613075256
+dermamnist_test_00967,5,melanocytic nevi,5,melanocytic nevi,0.9999439716339111
+dermamnist_test_00968,5,melanocytic nevi,5,melanocytic nevi,0.9983623623847961
+dermamnist_test_00969,5,melanocytic nevi,5,melanocytic nevi,0.9992048144340515
+dermamnist_test_00970,5,melanocytic nevi,5,melanocytic nevi,0.9999709129333496
+dermamnist_test_00971,5,melanocytic nevi,5,melanocytic nevi,0.9998576641082764
+dermamnist_test_00972,5,melanocytic nevi,5,melanocytic nevi,0.9993250370025635
+dermamnist_test_00973,5,melanocytic nevi,5,melanocytic nevi,0.9967799782752991
+dermamnist_test_00974,5,melanocytic nevi,5,melanocytic nevi,0.9993113279342651
+dermamnist_test_00975,5,melanocytic nevi,5,melanocytic nevi,0.9974852800369263
+dermamnist_test_00976,5,melanocytic nevi,5,melanocytic nevi,0.9381213784217834
+dermamnist_test_00977,5,melanocytic nevi,5,melanocytic nevi,0.9994632601737976
+dermamnist_test_00978,5,melanocytic nevi,5,melanocytic nevi,0.9999480247497559
+dermamnist_test_00979,5,melanocytic nevi,5,melanocytic nevi,0.9973703622817993
+dermamnist_test_00980,5,melanocytic nevi,5,melanocytic nevi,0.890600323677063
+dermamnist_test_00981,5,melanocytic nevi,5,melanocytic nevi,0.9955352544784546
+dermamnist_test_00982,5,melanocytic nevi,5,melanocytic nevi,0.9931828379631042
+dermamnist_test_00983,5,melanocytic nevi,5,melanocytic nevi,0.9997233748435974
+dermamnist_test_00984,5,melanocytic nevi,5,melanocytic nevi,0.6569671630859375
+dermamnist_test_00985,5,melanocytic nevi,5,melanocytic nevi,0.5788798928260803
+dermamnist_test_00986,5,melanocytic nevi,5,melanocytic nevi,0.4042048454284668
+dermamnist_test_00987,5,melanocytic nevi,5,melanocytic nevi,0.7649884819984436
+dermamnist_test_00988,5,melanocytic nevi,5,melanocytic nevi,0.9884440302848816
+dermamnist_test_00989,5,melanocytic nevi,5,melanocytic nevi,0.855810284614563
+dermamnist_test_00990,5,melanocytic nevi,5,melanocytic nevi,0.7903250455856323
+dermamnist_test_00991,5,melanocytic nevi,5,melanocytic nevi,0.7135578393936157
+dermamnist_test_00992,5,melanocytic nevi,5,melanocytic nevi,0.8992623686790466
+dermamnist_test_00993,5,melanocytic nevi,5,melanocytic nevi,0.772914707660675
+dermamnist_test_00994,5,melanocytic nevi,5,melanocytic nevi,0.982489824295044
+dermamnist_test_00995,5,melanocytic nevi,4,melanoma,0.7113438248634338
+dermamnist_test_00996,5,melanocytic nevi,5,melanocytic nevi,0.978387713432312
+dermamnist_test_00997,5,melanocytic nevi,5,melanocytic nevi,0.978855311870575
+dermamnist_test_00998,5,melanocytic nevi,5,melanocytic nevi,0.8184822201728821
+dermamnist_test_00999,5,melanocytic nevi,5,melanocytic nevi,0.5777056217193604
+dermamnist_test_01000,5,melanocytic nevi,5,melanocytic nevi,0.43776145577430725
+dermamnist_test_01001,5,melanocytic nevi,5,melanocytic nevi,0.9801115393638611
+dermamnist_test_01002,5,melanocytic nevi,2,benign keratosis-like lesions,0.29135310649871826
+dermamnist_test_01003,5,melanocytic nevi,5,melanocytic nevi,0.8787997961044312
+dermamnist_test_01004,5,melanocytic nevi,5,melanocytic nevi,0.7345995306968689
+dermamnist_test_01005,5,melanocytic nevi,5,melanocytic nevi,0.8631258606910706
+dermamnist_test_01006,5,melanocytic nevi,5,melanocytic nevi,0.7482843399047852
+dermamnist_test_01007,5,melanocytic nevi,5,melanocytic nevi,0.5658465027809143
+dermamnist_test_01008,5,melanocytic nevi,4,melanoma,0.5390300154685974
+dermamnist_test_01009,5,melanocytic nevi,5,melanocytic nevi,0.917934238910675
+dermamnist_test_01010,5,melanocytic nevi,5,melanocytic nevi,0.863713264465332
+dermamnist_test_01011,5,melanocytic nevi,5,melanocytic nevi,0.9260021448135376
+dermamnist_test_01012,5,melanocytic nevi,5,melanocytic nevi,0.9143249988555908
+dermamnist_test_01013,5,melanocytic nevi,5,melanocytic nevi,0.9432489275932312
+dermamnist_test_01014,5,melanocytic nevi,5,melanocytic nevi,0.7832037806510925
+dermamnist_test_01015,5,melanocytic nevi,5,melanocytic nevi,0.6487452387809753
+dermamnist_test_01016,5,melanocytic nevi,5,melanocytic nevi,0.9413573741912842
+dermamnist_test_01017,5,melanocytic nevi,2,benign keratosis-like lesions,0.36934903264045715
+dermamnist_test_01018,5,melanocytic nevi,5,melanocytic nevi,0.9795545935630798
+dermamnist_test_01019,5,melanocytic nevi,5,melanocytic nevi,0.9946753978729248
+dermamnist_test_01020,5,melanocytic nevi,5,melanocytic nevi,0.7980875372886658
+dermamnist_test_01021,5,melanocytic nevi,5,melanocytic nevi,0.5333681702613831
+dermamnist_test_01022,5,melanocytic nevi,5,melanocytic nevi,0.9930262565612793
+dermamnist_test_01023,5,melanocytic nevi,5,melanocytic nevi,0.9938228130340576
+dermamnist_test_01024,5,melanocytic nevi,5,melanocytic nevi,0.9709827303886414
+dermamnist_test_01025,5,melanocytic nevi,5,melanocytic nevi,0.8765241503715515
+dermamnist_test_01026,5,melanocytic nevi,5,melanocytic nevi,0.9088367819786072
+dermamnist_test_01027,5,melanocytic nevi,5,melanocytic nevi,0.8876165151596069
+dermamnist_test_01028,5,melanocytic nevi,5,melanocytic nevi,0.9266173243522644
+dermamnist_test_01029,5,melanocytic nevi,5,melanocytic nevi,0.9701505899429321
+dermamnist_test_01030,5,melanocytic nevi,5,melanocytic nevi,0.953788697719574
+dermamnist_test_01031,5,melanocytic nevi,5,melanocytic nevi,0.9889018535614014
+dermamnist_test_01032,5,melanocytic nevi,5,melanocytic nevi,0.8093113303184509
+dermamnist_test_01033,5,melanocytic nevi,5,melanocytic nevi,0.9587841629981995
+dermamnist_test_01034,5,melanocytic nevi,5,melanocytic nevi,0.9549844264984131
+dermamnist_test_01035,5,melanocytic nevi,5,melanocytic nevi,0.9593935608863831
+dermamnist_test_01036,5,melanocytic nevi,5,melanocytic nevi,0.8967909812927246
+dermamnist_test_01037,5,melanocytic nevi,5,melanocytic nevi,0.9225167632102966
+dermamnist_test_01038,5,melanocytic nevi,5,melanocytic nevi,0.7896930575370789
+dermamnist_test_01039,5,melanocytic nevi,5,melanocytic nevi,0.6828592419624329
+dermamnist_test_01040,5,melanocytic nevi,5,melanocytic nevi,0.6199773550033569
+dermamnist_test_01041,5,melanocytic nevi,5,melanocytic nevi,0.7321053743362427
+dermamnist_test_01042,5,melanocytic nevi,2,benign keratosis-like lesions,0.33292582631111145
+dermamnist_test_01043,5,melanocytic nevi,5,melanocytic nevi,0.819347620010376
+dermamnist_test_01044,5,melanocytic nevi,5,melanocytic nevi,0.9533284902572632
+dermamnist_test_01045,5,melanocytic nevi,6,vascular lesions,0.6829966902732849
+dermamnist_test_01046,5,melanocytic nevi,6,vascular lesions,0.6319031715393066
+dermamnist_test_01047,5,melanocytic nevi,5,melanocytic nevi,0.7790157198905945
+dermamnist_test_01048,5,melanocytic nevi,5,melanocytic nevi,0.9600563049316406
+dermamnist_test_01049,5,melanocytic nevi,0,actinic keratoses and intraepithelial carcinoma,0.3688754737377167
+dermamnist_test_01050,5,melanocytic nevi,5,melanocytic nevi,0.7842035293579102
+dermamnist_test_01051,5,melanocytic nevi,5,melanocytic nevi,0.7586642503738403
+dermamnist_test_01052,5,melanocytic nevi,5,melanocytic nevi,0.9997166991233826
+dermamnist_test_01053,5,melanocytic nevi,5,melanocytic nevi,0.7837052941322327
+dermamnist_test_01054,5,melanocytic nevi,5,melanocytic nevi,0.8133891820907593
+dermamnist_test_01055,5,melanocytic nevi,5,melanocytic nevi,0.7992814779281616
+dermamnist_test_01056,5,melanocytic nevi,5,melanocytic nevi,0.838652491569519
+dermamnist_test_01057,5,melanocytic nevi,5,melanocytic nevi,0.8799954652786255
+dermamnist_test_01058,5,melanocytic nevi,5,melanocytic nevi,0.8107518553733826
+dermamnist_test_01059,5,melanocytic nevi,5,melanocytic nevi,0.7456411719322205
+dermamnist_test_01060,5,melanocytic nevi,5,melanocytic nevi,0.6922760009765625
+dermamnist_test_01061,5,melanocytic nevi,4,melanoma,0.3904136121273041
+dermamnist_test_01062,5,melanocytic nevi,5,melanocytic nevi,0.7160473465919495
+dermamnist_test_01063,5,melanocytic nevi,5,melanocytic nevi,0.9287042021751404
+dermamnist_test_01064,5,melanocytic nevi,5,melanocytic nevi,0.7385715246200562
+dermamnist_test_01065,5,melanocytic nevi,5,melanocytic nevi,0.8808825016021729
+dermamnist_test_01066,5,melanocytic nevi,5,melanocytic nevi,0.886929452419281
+dermamnist_test_01067,5,melanocytic nevi,5,melanocytic nevi,0.6350675821304321
+dermamnist_test_01068,5,melanocytic nevi,5,melanocytic nevi,0.4850945472717285
+dermamnist_test_01069,5,melanocytic nevi,5,melanocytic nevi,0.9298185110092163
+dermamnist_test_01070,5,melanocytic nevi,5,melanocytic nevi,0.9500252604484558
+dermamnist_test_01071,5,melanocytic nevi,5,melanocytic nevi,0.9962421655654907
+dermamnist_test_01072,5,melanocytic nevi,5,melanocytic nevi,0.9431850910186768
+dermamnist_test_01073,5,melanocytic nevi,5,melanocytic nevi,0.9979310035705566
+dermamnist_test_01074,5,melanocytic nevi,4,melanoma,0.5183175206184387
+dermamnist_test_01075,5,melanocytic nevi,5,melanocytic nevi,0.7551047801971436
+dermamnist_test_01076,5,melanocytic nevi,4,melanoma,0.4917890429496765
+dermamnist_test_01077,5,melanocytic nevi,5,melanocytic nevi,0.47000375390052795
+dermamnist_test_01078,5,melanocytic nevi,5,melanocytic nevi,0.3956851661205292
+dermamnist_test_01079,5,melanocytic nevi,5,melanocytic nevi,0.6964884400367737
+dermamnist_test_01080,5,melanocytic nevi,5,melanocytic nevi,0.9331919550895691
+dermamnist_test_01081,5,melanocytic nevi,5,melanocytic nevi,0.918742299079895
+dermamnist_test_01082,5,melanocytic nevi,5,melanocytic nevi,0.7295100688934326
+dermamnist_test_01083,5,melanocytic nevi,5,melanocytic nevi,0.8644492030143738
+dermamnist_test_01084,5,melanocytic nevi,5,melanocytic nevi,0.40239962935447693
+dermamnist_test_01085,5,melanocytic nevi,0,actinic keratoses and intraepithelial carcinoma,0.5992916822433472
+dermamnist_test_01086,5,melanocytic nevi,5,melanocytic nevi,0.9566624760627747
+dermamnist_test_01087,5,melanocytic nevi,5,melanocytic nevi,0.7485290765762329
+dermamnist_test_01088,5,melanocytic nevi,5,melanocytic nevi,0.7208415269851685
+dermamnist_test_01089,5,melanocytic nevi,5,melanocytic nevi,0.825502336025238
+dermamnist_test_01090,5,melanocytic nevi,5,melanocytic nevi,0.8661037683486938
+dermamnist_test_01091,5,melanocytic nevi,1,basal cell carcinoma,0.6288846731185913
+dermamnist_test_01092,5,melanocytic nevi,4,melanoma,0.3883570730686188
+dermamnist_test_01093,5,melanocytic nevi,5,melanocytic nevi,0.6071986556053162
+dermamnist_test_01094,5,melanocytic nevi,5,melanocytic nevi,0.6065912842750549
+dermamnist_test_01095,5,melanocytic nevi,5,melanocytic nevi,0.9936012625694275
+dermamnist_test_01096,5,melanocytic nevi,5,melanocytic nevi,0.6676929593086243
+dermamnist_test_01097,5,melanocytic nevi,2,benign keratosis-like lesions,0.36367693543434143
+dermamnist_test_01098,5,melanocytic nevi,5,melanocytic nevi,0.9242939352989197
+dermamnist_test_01099,5,melanocytic nevi,5,melanocytic nevi,0.45082834362983704
+dermamnist_test_01100,5,melanocytic nevi,5,melanocytic nevi,0.9019712805747986
+dermamnist_test_01101,5,melanocytic nevi,5,melanocytic nevi,0.89579838514328
+dermamnist_test_01102,5,melanocytic nevi,5,melanocytic nevi,0.4934409558773041
+dermamnist_test_01103,5,melanocytic nevi,0,actinic keratoses and intraepithelial carcinoma,0.5152062773704529
+dermamnist_test_01104,5,melanocytic nevi,5,melanocytic nevi,0.9443506002426147
+dermamnist_test_01105,5,melanocytic nevi,0,actinic keratoses and intraepithelial carcinoma,0.40099164843559265
+dermamnist_test_01106,5,melanocytic nevi,5,melanocytic nevi,0.9175801873207092
+dermamnist_test_01107,5,melanocytic nevi,4,melanoma,0.49190467596054077
+dermamnist_test_01108,5,melanocytic nevi,5,melanocytic nevi,0.9776298999786377
+dermamnist_test_01109,5,melanocytic nevi,5,melanocytic nevi,0.9437931180000305
+dermamnist_test_01110,5,melanocytic nevi,5,melanocytic nevi,0.9442518949508667
+dermamnist_test_01111,5,melanocytic nevi,5,melanocytic nevi,0.8568446040153503
+dermamnist_test_01112,5,melanocytic nevi,5,melanocytic nevi,0.8056150674819946
+dermamnist_test_01113,5,melanocytic nevi,5,melanocytic nevi,0.9230287671089172
+dermamnist_test_01114,5,melanocytic nevi,2,benign keratosis-like lesions,0.33275479078292847
+dermamnist_test_01115,5,melanocytic nevi,2,benign keratosis-like lesions,0.5141642689704895
+dermamnist_test_01116,5,melanocytic nevi,5,melanocytic nevi,0.6187262535095215
+dermamnist_test_01117,5,melanocytic nevi,5,melanocytic nevi,0.9198225736618042
+dermamnist_test_01118,5,melanocytic nevi,5,melanocytic nevi,0.643736720085144
+dermamnist_test_01119,5,melanocytic nevi,5,melanocytic nevi,0.8530871272087097
+dermamnist_test_01120,5,melanocytic nevi,5,melanocytic nevi,0.9369000792503357
+dermamnist_test_01121,5,melanocytic nevi,5,melanocytic nevi,0.8200125694274902
+dermamnist_test_01122,5,melanocytic nevi,5,melanocytic nevi,0.9263840913772583
+dermamnist_test_01123,5,melanocytic nevi,5,melanocytic nevi,0.9129383563995361
+dermamnist_test_01124,5,melanocytic nevi,5,melanocytic nevi,0.9555391073226929
+dermamnist_test_01125,5,melanocytic nevi,4,melanoma,0.5418071746826172
+dermamnist_test_01126,5,melanocytic nevi,5,melanocytic nevi,0.9885067939758301
+dermamnist_test_01127,5,melanocytic nevi,5,melanocytic nevi,0.9751179218292236
+dermamnist_test_01128,5,melanocytic nevi,5,melanocytic nevi,0.9900998473167419
+dermamnist_test_01129,5,melanocytic nevi,5,melanocytic nevi,0.9348154067993164
+dermamnist_test_01130,5,melanocytic nevi,5,melanocytic nevi,0.8916130065917969
+dermamnist_test_01131,5,melanocytic nevi,4,melanoma,0.7607318162918091
+dermamnist_test_01132,5,melanocytic nevi,5,melanocytic nevi,0.9979895353317261
+dermamnist_test_01133,5,melanocytic nevi,5,melanocytic nevi,0.8781356811523438
+dermamnist_test_01134,5,melanocytic nevi,5,melanocytic nevi,0.8608517050743103
+dermamnist_test_01135,5,melanocytic nevi,5,melanocytic nevi,0.7317784428596497
+dermamnist_test_01136,5,melanocytic nevi,2,benign keratosis-like lesions,0.7648128271102905
+dermamnist_test_01137,5,melanocytic nevi,5,melanocytic nevi,0.9607173204421997
+dermamnist_test_01138,5,melanocytic nevi,5,melanocytic nevi,0.921434223651886
+dermamnist_test_01139,5,melanocytic nevi,5,melanocytic nevi,0.9086412787437439
+dermamnist_test_01140,5,melanocytic nevi,5,melanocytic nevi,0.8373335003852844
+dermamnist_test_01141,5,melanocytic nevi,5,melanocytic nevi,0.9603920578956604
+dermamnist_test_01142,5,melanocytic nevi,5,melanocytic nevi,0.8809393048286438
+dermamnist_test_01143,5,melanocytic nevi,5,melanocytic nevi,0.978644847869873
+dermamnist_test_01144,5,melanocytic nevi,5,melanocytic nevi,0.9268369078636169
+dermamnist_test_01145,5,melanocytic nevi,5,melanocytic nevi,0.8290072083473206
+dermamnist_test_01146,5,melanocytic nevi,5,melanocytic nevi,0.5971236228942871
+dermamnist_test_01147,5,melanocytic nevi,2,benign keratosis-like lesions,0.5482749342918396
+dermamnist_test_01148,5,melanocytic nevi,5,melanocytic nevi,0.5978794693946838
+dermamnist_test_01149,5,melanocytic nevi,5,melanocytic nevi,0.5419072508811951
+dermamnist_test_01150,5,melanocytic nevi,5,melanocytic nevi,0.7471919059753418
+dermamnist_test_01151,5,melanocytic nevi,5,melanocytic nevi,0.817887008190155
+dermamnist_test_01152,5,melanocytic nevi,2,benign keratosis-like lesions,0.7862787842750549
+dermamnist_test_01153,5,melanocytic nevi,5,melanocytic nevi,0.8775978088378906
+dermamnist_test_01154,5,melanocytic nevi,5,melanocytic nevi,0.8120191693305969
+dermamnist_test_01155,5,melanocytic nevi,5,melanocytic nevi,0.9917712807655334
+dermamnist_test_01156,5,melanocytic nevi,5,melanocytic nevi,0.6287089586257935
+dermamnist_test_01157,5,melanocytic nevi,5,melanocytic nevi,0.7190957069396973
+dermamnist_test_01158,5,melanocytic nevi,5,melanocytic nevi,0.9856173396110535
+dermamnist_test_01159,5,melanocytic nevi,5,melanocytic nevi,0.7609317898750305
+dermamnist_test_01160,5,melanocytic nevi,5,melanocytic nevi,0.6437554955482483
+dermamnist_test_01161,5,melanocytic nevi,5,melanocytic nevi,0.8822916746139526
+dermamnist_test_01162,5,melanocytic nevi,5,melanocytic nevi,0.795958936214447
+dermamnist_test_01163,5,melanocytic nevi,5,melanocytic nevi,0.9942290782928467
+dermamnist_test_01164,5,melanocytic nevi,5,melanocytic nevi,0.9981942772865295
+dermamnist_test_01165,5,melanocytic nevi,5,melanocytic nevi,0.9353915452957153
+dermamnist_test_01166,5,melanocytic nevi,5,melanocytic nevi,0.8730549812316895
+dermamnist_test_01167,5,melanocytic nevi,5,melanocytic nevi,0.8050768971443176
+dermamnist_test_01168,5,melanocytic nevi,5,melanocytic nevi,0.9998462200164795
+dermamnist_test_01169,5,melanocytic nevi,5,melanocytic nevi,0.9038287401199341
+dermamnist_test_01170,5,melanocytic nevi,5,melanocytic nevi,0.8836523294448853
+dermamnist_test_01171,5,melanocytic nevi,5,melanocytic nevi,0.9835121035575867
+dermamnist_test_01172,5,melanocytic nevi,5,melanocytic nevi,0.6609017848968506
+dermamnist_test_01173,5,melanocytic nevi,5,melanocytic nevi,0.9716578722000122
+dermamnist_test_01174,5,melanocytic nevi,5,melanocytic nevi,0.7077925205230713
+dermamnist_test_01175,5,melanocytic nevi,5,melanocytic nevi,0.5967372059822083
+dermamnist_test_01176,5,melanocytic nevi,5,melanocytic nevi,0.824722409248352
+dermamnist_test_01177,5,melanocytic nevi,5,melanocytic nevi,0.7270143032073975
+dermamnist_test_01178,5,melanocytic nevi,5,melanocytic nevi,0.41972655057907104
+dermamnist_test_01179,5,melanocytic nevi,5,melanocytic nevi,0.9931777715682983
+dermamnist_test_01180,5,melanocytic nevi,5,melanocytic nevi,0.9909370541572571
+dermamnist_test_01181,5,melanocytic nevi,5,melanocytic nevi,0.9952967762947083
+dermamnist_test_01182,5,melanocytic nevi,5,melanocytic nevi,0.883575439453125
+dermamnist_test_01183,5,melanocytic nevi,5,melanocytic nevi,0.9951062202453613
+dermamnist_test_01184,5,melanocytic nevi,5,melanocytic nevi,0.9972942471504211
+dermamnist_test_01185,5,melanocytic nevi,5,melanocytic nevi,0.9831279516220093
+dermamnist_test_01186,5,melanocytic nevi,5,melanocytic nevi,0.6524645686149597
+dermamnist_test_01187,5,melanocytic nevi,1,basal cell carcinoma,0.7482414245605469
+dermamnist_test_01188,5,melanocytic nevi,5,melanocytic nevi,0.6614166498184204
+dermamnist_test_01189,5,melanocytic nevi,5,melanocytic nevi,0.643413245677948
+dermamnist_test_01190,5,melanocytic nevi,1,basal cell carcinoma,0.6028465628623962
+dermamnist_test_01191,5,melanocytic nevi,5,melanocytic nevi,0.5791374444961548
+dermamnist_test_01192,0,actinic keratoses and intraepithelial carcinoma,2,benign keratosis-like lesions,0.44421327114105225
+dermamnist_test_01193,0,actinic keratoses and intraepithelial carcinoma,1,basal cell carcinoma,0.3801688551902771
+dermamnist_test_01194,0,actinic keratoses and intraepithelial carcinoma,0,actinic keratoses and intraepithelial carcinoma,0.37048542499542236
+dermamnist_test_01195,0,actinic keratoses and intraepithelial carcinoma,0,actinic keratoses and intraepithelial carcinoma,0.6330526471138
+dermamnist_test_01196,0,actinic keratoses and intraepithelial carcinoma,5,melanocytic nevi,0.4961749017238617
+dermamnist_test_01197,0,actinic keratoses and intraepithelial carcinoma,0,actinic keratoses and intraepithelial carcinoma,0.5715742111206055
+dermamnist_test_01198,0,actinic keratoses and intraepithelial carcinoma,0,actinic keratoses and intraepithelial carcinoma,0.7716015577316284
+dermamnist_test_01199,0,actinic keratoses and intraepithelial carcinoma,0,actinic keratoses and intraepithelial carcinoma,0.2977336049079895
+dermamnist_test_01200,0,actinic keratoses and intraepithelial carcinoma,0,actinic keratoses and intraepithelial carcinoma,0.6552625298500061
+dermamnist_test_01201,0,actinic keratoses and intraepithelial carcinoma,0,actinic keratoses and intraepithelial carcinoma,0.7085167765617371
+dermamnist_test_01202,0,actinic keratoses and intraepithelial carcinoma,0,actinic keratoses and intraepithelial carcinoma,0.5013916492462158
+dermamnist_test_01203,0,actinic keratoses and intraepithelial carcinoma,0,actinic keratoses and intraepithelial carcinoma,0.5439366698265076
+dermamnist_test_01204,0,actinic keratoses and intraepithelial carcinoma,0,actinic keratoses and intraepithelial carcinoma,0.7327245473861694
+dermamnist_test_01205,0,actinic keratoses and intraepithelial carcinoma,0,actinic keratoses and intraepithelial carcinoma,0.8257045149803162
+dermamnist_test_01206,0,actinic keratoses and intraepithelial carcinoma,0,actinic keratoses and intraepithelial carcinoma,0.874417781829834
+dermamnist_test_01207,0,actinic keratoses and intraepithelial carcinoma,0,actinic keratoses and intraepithelial carcinoma,0.8641969561576843
+dermamnist_test_01208,0,actinic keratoses and intraepithelial carcinoma,0,actinic keratoses and intraepithelial carcinoma,0.9323491454124451
+dermamnist_test_01209,0,actinic keratoses and intraepithelial carcinoma,2,benign keratosis-like lesions,0.5865657925605774
+dermamnist_test_01210,0,actinic keratoses and intraepithelial carcinoma,0,actinic keratoses and intraepithelial carcinoma,0.6722505688667297
+dermamnist_test_01211,0,actinic keratoses and intraepithelial carcinoma,1,basal cell carcinoma,0.9058618545532227
+dermamnist_test_01212,0,actinic keratoses and intraepithelial carcinoma,1,basal cell carcinoma,0.6877217292785645
+dermamnist_test_01213,0,actinic keratoses and intraepithelial carcinoma,0,actinic keratoses and intraepithelial carcinoma,0.8521682620048523
+dermamnist_test_01214,0,actinic keratoses and intraepithelial carcinoma,0,actinic keratoses and intraepithelial carcinoma,0.8852211833000183
+dermamnist_test_01215,0,actinic keratoses and intraepithelial carcinoma,1,basal cell carcinoma,0.7089897990226746
+dermamnist_test_01216,0,actinic keratoses and intraepithelial carcinoma,1,basal cell carcinoma,0.9684176445007324
+dermamnist_test_01217,0,actinic keratoses and intraepithelial carcinoma,0,actinic keratoses and intraepithelial carcinoma,0.4287850260734558
+dermamnist_test_01218,0,actinic keratoses and intraepithelial carcinoma,0,actinic keratoses and intraepithelial carcinoma,0.5854929685592651
+dermamnist_test_01219,0,actinic keratoses and intraepithelial carcinoma,1,basal cell carcinoma,0.7031592726707458
+dermamnist_test_01220,0,actinic keratoses and intraepithelial carcinoma,0,actinic keratoses and intraepithelial carcinoma,0.3895190358161926
+dermamnist_test_01221,0,actinic keratoses and intraepithelial carcinoma,0,actinic keratoses and intraepithelial carcinoma,0.4279491901397705
+dermamnist_test_01222,0,actinic keratoses and intraepithelial carcinoma,0,actinic keratoses and intraepithelial carcinoma,0.8288248777389526
+dermamnist_test_01223,0,actinic keratoses and intraepithelial carcinoma,1,basal cell carcinoma,0.42172256112098694
+dermamnist_test_01224,0,actinic keratoses and intraepithelial carcinoma,0,actinic keratoses and intraepithelial carcinoma,0.7633985280990601
+dermamnist_test_01225,0,actinic keratoses and intraepithelial carcinoma,2,benign keratosis-like lesions,0.6252809762954712
+dermamnist_test_01226,0,actinic keratoses and intraepithelial carcinoma,1,basal cell carcinoma,0.9676586985588074

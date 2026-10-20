@@ -1,0 +1,60 @@
+# Vishwas Configuration
+# Skin-tone-aware skin disease classification with fairness auditing and retrieval-grounded explanations
+
+project:
+  name: "vishwas"
+  version: "0.2.0"
+  seed: 42
+  device: "mps"  # auto-detected: "mps" if available on Apple Silicon, else "cpu"
+
+dataset: "dermamnist"  # "dermamnist" | "fitzpatrick" | "pad_ufes"
+
+data:
+  # DermaMNIST configurations
+  resolution: 28  # 28 | 224
+  dermamnist_28_path: "DermaMNIST/DermaMNIST_Analysis/NPZ_files/dermamnist_corrected_28.npz"
+  dermamnist_224_dir: "~/.medmnist"
+
+  # Fitzpatrick configurations
+  split_csv: "Fitzpatrick17k/Fitzpatrick17k_Analysis/DatasetSplits/SimThresh_T_A2_T_0.99_0.70_FC_T_KeepOne_Out_T_OutThresh_None_0FST_F.csv"
+  orig_metadata_csv: "data/fitzpatrick17k.csv"
+  image_dir: "data/fitzpatrick_images"
+  clean_metadata_csv: "data/metadata_clean.csv"
+  failed_downloads_csv: "data/failed_downloads.csv"
+  ita_csv: "data/ita.csv"
+
+preprocess:
+  augmentation: "standard"  # "standard" | "colour_preserving"
+  target_col: "nine_partition_label"  # Fitzpatrick: "nine_partition_label" | "three_partition_label" | "label"
+  img_size: 224       # For Fitzpatrick or 224x224 DermaMNIST
+  upscale_size: 64    # For 28x28 DermaMNIST data upscaling (64 or 128)
+  num_workers: 2
+
+models:
+  backbone: "resnet18"  # "resnet18" | "efficientnet_b0" | "resnet50"
+  model_type: "image_only"  # "image_only" | "fusion" | "gated_fusion"
+  pretrained: true
+  dropout: 0.2
+
+train:
+  batch_size: 64
+  epochs: 3
+  lr: 0.0003
+  weight_decay: 0.01
+  mitigation: "none"  # "none" | "class_weighted" | "balanced_sampler" | "group_weighted"
+  early_stopping_patience: 3
+  mixed_precision: true
+
+rag:
+  knowledge_dir: "vishwas/knowledge"
+  index_path: "vishwas/knowledge/faiss_index"
+  embedding_model: "BAAI/bge-small-en-v1.5"
+  chunk_size: 500
+  chunk_overlap: 80
+  top_k: 3
+  confidence_threshold: 0.60
+  min_retrieval_score: 0.40
+
+reports:
+  output_dir: "vishwas/reports"
+  experiments_log: "vishwas/reports/experiments.csv"

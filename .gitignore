@@ -1,0 +1,26 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Datasets
+data/
+
+# Checkpoints and large artifacts
+*.pt
+*.pth
+*.ckpt
+*.bin
+
+# IDE files
+.DS_Store
+.idea/
+.vscode/
+
+# Pytest
+.pytest_cache/

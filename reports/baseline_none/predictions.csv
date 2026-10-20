@@ -1,0 +1,57 @@
+image_path,md5hash,y_true,y_true_name,y_pred,y_pred_name,y_prob,fitzpatrick,ita_group
+data/fitzpatrick_images/ne-de_361/ne-de_f6_198_c1bd2834.jpg,c1bd2834e47368a98ac5387648ea9d3f,4,inflammatory,4,inflammatory,0.4489177465438843,6,dark
+data/fitzpatrick_images/me_261/me_f6_190_4ab4fa98.jpg,4ab4fa98f5acf7ec42886917128df401,8,malignant melanoma,8,malignant melanoma,0.17027027904987335,6,dark
+data/fitzpatrick_images/mi_112/mi_f0_98_387b50f9.jpg,387b50f9cf38f7a410543a2897757986,1,benign epidermal,0,benign dermal,0.25042977929115295,-1,light
+data/fitzpatrick_images/lu-er_410/lu-er_f4_109_421a0cc6.jpg,421a0cc6514cb96dda13dc6373d5b874,4,inflammatory,4,inflammatory,0.5436159372329712,4,dark
+data/fitzpatrick_images/li-pl_491/li-pl_f3_267_a43ad3d2.jpg,a43ad3d290e3ceaa65f6116b03b5a9cf,4,inflammatory,4,inflammatory,0.40705931186676025,3,light
+data/fitzpatrick_images/fo_342/fo_f0_333_813110f4.jpg,813110f4196c27f35beec9dc2431c7e2,4,inflammatory,4,inflammatory,0.5022720694541931,-1,light
+data/fitzpatrick_images/nede_69/nede_f1_61_5cee1bf6.jpg,5cee1bf67ac7ec933a51baf4a41852ca,4,inflammatory,4,inflammatory,0.3321581184864044,1,light
+data/fitzpatrick_images/tu_152/tu_f4_111_8e286b25.jpg,8e286b255530fa8e1a6d2ef36f1a9b4c,4,inflammatory,4,inflammatory,0.4010075032711029,4,dark
+data/fitzpatrick_images/pe-de_61/pe-de_f2_58_33c91196.jpg,33c911961a02d990fc7f9d009bf6a737,4,inflammatory,4,inflammatory,0.3666842579841614,2,light
+data/fitzpatrick_images/da-di_153/da-di_f6_104_1bee8455.jpg,1bee845510fc5603ae11472a9996a66c,3,genodermatoses,4,inflammatory,0.4380268156528473,6,dark
+data/fitzpatrick_images/li-si_97/li-si_f2_63_f09ed213.jpg,f09ed213db3ecc825b7d66ea987828e9,4,inflammatory,4,inflammatory,0.33933091163635254,2,light
+data/fitzpatrick_images/ba-ce-ca_468/ba-ce-ca_f2_347_19e7cad9.jpg,19e7cad902144cb742b342bb82b395eb,7,malignant epidermal,8,malignant melanoma,0.18933190405368805,2,light
+data/fitzpatrick_images/pi-ru-pi_278/pi-ru-pi_f4_144_d47ac8bc.jpg,d47ac8bcb52cc8b95d78775facbfc336,4,inflammatory,4,inflammatory,0.5168561339378357,4,dark
+data/fitzpatrick_images/ka-sa_156/ka-sa_f4_93_43534ab6.jpg,43534ab689527642db737a5a6931993a,6,malignant dermal,0,benign dermal,0.19278164207935333,4,dark
+data/fitzpatrick_images/ne-se-ja_95/ne-se-ja_f3_47_7d3a97da.jpg,7d3a97da0d89868f3786e16cc9a68208,1,benign epidermal,0,benign dermal,0.2619156241416931,3,light
+data/fitzpatrick_images/ps_653/ps_f0_171_ccfbabf0.jpg,ccfbabf0a0f8cbfca742ccde30f0e746,4,inflammatory,4,inflammatory,0.5092153549194336,-1,light
+data/fitzpatrick_images/my-fu_182/my-fu_f2_49_2c31651c.jpg,2c31651c187a674f05bdf23b39f03fcd,5,malignant cutaneous lymphoma,8,malignant melanoma,0.17382526397705078,2,light
+data/fitzpatrick_images/nede_69/nede_f1_68_49813134.jpg,498131348fc80d198a3bb6dce6f7375f,4,inflammatory,4,inflammatory,0.2559274137020111,1,light
+data/fitzpatrick_images/sq-ce-ca_581/sq-ce-ca_f2_469_15c17dd8.jpg,15c17dd8690a6396dc5c85f0bf63d0db,7,malignant epidermal,8,malignant melanoma,0.16688859462738037,2,light
+data/fitzpatrick_images/dr-er_200/dr-er_f5_116_528ea904.jpg,528ea904c63bb9c90e76f7de18590bf6,4,inflammatory,4,inflammatory,0.5058959722518921,5,dark
+data/fitzpatrick_images/rh_91/rh_f1_10_efea1247.jpg,efea124796accf4cb24b775dffc511e4,4,inflammatory,4,inflammatory,0.27671685814857483,1,light
+data/fitzpatrick_images/lu-er_410/lu-er_f5_233_042689e7.jpg,042689e738239f2e84038c8d7845f637,4,inflammatory,4,inflammatory,0.4600004255771637,5,dark
+data/fitzpatrick_images/py-gr_113/py-gr_f1_20_4d36657f.jpg,4d36657f6a39bec453c8e41acc40023f,0,benign dermal,0,benign dermal,0.1963956356048584,1,light
+data/fitzpatrick_images/my_67/my_f3_59_8c586b8e.jpg,8c586b8e6eb725274f1846f2bea0f316,4,inflammatory,4,inflammatory,0.43080317974090576,3,light
+data/fitzpatrick_images/da-di_153/da-di_f3_88_6fc5e8df.jpg,6fc5e8dfc0b1671c26200a29414521ad,3,genodermatoses,4,inflammatory,0.44599634408950806,3,light
+data/fitzpatrick_images/sq-ce-ca_581/sq-ce-ca_f6_259_36c7bbdc.jpg,36c7bbdced601b5d9fb1cc7cdc0df7e3,7,malignant epidermal,6,malignant dermal,0.16814149916172028,6,dark
+data/fitzpatrick_images/fi-er_125/fi-er_f5_122_26000be7.jpg,26000be7f82ea8a22b0e462abf81d4fa,4,inflammatory,4,inflammatory,0.4938124418258667,5,dark
+data/fitzpatrick_images/ac-vu_335/ac-vu_f1_320_318c8e5f.jpg,318c8e5f64892f91b7a0e093457d90b4,4,inflammatory,4,inflammatory,0.33926743268966675,1,light
+data/fitzpatrick_images/ly_100/ly_f3_39_8599c9a4.jpg,8599c9a4bf7feba4c8e1304c14177097,0,benign dermal,0,benign dermal,0.22925351560115814,3,light
+data/fitzpatrick_images/st-jo-sy_113/st-jo-sy_f2_3_d412bd06.jpg,d412bd0647b56932df8563b17fed44d0,4,inflammatory,4,inflammatory,0.2957698106765747,2,light
+data/fitzpatrick_images/ne-de_361/ne-de_f0_63_93d3e8df.jpg,93d3e8dfca9f38ba014740f37457b1ca,4,inflammatory,4,inflammatory,0.4889567792415619,-1,light
+data/fitzpatrick_images/ma-me_111/ma-me_f1_21_130b209f.jpg,130b209f100bcbbd8b444f22ea3cbb24,8,malignant melanoma,8,malignant melanoma,0.17962680757045746,1,light
+data/fitzpatrick_images/dy-ec_83/dy-ec_f4_4_29864b78.jpg,29864b78ce1ecb22e47e6794e6c7d4f8,4,inflammatory,4,inflammatory,0.39775019884109497,4,dark
+data/fitzpatrick_images/pi-ru-pi_278/pi-ru-pi_f0_12_1439b7a8.jpg,1439b7a80cc048cbbf5f8205956ce94a,4,inflammatory,4,inflammatory,0.48027148842811584,-1,light
+data/fitzpatrick_images/ac-vu_335/ac-vu_f6_119_b18266bd.jpg,b18266bd91bdf9c540973b3b6c297be0,4,inflammatory,4,inflammatory,0.43800559639930725,6,dark
+data/fitzpatrick_images/li-am_77/li-am_f6_62_1783c00d.jpg,1783c00d44810d32ea08854c0921fd11,4,inflammatory,4,inflammatory,0.42108339071273804,6,dark
+data/fitzpatrick_images/ka-sa_156/ka-sa_f4_121_04437cd3.jpg,04437cd3092a8922dc9af8100d350431,6,malignant dermal,0,benign dermal,0.17651404440402985,4,dark
+data/fitzpatrick_images/scde_309/scde_f5_308_cd90e491.jpg,cd90e491ddaa92f0f4eb07f73aa09f64,4,inflammatory,4,inflammatory,0.4996596574783325,5,dark
+data/fitzpatrick_images/ha-ne_82/ha-ne_f6_46_4bb9b9c7.jpg,4bb9b9c7ffb630e640c49511b856dfbf,2,benign melanocyte,4,inflammatory,0.28673550486564636,6,dark
+data/fitzpatrick_images/ac_183/ac_f5_13_3a6a24ba.jpg,3a6a24ba22604e37a8fc8e5c7dfb0b4c,4,inflammatory,4,inflammatory,0.5537932515144348,5,dark
+data/fitzpatrick_images/le-ma_83/le-ma_f0_14_c513980b.jpg,c513980bf1671f270b14d6b060972c60,8,malignant melanoma,8,malignant melanoma,0.1754511296749115,-1,light
+data/fitzpatrick_images/pa-co-re_150/pa-co-re_f5_82_9b4f7885.jpg,9b4f7885d9dda56e8c5e3284abfc220a,4,inflammatory,4,inflammatory,0.5144818425178528,5,dark
+data/fitzpatrick_images/sa_349/sa_f4_345_93d248a9.jpg,93d248a9dfe8c181bd7330a52f722e87,4,inflammatory,4,inflammatory,0.4014890491962433,4,dark
+data/fitzpatrick_images/ju-xa_149/ju-xa_f5_93_eaa3ba38.jpg,eaa3ba38a29c0bb4c24e55e84607b965,4,inflammatory,4,inflammatory,0.4874879717826843,5,dark
+data/fitzpatrick_images/pe-li_151/pe-li_f0_101_c8c1c8cd.jpg,c8c1c8cd8ec13beb55575e641ceca890,4,inflammatory,4,inflammatory,0.5084294080734253,-1,light
+data/fitzpatrick_images/ep-bu_70/ep-bu_f1_1_fcedd4db.jpg,fcedd4db8bb4130acaf6d750cf50248d,3,genodermatoses,4,inflammatory,0.3053187131881714,1,light
+data/fitzpatrick_images/ne-de_361/ne-de_f2_168_8d24a8de.jpg,8d24a8debecba9322cec0e6265065dfe,4,inflammatory,4,inflammatory,0.30999407172203064,2,light
+data/fitzpatrick_images/dy-ec_83/dy-ec_f1_70_1bd80c6a.jpg,1bd80c6acd5903aa2c441824b6afb125,4,inflammatory,4,inflammatory,0.27705976366996765,1,light
+data/fitzpatrick_images/ne-de_361/ne-de_f0_211_f8506df5.jpg,f8506df53159790bbd98a9ad81f033d7,4,inflammatory,4,inflammatory,0.4512331783771515,-1,light
+data/fitzpatrick_images/er-no_81/er-no_f3_67_5effcbce.jpg,5effcbce39afeb21142681b0ec94f49b,4,inflammatory,4,inflammatory,0.46327900886535645,3,light
+data/fitzpatrick_images/fa-de_66/fa-de_f6_65_25ba9ce7.jpg,25ba9ce7ad7460e30d6922fe69c2aee1,4,inflammatory,4,inflammatory,0.49382829666137695,6,dark
+data/fitzpatrick_images/sq-ce-ca_581/sq-ce-ca_f2_361_4953e564.jpg,4953e564460dbe32e48a21dcff8f6445,7,malignant epidermal,8,malignant melanoma,0.1884191334247589,2,light
+data/fitzpatrick_images/mi_112/mi_f3_34_1406e7b6.jpg,1406e7b62c46d79067db741cea39c476,1,benign epidermal,0,benign dermal,0.2343170940876007,3,light
+data/fitzpatrick_images/scde_309/scde_f5_235_83cef44e.jpg,83cef44e6403876bcc4c61f99c31fa2d,4,inflammatory,4,inflammatory,0.358532577753067,5,dark
+data/fitzpatrick_images/gr-an_211/gr-an_f4_207_9bcff4ba.jpg,9bcff4ba8acb7913082d22a7a9e8d8db,4,inflammatory,4,inflammatory,0.41816917061805725,4,dark
+data/fitzpatrick_images/po-mi_78/po-mi_f3_27_21115b22.jpg,21115b22dca3c96c2328ce54fdf67649,1,benign epidermal,0,benign dermal,0.2602939009666443,3,light
