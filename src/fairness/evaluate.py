@@ -36,6 +36,11 @@ try:
 except ImportError:
     from src.preprocess.skin_tone import fst_to_group
 
+try:
+    from vishwas.src.fairness.milk10k_eval import evaluate_milk10k_predictions, MILK10K_CLASSES, HEADLINE_CLASSES
+except ImportError:
+    from src.fairness.milk10k_eval import evaluate_milk10k_predictions, MILK10K_CLASSES, HEADLINE_CLASSES
+
 
 def compute_ece(
     probs: np.ndarray,
@@ -114,6 +119,9 @@ def evaluate_run(run_dir: Path) -> Dict[str, Any]:
         raise FileNotFoundError(f"Predictions not found at {pred_path}")
 
     df = pd.read_csv(pred_path)
+    if "tone_group" in df.columns:
+        return evaluate_milk10k_predictions(predictions_df=df, output_dir=run_dir)
+
     probs = np.load(probs_path) if probs_path.exists() else None
 
     # Check for presence of skin-tone annotations

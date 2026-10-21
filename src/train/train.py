@@ -486,19 +486,102 @@ def run_training(
     return run_name
 
 
+try:
+    from vishwas.src.train.milk10k_train import run_milk10k_training
+except ImportError:
+    from src.train.milk10k_train import run_milk10k_training
+
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Train Vishwas classifier")
-    parser.add_argument("--config", type=str, default="vishwas/configs/config.yaml")
+    parser.add_argument("--config", type=str, default="configs/config.yaml")
     parser.add_argument("--dataset", type=str, default=None)
-    parser.add_argument("--mitigation", type=str, default=None)
-    parser.add_argument("--run-name", type=str, default=None)
+    parser.add_argument("--model", type=str, default=None, help="Model architecture")
+    parser.add_argument("--fold", type=str, default="0", help="Fold index (0..4) or 'all'")
+    parser.add_argument("--epochs", type=int, default=None, help="Number of training epochs")
+    parser.add_argument("--img-size", type=int, default=None, help="Image spatial resolution")
+    parser.add_argument("--run-name", type=str, default=None, help="Experiment run identifier")
+    parser.add_argument("--mitigation", type=str, default=None, help="none | class_weighted | balanced_sampler | group_weighted")
+    parser.add_argument("--batch-size", type=int, default=None, help="Batch size")
+    parser.add_argument("--lr", type=float, default=None, help="Learning rate")
+    parser.add_argument("--lr-encoder", type=float, default=None, help="Pretrained encoder learning rate")
+    parser.add_argument("--lr-head", type=float, default=None, help="Head/fusion learning rate")
+    parser.add_argument("--weight-decay", type=float, default=None, help="Weight decay")
+    parser.add_argument("--label-smoothing", type=float, default=None, help="Label smoothing factor")
+    parser.add_argument("--warmup-epochs", type=int, default=None, help="Warmup epochs")
+    parser.add_argument("--patience", type=int, default=None, help="Early stopping patience")
+    parser.add_argument("--min-val-samples-per-class", type=int, default=None, help="Min val samples per class for early stopping metric")
+    parser.add_argument("--class-weight-cap", type=float, default=None, help="Maximum cap on class weights")
+    parser.add_argument("--fusion-type", type=str, default="concat", help="concat | gated")
+    parser.add_argument("--augmentation", type=str, default="standard", help="standard | colour_preserving")
+    parser.add_argument("--use-monet", action="store_true", help="Include 7 MONET continuous visual features")
+    parser.add_argument("--seed", type=int, default=None, help="Random seed")
     parser.add_argument("--image-dir", type=str, default=None)
     args = parser.parse_args()
 
-    run_training(
-        config_path=args.config,
-        mitigation_override=args.mitigation,
-        run_name_override=args.run_name,
-        image_dir_override=args.image_dir,
-        dataset_override=args.dataset,
-    )
+    # Determine dataset type from args or config
+    cfg_path = Path(args.config)
+    if not cfg_path.exists() and (Path("vishwas") / cfg_path).exists():
+        cfg_path = Path("vishwas") / cfg_path
+
+    cfg_dict = {}
+    if cfg_path.exists():
+        with open(cfg_path, "r", encoding="utf-8") as f:
+            cfg_dict = yaml.safe_load(f) or {}
+
+    ds_name = (args.dataset or cfg_dict.get("dataset", "milk10k")).lower()
+    milk10k_model_names = {
+        "dermoscopic_only", "dermoscopic", "dermo_only",
+        "clinical_only", "clinical", "clin_only",
+        "two_image_fusion", "image_fusion", "dual_image",
+        "two_image_tabular_fusion", "tabular_fusion", "full_fusion", "multimodal",
+    }
+
+    if ds_name == "milk10k" or (args.model and args.model.lower() in milk10k_model_names):
+        model_name = args.model or "two_image_tabular_fusion"
+        epochs = args.epochs or int(cfg_dict.get("train", {}).get("epochs", 12))
+        img_size = args.img_size or int(cfg_dict.get("preprocess", {}).get("img_size", 128))
+        mitigation = args.mitigation or str(cfg_dict.get("train", {}).get("mitigation", "class_weighted"))
+        batch_size = args.batch_size or int(cfg_dict.get("train", {}).get("batch_size", 32))
+        lr = args.lr or float(cfg_dict.get("train", {}).get("lr", 3e-4))
+        lr_encoder = args.lr_encoder or float(cfg_dict.get("train", {}).get("lr_encoder", 1e-4))
+        lr_head = args.lr_head or float(cfg_dict.get("train", {}).get("lr_head", 1e-3))
+        weight_decay = args.weight_decay or float(cfg_dict.get("train", {}).get("weight_decay", 0.01))
+        label_smoothing = args.label_smoothing or float(cfg_dict.get("train", {}).get("label_smoothing", 0.05))
+        warmup_epochs = args.warmup_epochs or int(cfg_dict.get("train", {}).get("warmup_epochs", 1))
+        patience = args.patience or int(cfg_dict.get("train", {}).get("patience", 4))
+        min_val_samples = args.min_val_samples_per_class or int(cfg_dict.get("train", {}).get("min_val_samples_per_class", 5))
+        class_weight_cap = args.class_weight_cap or float(cfg_dict.get("train", {}).get("class_weight_cap", 10.0))
+        seed = args.seed or int(cfg_dict.get("project", {}).get("seed", 42))
+
+        run_milk10k_training(
+            model=model_name,
+            fold=args.fold,
+            epochs=epochs,
+            img_size=img_size,
+            run_name=args.run_name,
+            mitigation=mitigation,
+            batch_size=batch_size,
+            lr_encoder=lr_encoder,
+            lr_head=lr_head,
+            lr=lr,
+            weight_decay=weight_decay,
+            label_smoothing=label_smoothing,
+            warmup_epochs=warmup_epochs,
+            patience=patience,
+            min_val_samples_per_class=min_val_samples,
+            class_weight_cap=class_weight_cap,
+            fusion_type=args.fusion_type,
+            augmentation=args.augmentation,
+            use_monet=args.use_monet,
+            seed=seed,
+        )
+    else:
+        run_training(
+            config_path=str(cfg_path),
+            mitigation_override=args.mitigation,
+            run_name_override=args.run_name,
+            image_dir_override=args.image_dir,
+            dataset_override=args.dataset,
+        )
+

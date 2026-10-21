@@ -1,3 +1,6 @@
 timestamp,run_name,model_type,backbone,mitigation,augmentation,target_col,num_classes,best_val_f1,test_acc,test_f1,epochs_trained,seed
 20261019_124842,baseline_none,image_only,efficientnet_b0,none,standard,nine_partition_label,9,0.2645,0.7321,0.2164,5,42
 2026-10-19 13:07:29,dermamnist_baseline,dermamnist,resnet18,none,standard,7,0.629,0.868,0.6373,3,42.86,42
+2026-10-20 22:29:31,smoke_fold0,milk10k,two_image_tabular_fusion,0,3,128,none,concat,standard,False,0.6603,0.3569,0.3245,0.3408,0.0185,94.08,302.76,42
+2026-10-21 10:39:07,d_cw_128,milk10k,two_image_tabular_fusion,all,12,128,class_weighted,concat,standard,False,0.4771,0.3773,0.343,0.3611,0.0461,765.54,42464.39,42
+2026-10-21 12:19:58,a_cw_128,milk10k,dermoscopic_only,all,12,128,class_weighted,concat,standard,False,0.4513,0.3583,0.3257,0.3363,0.0732,102.8,6045.38,42

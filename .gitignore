@@ -9,9 +9,13 @@ venv/
 env/
 
 # Datasets
-data/
+data/*
+!data/milk10k_folds.csv
 
-# Checkpoints and large artifacts
+# Cache and Checkpoints
+data/cache/
+data/cache*/
+checkpoints/
 *.pt
 *.pth
 *.ckpt
@@ -24,3 +28,7 @@ data/
 
 # Pytest
 .pytest_cache/
+
+# Logs
+logs/
+

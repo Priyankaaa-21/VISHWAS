@@ -199,16 +199,40 @@ class GatedFusionClassifier(nn.Module):
         return logits
 
 
+try:
+    from vishwas.src.models.milk10k_classifier import build_milk10k_model as _build_milk10k_model_vishwas
+except ImportError:
+    from src.models.milk10k_classifier import build_milk10k_model as _build_milk10k_model_vishwas
+
+
 def build_model(
     model_type: str = "image_only",
     backbone: str = "efficientnet_b0",
     num_classes: int = 9,
     pretrained: bool = True,
     dropout: float = 0.2,
+    fusion_type: str = "concat",
+    tabular_dim: int = 13,
 ) -> nn.Module:
     """Factory function for building Vishwas models."""
-    m_type = model_type.lower()
-    if m_type == "fusion":
+    m_type = model_type.lower().strip()
+    milk10k_types = {
+        "dermoscopic_only", "dermoscopic", "dermo_only",
+        "clinical_only", "clinical", "clin_only",
+        "two_image_fusion", "image_fusion", "dual_image",
+        "two_image_tabular_fusion", "tabular_fusion", "full_fusion", "multimodal",
+    }
+    if m_type in milk10k_types:
+        return _build_milk10k_model_vishwas(
+            model_name=m_type,
+            num_classes=num_classes,
+            backbone=backbone,
+            pretrained=pretrained,
+            dropout=dropout,
+            fusion_type=fusion_type,
+            tabular_dim=tabular_dim,
+        )
+    elif m_type == "fusion":
         return SkinToneFusionClassifier(
             num_classes=num_classes,
             backbone_name=backbone,
@@ -229,6 +253,7 @@ def build_model(
             pretrained=pretrained,
             dropout=dropout,
         )
+
 
 
 if __name__ == "__main__":

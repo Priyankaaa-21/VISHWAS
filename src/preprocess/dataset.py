@@ -454,8 +454,35 @@ def build_dataloaders(
         }
         return dataloaders, info
 
+    elif dataset_type == "milk10k":
+        try:
+            from vishwas.src.preprocess.milk10k_dataset import load_milk10k_splits as _load_milk10k
+        except ImportError:
+            from src.preprocess.milk10k_dataset import load_milk10k_splits as _load_milk10k
+
+        f_csv = Path(cfg["data"].get("milk10k_folds_csv", "data/milk10k_folds.csv"))
+        m_dir = Path(image_dir_override or cfg["data"].get("milk10k_dir", "data/milk10k"))
+        img_size = int(cfg["preprocess"].get("img_size", 224))
+        held_out_fold = int(cfg.get("held_out_fold", 0))
+        use_monet = bool(cfg.get("use_monet", False))
+        seed = int(cfg.get("project", {}).get("seed", 42))
+
+        return _load_milk10k(
+            folds_csv_path=f_csv,
+            milk10k_dir=m_dir,
+            held_out_fold=held_out_fold,
+            val_slice_ratio=0.10,
+            img_size=img_size,
+            augmentation=aug_mode,
+            batch_size=batch_size,
+            num_workers=num_workers,
+            use_monet=use_monet,
+            seed=seed,
+        )
+
     else:
-        raise ValueError(f"Unsupported dataset: {dataset_type}. Choose 'dermamnist', 'fitzpatrick', or 'pad_ufes'.")
+        raise ValueError(f"Unsupported dataset: {dataset_type}. Choose 'milk10k', 'dermamnist', 'fitzpatrick', or 'pad_ufes'.")
+
 
 
 if __name__ == "__main__":

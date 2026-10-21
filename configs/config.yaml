@@ -7,9 +7,26 @@ project:
   seed: 42
   device: "mps"  # auto-detected: "mps" if available on Apple Silicon, else "cpu"
 
-dataset: "dermamnist"  # "dermamnist" | "fitzpatrick" | "pad_ufes"
+dataset: "milk10k"  # "milk10k" | "dermamnist" | "fitzpatrick" | "pad_ufes"
+
+# Skin tone grouping configuration: {0,1,2} -> G1, {3} -> G2, {4,5} -> G3, missing -> unknown
+tone_groups:
+  0: "G1"
+  1: "G1"
+  2: "G1"
+  3: "G2"
+  4: "G3"
+  5: "G3"
+  "missing": "unknown"
 
 data:
+  # MILK10k configurations
+  milk10k_dir: "data/milk10k"
+  milk10k_folds_csv: "data/milk10k_folds.csv"
+  n_folds: 5
+  seed: 42
+  min_cell_size: 10
+
   # DermaMNIST configurations
   resolution: 28  # 28 | 224
   dermamnist_28_path: "DermaMNIST/DermaMNIST_Analysis/NPZ_files/dermamnist_corrected_28.npz"
@@ -37,12 +54,18 @@ models:
   dropout: 0.2
 
 train:
-  batch_size: 64
-  epochs: 3
-  lr: 0.0003
-  weight_decay: 0.01
-  mitigation: "none"  # "none" | "class_weighted" | "balanced_sampler" | "group_weighted"
-  early_stopping_patience: 3
+  batch_size: 32
+  epochs: 12
+  lr_encoder: 0.0001        # 1e-4 for pretrained encoders
+  lr_head: 0.001            # 1e-3 for classification & fusion head
+  lr: 0.0003                # default fallback
+  weight_decay: 0.01        # 1e-2
+  label_smoothing: 0.05     # 0.05 cross-entropy label smoothing
+  warmup_epochs: 1          # 1 epoch linear warmup then cosine decay
+  patience: 4               # early stopping patience
+  min_val_samples_per_class: 5  # minimum samples per class in val slice for early stopping metric
+  mitigation: "class_weighted"  # "none" | "class_weighted" | "balanced_sampler" | "group_weighted"
+  class_weight_cap: 10.0    # cap class weights at 10 so MAL_OTH does not dominate
   mixed_precision: true
 
 rag:
