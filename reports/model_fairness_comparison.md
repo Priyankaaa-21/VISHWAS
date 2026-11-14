@@ -71,7 +71,19 @@ Every group shows sample size $n$, Headline Macro-F1 (95% CI), Balanced Accuracy
 | **`SCCKA`** | Squamous Cell Carcinoma / Keratoacanthoma | `58.35%` | `58.99%` |
 | **`VASC`** | Vascular Lesions | `78.72%` | `80.85%` |
 
-## 4. Audit & Calibration Artifacts
+## 4. Paired Lesion-Level Bootstrap Comparison vs. ImageNet Baseline Control (`d_cw_128`)
+
+> **Evaluation Protocol**: 1,000 paired bootstrap iterations over identical lesion samples.
+> **Statistical Decision Rule**: When the 95% bootstrap CI contains zero, the observed performance delta is **not statistically significant** at $\alpha = 0.05$.
+
+| Candidate Model vs. Control (`d_cw_128`) | Metric / Dimension | Delta Point Estimate | 95% Bootstrap CI | Statistical Significance Decision |
+| :--- | :--- | :---: | :---: | :--- |
+| **`a_cw_128`** | **Headline Macro-F1** | `-0.0189` | `[-0.0335, -0.0036]` | **Statistically significant degradation** *(p < 0.05)* |
+| **`a_cw_128`** | **Balanced Accuracy** | `-2.91%` | `[-5.57%, -0.07%]` | **Statistically significant degradation** *(p < 0.05)* |
+| **`a_cw_128`** | **Tone Group F1 Disparity Gap** | `+0.0271` | `[-0.0277, +0.0798]` | **CI includes 0** *(not statistically significant at α = 0.05)* |
+| --- | --- | --- | --- | --- |
+
+## 5. Audit & Calibration Artifacts
 
 ### Run: `d_cw_128`
 - [Fairness Audit Report](file:///Users/priyankachourasia/Downloads/Corrected-Skin-Image-Datasets-main/vishwas/reports/d_cw_128/fairness_audit_report.md)

@@ -325,6 +325,8 @@ def train_milk10k_fold(
     device: Optional[torch.device] = None,
     checkpoints_dir: Optional[Path] = None,
     logger_instance: Optional[logging.Logger] = None,
+    init_encoder: Optional[str] = None,
+    init_branches: str = "clinical",
 ) -> Tuple[pd.DataFrame, float, List[Dict[str, Any]]]:
     """
     Executes training on 4 training folds, early stops on 10% validation slice,
@@ -411,6 +413,8 @@ def train_milk10k_fold(
         dropout=0.2,
         fusion_type=fusion_type,
         tabular_dim=info["tabular_dim"],
+        init_encoder=init_encoder,
+        init_branches=init_branches,
     ).to(dev)
 
     # Parameter groups for differential learning rates
@@ -552,6 +556,8 @@ def run_milk10k_training(
     use_monet: bool = False,
     seed: int = 42,
     reports_dir: Optional[Path] = None,
+    init_encoder: Optional[str] = None,
+    init_branches: str = "clinical",
 ) -> Dict[str, Any]:
     """
     Main entry point for MILK10k training.
@@ -561,6 +567,23 @@ def run_milk10k_training(
     start_total_time = time.time()
     set_seed(seed)
     dev = get_device()
+
+    # Resolve config defaults if not provided explicitly
+    cfg_init_encoder = None
+    cfg_init_branches = "clinical"
+    cfg_path = VISHWAS_ROOT / "configs" / "config.yaml"
+    if cfg_path.exists():
+        try:
+            import yaml
+            with open(cfg_path, "r", encoding="utf-8") as f:
+                y_cfg = yaml.safe_load(f) or {}
+                cfg_init_encoder = y_cfg.get("milk10k", {}).get("init_encoder")
+                cfg_init_branches = y_cfg.get("milk10k", {}).get("init_branches", "clinical")
+        except Exception:
+            pass
+
+    actual_init_encoder = init_encoder if init_encoder is not None else cfg_init_encoder
+    actual_init_branches = init_branches if init_branches is not None else cfg_init_branches
 
     actual_run_name = run_name or f"{model}_{mitigation}_{fold}_{img_size}px"
     rep_dir = reports_dir or (VISHWAS_ROOT / "reports" / actual_run_name)
@@ -629,6 +652,8 @@ def run_milk10k_training(
             seed=seed,
             device=dev,
             logger_instance=run_logger,
+            init_encoder=actual_init_encoder,
+            init_branches=actual_init_branches,
         )
         # Save individual fold predictions immediately
         f_preds.to_csv(fold_pred_path, index=False)

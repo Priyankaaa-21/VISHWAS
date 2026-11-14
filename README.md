@@ -100,4 +100,19 @@ make rag-index
 
 # 9. Launch Clinical Interactive App (Phase 7)
 make app
+
+# 10. Stage-1 SLICE-3D Pretraining Pipeline
+make slice3d-audit      # Audit 401,059 SLICE-3D images and metadata
+make slice3d-split      # Generate patient-grouped 100,000-image split (75k train, 25k test)
+make slice3d-pretrain   # Train EfficientNet-B0 visual encoder on SLICE-3D binary task
 ```
+
+---
+
+## SLICE-3D Stage-1 Dataset & Pretraining
+
+Stage-1 visual representation learning utilizes the **SLICE-3D (ISIC 2024)** 3D Total Body Photography crop dataset. A fixed subset of 100,000 images (75,000 train pool partitioned into 67,500 train and 7,500 validation; 25,000 held-out test) is extracted using patient-grouped stratified sampling to prevent data leakage. The visual encoder is pretrained on binary malignancy detection and evaluated via partial AUC above 80% TPR before initializing Stage-2 multimodal classification on MILK10k.
+
+**Dataset Citation**:
+> International Skin Imaging Collaboration. SLICE-3D 2024 Challenge Dataset. https://doi.org/10.34970/2024-slice-3d (CC BY-NC 4.0)
+

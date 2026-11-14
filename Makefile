@@ -1,4 +1,4 @@
-.PHONY: help download ita train evaluate compare gradcam rag-index app test
+.PHONY: help download ita train evaluate compare gradcam rag-index app test slice3d-audit slice3d-split slice3d-pretrain milk10k-s3d
 
 PYTHON := ./vishwas/.venv/bin/python3
 PYTEST := ./vishwas/.venv/bin/pytest
@@ -48,3 +48,16 @@ rag-index:
 
 app:
 	$(STREAMLIT) run vishwas/src/app/app.py
+
+slice3d-audit:
+	@if [ -d "src" ]; then $(PYTHON) src/ingest/audit_slice3d.py; else $(PYTHON) vishwas/src/ingest/audit_slice3d.py; fi
+
+slice3d-split:
+	@if [ -d "src" ]; then $(PYTHON) src/preprocess/make_slice3d_split.py; else $(PYTHON) vishwas/src/preprocess/make_slice3d_split.py; fi
+
+slice3d-pretrain:
+	@if [ -d "src" ]; then $(PYTHON) src/train/slice3d_pretrain.py; else $(PYTHON) vishwas/src/train/slice3d_pretrain.py; fi
+
+milk10k-s3d:
+	@if [ -d "src" ]; then $(PYTHON) src/train/train.py --model two_image_tabular_fusion --fold all --epochs 12 --img-size 128 --mitigation class_weighted --init-encoder checkpoints/slice3d_pretrain_effb0.pt --init-branches clinical --run-name e_cw_128_s3d; else $(PYTHON) vishwas/src/train/train.py --model two_image_tabular_fusion --fold all --epochs 12 --img-size 128 --mitigation class_weighted --init-encoder checkpoints/slice3d_pretrain_effb0.pt --init-branches clinical --run-name e_cw_128_s3d; fi
+

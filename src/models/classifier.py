@@ -213,6 +213,8 @@ def build_model(
     dropout: float = 0.2,
     fusion_type: str = "concat",
     tabular_dim: int = 13,
+    init_encoder: Optional[Any] = None,
+    init_branches: str = "clinical",
 ) -> nn.Module:
     """Factory function for building Vishwas models."""
     m_type = model_type.lower().strip()
@@ -231,6 +233,8 @@ def build_model(
             dropout=dropout,
             fusion_type=fusion_type,
             tabular_dim=tabular_dim,
+            init_encoder=init_encoder,
+            init_branches=init_branches,
         )
     elif m_type == "fusion":
         return SkinToneFusionClassifier(

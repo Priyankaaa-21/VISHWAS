@@ -75,6 +75,97 @@ def load_and_evaluate_run(run_dir: Path, n_bootstrap: int = 1000, seed: int = 42
     return eval_res
 
 
+def compute_paired_bootstrap(
+    base_pred_path: Path,
+    new_pred_path: Path,
+    base_name: str = "d_cw_128",
+    new_name: str = "e_cw_128_s3d",
+    n_bootstrap: int = 1000,
+    seed: int = 42,
+) -> Dict[str, Any]:
+    """
+    Computes paired bootstrap comparisons (1,000 resamples over identical lesions):
+    - Delta in headline macro-F1 (10 classes excluding MAL_OTH)
+    - Delta in balanced accuracy
+    - Delta in tone-group F1 disparity gap (max group F1 - min group F1 across G1, G2, G3)
+    - 95% bootstrap confidence intervals for each delta
+    - Explicit notation when 95% CI includes 0 (no statistically significant difference).
+    """
+    df_base = pd.read_csv(base_pred_path)
+    df_new = pd.read_csv(new_pred_path)
+
+    merged = pd.merge(
+        df_base[["lesion_id", "y_true", "y_pred", "tone_group"]],
+        df_new[["lesion_id", "y_pred"]],
+        on="lesion_id",
+        suffixes=("_base", "_new"),
+    )
+    n = len(merged)
+    headline_classes = [c for c in MILK10K_CLASSES if c != "MAL_OTH"]
+
+    def _eval_metrics(df_sub: pd.DataFrame, pred_col: str) -> Tuple[float, float, float]:
+        y_t = df_sub["y_true"].to_numpy()
+        y_p = df_sub[pred_col].to_numpy()
+        f1 = float(f1_score(y_t, y_p, labels=headline_classes, average="macro", zero_division=0))
+        bal_acc = float(balanced_accuracy_score(y_t, y_p))
+
+        grp_f1s: List[float] = []
+        for g in ["G1", "G2", "G3"]:
+            mask = (df_sub["tone_group"] == g).to_numpy()
+            if np.sum(mask) > 0:
+                gf1 = float(f1_score(y_t[mask], y_p[mask], labels=headline_classes, average="macro", zero_division=0))
+                grp_f1s.append(gf1)
+        f1_gap = (max(grp_f1s) - min(grp_f1s)) if len(grp_f1s) >= 2 else 0.0
+        return f1, bal_acc, f1_gap
+
+    base_f1, base_bal, base_gap = _eval_metrics(merged, "y_pred_base")
+    new_f1, new_bal, new_gap = _eval_metrics(merged, "y_pred_new")
+
+    delta_f1 = new_f1 - base_f1
+    delta_bal = new_bal - base_bal
+    delta_gap = new_gap - base_gap
+
+    rng = np.random.RandomState(seed)
+    boot_d_f1: List[float] = []
+    boot_d_bal: List[float] = []
+    boot_d_gap: List[float] = []
+
+    for _ in range(n_bootstrap):
+        idx = rng.choice(n, size=n, replace=True)
+        samp = merged.iloc[idx]
+        b_f1, b_bal, b_gap = _eval_metrics(samp, "y_pred_base")
+        n_f1, n_bal, n_gap = _eval_metrics(samp, "y_pred_new")
+        boot_d_f1.append(n_f1 - b_f1)
+        boot_d_bal.append(n_bal - b_bal)
+        boot_d_gap.append(n_gap - b_gap)
+
+    ci_f1 = (float(np.percentile(boot_d_f1, 2.5)), float(np.percentile(boot_d_f1, 97.5)))
+    ci_bal = (float(np.percentile(boot_d_bal, 2.5)), float(np.percentile(boot_d_bal, 97.5)))
+    ci_gap = (float(np.percentile(boot_d_gap, 2.5)), float(np.percentile(boot_d_gap, 97.5)))
+
+    def _format_sig(ci: Tuple[float, float]) -> str:
+        if ci[0] <= 0.0 <= ci[1]:
+            return "**CI includes 0** *(not statistically significant at α = 0.05)*"
+        elif ci[0] > 0.0:
+            return "**Statistically significant improvement** *(p < 0.05)*"
+        else:
+            return "**Statistically significant degradation** *(p < 0.05)*"
+
+    return {
+        "new_name": new_name,
+        "base_name": base_name,
+        "delta_macro_f1": delta_f1,
+        "ci_macro_f1": ci_f1,
+        "sig_macro_f1": _format_sig(ci_f1),
+        "delta_balanced_acc": delta_bal,
+        "ci_balanced_acc": ci_bal,
+        "sig_balanced_acc": _format_sig(ci_bal),
+        "delta_f1_gap": delta_gap,
+        "ci_f1_gap": ci_gap,
+        "sig_f1_gap": _format_sig(ci_gap),
+    }
+
+
 def build_comparison_report(
     run_dirs: List[Path],
     output_file: Optional[Path] = None,
@@ -106,7 +197,11 @@ def build_comparison_report(
     # Architectures
     model_types = []
     for name, _ in reports_data:
-        if "two_image_tabular_fusion" in name or name.startswith("d_"):
+        if "e_cw_128_s3d" in name:
+            model_types.append("Two-Image Fusion (Clinical SLICE-3D Initialized)")
+        elif "f_cw_128_s3d_both" in name:
+            model_types.append("Two-Image Fusion (Dual SLICE-3D Initialized)")
+        elif "two_image_tabular_fusion" in name or name.startswith("d_"):
             model_types.append("Two-Image + Tabular Fusion")
         elif "dermoscopic_only" in name or name.startswith("a_"):
             model_types.append("Dermoscopic Only")
@@ -276,8 +371,40 @@ def build_comparison_report(
         lines.append(f"| {c_label} | {desc} | " + " | ".join(row_recalls) + " |")
     lines.append("")
 
-    # Section 4: Audit & Calibration Figures
-    lines.append("## 4. Audit & Calibration Artifacts")
+    # Section 4: Paired Lesion-Level Bootstrap Comparison vs d_cw_128 Control
+    base_run_dir = next((p for p in run_dirs if p.name == "d_cw_128"), None)
+    other_runs = [p for p in run_dirs if p.name != "d_cw_128"]
+
+    if base_run_dir and other_runs:
+        lines.append("## 4. Paired Lesion-Level Bootstrap Comparison vs. ImageNet Baseline Control (`d_cw_128`)")
+        lines.append("")
+        lines.append("> **Evaluation Protocol**: 1,000 paired bootstrap iterations over identical lesion samples.")
+        lines.append("> **Statistical Decision Rule**: When the 95% bootstrap CI contains zero, the observed performance delta is **not statistically significant** at $\\alpha = 0.05$.")
+        lines.append("")
+        lines.append("| Candidate Model vs. Control (`d_cw_128`) | Metric / Dimension | Delta Point Estimate | 95% Bootstrap CI | Statistical Significance Decision |")
+        lines.append("| :--- | :--- | :---: | :---: | :--- |")
+
+        for oth in other_runs:
+            paired_res = compute_paired_bootstrap(
+                base_pred_path=base_run_dir / "predictions.csv",
+                new_pred_path=oth / "predictions.csv",
+                base_name="d_cw_128",
+                new_name=oth.name,
+                n_bootstrap=n_bootstrap,
+                seed=seed,
+            )
+            ci_f1 = paired_res["ci_macro_f1"]
+            ci_bal = paired_res["ci_balanced_acc"]
+            ci_gap = paired_res["ci_f1_gap"]
+
+            lines.append(f"| **`{oth.name}`** | **Headline Macro-F1** | `{paired_res['delta_macro_f1']:+.4f}` | `[{ci_f1[0]:+.4f}, {ci_f1[1]:+.4f}]` | {paired_res['sig_macro_f1']} |")
+            lines.append(f"| **`{oth.name}`** | **Balanced Accuracy** | `{paired_res['delta_balanced_acc']*100:+.2f}%` | `[{ci_bal[0]*100:+.2f}%, {ci_bal[1]*100:+.2f}%]` | {paired_res['sig_balanced_acc']} |")
+            lines.append(f"| **`{oth.name}`** | **Tone Group F1 Disparity Gap** | `{paired_res['delta_f1_gap']:+.4f}` | `[{ci_gap[0]:+.4f}, {ci_gap[1]:+.4f}]` | {paired_res['sig_f1_gap']} |")
+            lines.append("| --- | --- | --- | --- | --- |")
+        lines.append("")
+
+    # Section 5: Audit & Calibration Figures
+    lines.append("## 5. Audit & Calibration Artifacts")
     lines.append("")
     for name, _ in reports_data:
         lines.append(f"### Run: `{name}`")
@@ -301,7 +428,12 @@ def build_comparison_report(
 def main() -> None:
     parser = argparse.ArgumentParser(description="Compare Vishwas model runs across fairness and performance dimensions")
     parser.add_argument("--reports-dir", type=str, default="reports", help="Reports root directory")
-    parser.add_argument("--runs", nargs="+", default=["d_cw_128", "a_cw_128"], help="Run folder names to compare")
+    parser.add_argument(
+        "--runs",
+        nargs="+",
+        default=["d_cw_128", "a_cw_128", "e_cw_128_s3d", "f_cw_128_s3d_both"],
+        help="Run folder names to compare",
+    )
     parser.add_argument("--n-bootstrap", type=int, default=1000, help="Number of bootstrap resamples on lesions")
     parser.add_argument("--seed", type=int, default=42, help="Random seed for bootstrap reproducibility")
     parser.add_argument("--output", type=str, default=None, help="Output markdown path")

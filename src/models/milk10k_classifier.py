@@ -11,13 +11,71 @@ Implements multimodal dermatological classifiers for the MILK10k dataset:
 from __future__ import annotations
 
 import logging
-from typing import Any, Dict, Optional, Tuple
+from pathlib import Path
+from typing import Any, Dict, List, Optional, Tuple, Union
 
 import timm
 import torch
 import torch.nn as nn
 
 logger = logging.getLogger("vishwas.models.milk10k")
+
+
+def load_stage1_encoder_weights(
+    model: nn.Module,
+    checkpoint_path: Union[str, Path],
+    init_branches: str = "clinical",
+) -> List[str]:
+    """
+    Loads Stage-1 pretrained visual encoder weights into the specified branches.
+    init_branches:
+        'clinical' (default): initializes clinical_encoder only
+        'both': initializes both clinical_encoder and dermoscopic_encoder
+    """
+    ckpt_p = Path(checkpoint_path)
+    if not ckpt_p.is_absolute():
+        script_dir = Path(__file__).resolve().parent
+        vishwas_root = script_dir.parent.parent
+        workspace_root = vishwas_root.parent
+        for cand in [ckpt_p, vishwas_root / ckpt_p, workspace_root / ckpt_p, Path.cwd() / ckpt_p]:
+            if cand.exists():
+                ckpt_p = cand.resolve()
+                break
+
+    if not ckpt_p.exists():
+        logger.warning(f"Stage-1 encoder checkpoint not found at: {ckpt_p}")
+        return []
+
+    state = torch.load(ckpt_p, map_location="cpu")
+    if isinstance(state, dict) and "model_state" in state:
+        state = state["model_state"]
+
+    cleaned_state = {}
+    for k, v in state.items():
+        k_clean = k
+        if k_clean.startswith("encoder."):
+            k_clean = k_clean[len("encoder."):]
+        cleaned_state[k_clean] = v
+
+    branches = str(init_branches).lower().strip()
+    loaded_branches: List[str] = []
+
+    if branches in ["clinical", "both"]:
+        if hasattr(model, "clinical_encoder"):
+            model.clinical_encoder.load_state_dict(cleaned_state, strict=False)
+            loaded_branches.append("clinical_encoder")
+
+    if branches in ["both", "dermoscopic", "dermo"]:
+        if hasattr(model, "dermoscopic_encoder"):
+            model.dermoscopic_encoder.load_state_dict(cleaned_state, strict=False)
+            loaded_branches.append("dermoscopic_encoder")
+
+    if hasattr(model, "encoder") and not hasattr(model, "clinical_encoder"):
+        model.encoder.load_state_dict(cleaned_state, strict=False)
+        loaded_branches.append("encoder")
+
+    logger.info(f"Loaded Stage-1 pretrained weights from {ckpt_p} into: {loaded_branches}")
+    return loaded_branches
 
 
 class DermoscopicOnlyClassifier(nn.Module):
@@ -227,25 +285,27 @@ def build_milk10k_model(
     dropout: float = 0.2,
     fusion_type: str = "concat",
     tabular_dim: int = 13,
+    init_encoder: Optional[Union[str, Path]] = None,
+    init_branches: str = "clinical",
 ) -> nn.Module:
     """Factory function for creating MILK10k classifiers."""
     m_name = model_name.lower().strip()
     if m_name in ["dermoscopic_only", "dermoscopic", "dermo_only"]:
-        return DermoscopicOnlyClassifier(
+        model = DermoscopicOnlyClassifier(
             num_classes=num_classes,
             backbone_name=backbone,
             pretrained=pretrained,
             dropout=dropout,
         )
     elif m_name in ["clinical_only", "clinical", "clin_only"]:
-        return ClinicalOnlyClassifier(
+        model = ClinicalOnlyClassifier(
             num_classes=num_classes,
             backbone_name=backbone,
             pretrained=pretrained,
             dropout=dropout,
         )
     elif m_name in ["two_image_fusion", "image_fusion", "dual_image"]:
-        return TwoImageFusionClassifier(
+        model = TwoImageFusionClassifier(
             num_classes=num_classes,
             backbone_name=backbone,
             pretrained=pretrained,
@@ -253,7 +313,7 @@ def build_milk10k_model(
             fusion_type=fusion_type,
         )
     elif m_name in ["two_image_tabular_fusion", "tabular_fusion", "full_fusion", "multimodal"]:
-        return TwoImageTabularFusionClassifier(
+        model = TwoImageTabularFusionClassifier(
             num_classes=num_classes,
             backbone_name=backbone,
             pretrained=pretrained,
@@ -266,3 +326,9 @@ def build_milk10k_model(
             f"Unknown MILK10k model: '{model_name}'. Choose from "
             "['dermoscopic_only', 'clinical_only', 'two_image_fusion', 'two_image_tabular_fusion']."
         )
+
+    # Optional Stage-1 weight loading
+    if init_encoder is not None:
+        load_stage1_encoder_weights(model, init_encoder, init_branches=init_branches)
+
+    return model

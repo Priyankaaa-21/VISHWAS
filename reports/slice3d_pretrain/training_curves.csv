@@ -1,0 +1,2 @@
+epoch,epoch_time_sec,images_per_sec,train_loss,val_loss,val_roc_auc,val_pauc
+1,60.53,55.8,1.0566,0.514,0.875,0.1232

@@ -78,6 +78,27 @@ rag:
   confidence_threshold: 0.60
   min_retrieval_score: 0.40
 
+milk10k:
+  init_encoder: null           # Path to Stage-1 encoder checkpoint (e.g. "checkpoints/slice3d_pretrain_effb0.pt")
+  init_branches: "clinical"    # "clinical" (default) | "both"
+
+slice3d:
+  split_csv: "data/slice3d_split_100k.csv"
+  images_dir: "data/slice3d/images/ISIC_2024_Training_Input"
+  ground_truth_csv: "data/slice3d/ISIC_2024_Training_GroundTruth.csv"
+  supplement_csv: "data/slice3d/ISIC_2024_Training_Supplement.csv"
+  img_size: 128
+  batch_size: 64
+  lr: 0.0003
+  lr_encoder: 0.0001
+  lr_head: 0.001
+  weight_decay: 0.01
+  warmup_epochs: 1
+  epochs: 5
+  patience: 3
+  benign_per_malignant: 20
+  num_workers: 2
+
 reports:
   output_dir: "vishwas/reports"
   experiments_log: "vishwas/reports/experiments.csv"

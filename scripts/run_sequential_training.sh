@@ -55,19 +55,65 @@ echo "------------------------------------------------------------------------"
 echo ">>> Run 2 (a_cw_128) Completed at: $(date)"
 echo "------------------------------------------------------------------------"
 
-# STEP 3: Fairness Audits and Cross-Run Comparison
+# RUN 3: Two-Image Tabular Fusion with Stage-1 SLICE-3D Initialized Clinical Encoder
 echo ""
 echo "------------------------------------------------------------------------"
-echo ">>> STEP 3: Running Fairness Audits & Cross-Model Comparison"
+echo ">>> STEP 3: Launching Run 3 (two_image_tabular_fusion, e_cw_128_s3d)"
+echo "------------------------------------------------------------------------"
+"${PYTHON_EXEC}" -m src.train.train \
+    --model two_image_tabular_fusion \
+    --fold all \
+    --epochs 12 \
+    --img-size 128 \
+    --mitigation class_weighted \
+    --init-encoder checkpoints/slice3d_pretrain_effb0.pt \
+    --init-branches clinical \
+    --run-name e_cw_128_s3d
+
+echo ""
+echo "------------------------------------------------------------------------"
+echo ">>> Run 3 (e_cw_128_s3d) Completed at: $(date)"
+echo "------------------------------------------------------------------------"
+
+# RUN 4: Two-Image Tabular Fusion with Stage-1 SLICE-3D Initialized Dual Encoders
+echo ""
+echo "------------------------------------------------------------------------"
+echo ">>> STEP 4: Launching Run 4 (two_image_tabular_fusion, f_cw_128_s3d_both)"
+echo "------------------------------------------------------------------------"
+"${PYTHON_EXEC}" -m src.train.train \
+    --model two_image_tabular_fusion \
+    --fold all \
+    --epochs 12 \
+    --img-size 128 \
+    --mitigation class_weighted \
+    --init-encoder checkpoints/slice3d_pretrain_effb0.pt \
+    --init-branches both \
+    --run-name f_cw_128_s3d_both
+
+echo ""
+echo "------------------------------------------------------------------------"
+echo ">>> Run 4 (f_cw_128_s3d_both) Completed at: $(date)"
+echo "------------------------------------------------------------------------"
+
+# STEP 5: Fairness Audits and Cross-Run Comparison
+echo ""
+echo "------------------------------------------------------------------------"
+echo ">>> STEP 5: Running Fairness Audits & Cross-Model Comparison"
 echo "------------------------------------------------------------------------"
 "${PYTHON_EXEC}" -m src.fairness.evaluate --run-dir reports/d_cw_128
 "${PYTHON_EXEC}" -m src.fairness.evaluate --run-dir reports/a_cw_128
-"${PYTHON_EXEC}" -m src.fairness.compare_runs --runs d_cw_128 a_cw_128
+if [ -d "reports/e_cw_128_s3d" ] && [ -f "reports/e_cw_128_s3d/predictions.csv" ]; then
+    "${PYTHON_EXEC}" -m src.fairness.evaluate --run-dir reports/e_cw_128_s3d
+fi
+if [ -d "reports/f_cw_128_s3d_both" ] && [ -f "reports/f_cw_128_s3d_both/predictions.csv" ]; then
+    "${PYTHON_EXEC}" -m src.fairness.evaluate --run-dir reports/f_cw_128_s3d_both
+fi
+"${PYTHON_EXEC}" -m src.fairness.compare_runs
 
-# STEP 4: Run Test Suite
+# STEP 6: Run Test Suite
 echo ""
 echo "------------------------------------------------------------------------"
-echo ">>> STEP 4: Executing Pytest Suite"
+echo ">>> STEP 6: Executing Pytest Suite"
 echo "------------------------------------------------------------------------"
 "${PYTHON_EXEC}" -m pytest
 

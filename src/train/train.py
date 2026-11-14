@@ -515,6 +515,8 @@ if __name__ == "__main__":
     parser.add_argument("--fusion-type", type=str, default="concat", help="concat | gated")
     parser.add_argument("--augmentation", type=str, default="standard", help="standard | colour_preserving")
     parser.add_argument("--use-monet", action="store_true", help="Include 7 MONET continuous visual features")
+    parser.add_argument("--init-encoder", type=str, default=None, help="Path to Stage-1 pretrained encoder checkpoint")
+    parser.add_argument("--init-branches", type=str, default="clinical", help="clinical | both")
     parser.add_argument("--seed", type=int, default=None, help="Random seed")
     parser.add_argument("--image-dir", type=str, default=None)
     args = parser.parse_args()
@@ -575,6 +577,8 @@ if __name__ == "__main__":
             augmentation=args.augmentation,
             use_monet=args.use_monet,
             seed=seed,
+            init_encoder=args.init_encoder,
+            init_branches=args.init_branches,
         )
     else:
         run_training(
