@@ -102,3 +102,14 @@ slice3d:
 reports:
   output_dir: "vishwas/reports"
   experiments_log: "vishwas/reports/experiments.csv"
+
+app:
+  blur_threshold: 40.0
+  min_brightness: 30.0
+  max_brightness: 225.0
+  min_resolution: 64
+  confidence_high: 0.70
+  confidence_medium: 0.40
+  high_risk_threshold: 0.35
+  default_language: "en"
+  max_history: 5

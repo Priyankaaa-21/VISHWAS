@@ -34,3 +34,6 @@ checkpoints/
 # Logs
 logs/
 
+# Symlinks
+vishwas
+
