@@ -108,8 +108,12 @@ app:
   min_brightness: 30.0
   max_brightness: 225.0
   min_resolution: 64
-  confidence_high: 0.70
-  confidence_medium: 0.40
+  confidence_high: 0.55
+  confidence_medium: 0.30
   high_risk_threshold: 0.35
   default_language: "en"
-  max_history: 5
+  default_theme: "Auto"
+  triage:
+    malignant_risk_threshold: 0.35
+    low_confidence_threshold: 0.30
+    very_low_threshold: 0.20

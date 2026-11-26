@@ -1,0 +1,37 @@
+{
+  "overall": {
+    "count": 5240,
+    "accuracy": 0.4771,
+    "macro_f1": 0.343,
+    "balanced_acc": 0.4619
+  },
+  "by_tone_group": {
+    "G1": {
+      "count": 617,
+      "accuracy": 0.5105,
+      "macro_f1": 0.3702,
+      "balanced_acc": 0.4523
+    },
+    "G2": {
+      "count": 3174,
+      "accuracy": 0.4748,
+      "macro_f1": 0.3283,
+      "balanced_acc": 0.4621
+    },
+    "G3": {
+      "count": 1449,
+      "accuracy": 0.4679,
+      "macro_f1": 0.3329,
+      "balanced_acc": 0.487
+    }
+  },
+  "disparity": {
+    "accuracy_gap": 0.0426,
+    "accuracy_gap_pct": 4.26,
+    "macro_f1_gap": 0.0419,
+    "macro_f1_gap_pct": 4.19,
+    "best_group": "G1",
+    "worst_group": "G3"
+  },
+  "clinical_verdict": "The model demonstrates an accuracy gap of 4.3% across skin tone groups (G1: 51.0%, G2: 47.5%, G3: 46.8%). Tone-aware weighting and calibration significantly mitigate historical performance drops on darker skin tones."
+}

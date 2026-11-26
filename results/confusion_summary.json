@@ -1,0 +1,349 @@
+{
+  "classes": [
+    "AKIEC",
+    "BCC",
+    "BEN_OTH",
+    "BKL",
+    "DF",
+    "INF",
+    "MAL_OTH",
+    "MEL",
+    "NV",
+    "SCCKA",
+    "VASC"
+  ],
+  "by_disease": {
+    "AKIEC": {
+      "name": "AKIEC",
+      "short_code": "AKIEC",
+      "total_cases": 303,
+      "correct_cases": 165,
+      "recall": 0.5446,
+      "recall_pct": 54.5,
+      "top_confusions": [
+        {
+          "confused_code": "SCCKA",
+          "confused_name": "SCCKA",
+          "count": 40,
+          "percentage": 13.2
+        },
+        {
+          "confused_code": "BKL",
+          "confused_name": "BKL",
+          "count": 37,
+          "percentage": 12.2
+        },
+        {
+          "confused_code": "BCC",
+          "confused_name": "BCC",
+          "count": 17,
+          "percentage": 5.6
+        }
+      ],
+      "plain_explanation": "In 13.2% of cases, AKIEC was mistaken for SCCKA."
+    },
+    "BCC": {
+      "name": "BCC",
+      "short_code": "BCC",
+      "total_cases": 2522,
+      "correct_cases": 1039,
+      "recall": 0.412,
+      "recall_pct": 41.2,
+      "top_confusions": [
+        {
+          "confused_code": "AKIEC",
+          "confused_name": "AKIEC",
+          "count": 412,
+          "percentage": 16.3
+        },
+        {
+          "confused_code": "BKL",
+          "confused_name": "BKL",
+          "count": 248,
+          "percentage": 9.8
+        },
+        {
+          "confused_code": "SCCKA",
+          "confused_name": "SCCKA",
+          "count": 200,
+          "percentage": 7.9
+        }
+      ],
+      "plain_explanation": "In 16.3% of cases, BCC was mistaken for AKIEC."
+    },
+    "BEN_OTH": {
+      "name": "BEN_OTH",
+      "short_code": "BEN_OTH",
+      "total_cases": 44,
+      "correct_cases": 15,
+      "recall": 0.3409,
+      "recall_pct": 34.1,
+      "top_confusions": [
+        {
+          "confused_code": "BKL",
+          "confused_name": "BKL",
+          "count": 7,
+          "percentage": 15.9
+        },
+        {
+          "confused_code": "INF",
+          "confused_name": "INF",
+          "count": 7,
+          "percentage": 15.9
+        },
+        {
+          "confused_code": "NV",
+          "confused_name": "NV",
+          "count": 6,
+          "percentage": 13.6
+        }
+      ],
+      "plain_explanation": "In 15.9% of cases, BEN_OTH was mistaken for BKL."
+    },
+    "BKL": {
+      "name": "BKL",
+      "short_code": "BKL",
+      "total_cases": 544,
+      "correct_cases": 189,
+      "recall": 0.3474,
+      "recall_pct": 34.7,
+      "top_confusions": [
+        {
+          "confused_code": "AKIEC",
+          "confused_name": "AKIEC",
+          "count": 114,
+          "percentage": 21.0
+        },
+        {
+          "confused_code": "BCC",
+          "confused_name": "BCC",
+          "count": 49,
+          "percentage": 9.0
+        },
+        {
+          "confused_code": "SCCKA",
+          "confused_name": "SCCKA",
+          "count": 48,
+          "percentage": 8.8
+        }
+      ],
+      "plain_explanation": "In 21.0% of cases, BKL was mistaken for AKIEC."
+    },
+    "DF": {
+      "name": "DF",
+      "short_code": "DF",
+      "total_cases": 52,
+      "correct_cases": 26,
+      "recall": 0.5,
+      "recall_pct": 50.0,
+      "top_confusions": [
+        {
+          "confused_code": "BCC",
+          "confused_name": "BCC",
+          "count": 7,
+          "percentage": 13.5
+        },
+        {
+          "confused_code": "AKIEC",
+          "confused_name": "AKIEC",
+          "count": 4,
+          "percentage": 7.7
+        },
+        {
+          "confused_code": "NV",
+          "confused_name": "NV",
+          "count": 4,
+          "percentage": 7.7
+        }
+      ],
+      "plain_explanation": "In 13.5% of cases, DF was mistaken for BCC."
+    },
+    "INF": {
+      "name": "INF",
+      "short_code": "INF",
+      "total_cases": 50,
+      "correct_cases": 20,
+      "recall": 0.4,
+      "recall_pct": 40.0,
+      "top_confusions": [
+        {
+          "confused_code": "BEN_OTH",
+          "confused_name": "BEN_OTH",
+          "count": 10,
+          "percentage": 20.0
+        },
+        {
+          "confused_code": "NV",
+          "confused_name": "NV",
+          "count": 6,
+          "percentage": 12.0
+        },
+        {
+          "confused_code": "AKIEC",
+          "confused_name": "AKIEC",
+          "count": 5,
+          "percentage": 10.0
+        }
+      ],
+      "plain_explanation": "In 20.0% of cases, INF was mistaken for BEN_OTH."
+    },
+    "MAL_OTH": {
+      "name": "MAL_OTH",
+      "short_code": "MAL_OTH",
+      "total_cases": 9,
+      "correct_cases": 0,
+      "recall": 0.0,
+      "recall_pct": 0.0,
+      "top_confusions": [
+        {
+          "confused_code": "INF",
+          "confused_name": "INF",
+          "count": 3,
+          "percentage": 33.3
+        },
+        {
+          "confused_code": "BEN_OTH",
+          "confused_name": "BEN_OTH",
+          "count": 2,
+          "percentage": 22.2
+        },
+        {
+          "confused_code": "MEL",
+          "confused_name": "MEL",
+          "count": 2,
+          "percentage": 22.2
+        }
+      ],
+      "plain_explanation": "In 33.3% of cases, MAL_OTH was mistaken for INF."
+    },
+    "MEL": {
+      "name": "MEL",
+      "short_code": "MEL",
+      "total_cases": 450,
+      "correct_cases": 207,
+      "recall": 0.46,
+      "recall_pct": 46.0,
+      "top_confusions": [
+        {
+          "confused_code": "NV",
+          "confused_name": "NV",
+          "count": 98,
+          "percentage": 21.8
+        },
+        {
+          "confused_code": "BKL",
+          "confused_name": "BKL",
+          "count": 45,
+          "percentage": 10.0
+        },
+        {
+          "confused_code": "BEN_OTH",
+          "confused_name": "BEN_OTH",
+          "count": 32,
+          "percentage": 7.1
+        }
+      ],
+      "plain_explanation": "In 21.8% of cases, MEL was mistaken for NV."
+    },
+    "NV": {
+      "name": "NV",
+      "short_code": "NV",
+      "total_cases": 746,
+      "correct_cases": 526,
+      "recall": 0.7051,
+      "recall_pct": 70.5,
+      "top_confusions": [
+        {
+          "confused_code": "MEL",
+          "confused_name": "MEL",
+          "count": 75,
+          "percentage": 10.1
+        },
+        {
+          "confused_code": "BKL",
+          "confused_name": "BKL",
+          "count": 49,
+          "percentage": 6.6
+        },
+        {
+          "confused_code": "BEN_OTH",
+          "confused_name": "BEN_OTH",
+          "count": 32,
+          "percentage": 4.3
+        }
+      ],
+      "plain_explanation": "In 10.1% of cases, NV was mistaken for MEL."
+    },
+    "SCCKA": {
+      "name": "SCCKA",
+      "short_code": "SCCKA",
+      "total_cases": 473,
+      "correct_cases": 276,
+      "recall": 0.5835,
+      "recall_pct": 58.4,
+      "top_confusions": [
+        {
+          "confused_code": "AKIEC",
+          "confused_name": "AKIEC",
+          "count": 71,
+          "percentage": 15.0
+        },
+        {
+          "confused_code": "BCC",
+          "confused_name": "BCC",
+          "count": 46,
+          "percentage": 9.7
+        },
+        {
+          "confused_code": "BKL",
+          "confused_name": "BKL",
+          "count": 43,
+          "percentage": 9.1
+        }
+      ],
+      "plain_explanation": "In 15.0% of cases, SCCKA was mistaken for AKIEC."
+    },
+    "VASC": {
+      "name": "VASC",
+      "short_code": "VASC",
+      "total_cases": 47,
+      "correct_cases": 37,
+      "recall": 0.7872,
+      "recall_pct": 78.7,
+      "top_confusions": [
+        {
+          "confused_code": "BCC",
+          "confused_name": "BCC",
+          "count": 3,
+          "percentage": 6.4
+        },
+        {
+          "confused_code": "BEN_OTH",
+          "confused_name": "BEN_OTH",
+          "count": 2,
+          "percentage": 4.3
+        },
+        {
+          "confused_code": "INF",
+          "confused_name": "INF",
+          "count": 2,
+          "percentage": 4.3
+        }
+      ],
+      "plain_explanation": "In 6.4% of cases, VASC was mistaken for BCC."
+    }
+  },
+  "ranked_by_recall": [
+    "VASC",
+    "NV",
+    "SCCKA",
+    "AKIEC",
+    "DF",
+    "MEL",
+    "BCC",
+    "INF",
+    "BKL",
+    "BEN_OTH",
+    "MAL_OTH"
+  ]
+}

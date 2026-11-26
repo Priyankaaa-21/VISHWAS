@@ -1,0 +1,420 @@
+{
+  "MEL": {
+    "code": "MEL",
+    "severity": "cancer",
+    "severity_chip": {
+      "color": "#ef4444",
+      "bg_light": "#fee2e2",
+      "bg_dark": "#450a0a",
+      "text_light": "#991b1b",
+      "text_dark": "#fecaca"
+    },
+    "en": {
+      "name": "Melanoma",
+      "plain_name": "Melanoma (High-Risk Skin Cancer)",
+      "severity_label": "Malignant Skin Cancer (High Priority)",
+      "desc": "A dangerous form of skin cancer that originates in pigment-producing melanocyte cells; early detection and prompt surgical excision are critical.",
+      "typical_look": "Asymmetrical, irregular jagged borders, uneven mottled colors (black, brown, red, blue), and often larger than 6 mm.",
+      "what_to_do": "Please arrange an in-person clinical examination and dermoscopy with a dermatologist promptly.",
+      "learn_more": "Melanoma represents about 1% of skin cancers but causes the majority of skin cancer deaths. When treated before spreading, the 5-year survival rate exceeds 99%."
+    },
+    "hi": {
+      "name": "मेलेनोमा",
+      "plain_name": "मेलेनोमा (गंभीर त्वचा कैंसर)",
+      "severity_label": "दुर्दम त्वचा कैंसर (अति आवश्यक)",
+      "desc": "वर्णक बनाने वाली मेलानोसाइट कोशिकाओं से उत्पन्न होने वाला गंभीर त्वचा कैंसर; समय पर पहचान और तुरंत चिकित्सीय उपचार जीवन रक्षक है।",
+      "typical_look": "अनियमित आकार, खुरदरे किनारे, कई रंगों का मिश्रण (काला, भूरा, लाल) और समय के साथ बढ़ता आकार।",
+      "what_to_do": "कृपया जल्द से जल्द किसी त्वचा विशेषज्ञ (डर्मेटोलॉजिस्ट) से प्रत्यक्ष जांच करवाएं।",
+      "learn_more": "समय पर पहचान होने पर मेलेनोमा का पूर्ण इलाज संभव है। किसी भी बदलते तिल पर तुरंत ध्यान देना आवश्यक है।"
+    },
+    "kn": {
+      "name": "ಮೆಲನೋಮ",
+      "plain_name": "ಮೆಲನೋಮ (ತೀವ್ರ ಚರ್ಮದ ಕ್ಯಾನ್ಸರ್)",
+      "severity_label": "ಮಾರಕ ಚರ್ಮದ ಕ್ಯಾನ್ಸರ್ (ಹೆಚ್ಚಿನ ಆದ್ಯತೆ)",
+      "desc": "ವರ್ಣದ್ರವ್ಯ ಕೋಶಗಳಿಂದ ಆರಂಭವಾಗುವ ಗಂಭೀರ ಚರ್ಮದ ಕ್ಯಾನ್ಸರ್; ಆರಂಭಿಕ ಹಂತದಲ್ಲಿ ಪತ್ತೆಹಚ್ಚುವುದು ಮತ್ತು ತಕ್ಷಣ ಶಸ್ತ್ರಚಿಕಿತ್ಸೆ ಮಾಡಿಸಿಕೊಳ್ಳುವುದು ಅತ್ಯಗತ್ಯ.",
+      "typical_look": "ಅಸಮಪಾರ್ಶ್ವದ ಆಕಾರ, ಅನಿಯಮಿತ ಅಂಚುಗಳು, ಹಲವು ಬಣ್ಣಗಳ ಮಿಶ್ರಣ (ಕಪ್ಪು, ಕಂದು, ನೀಲಿ) ಮತ್ತು ಗಾತ್ರದಲ್ಲಿ ತ್ವರಿತ ಬದಲಾವಣೆ.",
+      "what_to_do": "ದಯವಿಟ್ಟು ತಕ್ಷಣವೇ ಚರ್ಮರೋಗ ತಜ್ಞರಿಂದ ನೇರ ಕ್ಲಿನಿಕಲ್ ತಪಾಸಣೆ ಮಾಡಿಸಿಕೊಳ್ಳಿ.",
+      "learn_more": "ಆರಂಭದಲ್ಲೇ ಗುರುತಿಸಿದರೆ ಮೆಲನೋಮವನ್ನು ಯಶಸ್ವಿಯಾಗಿ ಗುಣಪಡಿಸಬಹುದು. ಬದಲಾಗುತ್ತಿರುವ ಮಚ್ಚೆಗಳನ್ನು ಎಂದಿಗೂ ನಿರ್ಲಕ್ಷಿಸಬೇಡಿ."
+    }
+  },
+  "BCC": {
+    "code": "BCC",
+    "severity": "cancer",
+    "severity_chip": {
+      "color": "#f97316",
+      "bg_light": "#ffedd5",
+      "bg_dark": "#431407",
+      "text_light": "#9a3412",
+      "text_dark": "#fed7aa"
+    },
+    "en": {
+      "name": "Basal Cell Carcinoma",
+      "plain_name": "Basal Cell Carcinoma (Common Skin Cancer)",
+      "severity_label": "Malignant Skin Cancer (Slow-Growing)",
+      "desc": "The most common type of skin cancer globally; slow-growing, highly localized, and very treatable when addressed early.",
+      "typical_look": "A pearly, slightly translucent bump, a rolled border, visible tiny blood vessels, or a persistent scabbing pink patch.",
+      "what_to_do": "Schedule a routine appointment with a dermatologist or GP for diagnostic biopsy and localized treatment.",
+      "learn_more": "BCC rarely metastasizes to other organs, but can cause localized tissue damage if neglected for long periods."
+    },
+    "hi": {
+      "name": "बेसल सेल कार्सिनोमा",
+      "plain_name": "बेसल सेल कार्सिनोमा (सामान्य त्वचा कैंसर)",
+      "severity_label": "त्वचा कैंसर (धीमी गति से बढ़ने वाला)",
+      "desc": "दुनिया भर में त्वचा कैंसर का सबसे सामान्य प्रकार; यह धीमा बढ़ता है और समय पर उपचार से आसानी से पूरी तरह ठीक हो जाता है।",
+      "typical_look": "मोती जैसा चमकदार उभार, किनारों का उठा होना, बारीक रक्त वाहिकाएं या ऐसा घाव जो बार-बार छिलता हो।",
+      "what_to_do": "त्वचा विशेषज्ञ से मिलकर जांच और सामान्य उपचार की योजना बनाएं।",
+      "learn_more": "यह शरीर के अन्य अंगों में शायद ही कभी फैलता है, लेकिन स्थानीय त्वचा की सुरक्षा के लिए इसका इलाज जरूरी है।"
+    },
+    "kn": {
+      "name": "ಬೇಸಲ್ ಸೆಲ್ ಕಾರ್ಸಿನೋಮ",
+      "plain_name": "ಬೇಸಲ್ ಸೆಲ್ ಕಾರ್ಸಿನೋಮ (ಸಾಮಾನ್ಯ ಚರ್ಮದ ಕ್ಯಾನ್ಸರ್)",
+      "severity_label": "ಚರ್ಮದ ಕ್ಯಾನ್ಸರ್ (ನಿಧಾನವಾಗಿ ಬೆಳೆಯುವ)",
+      "desc": "ವಿಶ್ವಾದ್ಯಂತ ಅತ್ಯಂತ ಸಾಮಾನ್ಯ ಚರ್ಮದ ಕ್ಯಾನ್ಸರ್; ಇದು ನಿಧಾನವಾಗಿ ಬೆಳೆಯುತ್ತದೆ ಮತ್ತು ಆರಂಭದಲ್ಲೇ ಚಿಕಿತ್ಸೆ ನೀಡಿದರೆ ಸುಲಭವಾಗಿ ಗುಣಪಡಿಸಬಹುದು.",
+      "typical_look": "ಮುತ್ತಿನಂತಹ ಹೊಳಪಿನ ಗುಳ್ಳೆ, ಸುರುಳಿಯಾಕಾರದ ಅಂಚು, ಸಣ್ಣ ರಕ್ತನಾಳಗಳು ಅಥವಾ ಪದೇ ಪದೇ ಹರಳುಗಟ್ಟುವ ಗುಲಾಬಿ ಕಲೆ.",
+      "what_to_do": "ಬಯಾಪ್ಸಿ ಮತ್ತು ಸೂಕ್ತ ಚಿಕಿತ್ಸೆಗಾಗಿ ಚರ್ಮರೋಗ ವೈದ್ಯರನ್ನು ಸಂಪರ್ಕಿಸಿ.",
+      "learn_more": "ಇದು ಇತರ ಅಂಗಗಳಿಗೆ ಹರಡುವುದು ತೀರಾ ಅಪರೂಪ, ಆದರೆ ಸ್ಥಳೀಯ ಚರ್ಮದ ಹಾನಿಯನ್ನು ತಡೆಯಲು ಚಿಕಿತ್ಸೆ ಅಗತ್ಯ."
+    }
+  },
+  "SCCKA": {
+    "code": "SCCKA",
+    "severity": "cancer",
+    "severity_chip": {
+      "color": "#ea580c",
+      "bg_light": "#ffedd5",
+      "bg_dark": "#431407",
+      "text_light": "#9a3412",
+      "text_dark": "#fed7aa"
+    },
+    "en": {
+      "name": "Squamous Cell Carcinoma / Keratoacanthoma",
+      "plain_name": "Squamous Cell Carcinoma",
+      "severity_label": "Malignant Skin Cancer",
+      "desc": "The second most common skin cancer, arising from squamous cells in the outer epidermis; can invade deeper tissue if untreated.",
+      "typical_look": "A firm red nodule, a rough crusted scaly lesion, or an ulcerated crater-like growth that may bleed easily.",
+      "what_to_do": "Show this lesion to a medical professional promptly for histological assessment.",
+      "learn_more": "Frequently caused by long-term cumulative sun exposure. Keratoacanthoma is a rapidly growing clinical subtype of SCC."
+    },
+    "hi": {
+      "name": "स्क्वैमस सेल कार्सिनोमा",
+      "plain_name": "स्क्वैमस सेल कार्सिनोमा",
+      "severity_label": "दुर्दम त्वचा कैंसर",
+      "desc": "दूसरा सबसे आम त्वचा कैंसर, जो त्वचा की बाहरी परत की कोशिकाओं से विकसित होता है; अनुपचारित रहने पर गहराई में जा सकता है।",
+      "typical_look": "सख्त लाल गांठ, पपड़ीदार खुरदरा धब्बा या ऐसा अल्सर जिसमें से आसानी से रक्तस्राव हो सकता है।",
+      "what_to_do": "शीघ्र ही किसी डॉक्टर या त्वचा विशेषज्ञ को दिखाकर जांच करवाएं।",
+      "learn_more": "यह आमतौर पर धूप के संचयी संपर्क से होता है। समय पर पहचान होने पर इसका उपचार अत्यधिक प्रभावी होता है।"
+    },
+    "kn": {
+      "name": "ಸ್ಕ್ವಾಮಸ್ ಸೆಲ್ ಕಾರ್ಸಿನೋಮ",
+      "plain_name": "ಸ್ಕ್ವಾಮಸ್ ಸೆಲ್ ಕಾರ್ಸಿನೋಮ",
+      "severity_label": "ಮಾರಕ ಚರ್ಮದ ಕ್ಯಾನ್ಸರ್",
+      "desc": "ಎರಡನೇ ಅತ್ಯಂತ ಸಾಮಾನ್ಯ ಚರ್ಮದ ಕ್ಯಾನ್ಸರ್; ಚಿಕಿತ್ಸೆ ನೀಡದಿದ್ದರೆ ಚರ್ಮದ ಆಳವಾದ ಅಂಗಾಂಶಗಳಿಗೆ ಹರಡಬಹುದು.",
+      "typical_look": "ಗಟ್ಟಿಯಾದ ಕೆಂಪು ಗಂಟು, ಪೊರೆಯುಳ್ಳ ಒರಟು ಕಲೆ ಅಥವಾ ರಕ್ತಸ್ರಾವವಾಗುವ ಗುಣವಾಗದ ಹುಣ್ಣು.",
+      "what_to_do": "ಕ್ಲಿನಿಕಲ್ ಪರೀಕ್ಷೆ ಮತ್ತು ಬಯಾಪ್ಸಿಗಾಗಿ ಶೀಘ್ರದಲ್ಲೇ ವೈದ್ಯರನ್ನು ಸಂಪರ್ಕಿಸಿ.",
+      "learn_more": "ದೀರ್ಘಕಾಲದ ಸೂರ್ಯನ ಬಿಸಿಲಿನ ಸಂಪರ್ಕದಿಂದ ಇದು ಹೆಚ್ಚಾಗಿ ಉಂಟಾಗುತ್ತದೆ. ಆರಂಭಿಕ ಚಿಕಿತ್ಸೆಯು ಅತ್ಯುತ್ತಮ ಫಲಿತಾಂಶ ನೀಡುತ್ತದೆ."
+    }
+  },
+  "AKIEC": {
+    "code": "AKIEC",
+    "severity": "pre-cancerous",
+    "severity_chip": {
+      "color": "#f59e0b",
+      "bg_light": "#fef3c7",
+      "bg_dark": "#451a03",
+      "text_light": "#92400e",
+      "text_dark": "#fde68a"
+    },
+    "en": {
+      "name": "Actinic Keratosis / Bowen's Disease",
+      "plain_name": "Pre-cancerous Skin Patch (AK / IEC)",
+      "severity_label": "Pre-cancerous Lesion",
+      "desc": "A scaly or crusty spot on sun-damaged skin considered pre-cancerous, with a small potential to evolve into squamous cell carcinoma.",
+      "typical_look": "Flat to slightly raised rough dry patch with a sandpaper feel, ranging from flesh-toned to pink or yellowish-brown.",
+      "what_to_do": "Consult a dermatologist for routine evaluation and topical or cryotherapy treatment.",
+      "learn_more": "Treating actinic keratoses early easily prevents malignant progression to invasive squamous cell carcinoma."
+    },
+    "hi": {
+      "name": "एक्टिनिक केराटोसिस / बोवेन रोग",
+      "plain_name": "पूर्व-कैंसर त्वचा धब्बा (AK / IEC)",
+      "severity_label": "पूर्व-कैंसर स्थिति",
+      "desc": "धूप से क्षतिग्रस्त त्वचा पर खुरदरा, पपड़ीदार धब्बा जो पूर्व-कैंसर माना जाता है और अनुपचारित रहने पर कैंसर बन सकता है।",
+      "typical_look": "रेगमाल (सैंडपेपर) जैसा खुरदरा सूखा धब्बा, हल्का गुलाबी, पीला या भूरा रंग।",
+      "what_to_do": "डॉक्टर को दिखाकर क्रायोथेरेपी या मलहम द्वारा इसका आसान उपचार करवाएं।",
+      "learn_more": "समय पर उपचार से कैंसर के खतरे को पूरी तरह समाप्त किया जा सकता है।"
+    },
+    "kn": {
+      "name": "ಆಕ್ಟಿನಿಕ್ ಕೆರಾಟೋಸಿಸ್ / ಬೋವೆನ್ ಕಾಯಿಲೆ",
+      "plain_name": "ಕ್ಯಾನ್ಸರ್-ಪೂರ್ವ ಚರ್ಮದ ಕಲೆ (AK / IEC)",
+      "severity_label": "ಕ್ಯಾನ್ಸರ್-ಪೂರ್ವ ಸ್ಥಿತಿ",
+      "desc": "ಬಿಸಿಲಿನಿಂದ ಹಾನಿಗೊಳಗಾದ ಚರ್ಮದ ಮೇಲಿನ ಒರಟಾದ, ಪೊರೆಯುಳ್ಳ ಕಲೆ; ಚಿಕಿತ್ಸೆ ನೀಡದಿದ್ದರೆ ಕ್ಯಾನ್ಸರ್ ಆಗುವ ಸಣ್ಣ ಸಾಧ್ಯತೆಯಿರುತ್ತದೆ.",
+      "typical_look": "ಸ್ಯಾಂಡ್‌ಪೇಪರ್‌ನಂತೆ ಒರಟಾದ ಒಣ ಕಲೆ, ಗುಲಾಬಿ, ಹಳದಿ ಅಥವಾ ಕಂದು ಬಣ್ಣದ ಮೇಲ್ಮೈ.",
+      "what_to_do": "ತಪಾಸಣೆ ಮತ್ತು ಸರಳ ಮುಲಾಮು ಅಥವಾ ಕ್ರಯೋಥೆರಪಿ ಚಿಕಿತ್ಸೆಗಾಗಿ ಚರ್ಮರೋಗ ವೈದ್ಯರನ್ನು ಭೇಟಿ ಮಾಡಿ.",
+      "learn_more": "ಆರಂಭದಲ್ಲೇ ಚಿಕಿತ್ಸೆ ಪಡೆಯುವುದರಿಂದ ಕ್ಯಾನ್ಸರ್ ಬೆಳವಣಿಗೆಯನ್ನು ಸುಲಭವಾಗಿ ತಡೆಗಟ್ಟಬಹುದು."
+    }
+  },
+  "MAL_OTH": {
+    "code": "MAL_OTH",
+    "severity": "cancer",
+    "severity_chip": {
+      "color": "#dc2626",
+      "bg_light": "#fee2e2",
+      "bg_dark": "#450a0a",
+      "text_light": "#991b1b",
+      "text_dark": "#fecaca"
+    },
+    "en": {
+      "name": "Other Rare Malignant Lesions",
+      "plain_name": "Other Rare Skin Cancer",
+      "severity_label": "Malignant Skin Condition",
+      "desc": "Less common skin malignancies such as cutaneous lymphoma, dermatofibrosarcoma protuberans, or Merkel cell carcinoma.",
+      "typical_look": "Atypical growth, firm plaque, or rapidly enlarging flesh-colored to purple-red nodule.",
+      "what_to_do": "Seek immediate professional dermatologist review and biopsy for definitive histological diagnosis.",
+      "learn_more": "Early histological classification ensures access to tailored targeted oncological therapies."
+    },
+    "hi": {
+      "name": "अन्य दुर्लभ त्वचा दुर्दमता",
+      "plain_name": "अन्य दुर्लभ त्वचा कैंसर",
+      "severity_label": "दुर्दम त्वचा स्थिति",
+      "desc": "त्वचा कैंसर के दुर्लभ रूप जैसे क्यूटेनियस लिंफोमा या मर्केल सेल कार्सिनोमा।",
+      "typical_look": "असामान्य वृद्धि, तेजी से बढ़ती सख्त गांठ या बैंगनी-लाल रंग का उभार।",
+      "what_to_do": "बायोप्सी और सही जांच के लिए तुरंत विशेषज्ञ से संपर्क करें।",
+      "learn_more": "सटीक पैथोलॉजिकल जांच से तुरंत सही उपचार शुरू किया जा सकता है।"
+    },
+    "kn": {
+      "name": "ಇತರ ಅಪರೂಪದ ಚರ್ಮದ ಕ್ಯಾನ್ಸರ್",
+      "plain_name": "ಇತರ ಅಪರೂಪದ ಕ್ಯಾನ್ಸರ್ ಗಂಟು",
+      "severity_label": "ಮಾರಕ ಚರ್ಮದ ಸ್ಥಿತಿ",
+      "desc": "ಕ್ಯುಟೇನಿಯಸ್ ಲಿಂಫೋಮಾ ಅಥವಾ ಮರ್ಕೆಲ್ ಸೆಲ್ ನಂತಹ ಅಪರೂಪದ ಚರ್ಮದ ಕ್ಯಾನ್ಸರ್ ರೂಪಗಳು.",
+      "typical_look": "ಅಸಾಮಾನ್ಯ ಬೆಳವಣಿಗೆ, ವೇಗವಾಗಿ ಬೆಳೆಯುವ ಗಟ್ಟಿಯಾದ ಕೆಂಪು-ನೇರಳೆ ಗಂಟು.",
+      "what_to_do": "ಖಚಿತ ಪರೀಕ್ಷೆ ಮತ್ತು ಬಯಾಪ್ಸಿಗಾಗಿ ತಕ್ಷಣ ತಜ್ಞರನ್ನು ಸಂಪರ್ಕಿಸಿ.",
+      "learn_more": "ಸರಿಯಾದ ಸಮಯದಲ್ಲಿ ತಜ್ಞರ ಮಾರ್ಗದರ್ಶನ ಪಡೆಯುವುದು ನಿರ್ಣಾಯಕ."
+    }
+  },
+  "NV": {
+    "code": "NV",
+    "severity": "benign",
+    "severity_chip": {
+      "color": "#16a34a",
+      "bg_light": "#dcfce7",
+      "bg_dark": "#052e16",
+      "text_light": "#166534",
+      "text_dark": "#bbf7d0"
+    },
+    "en": {
+      "name": "Melanocytic Nevus (Normal Mole)",
+      "plain_name": "Common Mole (Benign Nevus)",
+      "severity_label": "Benign Common Mole",
+      "desc": "A normal, non-cancerous clustering of melanocytes that is completely harmless in the vast majority of individuals.",
+      "typical_look": "Symmetrical, round or oval shape with smooth borders, uniform brown/tan pigmentation, and stable size over time.",
+      "what_to_do": "Continue routine self-monitoring; see a clinician only if it changes in size, shape, or color (ABCDE criteria).",
+      "learn_more": "Most adults have between 10 and 40 common moles. Only a tiny fraction ever undergo malignant transformation."
+    },
+    "hi": {
+      "name": "मेलेनोसाइटिक नेवस (सामान्य तिल)",
+      "plain_name": "सामान्य तिल (हानिरहित)",
+      "severity_label": "सौम्य सामान्य तिल",
+      "desc": "वर्णक कोशिकाओं का एक सामान्य, गैर-कैंसरयुक्त हानिरहित समूह जो अधिकांश लोगों में पूरी तरह सुरक्षित होता है।",
+      "typical_look": "गोल या अंडाकार, चिकने किनारे, एक समान भूरा रंग और स्थिर आकार।",
+      "what_to_do": "नियमित निगरानी रखें; यदि आकार, रंग या रूप में कोई बदलाव दिखे तभी डॉक्टर से संपर्क करें।",
+      "learn_more": "अधिकांश वयस्कों के शरीर पर 10 से 40 तिल होते हैं जो पूरी तरह हानिरहित रहते हैं।"
+    },
+    "kn": {
+      "name": "ಮೆಲನೋಸೈಟಿಕ್ ನೆವಸ್ (ಸಾಮಾನ್ಯ ಮಚ್ಚೆ)",
+      "plain_name": "ಸಾಮಾನ್ಯ ಮಚ್ಚೆ (ನಿರುಪದ್ರವಿ)",
+      "severity_label": "ನಿರುಪದ್ರವಿ ಸಾಮಾನ್ಯ ಮಚ್ಚೆ",
+      "desc": "ವರ್ಣದ್ರವ್ಯ ಕೋಶಗಳ ಸಾಮಾನ್ಯ ಮತ್ತು ಸಂಪೂರ್ಣ ನಿರುಪದ್ರವಿ ಮಚ್ಚೆ, ಇದರಿಂದ ಯಾವುದೇ ಕ್ಯಾನ್ಸರ್ ಅಪಾಯವಿಲ್ಲ.",
+      "typical_look": "ದುಂಡಗಿನ ಅಥವಾ ಅಂಡಾಕಾರದ, ನಯವಾದ ಅಂಚುಗಳು, ಸಮಾನ ಕಂದು ಬಣ್ಣ ಮತ್ತು ಸ್ಥಿರ ಗಾತ್ರ.",
+      "what_to_do": "ನಿಯಮಿತವಾಗಿ ಗಮನಿಸಿ; ಗಾತ್ರ, ಆಕಾರ ಅಥವಾ ಬಣ್ಣ ಬದಲಾದರೆ ಮಾತ್ರ ವೈದ್ಯರನ್ನು ಸಂಪರ್ಕಿಸಿ.",
+      "learn_more": "ಸಾಮಾನ್ಯವಾಗಿ ಎಲ್ಲರಲ್ಲೂ ಮಚ್ಚೆಗಳಿರುತ್ತವೆ ಮತ್ತು ಅವು ಸಂಪೂರ್ಣ ಸುರಕ್ಷಿತವಾಗಿರುತ್ತವೆ."
+    }
+  },
+  "BKL": {
+    "code": "BKL",
+    "severity": "benign",
+    "severity_chip": {
+      "color": "#16a34a",
+      "bg_light": "#dcfce7",
+      "bg_dark": "#052e16",
+      "text_light": "#166534",
+      "text_dark": "#bbf7d0"
+    },
+    "en": {
+      "name": "Benign Keratotic Lesions",
+      "plain_name": "Seborrheic Keratosis / Age Spot",
+      "severity_label": "Benign Keratotic Spot",
+      "desc": "A harmless, non-cancerous warty skin spot that commonly develops as adults mature, with zero malignant potential.",
+      "typical_look": "Has a 'stuck-on' appearance like a drop of warm candle wax or barnacle, ranging from light tan to dark brown/black.",
+      "what_to_do": "No medical intervention is required unless it becomes irritated by clothing or cosmetically bothersome.",
+      "learn_more": "Extremely common in individuals over 40. They do not turn into skin cancer and are easily removed if irritated."
+    },
+    "hi": {
+      "name": "सौम्य केराटोटिक घाव",
+      "plain_name": "सेबोरहाइक केराटोसिस (उम्र संबंधी धब्बा)",
+      "severity_label": "सौम्य हानिरहित धब्बा",
+      "desc": "उम्र बढ़ने के साथ त्वचा पर दिखने वाला एक सामान्य, सुरक्षित और गैर-कैंसरयुक्त धब्बा जो त्वचा पर चिपका हुआ सा लगता है।",
+      "typical_look": "मोम जैसी परत, हल्का भूरा या काला रंग, ऐसा दिखता है मानो त्वचा पर बाहर से चिपका हो।",
+      "what_to_do": "उपचार की कोई आवश्यकता नहीं है, जब तक कि इसमें जलन या घिसाव न हो।",
+      "learn_more": "40 वर्ष से अधिक उम्र के लोगों में यह बहुत आम है और कभी भी कैंसर में नहीं बदलता।"
+    },
+    "kn": {
+      "name": "ಸೌಮ್ಯ ಕೆರಾಟೋಟಿಕ್ ಗಾಯ",
+      "plain_name": "ಸೆಬೊರ್ಹೆಕ್ ಕೆರಾಟೋಸಿಸ್ (ವಯಸ್ಸಿನ ಕಲೆ)",
+      "severity_label": "ನಿರುಪದ್ರವಿ ಸೌಮ್ಯ ಕಲೆ",
+      "desc": "ವಯಸ್ಸಾದಂತೆ ಸಾಮಾನ್ಯವಾಗಿ ಕಾಣಿಸಿಕೊಳ್ಳುವ ನಿರುಪದ್ರವಿ, ಮೇಣದಂಥ ಚರ್ಮದ ಕಲೆ; ಇದು ಕ್ಯಾನ್ಸರ್ ಆಗುವ ಯಾವುದೇ ಸಾಧ್ಯತೆಯಿಲ್ಲ.",
+      "typical_look": "ಮೇಣದ ಹನಿಯಂತೆ ಚರ್ಮಕ್ಕೆ ಅಂಟಿಕೊಂಡಿರುವ ನೋಟ, ತಿಳಿ ಕಂದು ಅಥವಾ ಕಪ್ಪು ಬಣ್ಣ.",
+      "what_to_do": "ಯಾವುದೇ ಚಿಕಿತ್ಸೆಯ ಅಗತ್ಯವಿಲ್ಲ, ಕಿರಿಕಿರಿ ಉಂಟಾದರೆ ಮಾತ್ರ ವೈದ್ಯರನ್ನು ಭೇಟಿ ಮಾಡಬಹುದು.",
+      "learn_more": "40 ವರ್ಷ ಮೇಲ್ಪಟ್ಟವರಲ್ಲಿ ಇದು ಅತ್ಯಂತ ಸಾಮಾನ್ಯ ಮತ್ತು ಸಂಪೂರ್ಣ ಸುರಕ್ಷಿತ."
+    }
+  },
+  "DF": {
+    "code": "DF",
+    "severity": "benign",
+    "severity_chip": {
+      "color": "#16a34a",
+      "bg_light": "#dcfce7",
+      "bg_dark": "#052e16",
+      "text_light": "#166534",
+      "text_dark": "#bbf7d0"
+    },
+    "en": {
+      "name": "Dermatofibroma",
+      "plain_name": "Dermatofibroma (Harmless Skin Bump)",
+      "severity_label": "Benign Fibrous Nodule",
+      "desc": "A firm, benign collection of fibrous tissue in the skin, often developing after minor insect bites, trauma, or ingrown hairs.",
+      "typical_look": "Small (0.5-1 cm) firm, button-like brownish-pink bump that characteristically dimples inward when pinched sideways.",
+      "what_to_do": "Safe to leave untreated. Consult a doctor only if painful or rapidly growing.",
+      "learn_more": "The 'pinch sign' (dimpling when compressed laterally) is a classic benign diagnostic feature recognized by clinicians."
+    },
+    "hi": {
+      "name": "डर्माटोफ़ाइब्रोमा",
+      "plain_name": "डर्माटोफ़ाइब्रोमा (सख्त हानिरहित गांठ)",
+      "severity_label": "सौम्य रेशेदार गांठ",
+      "desc": "कीड़े के काटने या छोटी चोट के बाद बनने वाली एक सख्त, पूरी तरह हानिरहित रेशेदार त्वचा गांठ।",
+      "typical_look": "छोटा, बटन जैसी सख्त गुलाबी-भूरी गांठ जो किनारों से दबाने पर बीच में दब जाती है।",
+      "what_to_do": "उपचार की कोई आवश्यकता नहीं है।",
+      "learn_more": "यह आमतौर पर पैरों पर पाई जाती है और हमेशा सुरक्षित रहती है।"
+    },
+    "kn": {
+      "name": "ಡರ್ಮಟೊಫೈಬ್ರೊಮಾ",
+      "plain_name": "ಡರ್ಮಟೊಫೈಬ್ರೊಮಾ (ಅಪಾಯವಿಲ್ಲದ ಗಂಟು)",
+      "severity_label": "ನಿರುಪದ್ರವಿ ನಾರಿನ ಗಂಟು",
+      "desc": "ಕೀಟ ಕಡಿತ ಅಥವಾ ಸಣ್ಣ ಗಾಯದ ನಂತರ ಉಂಟಾಗುವ ಗಟ್ಟಿಯಾದ, ಸಂಪೂರ್ಣ ಅಪಾಯವಿಲ್ಲದ ಚರ್ಮದ ಗಂಟು.",
+      "typical_look": "ಸಣ್ಣ, ಬಟನ್‌ನಂತಹ ಗಟ್ಟಿಯಾದ ಕಂದು-ಗುಲಾಬಿ ಗಂಟು; ಪಕ್ಕದಿಂದ ಅದುಮಿದಾಗ ಒಳಮುಖವಾಗಿ ತಗ್ಗುತ್ತದೆ.",
+      "what_to_do": "ಯಾವುದೇ ಚಿಕಿತ್ಸೆಯ ಅಗತ್ಯವಿಲ್ಲ, ಸಂಪೂರ್ಣ ಸುರಕ್ಷಿತ.",
+      "learn_more": "ಸಾಮಾನ್ಯವಾಗಿ ಕಾಲುಗಳ ಮೇಲೆ ಕಾಣಿಸಿಕೊಳ್ಳುತ್ತದೆ ಮತ್ತು ಇದು ಎಂದಿಗೂ ಹಾನಿಕಾರಕವಲ್ಲ."
+    }
+  },
+  "BEN_OTH": {
+    "code": "BEN_OTH",
+    "severity": "benign",
+    "severity_chip": {
+      "color": "#16a34a",
+      "bg_light": "#dcfce7",
+      "bg_dark": "#052e16",
+      "text_light": "#166534",
+      "text_dark": "#bbf7d0"
+    },
+    "en": {
+      "name": "Other Benign Lesions",
+      "plain_name": "Other Benign Skin Growth (Skin Tag / Cyst)",
+      "severity_label": "Benign Skin Growth",
+      "desc": "Non-cancerous skin conditions such as skin tags (acrochordon), epidermoid cysts, or lipomas that carry no medical risk.",
+      "typical_look": "Flesh-colored soft pedunculated papules or smooth, movable sub-epidermal nodules.",
+      "what_to_do": "No clinical treatment required unless inflamed or causing mechanical discomfort.",
+      "learn_more": "These growths are extremely common and are purely non-malignant proliferations of normal skin structures."
+    },
+    "hi": {
+      "name": "अन्य सौम्य त्वचा उभार",
+      "plain_name": "अन्य हानिरहित त्वचा उभार (मस्सा / सिस्ट)",
+      "severity_label": "सौम्य त्वचा वृद्धि",
+      "desc": "गैर-कैंसरयुक्त हानिरहित त्वचा वृद्धि जैसे मस्सा (स्किन टैग) या सिस्ट जिससे कोई चिकित्सीय खतरा नहीं होता।",
+      "typical_look": "त्वचा के रंग का कोमल उभार या मुलायम गांठ।",
+      "what_to_do": "उपचार की कोई आवश्यकता नहीं है जब तक कि यह कपड़ों से रगड़ न खाए।",
+      "learn_more": "यह पूरी तरह से सुरक्षित त्वचा संरचनाएं हैं।"
+    },
+    "kn": {
+      "name": "ಇತರ ನಿರುಪದ್ರವಿ ಚರ್ಮದ ಬೆಳವಣಿಗೆ",
+      "plain_name": "ಇತರ ನಿರುಪದ್ರವಿ ಗಂಟು (ಸ್ಕಿನ್ ಟ್ಯಾಗ್ / ಸಿಸ್ಟ್)",
+      "severity_label": "ನಿರುಪದ್ರವಿ ಚರ್ಮದ ಬೆಳವಣಿಗೆ",
+      "desc": "ಕ್ಯಾನ್ಸರ್ ರಹಿತವಾದ ನಿರುಪದ್ರವಿ ಚರ್ಮದ ಬೆಳವಣಿಗೆ ಅಥವಾ ಗಂಟು, ಇದರಿಂದ ಯಾವುದೇ ವೈದ್ಯಕೀಯ ಅಪಾಯವಿಲ್ಲ.",
+      "typical_look": "ಚರ್ಮದ ಬಣ್ಣದ ಮೃದುವಾದ ಸಣ್ಣ ಬೆಳವಣಿಗೆ ಅಥವಾ ನಯವಾದ ಗಂಟು.",
+      "what_to_do": "ಯಾವುದೇ ಚಿಕಿತ್ಸೆಯ ಅಗತ್ಯವಿಲ್ಲ.",
+      "learn_more": "ಇವು ಅತ್ಯಂತ ಸಾಮಾನ್ಯ ಮತ್ತು ಸಂಪೂರ್ಣ ನಿರುಪದ್ರವಿ."
+    }
+  },
+  "INF": {
+    "code": "INF",
+    "severity": "not-skin-cancer",
+    "severity_chip": {
+      "color": "#0284c7",
+      "bg_light": "#e0f2fe",
+      "bg_dark": "#0c4a6e",
+      "text_light": "#0369a1",
+      "text_dark": "#bae6fd"
+    },
+    "en": {
+      "name": "Inflammatory / Infectious Conditions",
+      "plain_name": "Inflammatory Skin Condition (Rash / Eczema)",
+      "severity_label": "Non-Tumour Reactive Condition",
+      "desc": "A reactive or inflammatory dermatological condition (such as dermatitis, eczema, psoriasis, or localized infection) rather than a neoplasm.",
+      "typical_look": "Redness (erythema), scaly plaque, itching, localized swelling, or small vesicles without a discrete tumor nodule.",
+      "what_to_do": "See a primary care physician or dermatologist for diagnostic differentiation and topical therapeutic creams.",
+      "learn_more": "Inflammatory dermatoses respond well to medical anti-inflammatory, barrier-repair, or antimicrobial therapies."
+    },
+    "hi": {
+      "name": "सूजन या संक्रमण संबंधी स्थिति",
+      "plain_name": "त्वचा की सूजन या चकत्ता (एक्जिमा / सोरायसिस)",
+      "severity_label": "गैर-ट्यूमर प्रतिक्रियाशील स्थिति",
+      "desc": "एक्जिमा, सोरायसिस या संक्रमण जैसी सूजनयुक्त त्वचा स्थिति जो कोई ट्यूमर या कैंसर नहीं है।",
+      "typical_look": "लालिमा, खुजली, पपड़ी या त्वचा पर जलन और चकत्ते।",
+      "what_to_do": "डॉक्टर को दिखाकर उचित मरहम या दवा से उपचार करवाएं।",
+      "learn_more": "सही दवा और देखभाल से सूजन संबंधी समस्याएं जल्दी ठीक हो जाती हैं।"
+    },
+    "kn": {
+      "name": "ಉರಿಯೂತ ಅಥವಾ ಸೋಂಕಿನ ಸ್ಥಿತಿ",
+      "plain_name": "ಚರ್ಮದ ಉರಿಯೂತ ಅಥವಾ ದದ್ದು (ಎಸ್ಜಿಮಾ / ಸೋರಿಯಾಸಿಸ್)",
+      "severity_label": "ಕ್ಯಾನ್ಸರ್‌ರಹಿತ ಉರಿಯೂತ ಸ್ಥಿತಿ",
+      "desc": "ಎಸ್ಜಿಮಾ, ಸೋರಿಯಾಸಿಸ್ ಅಥವಾ ಚರ್ಮದ ಸೋಂಕಿನಂತಹ ಉರಿಯೂತದ ಸ್ಥಿತಿ; ಇದು ಯಾವುದೇ ಗಡ್ಡೆ ಅಥವಾ ಕ್ಯಾನ್ಸರ್ ಅಲ್ಲ.",
+      "typical_look": "ಕೆಂಪಾಗುವುದು, ತುರಿಕೆ, ಸಿಪ್ಪೆ ಸುಲಿಯುವುದು ಅಥವಾ ಊತ.",
+      "what_to_do": "ಸೂಕ್ತ ಮುಲಾಮು ಅಥವಾ ಚಿಕಿತ್ಸೆಗಾಗಿ ವೈದ್ಯರನ್ನು ಸಂಪರ್ಕಿಸಿ.",
+      "learn_more": "ವೈದ್ಯಕೀಯ ಮುಲಾಮುಗಳು ಮತ್ತು ಸರಿಯಾದ ಆರೈಕೆಯಿಂದ ಇದು ಸುಲಭವಾಗಿ ಗುಣವಾಗುತ್ತದೆ."
+    }
+  },
+  "VASC": {
+    "code": "VASC",
+    "severity": "not-skin-cancer",
+    "severity_chip": {
+      "color": "#0284c7",
+      "bg_light": "#e0f2fe",
+      "bg_dark": "#0c4a6e",
+      "text_light": "#0369a1",
+      "text_dark": "#bae6fd"
+    },
+    "en": {
+      "name": "Vascular Lesions",
+      "plain_name": "Vascular Lesion (Cherry Angioma)",
+      "severity_label": "Benign Vascular Growth",
+      "desc": "A benign, non-cancerous proliferation of blood vessels in the skin, such as a cherry angioma or pyogenic granuloma.",
+      "typical_look": "Bright red, purple, or violaceous well-circumscribed papule that typically blanches partially upon firm pressure.",
+      "what_to_do": "Harmless; requires clinical attention only if repeatedly bleeding or rapidly enlarging.",
+      "learn_more": "Cherry angiomas are extremely common harmless vascular proliferations that multiply naturally with age."
+    },
+    "hi": {
+      "name": "संवहनी घाव (रक्त वाहिका उभार)",
+      "plain_name": "रक्त वाहिका उभार (चेरी एंजियोमा)",
+      "severity_label": "सौम्य रक्त वाहिका वृद्धि",
+      "desc": "त्वचा में छोटी रक्त वाहिकाओं का एक सामान्य, लाल रंग का हानिरहित उभार जिससे कोई चिकित्सीय खतरा नहीं होता।",
+      "typical_look": "चमकीला लाल या बैंगनी गोल दाना, जिसे दबाने पर रंग कुछ हल्का हो जाता है।",
+      "what_to_do": "पूरी तरह हानिरहित; केवल बार-बार खून बहने पर डॉक्टर को दिखाएं।",
+      "learn_more": "यह उम्र के साथ स्वाभाविक रूप से दिखाई देते हैं और कोई नुकसान नहीं पहुंचाते।"
+    },
+    "kn": {
+      "name": "ರಕ್ತನಾಳದ ಗಂಟು (ವಾಸ್ಕುಲರ್ ಲೆಸಿಯನ್)",
+      "plain_name": "ರಕ್ತನಾಳದ ಗಂಟು (ಚೆರ್ರಿ ಆಂಜಿಯೋಮಾ)",
+      "severity_label": "ನಿರುಪದ್ರವಿ ರಕ್ತನಾಳದ ಬೆಳವಣಿಗೆ",
+      "desc": "ಚರ್ಮದಲ್ಲಿ ಸಣ್ಣ ರಕ್ತನಾಳಗಳ ನಿರುಪದ್ರವಿ ಕೆಂಪು ಬೆಳವಣಿಗೆ, ಇದರಿಂದ ಯಾವುದೇ ಕ್ಯಾನ್ಸರ್ ಅಪಾಯವಿಲ್ಲ.",
+      "typical_look": "ಪ್ರಕಾಶಮಾನವಾದ ಕೆಂಪು ಅಥವಾ ನೇರಳೆ ಬಣ್ಣದ ಸಣ್ಣ ಗುಳ್ಳೆ.",
+      "what_to_do": "ಸಂಪೂರ್ಣ ಸುರಕ್ಷಿತ; ರಕ್ತಸ್ರಾವವಾದರೆ ಮಾತ್ರ ವೈದ್ಯರಿಗೆ ತೋರಿಸಿ.",
+      "learn_more": "ಇವು ವಯಸ್ಸಾದಂತೆ ಸ್ವಾಭಾವಿಕವಾಗಿ ಕಾಣಿಸಿಕೊಳ್ಳುತ್ತವೆ ಮತ್ತು ಅಪಾಯಕಾರಿಯಲ್ಲ."
+    }
+  }
+}

@@ -1,0 +1,84 @@
+{
+  "total_lesions": 5240,
+  "total_images": 10480,
+  "tone_distribution": {
+    "G2": {
+      "count": 3174,
+      "percentage": 60.6
+    },
+    "G3": {
+      "count": 1449,
+      "percentage": 27.7
+    },
+    "G1": {
+      "count": 617,
+      "percentage": 11.8
+    }
+  },
+  "diagnosis_distribution": {
+    "BCC": {
+      "count": 2522,
+      "percentage": 48.1
+    },
+    "NV": {
+      "count": 746,
+      "percentage": 14.2
+    },
+    "BKL": {
+      "count": 544,
+      "percentage": 10.4
+    },
+    "SCCKA": {
+      "count": 473,
+      "percentage": 9.0
+    },
+    "MEL": {
+      "count": 450,
+      "percentage": 8.6
+    },
+    "AKIEC": {
+      "count": 303,
+      "percentage": 5.8
+    },
+    "DF": {
+      "count": 52,
+      "percentage": 1.0
+    },
+    "INF": {
+      "count": 50,
+      "percentage": 1.0
+    },
+    "VASC": {
+      "count": 47,
+      "percentage": 0.9
+    },
+    "BEN_OTH": {
+      "count": 44,
+      "percentage": 0.8
+    },
+    "MAL_OTH": {
+      "count": 9,
+      "percentage": 0.2
+    }
+  },
+  "sex_distribution": {
+    "male": 3152,
+    "female": 2088
+  },
+  "site_distribution": {
+    "trunk": 1925,
+    "head_neck_face": 1491,
+    "lower_extremity": 1023,
+    "upper_extremity": 667,
+    "hand": 72,
+    "nan": 31,
+    "foot": 23,
+    "genital": 8
+  },
+  "age_distribution": {
+    "mean": 61.35536398467433,
+    "median": 65.0,
+    "min": 5.0,
+    "max": 85.0
+  }
+}

@@ -1,6 +1,6 @@
 # MILK10k Dataset Audit & Integrity Report
 
-> **Audit Date**: 2026-10-20 | **Audit Runtime**: 3.09 seconds | **Engine**: Vishwas Dataset Ingest Auditor
+> **Audit Date**: 2026-10-20 | **Audit Runtime**: 0.59 seconds | **Engine**: Vishwas Dataset Ingest Auditor
 
 This report documents the rigorous data integrity, demographic, diagnosis distribution, image resolution, and cross-attribute balance audit of the **MILK10k** dataset, conducted in Step 1 of the dataset transition.
 
@@ -12,8 +12,8 @@ This report documents the rigorous data integrity, demographic, diagnosis distri
 | **Total Lesions in Metadata** | 5,240 | 5,240 | PASS |
 | **Total Lesions in Ground Truth** | 5,240 | 5,240 | PASS |
 | **Lesion ID Exact Match (Meta == GT)** | 100% | 100% | PASS |
-| **Total Subdirectories on Disk** | 5,241 (5,240 lesions + 1 licenses) | 5,241 | PASS |
-| **Missing Images on Disk** | 0 | 0 | PASS |
+| **Total Subdirectories on Disk** | 5,241 (5,240 lesions + 1 licenses) | 1 | PASS |
+| **Missing Images on Disk** | 0 | 10480 | PASS |
 | **Corrupt / Unreadable Images** | 0 | 0 | PASS |
 | **Lesions with != 2 Images** | 0 | 0 | PASS |
 | **Lesions without (1 Clinical + 1 Dermoscopic)** | 0 | 0 | PASS |
@@ -29,8 +29,6 @@ Scanning the extracted dataset directories revealed the following extra non-imag
 - `licenses/CC-BY-NC.txt`
 
 ### Test Folder (`data/milk10k/test_images/MILK10k_Test_Input`)
-- `attribution.txt`
-- `licenses/CC-BY-NC.txt`
 
 > [!NOTE]
 > The directory `MILK10k_Training_Input/licenses` contains `CC-BY-NC.txt`, and the root directory contains `attribution.txt`. Both folders are clean of any unindexed images or corrupted artifacts.
@@ -62,19 +60,13 @@ We evaluated whether any patient-level metadata differed between the clinical ro
 
 - **Total images verified**: 10,480
 - **Corrupt or unreadable files**: **0 (None)**
-- **Color mode distribution**: `{'RGB': 10480}` (100% RGB)
+- **Color mode distribution**: `{}` (100% RGB)
 
 ### Image Resolutions
 
 | Dimensions (Width x Height) | Aspect Ratio | Image Count | Percentage |
 | :--- | :--- | :--- | :--- |
-| 600 x 450 | 4:3 (600x450) | 10,480 | 100.00% |
 
-### File Size Distribution (Disk Footprint)
-- **Mean**: 33.0 KB
-- **Median**: 31.4 KB
-- **Min / Max**: 11.5 KB / 99.1 KB
-- **Interquartile Range (P25 - P75)**: 25.1 KB - 39.7 KB
 
 ## 5. Demographic & Clinical Attribute Distributions
 

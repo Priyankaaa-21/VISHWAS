@@ -100,6 +100,10 @@ make rag-index
 
 # 9. Launch Clinical Interactive App (Phase 7)
 make app
+# Note on Theme & Dark Mode:
+# You can toggle visual modes via the sidebar "Theme: Auto / Light / Dark" control.
+# Streamlit's native menu (three dots top-right → Settings → Theme) also works seamlessly.
+# Languages supported: English, हिन्दी (Hindi), and ಕನ್ನಡ (Kannada).
 
 # 10. Stage-1 SLICE-3D Pretraining Pipeline
 make slice3d-audit      # Audit 401,059 SLICE-3D images and metadata

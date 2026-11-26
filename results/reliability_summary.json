@@ -1,0 +1,247 @@
+{
+  "overall_ece": 0.0911,
+  "overall_rating": "okay",
+  "clinical_verdict": "Moderately Calibrated: Minor discrepancies between confidence percentages and accuracy.",
+  "bins": [
+    {
+      "bin_label": "0%-20%",
+      "range": [
+        0.0,
+        0.2
+      ],
+      "count": 239,
+      "mean_confidence": 0.181,
+      "actual_accuracy": 0.238,
+      "diff": 0.057
+    },
+    {
+      "bin_label": "20%-40%",
+      "range": [
+        0.2,
+        0.4
+      ],
+      "count": 2754,
+      "mean_confidence": 0.299,
+      "actual_accuracy": 0.409,
+      "diff": 0.11
+    },
+    {
+      "bin_label": "40%-60%",
+      "range": [
+        0.4,
+        0.6
+      ],
+      "count": 1356,
+      "mean_confidence": 0.484,
+      "actual_accuracy": 0.543,
+      "diff": 0.059
+    },
+    {
+      "bin_label": "60%-80%",
+      "range": [
+        0.6,
+        0.8
+      ],
+      "count": 626,
+      "mean_confidence": 0.688,
+      "actual_accuracy": 0.615,
+      "diff": -0.073
+    },
+    {
+      "bin_label": "80%-100%",
+      "range": [
+        0.8,
+        1.0
+      ],
+      "count": 265,
+      "mean_confidence": 0.872,
+      "actual_accuracy": 0.74,
+      "diff": -0.133
+    }
+  ],
+  "by_tone_group": {
+    "G1": {
+      "ece": 0.0501,
+      "rating": "good",
+      "bins": [
+        {
+          "bin_label": "0%-20%",
+          "range": [
+            0.0,
+            0.2
+          ],
+          "count": 13,
+          "mean_confidence": 0.174,
+          "actual_accuracy": 0.077,
+          "diff": -0.097
+        },
+        {
+          "bin_label": "20%-40%",
+          "range": [
+            0.2,
+            0.4
+          ],
+          "count": 252,
+          "mean_confidence": 0.305,
+          "actual_accuracy": 0.325,
+          "diff": 0.02
+        },
+        {
+          "bin_label": "40%-60%",
+          "range": [
+            0.4,
+            0.6
+          ],
+          "count": 180,
+          "mean_confidence": 0.489,
+          "actual_accuracy": 0.556,
+          "diff": 0.066
+        },
+        {
+          "bin_label": "60%-80%",
+          "range": [
+            0.6,
+            0.8
+          ],
+          "count": 113,
+          "mean_confidence": 0.694,
+          "actual_accuracy": 0.761,
+          "diff": 0.067
+        },
+        {
+          "bin_label": "80%-100%",
+          "range": [
+            0.8,
+            1.0
+          ],
+          "count": 59,
+          "mean_confidence": 0.865,
+          "actual_accuracy": 0.78,
+          "diff": -0.086
+        }
+      ]
+    },
+    "G2": {
+      "ece": 0.1122,
+      "rating": "okay",
+      "bins": [
+        {
+          "bin_label": "0%-20%",
+          "range": [
+            0.0,
+            0.2
+          ],
+          "count": 152,
+          "mean_confidence": 0.182,
+          "actual_accuracy": 0.283,
+          "diff": 0.101
+        },
+        {
+          "bin_label": "20%-40%",
+          "range": [
+            0.2,
+            0.4
+          ],
+          "count": 1754,
+          "mean_confidence": 0.297,
+          "actual_accuracy": 0.423,
+          "diff": 0.126
+        },
+        {
+          "bin_label": "40%-60%",
+          "range": [
+            0.4,
+            0.6
+          ],
+          "count": 776,
+          "mean_confidence": 0.481,
+          "actual_accuracy": 0.546,
+          "diff": 0.066
+        },
+        {
+          "bin_label": "60%-80%",
+          "range": [
+            0.6,
+            0.8
+          ],
+          "count": 338,
+          "mean_confidence": 0.689,
+          "actual_accuracy": 0.565,
+          "diff": -0.124
+        },
+        {
+          "bin_label": "80%-100%",
+          "range": [
+            0.8,
+            1.0
+          ],
+          "count": 154,
+          "mean_confidence": 0.875,
+          "actual_accuracy": 0.695,
+          "diff": -0.18
+        }
+      ]
+    },
+    "G3": {
+      "ece": 0.075,
+      "rating": "good",
+      "bins": [
+        {
+          "bin_label": "0%-20%",
+          "range": [
+            0.0,
+            0.2
+          ],
+          "count": 74,
+          "mean_confidence": 0.18,
+          "actual_accuracy": 0.176,
+          "diff": -0.004
+        },
+        {
+          "bin_label": "20%-40%",
+          "range": [
+            0.2,
+            0.4
+          ],
+          "count": 748,
+          "mean_confidence": 0.3,
+          "actual_accuracy": 0.404,
+          "diff": 0.104
+        },
+        {
+          "bin_label": "40%-60%",
+          "range": [
+            0.4,
+            0.6
+          ],
+          "count": 400,
+          "mean_confidence": 0.487,
+          "actual_accuracy": 0.53,
+          "diff": 0.043
+        },
+        {
+          "bin_label": "60%-80%",
+          "range": [
+            0.6,
+            0.8
+          ],
+          "count": 175,
+          "mean_confidence": 0.68,
+          "actual_accuracy": 0.617,
+          "diff": -0.063
+        },
+        {
+          "bin_label": "80%-100%",
+          "range": [
+            0.8,
+            1.0
+          ],
+          "count": 52,
+          "mean_confidence": 0.874,
+          "actual_accuracy": 0.827,
+          "diff": -0.047
+        }
+      ]
+    }
+  }
+}
