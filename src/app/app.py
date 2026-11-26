@@ -224,162 +224,6 @@ def predict_ensemble(
     return np.mean(all_probs, axis=0)
 
 
-def clear_all_workspace_state():
-    """Wipes all active lesion analysis, uploads, and dialog states."""
-    keys_to_clear = [
-        "active_lesion_data",
-        "diagnosis_result",
-        "custom_c_img",
-        "custom_d_img",
-        "selected_gallery_lid",
-        "trigger_popup",
-    ]
-    for k in keys_to_clear:
-        if k in st.session_state:
-            del st.session_state[k]
-    # Increment uploader nonce to force st.file_uploader to reset cleanly
-    st.session_state["uploader_nonce"] = st.session_state.get("uploader_nonce", 0) + 1
-
-
-def load_lesion_by_id(lesion_id: str, folds_df: pd.DataFrame, meta_df: pd.DataFrame) -> Optional[Dict[str, Any]]:
-    """Retrieves clinical and dermoscopic images and metadata for a specific lesion."""
-    if folds_df.empty or meta_df.empty:
-        return None
-    sub = folds_df[folds_df["lesion_id"] == lesion_id]
-    if sub.empty:
-        return None
-    row = sub.iloc[0]
-    gt_diagnosis = str(row["diagnosis"])
-    tone_group_val = str(row["tone_group"])
-    skin_tone_val = int(row["skin_tone_class"])
-
-    meta_lesion = meta_df[meta_df["lesion_id"] == lesion_id]
-    clin_row = meta_lesion[meta_lesion["image_type"] == "clinical: close-up"]
-    dermo_row = meta_lesion[meta_lesion["image_type"] == "dermoscopic"]
-
-    sample_age = float(clin_row.iloc[0]["age_approx"]) if not clin_row.empty and pd.notna(clin_row.iloc[0]["age_approx"]) else 50.0
-    sample_sex = str(clin_row.iloc[0]["sex"]) if not clin_row.empty and pd.notna(clin_row.iloc[0]["sex"]) else "unknown"
-    sample_site = str(clin_row.iloc[0]["site"]) if not clin_row.empty and pd.notna(clin_row.iloc[0]["site"]) else "unknown"
-
-    cache_128 = VISHWAS_ROOT / "data" / "cache" / "128"
-    c_img = None
-    d_img = None
-    if not clin_row.empty and cache_128.exists():
-        cp = cache_128 / f"{clin_row.iloc[0]['isic_id']}.jpg"
-        if cp.exists():
-            c_img = Image.open(cp)
-    if not dermo_row.empty and cache_128.exists():
-        dp = cache_128 / f"{dermo_row.iloc[0]['isic_id']}.jpg"
-        if dp.exists():
-            d_img = Image.open(dp)
-
-    return {
-        "lesion_id": lesion_id,
-        "c_img": c_img,
-        "d_img": d_img,
-        "gt_diagnosis": gt_diagnosis,
-        "tone_group": tone_group_val,
-        "skin_tone_class": skin_tone_val,
-        "age": sample_age,
-        "sex": sample_sex,
-        "site": sample_site,
-        "fold": int(row["fold"]),
-    }
-
-
-@st.dialog("🩺 Diagnostic Assessment & Multimodal AI Report", width="large")
-def render_diagnosis_modal(result_data: Dict[str, Any]):
-    """Modal popup dialog presenting the full diagnostic analysis."""
-    c_img = result_data.get("c_img")
-    d_img = result_data.get("d_img")
-    pred_f = result_data["pred_f_class"]
-    conf_f = result_data["conf_f"]
-    pred_d = result_data["pred_d_class"]
-    conf_d = result_data["conf_d"]
-    gt = result_data.get("gt_diagnosis")
-    probs_f = result_data["probs_fusion"]
-    probs_d = result_data["probs_dermo"]
-    cond_info = CLASS_INFO.get(pred_f, {"name": pred_f, "type": "Skin Condition"})
-    is_malignant = cond_info.get("type") in [
-        "Malignant Skin Cancer", "High-Risk Malignant Cancer", "Malignant (Sparse, non-headline)"
-    ]
-    is_premalignant = cond_info.get("type") == "Pre-cancerous / In-situ"
-
-    badge_bg = "#fee2e2" if is_malignant else ("#fef3c7" if is_premalignant else "#dcfce7")
-    badge_border = "#dc2626" if is_malignant else ("#d97706" if is_premalignant else "#16a34a")
-    badge_color = "#991b1b" if is_malignant else ("#92400e" if is_premalignant else "#166534")
-    badge_title = "⚠️ MALIGNANT NEOPLASM DETECTED" if is_malignant else ("⚠️ PRE-MALIGNANT (CLINICAL SURVEILLANCE)" if is_premalignant else "✅ BENIGN DERMATOLOGICAL LESION")
-
-    st.markdown(f"""
-    <div style="background:{badge_bg}; border: 2px solid {badge_border}; border-radius:10px; padding:16px 20px; margin-bottom:16px;">
-        <div style="font-weight:800; color:{badge_color}; font-size:1.05rem; letter-spacing:0.5px;">{badge_title}</div>
-        <div style="font-size:1.6rem; font-weight:800; color:#0f172a; margin-top:4px;">
-            {pred_f} — {cond_info['name']}
-        </div>
-        <div style="font-size:0.95rem; color:#475569; margin-top:6px;">
-            AI Confidence: <b>{conf_f*100:.1f}%</b> | Category: <b>{cond_info['type']}</b>
-            {f' | Ground Truth: <b>{gt}</b> (' + ('✅ Match' if pred_f == gt else '⚠️ Discrepancy') + ')' if gt else ''}
-        </div>
-    </div>
-    """, unsafe_allow_html=True)
-
-    # Images display
-    ic1, ic2 = st.columns(2)
-    with ic1:
-        st.markdown("**Clinical Close-up View**")
-        if c_img:
-            st.image(c_img, use_container_width=True)
-        else:
-            st.caption("No clinical image available")
-    with ic2:
-        st.markdown("**Dermoscopic Microscopic View**")
-        if d_img:
-            st.image(d_img, use_container_width=True)
-        else:
-            st.caption("No dermoscopic image available")
-
-    st.markdown("#### 🔬 Multimodal Consensus & Model Comparison")
-    mc1, mc2 = st.columns(2)
-    with mc1:
-        st.metric(
-            label="Two-Image + Tabular Fusion (d_cw_128)",
-            value=f"{pred_f} ({conf_f*100:.1f}%)",
-            delta="Multimodal Consensus" if pred_f == pred_d else "Consensus Discrepancy",
-        )
-    with mc2:
-        st.metric(
-            label="Dermoscopic Only Baseline (a_cw_128)",
-            value=f"{pred_d} ({conf_d*100:.1f}%)",
-            delta="Single-View Baseline",
-        )
-
-    st.markdown("#### 📊 Differential Probability Distribution Across Diagnoses")
-    comp_df = pd.DataFrame({
-        "Diagnosis": MILK10K_CLASSES,
-        "Multimodal Fusion": probs_f,
-        "Dermoscopic Only": probs_d,
-    }).set_index("Diagnosis")
-    st.bar_chart(comp_df, height=230)
-
-    st.markdown("#### 💡 Clinical Recommendation & Next Steps")
-    if is_malignant:
-        st.error("🚨 **Urgent Action**: High probability of malignant neoplasm. Recommend expedited dermatological referral and histological biopsy verification.")
-    elif is_premalignant:
-        st.warning("⚠️ **Pre-Cancerous Advisory**: Features indicate atypical or actinic proliferation. Consider clinical monitoring, dermatoscopy surveillance, or cryotherapy evaluation.")
-    else:
-        st.success("✅ **Standard Benign Protocol**: Lesion characteristics align with benign dermatological finding. Standard routine observation indicated.")
-
-    st.markdown("---")
-    pop_c1, pop_c2 = st.columns([1, 1])
-    with pop_c1:
-        if st.button("❌ Close Modal", use_container_width=True, key="modal_close_btn"):
-            st.rerun()
-    with pop_c2:
-        if st.button("🔄 Revert & Clear Workspace", type="primary", use_container_width=True, key="modal_revert_btn"):
-            clear_all_workspace_state()
-            st.rerun()
-
-
 # ==============================================================================
 # UI RENDERING
 # ==============================================================================
@@ -432,318 +276,207 @@ def main():
     ])
 
     # --------------------------------------------------------------------------
-    # TAB 1: INTERACTIVE CLINICAL AI DIAGNOSTICS WORKSPACE
+    # TAB 1: INTERACTIVE DIAGNOSIS
     # --------------------------------------------------------------------------
     with tabs[0]:
-        # Top Workspace Banner & Global Revert Action
-        wb_col1, wb_col2 = st.columns([3, 1])
-        with wb_col1:
-            st.subheader("🔬 Clinical AI Diagnostics Workspace")
-            st.markdown(
-                "Click any sample lesion or upload custom images to trigger live neural inference. "
-                "A full clinical diagnostic report pops up automatically. You can revert everything back at any time."
-            )
-        with wb_col2:
-            st.markdown("<div style='height: 12px;'></div>", unsafe_allow_html=True)
-            if st.button("🔄 Revert / Reset Everything", type="primary", use_container_width=True, help="Wipes all uploaded images, active selections, and cached analysis"):
-                clear_all_workspace_state()
-                st.success("Workspace reverted to clean initial state.")
-                st.rerun()
-
-        st.caption("🟢 Status: 5-Fold Cross-Validation Models Active | Apple Silicon MPS Neural Engine | Tabular Scaler Loaded")
-        st.markdown("---")
-
-        # Mode Selection
-        input_mode = st.radio(
-            "Select Diagnostic Input Mode:",
-            [
-                "🖼️ Quick-Click Clinical Gallery (Instant Samples)",
-                "📁 Upload Custom Images",
-                "🔎 Search All 5,240 Dataset Lesions",
-            ],
-            horizontal=True,
+        st.subheader("Multimodal Clinical + Dermoscopic Lesion Diagnostic Inference")
+        st.markdown(
+            "Test live predictions using either our **Two-Image + Tabular Fusion Model (`d_cw_128`)** "
+            "or the **Dermoscopic Baseline (`a_cw_128`)**, with individual checkpoints or 5-fold ensemble."
         )
 
-        # ----------------------------------------------------------------------
-        # MODE A: QUICK-CLICK CLINICAL GALLERY
-        # ----------------------------------------------------------------------
-        if input_mode == "🖼️ Quick-Click Clinical Gallery (Instant Samples)":
-            st.markdown("#### Click any lesion below to run instant inference & pop up the full diagnostic report:")
+        col_input_left, col_input_right = st.columns([1, 1])
 
-            featured_lesions = [
-                {"id": "IL_0192026", "diag": "MEL", "name": "Melanoma", "type": "High-Risk Malignant", "tone": "G3", "age": 70, "sex": "male", "site": "trunk"},
-                {"id": "IL_0000652", "diag": "BCC", "name": "Basal Cell Carcinoma", "type": "Malignant Skin Cancer", "tone": "G1", "age": 55, "sex": "male", "site": "face"},
-                {"id": "IL_0024228", "diag": "NV", "name": "Melanocytic Nevus", "type": "Benign Common Mole", "tone": "G3", "age": 45, "sex": "female", "site": "extremity"},
-                {"id": "IL_0026510", "diag": "SCCKA", "name": "Squamous Cell Carcinoma", "type": "Malignant Skin Cancer", "tone": "G2", "age": 65, "sex": "male", "site": "upper arm"},
-            ]
+        with col_input_left:
+            st.markdown("#### 1. Input Modalities")
+            input_mode = st.radio("Choose Input Method:", ["Select from Dataset Gallery", "Upload Custom Images"], horizontal=True)
 
-            card_cols = st.columns(4)
-            for idx, item in enumerate(featured_lesions):
-                with card_cols[idx]:
-                    lesion_data = load_lesion_by_id(item["id"], folds_df, meta_df)
-                    is_mal = "Malignant" in item["type"]
-                    card_border = "#ef4444" if is_mal else "#22c55e"
-                    card_bg = "#fef2f2" if is_mal else "#f0fdf4"
+            selected_c_img: Optional[Image.Image] = None
+            selected_d_img: Optional[Image.Image] = None
+            gt_diagnosis: Optional[str] = None
+            tone_group_val: str = "unknown"
+            skin_tone_val: int = 3
+            sample_age = 55.0
+            sample_sex = "male"
+            sample_site = "trunk"
 
-                    st.markdown(f"""
-                    <div style="background:{card_bg}; border: 1.5px solid {card_border}; border-radius:8px; padding:10px; margin-bottom:8px;">
-                        <span style="font-size:0.8rem; font-weight:700; color:{card_border};">{item['type'].upper()}</span>
-                        <div style="font-size:1.05rem; font-weight:800; color:#0f172a; margin-top:2px;">{item['name']} ({item['diag']})</div>
-                        <div style="font-size:0.8rem; color:#64748b;">ID: <code>{item['id']}</code> | Tone: <b>{item['tone']}</b></div>
-                    </div>
-                    """, unsafe_allow_html=True)
+            if input_mode == "Select from Dataset Gallery":
+                if not folds_df.empty and not meta_df.empty:
+                    # Filter gallery by tone group or diagnosis
+                    filter_col1, filter_col2 = st.columns(2)
+                    with filter_col1:
+                        diag_filter = st.selectbox("Filter Diagnosis:", ["All Diagnoses"] + MILK10K_CLASSES)
+                    with filter_col2:
+                        tone_filter = st.selectbox("Filter Tone Group:", ["All Tone Groups", "G1 = {0,1,2}", "G2 = {3}", "G3 = {4,5}"])
 
-                    if lesion_data and lesion_data.get("d_img"):
-                        st.image(lesion_data["d_img"], caption=f"{item['id']} (Dermoscopic)", use_container_width=True)
+                    filtered = folds_df.copy()
+                    if diag_filter != "All Diagnoses":
+                        filtered = filtered[filtered["diagnosis"] == diag_filter]
+                    if tone_filter != "All Tone Groups":
+                        t_key = tone_filter.split(" ")[0]
+                        filtered = filtered[filtered["tone_group"] == t_key]
+
+                    if not filtered.empty:
+                        lesion_options = [
+                            f"{row['lesion_id']} | {row['diagnosis']} | Tone: {row['tone_group']} (Fold {row['fold']})"
+                            for _, row in filtered.head(50).iterrows()
+                        ]
+                        chosen_lesion_str = st.selectbox("Pick a Sample Lesion:", lesion_options)
+                        chosen_lid = chosen_lesion_str.split(" ")[0]
+
+                        lesion_row = folds_df[folds_df["lesion_id"] == chosen_lid].iloc[0]
+                        gt_diagnosis = lesion_row["diagnosis"]
+                        tone_group_val = lesion_row["tone_group"]
+                        skin_tone_val = int(lesion_row["skin_tone_class"])
+
+                        # Find clinical and dermoscopic ISIC IDs
+                        meta_lesion = meta_df[meta_df["lesion_id"] == chosen_lid]
+                        clin_row = meta_lesion[meta_lesion["image_type"] == "clinical: close-up"]
+                        dermo_row = meta_lesion[meta_lesion["image_type"] == "dermoscopic"]
+
+                        sample_age = float(clin_row.iloc[0]["age_approx"]) if not clin_row.empty and pd.notna(clin_row.iloc[0]["age_approx"]) else 50.0
+                        sample_sex = str(clin_row.iloc[0]["sex"]) if not clin_row.empty and pd.notna(clin_row.iloc[0]["sex"]) else "unknown"
+                        sample_site = str(clin_row.iloc[0]["site"]) if not clin_row.empty and pd.notna(clin_row.iloc[0]["site"]) else "unknown"
+
+                        # Load images from cache
+                        cache_128 = VISHWAS_ROOT / "data" / "cache" / "128"
+                        if not clin_row.empty and cache_128.exists():
+                            c_path = cache_128 / f"{clin_row.iloc[0]['isic_id']}.jpg"
+                            if c_path.exists():
+                                selected_c_img = Image.open(c_path)
+                        if not dermo_row.empty and cache_128.exists():
+                            d_path = cache_128 / f"{dermo_row.iloc[0]['isic_id']}.jpg"
+                            if d_path.exists():
+                                selected_d_img = Image.open(d_path)
                     else:
-                        st.caption("Thumbnail preview unavailable")
-
-                    if st.button(f"⚡ Diagnose {item['diag']} (Popup)", key=f"btn_feat_{item['id']}", use_container_width=True):
-                        if lesion_data:
-                            c_to_use = lesion_data["c_img"] if lesion_data["c_img"] else lesion_data["d_img"]
-                            d_to_use = lesion_data["d_img"]
-                            t_tensor = encode_tabular_vector(lesion_data["age"], lesion_data["sex"], lesion_data["site"])
-
-                            with st.spinner(f"Running multimodal inference on {item['id']}..."):
-                                probs_f = predict_ensemble("two_image_tabular_fusion", c_to_use, d_to_use, t_tensor, device, [0, 1, 2, 3, 4])
-                                probs_d = predict_ensemble("dermoscopic_only", c_to_use, d_to_use, t_tensor, device, [0, 1, 2, 3, 4])
-
-                                top_f = int(np.argmax(probs_f))
-                                top_d = int(np.argmax(probs_d))
-
-                                res = {
-                                    "c_img": c_to_use,
-                                    "d_img": d_to_use,
-                                    "pred_f_class": MILK10K_IDX_TO_CLASS[top_f],
-                                    "conf_f": float(probs_f[top_f]),
-                                    "pred_d_class": MILK10K_IDX_TO_CLASS[top_d],
-                                    "conf_d": float(probs_d[top_d]),
-                                    "gt_diagnosis": lesion_data["gt_diagnosis"],
-                                    "probs_fusion": probs_f,
-                                    "probs_dermo": probs_d,
-                                    "tone_group": lesion_data["tone_group"],
-                                    "skin_tone_class": lesion_data["skin_tone_class"],
-                                    "lesion_id": item["id"],
-                                }
-                                st.session_state["diagnosis_result"] = res
-                                render_diagnosis_modal(res)
-
-        # ----------------------------------------------------------------------
-        # MODE B: UPLOAD CUSTOM IMAGES
-        # ----------------------------------------------------------------------
-        elif input_mode == "📁 Upload Custom Images":
-            nonce = st.session_state.get("uploader_nonce", 0)
-            st.markdown("#### Upload custom clinical & dermoscopic lesion views for analysis:")
-
-            up_c1, up_c2 = st.columns(2)
-            with up_c1:
-                c_file = st.file_uploader("Upload Clinical Close-up Image (JPG/PNG)", type=["jpg", "jpeg", "png"], key=f"up_c_{nonce}")
-            with up_c2:
-                d_file = st.file_uploader("Upload Dermoscopic Microscopic Image (JPG/PNG)", type=["jpg", "jpeg", "png"], key=f"up_d_{nonce}")
-
-            # Demographic inputs
-            st.markdown("##### Clinical Metadata (Used by Two-Image + Tabular Fusion Model)")
-            dm1, dm2, dm3 = st.columns(3)
-            with dm1:
-                custom_age = float(st.number_input("Patient Approximate Age:", min_value=0, max_value=110, value=55, key=f"age_{nonce}"))
-            with dm2:
-                custom_sex = st.selectbox("Patient Sex:", SEX_CATEGORIES, key=f"sex_{nonce}")
-            with dm3:
-                custom_site = st.selectbox("Anatomical Site:", SITE_CATEGORIES, key=f"site_{nonce}")
-
-            # Preview uploaded images
-            uploaded_c_img = Image.open(c_file) if c_file else None
-            uploaded_d_img = Image.open(d_file) if d_file else None
-
-            if uploaded_c_img or uploaded_d_img:
-                st.markdown("##### Uploaded Image Preview")
-                prev_c1, prev_c2 = st.columns(2)
-                with prev_c1:
-                    if uploaded_c_img:
-                        st.image(uploaded_c_img, caption="Clinical Close-up View", use_container_width=True)
-                    else:
-                        st.caption("No clinical image uploaded (dermoscopic view will be shared as fallback).")
-                with prev_c2:
-                    if uploaded_d_img:
-                        st.image(uploaded_d_img, caption="Dermoscopic Microscopic View", use_container_width=True)
-                    else:
-                        st.caption("No dermoscopic image uploaded.")
-
-                act_c1, act_c2 = st.columns([2, 1])
-                with act_c1:
-                    run_upload_btn = st.button("🚀 Analyze Uploaded Images (Pop Up Result)", type="primary", use_container_width=True)
-                with act_c2:
-                    if st.button("🔄 Revert & Clear Uploads", use_container_width=True):
-                        clear_all_workspace_state()
-                        st.rerun()
-
-                if run_upload_btn:
-                    if not uploaded_d_img and not uploaded_c_img:
-                        st.error("Please provide at least one image to run inference.")
-                    else:
-                        d_to_use = uploaded_d_img if uploaded_d_img else uploaded_c_img
-                        c_to_use = uploaded_c_img if uploaded_c_img else uploaded_d_img
-                        t_tensor = encode_tabular_vector(custom_age, custom_sex, custom_site)
-
-                        with st.spinner("Analyzing custom lesion views with 5-fold ensemble..."):
-                            probs_f = predict_ensemble("two_image_tabular_fusion", c_to_use, d_to_use, t_tensor, device, [0, 1, 2, 3, 4])
-                            probs_d = predict_ensemble("dermoscopic_only", c_to_use, d_to_use, t_tensor, device, [0, 1, 2, 3, 4])
-
-                            top_f = int(np.argmax(probs_f))
-                            top_d = int(np.argmax(probs_d))
-
-                            res = {
-                                "c_img": c_to_use,
-                                "d_img": d_to_use,
-                                "pred_f_class": MILK10K_IDX_TO_CLASS[top_f],
-                                "conf_f": float(probs_f[top_f]),
-                                "pred_d_class": MILK10K_IDX_TO_CLASS[top_d],
-                                "conf_d": float(probs_d[top_d]),
-                                "gt_diagnosis": None,
-                                "probs_fusion": probs_f,
-                                "probs_dermo": probs_d,
-                                "tone_group": "External/User",
-                                "skin_tone_class": 3,
-                                "lesion_id": "Custom_Upload",
-                            }
-                            st.session_state["diagnosis_result"] = res
-                            render_diagnosis_modal(res)
-
-        # ----------------------------------------------------------------------
-        # MODE C: SEARCH ALL 5,240 DATASET LESIONS
-        # ----------------------------------------------------------------------
-        else:
-            if not folds_df.empty and not meta_df.empty:
-                st.markdown("#### Filter & pick any of the 5,240 MILK10k cross-validation lesions:")
-                f_c1, f_c2 = st.columns(2)
-                with f_c1:
-                    flt_diag = st.selectbox("Filter Diagnosis:", ["All Diagnoses"] + MILK10K_CLASSES)
-                with f_c2:
-                    flt_tone = st.selectbox("Filter Skin Tone Group:", ["All Tone Groups", "G1 = {0,1,2}", "G2 = {3}", "G3 = {4,5}"])
-
-                filtered_df = folds_df.copy()
-                if flt_diag != "All Diagnoses":
-                    filtered_df = filtered_df[filtered_df["diagnosis"] == flt_diag]
-                if flt_tone != "All Tone Groups":
-                    t_val = flt_tone.split(" ")[0]
-                    filtered_df = filtered_df[filtered_df["tone_group"] == t_val]
-
-                if not filtered_df.empty:
-                    opt_list = [
-                        f"{r['lesion_id']} | {r['diagnosis']} | Tone: {r['tone_group']} | Fold: {r['fold']}"
-                        for _, r in filtered_df.head(60).iterrows()
-                    ]
-                    chosen_opt = st.selectbox("Select Lesion:", opt_list)
-                    chosen_lid = chosen_opt.split(" ")[0]
-
-                    lesion_info = load_lesion_by_id(chosen_lid, folds_df, meta_df)
-                    if lesion_info:
-                        st.markdown(f"""
-                        <div class="metric-card">
-                            <b>Selected Lesion</b>: <code>{chosen_lid}</code> | <b>Ground Truth Diagnosis</b>: <code>{lesion_info['gt_diagnosis']}</code><br>
-                            • Tone Group: <b>{lesion_info['tone_group']}</b> (skin_tone_class: {lesion_info['skin_tone_class']})<br>
-                            • Demographics: Age {lesion_info['age']:.0f} | Sex: {lesion_info['sex'].capitalize()} | Site: {lesion_info['site']} | Fold: {lesion_info['fold']}
-                        </div>
-                        """, unsafe_allow_html=True)
-
-                        pv1, pv2 = st.columns(2)
-                        with pv1:
-                            if lesion_info["c_img"]:
-                                st.image(lesion_info["c_img"], caption="Clinical Close-up View", use_container_width=True)
-                            else:
-                                st.caption("Clinical image not available")
-                        with pv2:
-                            if lesion_info["d_img"]:
-                                st.image(lesion_info["d_img"], caption="Dermoscopic Microscopic View", use_container_width=True)
-                            else:
-                                st.caption("Dermoscopic image not available")
-
-                        diag_btn_c1, diag_btn_c2 = st.columns([2, 1])
-                        with diag_btn_c1:
-                            run_search_diag = st.button(f"⚡ Diagnose {chosen_lid} (Pop Up Result)", type="primary", use_container_width=True)
-                        with diag_btn_c2:
-                            if st.button("🔄 Revert / Reset", use_container_width=True, key="btn_rev_search"):
-                                clear_all_workspace_state()
-                                st.rerun()
-
-                        if run_search_diag:
-                            c_to_use = lesion_info["c_img"] if lesion_info["c_img"] else lesion_info["d_img"]
-                            d_to_use = lesion_info["d_img"]
-                            t_tensor = encode_tabular_vector(lesion_info["age"], lesion_info["sex"], lesion_info["site"])
-
-                            with st.spinner(f"Computing 5-fold ensemble inference on {chosen_lid}..."):
-                                probs_f = predict_ensemble("two_image_tabular_fusion", c_to_use, d_to_use, t_tensor, device, [0, 1, 2, 3, 4])
-                                probs_d = predict_ensemble("dermoscopic_only", c_to_use, d_to_use, t_tensor, device, [0, 1, 2, 3, 4])
-
-                                top_f = int(np.argmax(probs_f))
-                                top_d = int(np.argmax(probs_d))
-
-                                res = {
-                                    "c_img": c_to_use,
-                                    "d_img": d_to_use,
-                                    "pred_f_class": MILK10K_IDX_TO_CLASS[top_f],
-                                    "conf_f": float(probs_f[top_f]),
-                                    "pred_d_class": MILK10K_IDX_TO_CLASS[top_d],
-                                    "conf_d": float(probs_d[top_d]),
-                                    "gt_diagnosis": lesion_info["gt_diagnosis"],
-                                    "probs_fusion": probs_f,
-                                    "probs_dermo": probs_d,
-                                    "tone_group": lesion_info["tone_group"],
-                                    "skin_tone_class": lesion_info["skin_tone_class"],
-                                    "lesion_id": chosen_lid,
-                                }
-                                st.session_state["diagnosis_result"] = res
-                                render_diagnosis_modal(res)
+                        st.warning("No samples match this filter.")
                 else:
-                    st.warning("No lesions match the selected filter.")
+                    st.info("Dataset metadata file not found; use upload mode.")
+
             else:
-                st.info("Dataset metadata file not available; please use the upload mode.")
+                c_file = st.file_uploader("Upload Clinical Close-up Image", type=["jpg", "jpeg", "png"])
+                d_file = st.file_uploader("Upload Dermoscopic Image", type=["jpg", "jpeg", "png"])
+                if c_file:
+                    selected_c_img = Image.open(c_file)
+                if d_file:
+                    selected_d_img = Image.open(d_file)
 
-        # ----------------------------------------------------------------------
-        # PERSISTENT ACTIVE RESULT CARD & MODAL RE-OPEN
-        # ----------------------------------------------------------------------
-        active_res = st.session_state.get("diagnosis_result")
-        if active_res:
-            st.markdown("---")
-            st.markdown("### 📋 Active Diagnostic Result")
-            res_cond = CLASS_INFO.get(active_res["pred_f_class"], {"name": active_res["pred_f_class"], "type": "Condition"})
-            is_m = res_cond.get("type") in ["Malignant Skin Cancer", "High-Risk Malignant Cancer", "Malignant (Sparse, non-headline)"]
+                # Custom clinical inputs
+                m_c1, m_c2, m_c3 = st.columns(3)
+                with m_c1:
+                    sample_age = float(st.number_input("Patient Approximate Age:", min_value=0, max_value=110, value=55))
+                with m_c2:
+                    sample_sex = st.selectbox("Patient Sex:", SEX_CATEGORIES)
+                with m_c3:
+                    sample_site = st.selectbox("Anatomical Site:", SITE_CATEGORIES)
 
-            banner_bg = "#fef2f2" if is_m else "#f0fdf4"
-            banner_border = "#ef4444" if is_m else "#22c55e"
-            banner_tag = "⚠️ MALIGNANT NEOPLASM" if is_m else "✅ BENIGN LESION"
+            # Display uploaded/selected images
+            img_c1, img_c2 = st.columns(2)
+            with img_c1:
+                st.markdown("**Clinical Close-up View**")
+                if selected_c_img:
+                    st.image(selected_c_img, use_container_width=True)
+                else:
+                    st.caption("No clinical image selected.")
+            with img_c2:
+                st.markdown("**Dermoscopic Microscopic View**")
+                if selected_d_img:
+                    st.image(selected_d_img, use_container_width=True)
+                else:
+                    st.caption("No dermoscopic image selected.")
 
+        with col_input_right:
+            st.markdown("#### 2. Inference Configuration & Execution")
+
+            model_choice = st.radio(
+                "Model Architecture:",
+                [
+                    "Compare Both Models (Two-Image Fusion vs. Dermoscopic Only)",
+                    "Two-Image + Tabular Fusion (d_cw_128)",
+                    "Dermoscopic Only Baseline (a_cw_128)",
+                ],
+            )
+
+            ckpt_choice = st.selectbox(
+                "Checkpoint Selection:",
+                ["5-Fold Cross-Validation Ensemble (Recommended)", "Fold 0", "Fold 1", "Fold 2", "Fold 3", "Fold 4"],
+            )
+
+            folds_to_eval = [0, 1, 2, 3, 4] if "Ensemble" in ckpt_choice else [int(ckpt_choice.split(" ")[1])]
+
+            # Encode tabular
+            tabular_tensor = encode_tabular_vector(sample_age, sample_sex, sample_site)
+
+            # Patient context card
+            tg_label = TONE_GROUP_INFO.get(tone_group_val, {}).get("label", tone_group_val)
             st.markdown(f"""
-            <div style="background:{banner_bg}; border:2px solid {banner_border}; border-radius:10px; padding:16px 20px; margin-bottom:14px;">
-                <span style="font-weight:700; color:{banner_border}; font-size:0.95rem;">{banner_tag}</span>
-                <div style="font-size:1.45rem; font-weight:800; color:#0f172a; margin-top:2px;">
-                    {active_res['pred_f_class']} — {res_cond['name']} ({active_res['conf_f']*100:.1f}% Confidence)
-                </div>
-                <div style="font-size:0.9rem; color:#64748b; margin-top:4px;">
-                    Multimodal Model: <b>{active_res['pred_f_class']}</b> ({active_res['conf_f']*100:.1f}%) | 
-                    Baseline Model: <b>{active_res['pred_d_class']}</b> ({active_res['conf_d']*100:.1f}%)
-                    {' | Ground Truth: <b>' + active_res['gt_diagnosis'] + '</b>' if active_res.get('gt_diagnosis') else ''}
-                </div>
+            <div class="metric-card">
+                <b>Patient Clinical Profile</b><br>
+                • <b>Tone Group</b>: <code>{tg_label}</code> (skin_tone_class: {skin_tone_val})<br>
+                • <b>Demographics</b>: Age {sample_age:.0f} | Sex: {sample_sex.capitalize()} | Site: {sample_site}<br>
+                • <b>Ground Truth Diagnosis</b>: <code>{gt_diagnosis if gt_diagnosis else 'External / Unknown'}</code>
             </div>
             """, unsafe_allow_html=True)
 
-            rb_c1, rb_c2 = st.columns([2, 1])
-            with rb_c1:
-                if st.button("🔍 Open Full Diagnostic Report Popup Modal", type="primary", use_container_width=True):
-                    render_diagnosis_modal(active_res)
-            with rb_c2:
-                if st.button("🔄 Revert & Clear Workspace", type="secondary", use_container_width=True, key="btn_rev_persistent"):
-                    clear_all_workspace_state()
-                    st.rerun()
+            run_clicked = st.button("🚀 Run Diagnostic Inference", type="primary", use_container_width=True)
 
-            # Side-by-side probability distribution
-            st.markdown("##### Full Class Probability Distribution Across 11 Diagnostic Categories")
-            comp_df = pd.DataFrame({
-                "Diagnosis": MILK10K_CLASSES,
-                "Multimodal Fusion (d_cw_128)": active_res["probs_fusion"],
-                "Dermoscopic Only (a_cw_128)": active_res["probs_dermo"],
-            }).set_index("Diagnosis")
-            st.bar_chart(comp_df, height=240)
+            if run_clicked or (selected_c_img and selected_d_img):
+                if not selected_d_img:
+                    st.error("Please provide at least a dermoscopic image to run inference.")
+                else:
+                    # Fallback clinical image if only dermoscopic provided
+                    c_img_to_use = selected_c_img if selected_c_img else selected_d_img
+
+                    with st.spinner("Executing neural inference on Apple Silicon MPS/CPU..."):
+                        if "Compare Both" in model_choice:
+                            probs_fusion = predict_ensemble("two_image_tabular_fusion", c_img_to_use, selected_d_img, tabular_tensor, device, folds_to_eval)
+                            probs_dermo = predict_ensemble("dermoscopic_only", c_img_to_use, selected_d_img, tabular_tensor, device, folds_to_eval)
+
+                            top_f_idx = int(np.argmax(probs_fusion))
+                            top_d_idx = int(np.argmax(probs_dermo))
+                            pred_f_class = MILK10K_IDX_TO_CLASS[top_f_idx]
+                            pred_d_class = MILK10K_IDX_TO_CLASS[top_d_idx]
+
+                            res_col1, res_col2 = st.columns(2)
+                            with res_col1:
+                                st.markdown("##### 🔬 Two-Image + Tabular Fusion (`d_cw_128`)")
+                                is_correct_f = (pred_f_class == gt_diagnosis) if gt_diagnosis else None
+                                corr_badge_f = " ✅ Match" if is_correct_f else (" ❌ Diff" if is_correct_f is False else "")
+                                st.markdown(f"**Predicted**: `{pred_f_class}` ({probs_fusion[top_f_idx]*100:.1f}% confidence){corr_badge_f}")
+                                st.caption(f"{CLASS_INFO[pred_f_class]['name']} ({CLASS_INFO[pred_f_class]['type']})")
+
+                            with res_col2:
+                                st.markdown("##### 🔍 Dermoscopic Only Baseline (`a_cw_128`)")
+                                is_correct_d = (pred_d_class == gt_diagnosis) if gt_diagnosis else None
+                                corr_badge_d = " ✅ Match" if is_correct_d else (" ❌ Diff" if is_correct_d is False else "")
+                                st.markdown(f"**Predicted**: `{pred_d_class}` ({probs_dermo[top_d_idx]*100:.1f}% confidence){corr_badge_d}")
+                                st.caption(f"{CLASS_INFO[pred_d_class]['name']} ({CLASS_INFO[pred_d_class]['type']})")
+
+                            # Side-by-side probability distribution
+                            st.markdown("##### Comparative Probability Distribution Across Diagnoses")
+                            comp_df = pd.DataFrame({
+                                "Diagnosis": MILK10K_CLASSES,
+                                "Multimodal Fusion": probs_fusion,
+                                "Dermoscopic Only": probs_dermo,
+                            }).set_index("Diagnosis")
+                            st.bar_chart(comp_df)
+
+                        else:
+                            m_type = "two_image_tabular_fusion" if "Fusion" in model_choice else "dermoscopic_only"
+                            probs = predict_ensemble(m_type, c_img_to_use, selected_d_img, tabular_tensor, device, folds_to_eval)
+                            top_idx = int(np.argmax(probs))
+                            pred_class = MILK10K_IDX_TO_CLASS[top_idx]
+                            conf = probs[top_idx]
+
+                            is_correct = (pred_class == gt_diagnosis) if gt_diagnosis else None
+                            corr_badge = " ✅ Ground Truth Match!" if is_correct else (" ❌ Different from Ground Truth" if is_correct is False else "")
+
+                            st.success(f"**Predicted Diagnosis**: `{pred_class}` ({conf*100:.1f}% confidence){corr_badge}")
+                            st.markdown(f"**Condition**: *{CLASS_INFO[pred_class]['name']}* ({CLASS_INFO[pred_class]['type']})")
+
+                            st.markdown("##### Full Class Probabilities")
+                            prob_df = pd.DataFrame({"Diagnosis": MILK10K_CLASSES, "Probability": probs}).set_index("Diagnosis")
+                            st.bar_chart(prob_df)
 
     # --------------------------------------------------------------------------
     # TAB 2: FAIRNESS AUDIT BENCHMARK
