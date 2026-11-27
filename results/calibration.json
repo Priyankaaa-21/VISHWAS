@@ -1,0 +1,126 @@
+{
+  "status": "success",
+  "target_coverage": 0.9,
+  "alpha": 0.1,
+  "conformal_quantile_q": 0.9599,
+  "score_threshold_p": 0.0401,
+  "calibration_samples": 3144,
+  "evaluation_samples": 2096,
+  "fitted_temperatures": {
+    "global": 0.9164,
+    "G1": 1.0043,
+    "G2": 0.8935,
+    "G3": 0.9233
+  },
+  "ece": {
+    "before": 0.0911,
+    "before_ci_95": [
+      0.0791,
+      0.1049
+    ],
+    "after": 0.0821,
+    "after_ci_95": [
+      0.0704,
+      0.096
+    ],
+    "improvement": 0.009
+  },
+  "per_tone_group_calibration": {
+    "G1": {
+      "temperature": 1.004260811463555,
+      "ece_before": 0.0542,
+      "ece_after": 0.0493,
+      "sample_count": 617
+    },
+    "G2": {
+      "temperature": 0.8935214448674299,
+      "ece_before": 0.1122,
+      "ece_after": 0.1014,
+      "sample_count": 3174
+    },
+    "G3": {
+      "temperature": 0.9233345820910193,
+      "ece_before": 0.0759,
+      "ece_after": 0.0725,
+      "sample_count": 1449
+    }
+  },
+  "conformal_evaluation": {
+    "overall_coverage": 0.9208,
+    "overall_mean_set_size": 5.71,
+    "per_tone_group": {
+      "G1": {
+        "coverage": 0.9153,
+        "mean_set_size": 4.65,
+        "evaluation_samples": 236
+      },
+      "G2": {
+        "coverage": 0.9272,
+        "mean_set_size": 5.88,
+        "evaluation_samples": 1264
+      },
+      "G3": {
+        "coverage": 0.9094,
+        "mean_set_size": 5.78,
+        "evaluation_samples": 596
+      }
+    },
+    "per_class": {
+      "AKIEC": {
+        "coverage": 0.9496,
+        "mean_set_size": 5.13,
+        "evaluation_samples": 119
+      },
+      "BCC": {
+        "coverage": 0.9426,
+        "mean_set_size": 6.51,
+        "evaluation_samples": 1028
+      },
+      "BEN_OTH": {
+        "coverage": 0.6429,
+        "mean_set_size": 5.57,
+        "evaluation_samples": 14
+      },
+      "BKL": {
+        "coverage": 0.8651,
+        "mean_set_size": 5.14,
+        "evaluation_samples": 215
+      },
+      "DF": {
+        "coverage": 0.9545,
+        "mean_set_size": 4.64,
+        "evaluation_samples": 22
+      },
+      "INF": {
+        "coverage": 0.8421,
+        "mean_set_size": 5.84,
+        "evaluation_samples": 19
+      },
+      "MAL_OTH": {
+        "coverage": 1.0,
+        "mean_set_size": 6.5,
+        "evaluation_samples": 4
+      },
+      "MEL": {
+        "coverage": 0.8202,
+        "mean_set_size": 4.75,
+        "evaluation_samples": 178
+      },
+      "NV": {
+        "coverage": 0.9577,
+        "mean_set_size": 4.58,
+        "evaluation_samples": 284
+      },
+      "SCCKA": {
+        "coverage": 0.9058,
+        "mean_set_size": 5.28,
+        "evaluation_samples": 191
+      },
+      "VASC": {
+        "coverage": 0.9545,
+        "mean_set_size": 4.09,
+        "evaluation_samples": 22
+      }
+    }
+  }
+}

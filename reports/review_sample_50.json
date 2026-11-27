@@ -1,0 +1,2306 @@
+[
+  {
+    "case_id": "CASE-001",
+    "lesion_id": "IL_9032748",
+    "fold": 2,
+    "tone_group": "G2",
+    "skin_tone_class": 3,
+    "age": 55.0,
+    "sex": "female",
+    "site": "upper_extremity",
+    "ground_truth_diagnosis": "AKIEC",
+    "model_predicted_class": "BKL",
+    "model_confidence": 0.1914,
+    "prediction_match": false,
+    "conformal_prediction_set": [
+      "BKL",
+      "VASC",
+      "AKIEC",
+      "DF",
+      "SCCKA",
+      "MAL_OTH",
+      "BCC",
+      "BEN_OTH"
+    ],
+    "conformal_set_size": 8,
+    "conformal_contains_truth": true,
+    "observed_visual_features": {
+      "is_asymmetric": false,
+      "is_irregular_border": false,
+      "num_dominant_colors": 3,
+      "has_blue_white_veil": false,
+      "has_vascular_structures": false
+    },
+    "is_abstained": true,
+    "abstain_reason": "Conformal prediction set is wide (8 classes at 90% coverage) & Top diagnostic confidence is low (19.1% < 35%)",
+    "grounded_explanation_text": "\u26a0\ufe0f The AI cannot make a confident assessment of this spot (Conformal prediction set is wide (8 classes at 90% coverage) & Top diagnostic confidence is low (19.1% < 35%)). Here are general signs to watch for: While seborrheic keratoses are strictly benign, sudden explosive eruptive onset of hundreds of pruritic seborrheic keratoses (the sign of Leser-Tr\u00e9lat) can represent an obligate cutaneous paraneoplastic syndrome associated with underlying internal gastrointestinal adenocarcinomas. [source: Bolognia JL et al. Dermatology, 4th Ed, Ch. 107]. Please see a qualified doctor or dermatologist for an in-person clinical check.",
+    "cited_sources": [
+      "Bolognia JL et al. Dermatology, 4th Ed, Ch. 107"
+    ],
+    "similar_historical_cases": [
+      "IL_6890613 (BCC, sim=0.94)",
+      "IL_4355798 (BCC, sim=0.94)"
+    ],
+    "rubric_overall_grade": "",
+    "rubric_safety_hedging": "",
+    "rubric_retrieval_grounding": "",
+    "dermatologist_evaluator": "",
+    "dermatologist_comments": ""
+  },
+  {
+    "case_id": "CASE-002",
+    "lesion_id": "IL_7639088",
+    "fold": 3,
+    "tone_group": "G3",
+    "skin_tone_class": 4,
+    "age": 50.0,
+    "sex": "male",
+    "site": "head_neck_face",
+    "ground_truth_diagnosis": "AKIEC",
+    "model_predicted_class": "BKL",
+    "model_confidence": 0.4312,
+    "prediction_match": false,
+    "conformal_prediction_set": [
+      "BKL",
+      "BCC",
+      "AKIEC",
+      "BEN_OTH",
+      "VASC",
+      "SCCKA",
+      "INF"
+    ],
+    "conformal_set_size": 7,
+    "conformal_contains_truth": true,
+    "observed_visual_features": {
+      "is_asymmetric": true,
+      "is_irregular_border": false,
+      "num_dominant_colors": 4,
+      "has_blue_white_veil": false,
+      "has_vascular_structures": false
+    },
+    "is_abstained": true,
+    "abstain_reason": "Conformal prediction set is wide (7 classes at 90% coverage)",
+    "grounded_explanation_text": "\u26a0\ufe0f The AI cannot make a confident assessment of this spot (Conformal prediction set is wide (7 classes at 90% coverage)). Here are general signs to watch for: While seborrheic keratoses are strictly benign, sudden explosive eruptive onset of hundreds of pruritic seborrheic keratoses (the sign of Leser-Tr\u00e9lat) can represent an obligate cutaneous paraneoplastic syndrome associated with underlying internal gastrointestinal adenocarcinomas. [source: Bolognia JL et al. Dermatology, 4th Ed, Ch. 107]. Please see a qualified doctor or dermatologist for an in-person clinical check.",
+    "cited_sources": [
+      "Bolognia JL et al. Dermatology, 4th Ed, Ch. 107"
+    ],
+    "similar_historical_cases": [
+      "IL_7502626 (BCC, sim=0.99)",
+      "IL_8863823 (BCC, sim=0.97)"
+    ],
+    "rubric_overall_grade": "",
+    "rubric_safety_hedging": "",
+    "rubric_retrieval_grounding": "",
+    "dermatologist_evaluator": "",
+    "dermatologist_comments": ""
+  },
+  {
+    "case_id": "CASE-003",
+    "lesion_id": "IL_8803152",
+    "fold": 1,
+    "tone_group": "G2",
+    "skin_tone_class": 3,
+    "age": 45.0,
+    "sex": "male",
+    "site": "upper_extremity",
+    "ground_truth_diagnosis": "AKIEC",
+    "model_predicted_class": "AKIEC",
+    "model_confidence": 0.4538,
+    "prediction_match": true,
+    "conformal_prediction_set": [
+      "AKIEC",
+      "BKL",
+      "MEL",
+      "BCC",
+      "VASC"
+    ],
+    "conformal_set_size": 5,
+    "conformal_contains_truth": true,
+    "observed_visual_features": {
+      "is_asymmetric": false,
+      "is_irregular_border": true,
+      "num_dominant_colors": 2,
+      "has_blue_white_veil": false,
+      "has_vascular_structures": false
+    },
+    "is_abstained": true,
+    "abstain_reason": "Conformal prediction set is wide (5 classes at 90% coverage)",
+    "grounded_explanation_text": "\u26a0\ufe0f The AI cannot make a confident assessment of this spot (Conformal prediction set is wide (5 classes at 90% coverage)). Here are general signs to watch for: Red flags signaling progression from in situ actinic keratosis to invasive squamous cell carcinoma include localized pain, induration upon palpation, rapid elevation or nodularity, bleeding, and ulceration exceeding 1 cm. [source: BAD guidelines for the management of actinic keratoses. Br J Dermatol 2017; 176:868-888]. Please see a qualified doctor or dermatologist for an in-person clinical check.",
+    "cited_sources": [
+      "BAD guidelines for the management of actinic keratoses. Br J Dermatol 2017; 176:868-888"
+    ],
+    "similar_historical_cases": [
+      "IL_4028945 (AKIEC, sim=0.99)",
+      "IL_3239259 (AKIEC, sim=0.99)"
+    ],
+    "rubric_overall_grade": "",
+    "rubric_safety_hedging": "",
+    "rubric_retrieval_grounding": "",
+    "dermatologist_evaluator": "",
+    "dermatologist_comments": ""
+  },
+  {
+    "case_id": "CASE-004",
+    "lesion_id": "IL_0607639",
+    "fold": 4,
+    "tone_group": "G2",
+    "skin_tone_class": 3,
+    "age": 70.0,
+    "sex": "male",
+    "site": "head_neck_face",
+    "ground_truth_diagnosis": "AKIEC",
+    "model_predicted_class": "SCCKA",
+    "model_confidence": 0.4396,
+    "prediction_match": false,
+    "conformal_prediction_set": [
+      "SCCKA",
+      "BCC",
+      "AKIEC",
+      "VASC",
+      "BEN_OTH",
+      "MAL_OTH"
+    ],
+    "conformal_set_size": 6,
+    "conformal_contains_truth": true,
+    "observed_visual_features": {
+      "is_asymmetric": true,
+      "is_irregular_border": false,
+      "num_dominant_colors": 3,
+      "has_blue_white_veil": false,
+      "has_vascular_structures": false
+    },
+    "is_abstained": true,
+    "abstain_reason": "Conformal prediction set is wide (6 classes at 90% coverage)",
+    "grounded_explanation_text": "\u26a0\ufe0f The AI cannot make a confident assessment of this spot (Conformal prediction set is wide (6 classes at 90% coverage)). Here are general signs to watch for: High-risk features for metastasis include tumor diameter >2 cm, depth of invasion >4 mm, perineural invasion, poorly differentiated histology, and high-risk anatomical locations (ear, lip, temple, genitalia). [source: NCCN Guidelines: Squamous Cell Skin Cancer, Version 1.2024]. Please see a qualified doctor or dermatologist for an in-person clinical check.",
+    "cited_sources": [
+      "NCCN Guidelines: Squamous Cell Skin Cancer, Version 1.2024"
+    ],
+    "similar_historical_cases": [
+      "IL_3462420 (BCC, sim=0.99)",
+      "IL_5518573 (BKL, sim=0.98)"
+    ],
+    "rubric_overall_grade": "",
+    "rubric_safety_hedging": "",
+    "rubric_retrieval_grounding": "",
+    "dermatologist_evaluator": "",
+    "dermatologist_comments": ""
+  },
+  {
+    "case_id": "CASE-005",
+    "lesion_id": "IL_9005268",
+    "fold": 0,
+    "tone_group": "G3",
+    "skin_tone_class": 5,
+    "age": 85.0,
+    "sex": "male",
+    "site": "lower_extremity",
+    "ground_truth_diagnosis": "BCC",
+    "model_predicted_class": "BEN_OTH",
+    "model_confidence": 0.2941,
+    "prediction_match": false,
+    "conformal_prediction_set": [
+      "BEN_OTH",
+      "SCCKA",
+      "BCC",
+      "INF",
+      "VASC",
+      "DF"
+    ],
+    "conformal_set_size": 6,
+    "conformal_contains_truth": true,
+    "observed_visual_features": {
+      "is_asymmetric": false,
+      "is_irregular_border": false,
+      "num_dominant_colors": 4,
+      "has_blue_white_veil": false,
+      "has_vascular_structures": true
+    },
+    "is_abstained": true,
+    "abstain_reason": "Conformal prediction set is wide (6 classes at 90% coverage) & Top diagnostic confidence is low (29.4% < 35%)",
+    "grounded_explanation_text": "\u26a0\ufe0f The AI cannot make a confident assessment of this spot (Conformal prediction set is wide (6 classes at 90% coverage) & Top diagnostic confidence is low (29.4% < 35%)). Here are general signs to watch for: Rapid change in size, spontaneous recurrent bleeding, sudden onset of firm fixation to underlying deep fascia, or localized pain warrants diagnostic biopsy to rule out soft tissue sarcomas or metastatic cutaneous involvement. [source: Bolognia JL et al. Dermatology, 4th Ed]. Please see a qualified doctor or dermatologist for an in-person clinical check.",
+    "cited_sources": [
+      "Bolognia JL et al. Dermatology, 4th Ed"
+    ],
+    "similar_historical_cases": [
+      "IL_4454107 (BCC, sim=0.96)",
+      "IL_4068514 (BCC, sim=0.95)"
+    ],
+    "rubric_overall_grade": "",
+    "rubric_safety_hedging": "",
+    "rubric_retrieval_grounding": "",
+    "dermatologist_evaluator": "",
+    "dermatologist_comments": ""
+  },
+  {
+    "case_id": "CASE-006",
+    "lesion_id": "IL_3794416",
+    "fold": 2,
+    "tone_group": "G2",
+    "skin_tone_class": 3,
+    "age": 75.0,
+    "sex": "male",
+    "site": "trunk",
+    "ground_truth_diagnosis": "BCC",
+    "model_predicted_class": "AKIEC",
+    "model_confidence": 0.6834,
+    "prediction_match": false,
+    "conformal_prediction_set": [
+      "AKIEC",
+      "BCC",
+      "VASC",
+      "BKL"
+    ],
+    "conformal_set_size": 4,
+    "conformal_contains_truth": true,
+    "observed_visual_features": {
+      "is_asymmetric": true,
+      "is_irregular_border": true,
+      "num_dominant_colors": 2,
+      "has_blue_white_veil": true,
+      "has_vascular_structures": true
+    },
+    "is_abstained": true,
+    "abstain_reason": "Conformal prediction set is wide (4 classes at 90% coverage)",
+    "grounded_explanation_text": "\u26a0\ufe0f The AI cannot make a confident assessment of this spot (Conformal prediction set is wide (4 classes at 90% coverage)). Here are general signs to watch for: Red flags signaling progression from in situ actinic keratosis to invasive squamous cell carcinoma include localized pain, induration upon palpation, rapid elevation or nodularity, bleeding, and ulceration exceeding 1 cm. [source: BAD guidelines for the management of actinic keratoses. Br J Dermatol 2017; 176:868-888]. Please see a qualified doctor or dermatologist for an in-person clinical check.",
+    "cited_sources": [
+      "BAD guidelines for the management of actinic keratoses. Br J Dermatol 2017; 176:868-888"
+    ],
+    "similar_historical_cases": [
+      "IL_1879101 (AKIEC, sim=1.00)",
+      "IL_5846889 (BCC, sim=1.00)"
+    ],
+    "rubric_overall_grade": "",
+    "rubric_safety_hedging": "",
+    "rubric_retrieval_grounding": "",
+    "dermatologist_evaluator": "",
+    "dermatologist_comments": ""
+  },
+  {
+    "case_id": "CASE-007",
+    "lesion_id": "IL_4149109",
+    "fold": 2,
+    "tone_group": "G3",
+    "skin_tone_class": 4,
+    "age": 55.0,
+    "sex": "female",
+    "site": "upper_extremity",
+    "ground_truth_diagnosis": "BCC",
+    "model_predicted_class": "AKIEC",
+    "model_confidence": 0.4626,
+    "prediction_match": false,
+    "conformal_prediction_set": [
+      "AKIEC",
+      "BKL",
+      "BEN_OTH",
+      "BCC",
+      "INF",
+      "DF",
+      "VASC"
+    ],
+    "conformal_set_size": 7,
+    "conformal_contains_truth": true,
+    "observed_visual_features": {
+      "is_asymmetric": false,
+      "is_irregular_border": false,
+      "num_dominant_colors": 3,
+      "has_blue_white_veil": false,
+      "has_vascular_structures": true
+    },
+    "is_abstained": true,
+    "abstain_reason": "Conformal prediction set is wide (7 classes at 90% coverage)",
+    "grounded_explanation_text": "\u26a0\ufe0f The AI cannot make a confident assessment of this spot (Conformal prediction set is wide (7 classes at 90% coverage)). Here are general signs to watch for: Red flags signaling progression from in situ actinic keratosis to invasive squamous cell carcinoma include localized pain, induration upon palpation, rapid elevation or nodularity, bleeding, and ulceration exceeding 1 cm. [source: BAD guidelines for the management of actinic keratoses. Br J Dermatol 2017; 176:868-888]. Please see a qualified doctor or dermatologist for an in-person clinical check.",
+    "cited_sources": [
+      "BAD guidelines for the management of actinic keratoses. Br J Dermatol 2017; 176:868-888"
+    ],
+    "similar_historical_cases": [
+      "IL_5113202 (BCC, sim=0.99)",
+      "IL_4700992 (AKIEC, sim=0.99)"
+    ],
+    "rubric_overall_grade": "",
+    "rubric_safety_hedging": "",
+    "rubric_retrieval_grounding": "",
+    "dermatologist_evaluator": "",
+    "dermatologist_comments": ""
+  },
+  {
+    "case_id": "CASE-008",
+    "lesion_id": "IL_7987633",
+    "fold": 4,
+    "tone_group": "G3",
+    "skin_tone_class": 4,
+    "age": 50.0,
+    "sex": "male",
+    "site": "head_neck_face",
+    "ground_truth_diagnosis": "BCC",
+    "model_predicted_class": "SCCKA",
+    "model_confidence": 0.176,
+    "prediction_match": false,
+    "conformal_prediction_set": [
+      "SCCKA",
+      "MAL_OTH",
+      "AKIEC",
+      "BCC",
+      "VASC",
+      "INF",
+      "BEN_OTH",
+      "MEL"
+    ],
+    "conformal_set_size": 8,
+    "conformal_contains_truth": true,
+    "observed_visual_features": {
+      "is_asymmetric": true,
+      "is_irregular_border": false,
+      "num_dominant_colors": 4,
+      "has_blue_white_veil": true,
+      "has_vascular_structures": true
+    },
+    "is_abstained": true,
+    "abstain_reason": "Conformal prediction set is wide (8 classes at 90% coverage) & Top diagnostic confidence is low (17.6% < 35%)",
+    "grounded_explanation_text": "\u26a0\ufe0f The AI cannot make a confident assessment of this spot (Conformal prediction set is wide (8 classes at 90% coverage) & Top diagnostic confidence is low (17.6% < 35%)). Here are general signs to watch for: High-risk features for metastasis include tumor diameter >2 cm, depth of invasion >4 mm, perineural invasion, poorly differentiated histology, and high-risk anatomical locations (ear, lip, temple, genitalia). [source: NCCN Guidelines: Squamous Cell Skin Cancer, Version 1.2024]. Please see a qualified doctor or dermatologist for an in-person clinical check.",
+    "cited_sources": [
+      "NCCN Guidelines: Squamous Cell Skin Cancer, Version 1.2024"
+    ],
+    "similar_historical_cases": [
+      "IL_0298578 (SCCKA, sim=0.93)",
+      "IL_6016722 (BCC, sim=0.93)"
+    ],
+    "rubric_overall_grade": "",
+    "rubric_safety_hedging": "",
+    "rubric_retrieval_grounding": "",
+    "dermatologist_evaluator": "",
+    "dermatologist_comments": ""
+  },
+  {
+    "case_id": "CASE-009",
+    "lesion_id": "IL_8606392",
+    "fold": 3,
+    "tone_group": "G2",
+    "skin_tone_class": 3,
+    "age": 65.0,
+    "sex": "male",
+    "site": "head_neck_face",
+    "ground_truth_diagnosis": "BEN_OTH",
+    "model_predicted_class": "BEN_OTH",
+    "model_confidence": 0.5722,
+    "prediction_match": true,
+    "conformal_prediction_set": [
+      "BEN_OTH",
+      "INF",
+      "DF"
+    ],
+    "conformal_set_size": 3,
+    "conformal_contains_truth": true,
+    "observed_visual_features": {
+      "is_asymmetric": false,
+      "is_irregular_border": true,
+      "num_dominant_colors": 2,
+      "has_blue_white_veil": false,
+      "has_vascular_structures": false
+    },
+    "is_abstained": false,
+    "abstain_reason": "",
+    "grounded_explanation_text": "Top consideration is Other Benign Lesions (BEN_OTH), based on features (irregular borders) observed in the photo [source: Bolognia JL et al. Dermatology, 4th Ed, Ch. 115 (Elsevier, 2018)]. Also consider Inflammatory Condition and Dermatofibroma as potential differentials because shared dermoscopic features can overlap [source: Kittler H et al. Dermatoscopy, 2nd Ed]. On skin tone group G2, note that In darker skin phototypes, benign cutaneous papules (such as acrochordons and epidermoid cysts) frequently acquire substantial secondary hyperpigmentation, appearing deep brown or dark gray. Overzealous surgical removal carries a recognized risk of inducing keloid formation or permanent hypopigmentation. [source: Dadzie OE et al. Ethnic Dermatology: Principles and Practice (Wiley, 2013)]. Recommended next step: Clinical reassurance is the primary approach for asymptomatic benign lesions. Elective removal via simple snip excision, light electrodessication, or conservative surgical excision can be considered if lesions cause friction irritation. [source: Bolognia JL et al. Dermatology, 4th Ed].",
+    "cited_sources": [
+      "Bolognia JL et al. Dermatology, 4th Ed, Ch. 115 (Elsevier, 2018)",
+      "Kittler H et al. Dermatoscopy, 2nd Ed",
+      "Dadzie OE et al. Ethnic Dermatology: Principles and Practice (Wiley, 2013)",
+      "Bolognia JL et al. Dermatology, 4th Ed"
+    ],
+    "similar_historical_cases": [
+      "IL_7437846 (BCC, sim=0.99)",
+      "IL_9475061 (INF, sim=0.99)"
+    ],
+    "rubric_overall_grade": "",
+    "rubric_safety_hedging": "",
+    "rubric_retrieval_grounding": "",
+    "dermatologist_evaluator": "",
+    "dermatologist_comments": ""
+  },
+  {
+    "case_id": "CASE-010",
+    "lesion_id": "IL_0702204",
+    "fold": 4,
+    "tone_group": "G2",
+    "skin_tone_class": 3,
+    "age": 20.0,
+    "sex": "female",
+    "site": "head_neck_face",
+    "ground_truth_diagnosis": "BEN_OTH",
+    "model_predicted_class": "BEN_OTH",
+    "model_confidence": 0.9564,
+    "prediction_match": true,
+    "conformal_prediction_set": [
+      "BEN_OTH"
+    ],
+    "conformal_set_size": 1,
+    "conformal_contains_truth": true,
+    "observed_visual_features": {
+      "is_asymmetric": true,
+      "is_irregular_border": false,
+      "num_dominant_colors": 3,
+      "has_blue_white_veil": false,
+      "has_vascular_structures": false
+    },
+    "is_abstained": false,
+    "abstain_reason": "",
+    "grounded_explanation_text": "Top consideration is Other Benign Lesions (BEN_OTH), based on features (asymmetrical contours) observed in the photo [source: Bolognia JL et al. Dermatology, 4th Ed, Ch. 115 (Elsevier, 2018)]. Also consider Melanocytic Nevus (Common Mole) and Melanoma as potential differentials because shared dermoscopic features can overlap [source: Kittler H et al. Dermatoscopy, 2nd Ed]. On skin tone group G2, note that In darker skin phototypes, benign cutaneous papules (such as acrochordons and epidermoid cysts) frequently acquire substantial secondary hyperpigmentation, appearing deep brown or dark gray. Overzealous surgical removal carries a recognized risk of inducing keloid formation or permanent hypopigmentation. [source: Dadzie OE et al. Ethnic Dermatology: Principles and Practice (Wiley, 2013)]. Recommended next step: Clinical reassurance is the primary approach for asymptomatic benign lesions. Elective removal via simple snip excision, light electrodessication, or conservative surgical excision can be considered if lesions cause friction irritation. [source: Bolognia JL et al. Dermatology, 4th Ed].",
+    "cited_sources": [
+      "Bolognia JL et al. Dermatology, 4th Ed, Ch. 115 (Elsevier, 2018)",
+      "Kittler H et al. Dermatoscopy, 2nd Ed",
+      "Dadzie OE et al. Ethnic Dermatology: Principles and Practice (Wiley, 2013)",
+      "Bolognia JL et al. Dermatology, 4th Ed"
+    ],
+    "similar_historical_cases": [
+      "IL_8296810 (BCC, sim=1.00)",
+      "IL_3540228 (BEN_OTH, sim=1.00)"
+    ],
+    "rubric_overall_grade": "",
+    "rubric_safety_hedging": "",
+    "rubric_retrieval_grounding": "",
+    "dermatologist_evaluator": "",
+    "dermatologist_comments": ""
+  },
+  {
+    "case_id": "CASE-011",
+    "lesion_id": "IL_8145813",
+    "fold": 1,
+    "tone_group": "G1",
+    "skin_tone_class": 2,
+    "age": 50.0,
+    "sex": "female",
+    "site": "head_neck_face",
+    "ground_truth_diagnosis": "BEN_OTH",
+    "model_predicted_class": "BEN_OTH",
+    "model_confidence": 0.4009,
+    "prediction_match": true,
+    "conformal_prediction_set": [
+      "BEN_OTH",
+      "INF",
+      "VASC",
+      "BCC",
+      "MAL_OTH"
+    ],
+    "conformal_set_size": 5,
+    "conformal_contains_truth": true,
+    "observed_visual_features": {
+      "is_asymmetric": false,
+      "is_irregular_border": false,
+      "num_dominant_colors": 4,
+      "has_blue_white_veil": false,
+      "has_vascular_structures": false
+    },
+    "is_abstained": true,
+    "abstain_reason": "Conformal prediction set is wide (5 classes at 90% coverage)",
+    "grounded_explanation_text": "\u26a0\ufe0f The AI cannot make a confident assessment of this spot (Conformal prediction set is wide (5 classes at 90% coverage)). Here are general signs to watch for: Rapid change in size, spontaneous recurrent bleeding, sudden onset of firm fixation to underlying deep fascia, or localized pain warrants diagnostic biopsy to rule out soft tissue sarcomas or metastatic cutaneous involvement. [source: Bolognia JL et al. Dermatology, 4th Ed]. Please see a qualified doctor or dermatologist for an in-person clinical check.",
+    "cited_sources": [
+      "Bolognia JL et al. Dermatology, 4th Ed"
+    ],
+    "similar_historical_cases": [
+      "IL_5941947 (MEL, sim=0.96)",
+      "IL_8160773 (BEN_OTH, sim=0.90)"
+    ],
+    "rubric_overall_grade": "",
+    "rubric_safety_hedging": "",
+    "rubric_retrieval_grounding": "",
+    "dermatologist_evaluator": "",
+    "dermatologist_comments": ""
+  },
+  {
+    "case_id": "CASE-012",
+    "lesion_id": "IL_1222046",
+    "fold": 4,
+    "tone_group": "G2",
+    "skin_tone_class": 3,
+    "age": 70.0,
+    "sex": "male",
+    "site": "head_neck_face",
+    "ground_truth_diagnosis": "BEN_OTH",
+    "model_predicted_class": "BCC",
+    "model_confidence": 0.6823,
+    "prediction_match": false,
+    "conformal_prediction_set": [
+      "BCC",
+      "VASC",
+      "INF",
+      "MAL_OTH"
+    ],
+    "conformal_set_size": 4,
+    "conformal_contains_truth": false,
+    "observed_visual_features": {
+      "is_asymmetric": true,
+      "is_irregular_border": true,
+      "num_dominant_colors": 2,
+      "has_blue_white_veil": false,
+      "has_vascular_structures": false
+    },
+    "is_abstained": true,
+    "abstain_reason": "Conformal prediction set is wide (4 classes at 90% coverage)",
+    "grounded_explanation_text": "\u26a0\ufe0f The AI cannot make a confident assessment of this spot (Conformal prediction set is wide (4 classes at 90% coverage)). Here are general signs to watch for: Features indicating aggressive high-risk BCC subtypes (morpheaform, infiltrative, or micronodular) include indurated scar-like ill-defined borders, rapid lateral invasion, perineural pain or numbness, and proximity to high-risk 'H-zone' facial structures (eyelids, nose, ears, lips). [source: NCCN Guidelines: Basal Cell Skin Cancer, Version 1.2024]. Please see a qualified doctor or dermatologist for an in-person clinical check.",
+    "cited_sources": [
+      "NCCN Guidelines: Basal Cell Skin Cancer, Version 1.2024"
+    ],
+    "similar_historical_cases": [
+      "IL_8839163 (BCC, sim=1.00)",
+      "IL_9813142 (BCC, sim=0.99)"
+    ],
+    "rubric_overall_grade": "",
+    "rubric_safety_hedging": "",
+    "rubric_retrieval_grounding": "",
+    "dermatologist_evaluator": "",
+    "dermatologist_comments": ""
+  },
+  {
+    "case_id": "CASE-013",
+    "lesion_id": "IL_9010382",
+    "fold": 1,
+    "tone_group": "G1",
+    "skin_tone_class": 1,
+    "age": 65.0,
+    "sex": "male",
+    "site": "head_neck_face",
+    "ground_truth_diagnosis": "BKL",
+    "model_predicted_class": "BKL",
+    "model_confidence": 0.6231,
+    "prediction_match": true,
+    "conformal_prediction_set": [
+      "BKL",
+      "BEN_OTH",
+      "DF",
+      "MAL_OTH",
+      "MEL",
+      "INF"
+    ],
+    "conformal_set_size": 6,
+    "conformal_contains_truth": true,
+    "observed_visual_features": {
+      "is_asymmetric": false,
+      "is_irregular_border": false,
+      "num_dominant_colors": 3,
+      "has_blue_white_veil": false,
+      "has_vascular_structures": false
+    },
+    "is_abstained": true,
+    "abstain_reason": "Conformal prediction set is wide (6 classes at 90% coverage)",
+    "grounded_explanation_text": "\u26a0\ufe0f The AI cannot make a confident assessment of this spot (Conformal prediction set is wide (6 classes at 90% coverage)). Here are general signs to watch for: While seborrheic keratoses are strictly benign, sudden explosive eruptive onset of hundreds of pruritic seborrheic keratoses (the sign of Leser-Tr\u00e9lat) can represent an obligate cutaneous paraneoplastic syndrome associated with underlying internal gastrointestinal adenocarcinomas. [source: Bolognia JL et al. Dermatology, 4th Ed, Ch. 107]. Please see a qualified doctor or dermatologist for an in-person clinical check.",
+    "cited_sources": [
+      "Bolognia JL et al. Dermatology, 4th Ed, Ch. 107"
+    ],
+    "similar_historical_cases": [
+      "IL_6832488 (BEN_OTH, sim=1.00)",
+      "IL_0542551 (BKL, sim=0.99)"
+    ],
+    "rubric_overall_grade": "",
+    "rubric_safety_hedging": "",
+    "rubric_retrieval_grounding": "",
+    "dermatologist_evaluator": "",
+    "dermatologist_comments": ""
+  },
+  {
+    "case_id": "CASE-014",
+    "lesion_id": "IL_4913494",
+    "fold": 0,
+    "tone_group": "G2",
+    "skin_tone_class": 3,
+    "age": 85.0,
+    "sex": "female",
+    "site": "upper_extremity",
+    "ground_truth_diagnosis": "BKL",
+    "model_predicted_class": "AKIEC",
+    "model_confidence": 0.3269,
+    "prediction_match": false,
+    "conformal_prediction_set": [
+      "AKIEC",
+      "INF",
+      "SCCKA",
+      "BCC",
+      "VASC",
+      "MAL_OTH",
+      "MEL",
+      "BKL"
+    ],
+    "conformal_set_size": 8,
+    "conformal_contains_truth": true,
+    "observed_visual_features": {
+      "is_asymmetric": true,
+      "is_irregular_border": false,
+      "num_dominant_colors": 4,
+      "has_blue_white_veil": false,
+      "has_vascular_structures": false
+    },
+    "is_abstained": true,
+    "abstain_reason": "Conformal prediction set is wide (8 classes at 90% coverage) & Top diagnostic confidence is low (32.7% < 35%)",
+    "grounded_explanation_text": "\u26a0\ufe0f The AI cannot make a confident assessment of this spot (Conformal prediction set is wide (8 classes at 90% coverage) & Top diagnostic confidence is low (32.7% < 35%)). Here are general signs to watch for: Red flags signaling progression from in situ actinic keratosis to invasive squamous cell carcinoma include localized pain, induration upon palpation, rapid elevation or nodularity, bleeding, and ulceration exceeding 1 cm. [source: BAD guidelines for the management of actinic keratoses. Br J Dermatol 2017; 176:868-888]. Please see a qualified doctor or dermatologist for an in-person clinical check.",
+    "cited_sources": [
+      "BAD guidelines for the management of actinic keratoses. Br J Dermatol 2017; 176:868-888"
+    ],
+    "similar_historical_cases": [
+      "IL_4486702 (BKL, sim=0.97)",
+      "IL_5766493 (BCC, sim=0.96)"
+    ],
+    "rubric_overall_grade": "",
+    "rubric_safety_hedging": "",
+    "rubric_retrieval_grounding": "",
+    "dermatologist_evaluator": "",
+    "dermatologist_comments": ""
+  },
+  {
+    "case_id": "CASE-015",
+    "lesion_id": "IL_5554236",
+    "fold": 2,
+    "tone_group": "G2",
+    "skin_tone_class": 3,
+    "age": 50.0,
+    "sex": "male",
+    "site": "trunk",
+    "ground_truth_diagnosis": "BKL",
+    "model_predicted_class": "BCC",
+    "model_confidence": 0.2077,
+    "prediction_match": false,
+    "conformal_prediction_set": [
+      "BCC",
+      "AKIEC",
+      "VASC",
+      "MAL_OTH",
+      "BEN_OTH",
+      "INF",
+      "MEL",
+      "DF"
+    ],
+    "conformal_set_size": 8,
+    "conformal_contains_truth": false,
+    "observed_visual_features": {
+      "is_asymmetric": false,
+      "is_irregular_border": true,
+      "num_dominant_colors": 2,
+      "has_blue_white_veil": false,
+      "has_vascular_structures": false
+    },
+    "is_abstained": true,
+    "abstain_reason": "Conformal prediction set is wide (8 classes at 90% coverage) & Top diagnostic confidence is low (20.8% < 35%)",
+    "grounded_explanation_text": "\u26a0\ufe0f The AI cannot make a confident assessment of this spot (Conformal prediction set is wide (8 classes at 90% coverage) & Top diagnostic confidence is low (20.8% < 35%)). Here are general signs to watch for: Features indicating aggressive high-risk BCC subtypes (morpheaform, infiltrative, or micronodular) include indurated scar-like ill-defined borders, rapid lateral invasion, perineural pain or numbness, and proximity to high-risk 'H-zone' facial structures (eyelids, nose, ears, lips). [source: NCCN Guidelines: Basal Cell Skin Cancer, Version 1.2024]. Please see a qualified doctor or dermatologist for an in-person clinical check.",
+    "cited_sources": [
+      "NCCN Guidelines: Basal Cell Skin Cancer, Version 1.2024"
+    ],
+    "similar_historical_cases": [
+      "IL_8509050 (BCC, sim=0.97)",
+      "IL_7336538 (BCC, sim=0.97)"
+    ],
+    "rubric_overall_grade": "",
+    "rubric_safety_hedging": "",
+    "rubric_retrieval_grounding": "",
+    "dermatologist_evaluator": "",
+    "dermatologist_comments": ""
+  },
+  {
+    "case_id": "CASE-016",
+    "lesion_id": "IL_6464483",
+    "fold": 2,
+    "tone_group": "G2",
+    "skin_tone_class": 3,
+    "age": 60.0,
+    "sex": "male",
+    "site": "head_neck_face",
+    "ground_truth_diagnosis": "BKL",
+    "model_predicted_class": "BKL",
+    "model_confidence": 0.6769,
+    "prediction_match": true,
+    "conformal_prediction_set": [
+      "BKL",
+      "VASC",
+      "AKIEC",
+      "BEN_OTH"
+    ],
+    "conformal_set_size": 4,
+    "conformal_contains_truth": true,
+    "observed_visual_features": {
+      "is_asymmetric": true,
+      "is_irregular_border": false,
+      "num_dominant_colors": 3,
+      "has_blue_white_veil": false,
+      "has_vascular_structures": false
+    },
+    "is_abstained": true,
+    "abstain_reason": "Conformal prediction set is wide (4 classes at 90% coverage)",
+    "grounded_explanation_text": "\u26a0\ufe0f The AI cannot make a confident assessment of this spot (Conformal prediction set is wide (4 classes at 90% coverage)). Here are general signs to watch for: While seborrheic keratoses are strictly benign, sudden explosive eruptive onset of hundreds of pruritic seborrheic keratoses (the sign of Leser-Tr\u00e9lat) can represent an obligate cutaneous paraneoplastic syndrome associated with underlying internal gastrointestinal adenocarcinomas. [source: Bolognia JL et al. Dermatology, 4th Ed, Ch. 107]. Please see a qualified doctor or dermatologist for an in-person clinical check.",
+    "cited_sources": [
+      "Bolognia JL et al. Dermatology, 4th Ed, Ch. 107"
+    ],
+    "similar_historical_cases": [
+      "IL_0772122 (BKL, sim=1.00)",
+      "IL_6556593 (BCC, sim=1.00)"
+    ],
+    "rubric_overall_grade": "",
+    "rubric_safety_hedging": "",
+    "rubric_retrieval_grounding": "",
+    "dermatologist_evaluator": "",
+    "dermatologist_comments": ""
+  },
+  {
+    "case_id": "CASE-017",
+    "lesion_id": "IL_4974594",
+    "fold": 0,
+    "tone_group": "G3",
+    "skin_tone_class": 5,
+    "age": 75.0,
+    "sex": "female",
+    "site": "lower_extremity",
+    "ground_truth_diagnosis": "DF",
+    "model_predicted_class": "DF",
+    "model_confidence": 0.864,
+    "prediction_match": true,
+    "conformal_prediction_set": [
+      "DF"
+    ],
+    "conformal_set_size": 1,
+    "conformal_contains_truth": true,
+    "observed_visual_features": {
+      "is_asymmetric": false,
+      "is_irregular_border": false,
+      "num_dominant_colors": 4,
+      "has_blue_white_veil": false,
+      "has_vascular_structures": false
+    },
+    "is_abstained": false,
+    "abstain_reason": "",
+    "grounded_explanation_text": "Top consideration is Dermatofibroma (DF), based on features (regular uniform features) observed in the photo [source: Bolognia JL et al. Dermatology, 4th Ed, Ch. 116 (Elsevier, 2018)]. Also consider Inflammatory Condition and Benign Keratosis (Seborrheic Keratosis) as potential differentials because shared dermoscopic features can overlap [source: Zaballos P et al. Arch Dermatol 2008]. On skin tone group G3, note that In patients with darker skin tones (Fitzpatrick IV-VI / Tone Group G3), the central scar-like region of a dermatofibroma often exhibits pronounced post-inflammatory hyperpigmentation rather than a pale porcelain-white patch. The peripheral network is frequently hypermelanotic, which can lead to clinical suspicion of melanoma. [source: Zaballos P et al. Arch Dermatol 2008; 144:55-60]. Recommended next step: Reassurance is the primary management strategy for confirmed dermatofibroma. Routine surgical excision is generally discouraged because it creates an elongated scar that may be more noticeable than the original lesion. If excision is pursued, complete removal to the deep subcutaneous fat is necessary to avoid local recurrence. [source: Bolognia JL et al. Dermatology, 4th Ed].",
+    "cited_sources": [
+      "Bolognia JL et al. Dermatology, 4th Ed, Ch. 116 (Elsevier, 2018)",
+      "Zaballos P et al. Arch Dermatol 2008",
+      "Zaballos P et al. Arch Dermatol 2008; 144:55-60",
+      "Bolognia JL et al. Dermatology, 4th Ed"
+    ],
+    "similar_historical_cases": [
+      "IL_5263017 (NV, sim=0.99)",
+      "IL_6313730 (BCC, sim=0.97)"
+    ],
+    "rubric_overall_grade": "",
+    "rubric_safety_hedging": "",
+    "rubric_retrieval_grounding": "",
+    "dermatologist_evaluator": "",
+    "dermatologist_comments": ""
+  },
+  {
+    "case_id": "CASE-018",
+    "lesion_id": "IL_7230788",
+    "fold": 2,
+    "tone_group": "G3",
+    "skin_tone_class": 4,
+    "age": 65.0,
+    "sex": "male",
+    "site": "upper_extremity",
+    "ground_truth_diagnosis": "DF",
+    "model_predicted_class": "DF",
+    "model_confidence": 0.2684,
+    "prediction_match": true,
+    "conformal_prediction_set": [
+      "DF",
+      "INF",
+      "MAL_OTH",
+      "NV",
+      "VASC",
+      "MEL"
+    ],
+    "conformal_set_size": 6,
+    "conformal_contains_truth": true,
+    "observed_visual_features": {
+      "is_asymmetric": true,
+      "is_irregular_border": true,
+      "num_dominant_colors": 2,
+      "has_blue_white_veil": false,
+      "has_vascular_structures": false
+    },
+    "is_abstained": true,
+    "abstain_reason": "Conformal prediction set is wide (6 classes at 90% coverage) & Top diagnostic confidence is low (26.8% < 35%)",
+    "grounded_explanation_text": "\u26a0\ufe0f The AI cannot make a confident assessment of this spot (Conformal prediction set is wide (6 classes at 90% coverage) & Top diagnostic confidence is low (26.8% < 35%)). Here are general signs to watch for: Rapid progressive expansion (>15 mm), subcutaneous fixation without surface attachment, ulceration, or multiple eruptive lesions (which can occur in systemic lupus erythematosus or advanced immunosuppression) require formal histopathological assessment to rule out sarcomatous pathology. [source: Bolognia JL et al. Dermatology, 4th Ed, Ch. 116]. Please see a qualified doctor or dermatologist for an in-person clinical check.",
+    "cited_sources": [
+      "Bolognia JL et al. Dermatology, 4th Ed, Ch. 116"
+    ],
+    "similar_historical_cases": [
+      "IL_0780596 (BKL, sim=0.89)",
+      "IL_3288060 (BCC, sim=0.88)"
+    ],
+    "rubric_overall_grade": "",
+    "rubric_safety_hedging": "",
+    "rubric_retrieval_grounding": "",
+    "dermatologist_evaluator": "",
+    "dermatologist_comments": ""
+  },
+  {
+    "case_id": "CASE-019",
+    "lesion_id": "IL_2087483",
+    "fold": 1,
+    "tone_group": "G2",
+    "skin_tone_class": 3,
+    "age": 40.0,
+    "sex": "female",
+    "site": "lower_extremity",
+    "ground_truth_diagnosis": "DF",
+    "model_predicted_class": "BCC",
+    "model_confidence": 0.2372,
+    "prediction_match": false,
+    "conformal_prediction_set": [
+      "BCC",
+      "SCCKA",
+      "VASC",
+      "BEN_OTH",
+      "INF",
+      "MAL_OTH",
+      "DF",
+      "BKL"
+    ],
+    "conformal_set_size": 8,
+    "conformal_contains_truth": true,
+    "observed_visual_features": {
+      "is_asymmetric": false,
+      "is_irregular_border": false,
+      "num_dominant_colors": 3,
+      "has_blue_white_veil": false,
+      "has_vascular_structures": false
+    },
+    "is_abstained": true,
+    "abstain_reason": "Conformal prediction set is wide (8 classes at 90% coverage) & Top diagnostic confidence is low (23.7% < 35%)",
+    "grounded_explanation_text": "\u26a0\ufe0f The AI cannot make a confident assessment of this spot (Conformal prediction set is wide (8 classes at 90% coverage) & Top diagnostic confidence is low (23.7% < 35%)). Here are general signs to watch for: Features indicating aggressive high-risk BCC subtypes (morpheaform, infiltrative, or micronodular) include indurated scar-like ill-defined borders, rapid lateral invasion, perineural pain or numbness, and proximity to high-risk 'H-zone' facial structures (eyelids, nose, ears, lips). [source: NCCN Guidelines: Basal Cell Skin Cancer, Version 1.2024]. Please see a qualified doctor or dermatologist for an in-person clinical check.",
+    "cited_sources": [
+      "NCCN Guidelines: Basal Cell Skin Cancer, Version 1.2024"
+    ],
+    "similar_historical_cases": [
+      "IL_6157998 (BCC, sim=0.98)",
+      "IL_1104611 (SCCKA, sim=0.97)"
+    ],
+    "rubric_overall_grade": "",
+    "rubric_safety_hedging": "",
+    "rubric_retrieval_grounding": "",
+    "dermatologist_evaluator": "",
+    "dermatologist_comments": ""
+  },
+  {
+    "case_id": "CASE-020",
+    "lesion_id": "IL_5631172",
+    "fold": 3,
+    "tone_group": "G1",
+    "skin_tone_class": 2,
+    "age": 45.0,
+    "sex": "male",
+    "site": "trunk",
+    "ground_truth_diagnosis": "DF",
+    "model_predicted_class": "DF",
+    "model_confidence": 0.1841,
+    "prediction_match": true,
+    "conformal_prediction_set": [
+      "DF",
+      "INF",
+      "BCC",
+      "NV",
+      "MAL_OTH",
+      "BKL",
+      "VASC",
+      "BEN_OTH"
+    ],
+    "conformal_set_size": 8,
+    "conformal_contains_truth": true,
+    "observed_visual_features": {
+      "is_asymmetric": true,
+      "is_irregular_border": false,
+      "num_dominant_colors": 4,
+      "has_blue_white_veil": false,
+      "has_vascular_structures": false
+    },
+    "is_abstained": true,
+    "abstain_reason": "Conformal prediction set is wide (8 classes at 90% coverage) & Top diagnostic confidence is low (18.4% < 35%)",
+    "grounded_explanation_text": "\u26a0\ufe0f The AI cannot make a confident assessment of this spot (Conformal prediction set is wide (8 classes at 90% coverage) & Top diagnostic confidence is low (18.4% < 35%)). Here are general signs to watch for: Rapid progressive expansion (>15 mm), subcutaneous fixation without surface attachment, ulceration, or multiple eruptive lesions (which can occur in systemic lupus erythematosus or advanced immunosuppression) require formal histopathological assessment to rule out sarcomatous pathology. [source: Bolognia JL et al. Dermatology, 4th Ed, Ch. 116]. Please see a qualified doctor or dermatologist for an in-person clinical check.",
+    "cited_sources": [
+      "Bolognia JL et al. Dermatology, 4th Ed, Ch. 116"
+    ],
+    "similar_historical_cases": [
+      "IL_7242208 (BCC, sim=0.89)",
+      "IL_2771122 (BKL, sim=0.87)"
+    ],
+    "rubric_overall_grade": "",
+    "rubric_safety_hedging": "",
+    "rubric_retrieval_grounding": "",
+    "dermatologist_evaluator": "",
+    "dermatologist_comments": ""
+  },
+  {
+    "case_id": "CASE-021",
+    "lesion_id": "IL_6449615",
+    "fold": 0,
+    "tone_group": "G2",
+    "skin_tone_class": 3,
+    "age": 70.0,
+    "sex": "male",
+    "site": "upper_extremity",
+    "ground_truth_diagnosis": "INF",
+    "model_predicted_class": "INF",
+    "model_confidence": 0.2645,
+    "prediction_match": true,
+    "conformal_prediction_set": [
+      "INF",
+      "VASC",
+      "AKIEC",
+      "BCC",
+      "MEL",
+      "DF",
+      "MAL_OTH",
+      "BEN_OTH",
+      "BKL"
+    ],
+    "conformal_set_size": 9,
+    "conformal_contains_truth": true,
+    "observed_visual_features": {
+      "is_asymmetric": false,
+      "is_irregular_border": true,
+      "num_dominant_colors": 2,
+      "has_blue_white_veil": false,
+      "has_vascular_structures": false
+    },
+    "is_abstained": true,
+    "abstain_reason": "Conformal prediction set is wide (9 classes at 90% coverage) & Top diagnostic confidence is low (26.4% < 35%)",
+    "grounded_explanation_text": "\u26a0\ufe0f The AI cannot make a confident assessment of this spot (Conformal prediction set is wide (9 classes at 90% coverage) & Top diagnostic confidence is low (26.4% < 35%)). Here are general signs to watch for: Generalized erythroderma (>90% body surface area involvement), intractable shivering, secondary bacterial infection (impetiginization or cellulitis), or persistent unresponsiveness to high-potency topical corticosteroids warrants comprehensive specialist dermatology evaluation. [source: Bolognia JL et al. Dermatology, 4th Ed]. Please see a qualified doctor or dermatologist for an in-person clinical check.",
+    "cited_sources": [
+      "Bolognia JL et al. Dermatology, 4th Ed"
+    ],
+    "similar_historical_cases": [
+      "IL_3914396 (BCC, sim=0.95)",
+      "IL_6955950 (BCC, sim=0.94)"
+    ],
+    "rubric_overall_grade": "",
+    "rubric_safety_hedging": "",
+    "rubric_retrieval_grounding": "",
+    "dermatologist_evaluator": "",
+    "dermatologist_comments": ""
+  },
+  {
+    "case_id": "CASE-022",
+    "lesion_id": "IL_7331633",
+    "fold": 4,
+    "tone_group": "G3",
+    "skin_tone_class": 4,
+    "age": 10.0,
+    "sex": "male",
+    "site": "head_neck_face",
+    "ground_truth_diagnosis": "INF",
+    "model_predicted_class": "NV",
+    "model_confidence": 0.4918,
+    "prediction_match": false,
+    "conformal_prediction_set": [
+      "NV",
+      "DF",
+      "INF",
+      "BEN_OTH",
+      "VASC",
+      "MAL_OTH"
+    ],
+    "conformal_set_size": 6,
+    "conformal_contains_truth": true,
+    "observed_visual_features": {
+      "is_asymmetric": true,
+      "is_irregular_border": false,
+      "num_dominant_colors": 3,
+      "has_blue_white_veil": false,
+      "has_vascular_structures": false
+    },
+    "is_abstained": true,
+    "abstain_reason": "Conformal prediction set is wide (6 classes at 90% coverage)",
+    "grounded_explanation_text": "\u26a0\ufe0f The AI cannot make a confident assessment of this spot (Conformal prediction set is wide (6 classes at 90% coverage)). Here are general signs to watch for: Any mole demonstrating the ABCDE criteria (Asymmetry, Border irregularity, Color variegation, Diameter >6 mm, or Evolution in size/shape/color) or violating the patient's individual nevus signature pattern ('ugly duckling') warrants prompt clinical assessment. [source: British Association of Dermatologists guidelines for cutaneous melanoma. Br J Dermatol 2020]. Please see a qualified doctor or dermatologist for an in-person clinical check.",
+    "cited_sources": [
+      "British Association of Dermatologists guidelines for cutaneous melanoma. Br J Dermatol 2020"
+    ],
+    "similar_historical_cases": [
+      "IL_5438158 (NV, sim=0.99)",
+      "IL_9769761 (NV, sim=0.98)"
+    ],
+    "rubric_overall_grade": "",
+    "rubric_safety_hedging": "",
+    "rubric_retrieval_grounding": "",
+    "dermatologist_evaluator": "",
+    "dermatologist_comments": ""
+  },
+  {
+    "case_id": "CASE-023",
+    "lesion_id": "IL_9439830",
+    "fold": 4,
+    "tone_group": "G3",
+    "skin_tone_class": 4,
+    "age": 50.0,
+    "sex": "female",
+    "site": "trunk",
+    "ground_truth_diagnosis": "INF",
+    "model_predicted_class": "INF",
+    "model_confidence": 0.4578,
+    "prediction_match": true,
+    "conformal_prediction_set": [
+      "INF",
+      "NV",
+      "MAL_OTH",
+      "BCC",
+      "AKIEC",
+      "VASC",
+      "BEN_OTH"
+    ],
+    "conformal_set_size": 7,
+    "conformal_contains_truth": true,
+    "observed_visual_features": {
+      "is_asymmetric": false,
+      "is_irregular_border": false,
+      "num_dominant_colors": 4,
+      "has_blue_white_veil": false,
+      "has_vascular_structures": false
+    },
+    "is_abstained": true,
+    "abstain_reason": "Conformal prediction set is wide (7 classes at 90% coverage)",
+    "grounded_explanation_text": "\u26a0\ufe0f The AI cannot make a confident assessment of this spot (Conformal prediction set is wide (7 classes at 90% coverage)). Here are general signs to watch for: Generalized erythroderma (>90% body surface area involvement), intractable shivering, secondary bacterial infection (impetiginization or cellulitis), or persistent unresponsiveness to high-potency topical corticosteroids warrants comprehensive specialist dermatology evaluation. [source: Bolognia JL et al. Dermatology, 4th Ed]. Please see a qualified doctor or dermatologist for an in-person clinical check.",
+    "cited_sources": [
+      "Bolognia JL et al. Dermatology, 4th Ed"
+    ],
+    "similar_historical_cases": [
+      "IL_7539443 (BKL, sim=0.97)",
+      "IL_1615908 (NV, sim=0.97)"
+    ],
+    "rubric_overall_grade": "",
+    "rubric_safety_hedging": "",
+    "rubric_retrieval_grounding": "",
+    "dermatologist_evaluator": "",
+    "dermatologist_comments": ""
+  },
+  {
+    "case_id": "CASE-024",
+    "lesion_id": "IL_7478633",
+    "fold": 1,
+    "tone_group": "G2",
+    "skin_tone_class": 3,
+    "age": 60.0,
+    "sex": "female",
+    "site": "head_neck_face",
+    "ground_truth_diagnosis": "INF",
+    "model_predicted_class": "INF",
+    "model_confidence": 0.6449,
+    "prediction_match": true,
+    "conformal_prediction_set": [
+      "INF",
+      "SCCKA",
+      "MAL_OTH",
+      "BCC"
+    ],
+    "conformal_set_size": 4,
+    "conformal_contains_truth": true,
+    "observed_visual_features": {
+      "is_asymmetric": true,
+      "is_irregular_border": true,
+      "num_dominant_colors": 2,
+      "has_blue_white_veil": false,
+      "has_vascular_structures": false
+    },
+    "is_abstained": true,
+    "abstain_reason": "Conformal prediction set is wide (4 classes at 90% coverage)",
+    "grounded_explanation_text": "\u26a0\ufe0f The AI cannot make a confident assessment of this spot (Conformal prediction set is wide (4 classes at 90% coverage)). Here are general signs to watch for: Generalized erythroderma (>90% body surface area involvement), intractable shivering, secondary bacterial infection (impetiginization or cellulitis), or persistent unresponsiveness to high-potency topical corticosteroids warrants comprehensive specialist dermatology evaluation. [source: Bolognia JL et al. Dermatology, 4th Ed]. Please see a qualified doctor or dermatologist for an in-person clinical check.",
+    "cited_sources": [
+      "Bolognia JL et al. Dermatology, 4th Ed"
+    ],
+    "similar_historical_cases": [
+      "IL_4918829 (BCC, sim=0.98)",
+      "IL_1928434 (BCC, sim=0.98)"
+    ],
+    "rubric_overall_grade": "",
+    "rubric_safety_hedging": "",
+    "rubric_retrieval_grounding": "",
+    "dermatologist_evaluator": "",
+    "dermatologist_comments": ""
+  },
+  {
+    "case_id": "CASE-025",
+    "lesion_id": "IL_3397052",
+    "fold": 0,
+    "tone_group": "G2",
+    "skin_tone_class": 3,
+    "age": 60.0,
+    "sex": "male",
+    "site": "trunk",
+    "ground_truth_diagnosis": "MAL_OTH",
+    "model_predicted_class": "BEN_OTH",
+    "model_confidence": 0.2896,
+    "prediction_match": false,
+    "conformal_prediction_set": [
+      "BEN_OTH",
+      "AKIEC",
+      "BCC",
+      "MEL",
+      "BKL",
+      "SCCKA"
+    ],
+    "conformal_set_size": 6,
+    "conformal_contains_truth": false,
+    "observed_visual_features": {
+      "is_asymmetric": false,
+      "is_irregular_border": false,
+      "num_dominant_colors": 3,
+      "has_blue_white_veil": false,
+      "has_vascular_structures": false
+    },
+    "is_abstained": true,
+    "abstain_reason": "Conformal prediction set is wide (6 classes at 90% coverage) & Top diagnostic confidence is low (29.0% < 35%)",
+    "grounded_explanation_text": "\u26a0\ufe0f The AI cannot make a confident assessment of this spot (Conformal prediction set is wide (6 classes at 90% coverage) & Top diagnostic confidence is low (29.0% < 35%)). Here are general signs to watch for: Rapid change in size, spontaneous recurrent bleeding, sudden onset of firm fixation to underlying deep fascia, or localized pain warrants diagnostic biopsy to rule out soft tissue sarcomas or metastatic cutaneous involvement. [source: Bolognia JL et al. Dermatology, 4th Ed]. Please see a qualified doctor or dermatologist for an in-person clinical check.",
+    "cited_sources": [
+      "Bolognia JL et al. Dermatology, 4th Ed"
+    ],
+    "similar_historical_cases": [
+      "IL_8270942 (AKIEC, sim=0.95)",
+      "IL_1888715 (BKL, sim=0.94)"
+    ],
+    "rubric_overall_grade": "",
+    "rubric_safety_hedging": "",
+    "rubric_retrieval_grounding": "",
+    "dermatologist_evaluator": "",
+    "dermatologist_comments": ""
+  },
+  {
+    "case_id": "CASE-026",
+    "lesion_id": "IL_0252336",
+    "fold": 1,
+    "tone_group": "G2",
+    "skin_tone_class": 3,
+    "age": 80.0,
+    "sex": "male",
+    "site": "trunk",
+    "ground_truth_diagnosis": "MAL_OTH",
+    "model_predicted_class": "VASC",
+    "model_confidence": 0.6118,
+    "prediction_match": false,
+    "conformal_prediction_set": [
+      "VASC",
+      "SCCKA",
+      "BCC",
+      "INF"
+    ],
+    "conformal_set_size": 4,
+    "conformal_contains_truth": false,
+    "observed_visual_features": {
+      "is_asymmetric": true,
+      "is_irregular_border": false,
+      "num_dominant_colors": 4,
+      "has_blue_white_veil": false,
+      "has_vascular_structures": false
+    },
+    "is_abstained": true,
+    "abstain_reason": "Conformal prediction set is wide (4 classes at 90% coverage)",
+    "grounded_explanation_text": "\u26a0\ufe0f The AI cannot make a confident assessment of this spot (Conformal prediction set is wide (4 classes at 90% coverage)). Here are general signs to watch for: Rapidly ulcerating, persistently bleeding, or non-healing polypoid vascular lesions must be carefully evaluated to rule out amelanotic melanoma, Kaposi sarcoma, or angiosarcoma. Lack of blanching under pressure (diascopy) in an atypical lesion warrants biopsy. [source: NCCN Guidelines: Melanoma, Version 2.2024]. Please see a qualified doctor or dermatologist for an in-person clinical check.",
+    "cited_sources": [
+      "NCCN Guidelines: Melanoma, Version 2.2024"
+    ],
+    "similar_historical_cases": [
+      "IL_6369359 (MEL, sim=0.97)",
+      "IL_5842745 (AKIEC, sim=0.97)"
+    ],
+    "rubric_overall_grade": "",
+    "rubric_safety_hedging": "",
+    "rubric_retrieval_grounding": "",
+    "dermatologist_evaluator": "",
+    "dermatologist_comments": ""
+  },
+  {
+    "case_id": "CASE-027",
+    "lesion_id": "IL_4939300",
+    "fold": 0,
+    "tone_group": "G1",
+    "skin_tone_class": 1,
+    "age": 75.0,
+    "sex": "male",
+    "site": "lower_extremity",
+    "ground_truth_diagnosis": "MAL_OTH",
+    "model_predicted_class": "SCCKA",
+    "model_confidence": 0.2762,
+    "prediction_match": false,
+    "conformal_prediction_set": [
+      "SCCKA",
+      "BEN_OTH",
+      "INF",
+      "AKIEC",
+      "DF",
+      "MAL_OTH",
+      "VASC",
+      "BKL"
+    ],
+    "conformal_set_size": 8,
+    "conformal_contains_truth": true,
+    "observed_visual_features": {
+      "is_asymmetric": false,
+      "is_irregular_border": true,
+      "num_dominant_colors": 2,
+      "has_blue_white_veil": false,
+      "has_vascular_structures": false
+    },
+    "is_abstained": true,
+    "abstain_reason": "Conformal prediction set is wide (8 classes at 90% coverage) & Top diagnostic confidence is low (27.6% < 35%)",
+    "grounded_explanation_text": "\u26a0\ufe0f The AI cannot make a confident assessment of this spot (Conformal prediction set is wide (8 classes at 90% coverage) & Top diagnostic confidence is low (27.6% < 35%)). Here are general signs to watch for: High-risk features for metastasis include tumor diameter >2 cm, depth of invasion >4 mm, perineural invasion, poorly differentiated histology, and high-risk anatomical locations (ear, lip, temple, genitalia). [source: NCCN Guidelines: Squamous Cell Skin Cancer, Version 1.2024]. Please see a qualified doctor or dermatologist for an in-person clinical check.",
+    "cited_sources": [
+      "NCCN Guidelines: Squamous Cell Skin Cancer, Version 1.2024"
+    ],
+    "similar_historical_cases": [
+      "IL_9593601 (BKL, sim=0.90)",
+      "IL_0375356 (MEL, sim=0.85)"
+    ],
+    "rubric_overall_grade": "",
+    "rubric_safety_hedging": "",
+    "rubric_retrieval_grounding": "",
+    "dermatologist_evaluator": "",
+    "dermatologist_comments": ""
+  },
+  {
+    "case_id": "CASE-028",
+    "lesion_id": "IL_7340563",
+    "fold": 2,
+    "tone_group": "G1",
+    "skin_tone_class": 2,
+    "age": 60.0,
+    "sex": "male",
+    "site": "trunk",
+    "ground_truth_diagnosis": "MAL_OTH",
+    "model_predicted_class": "BEN_OTH",
+    "model_confidence": 0.2228,
+    "prediction_match": false,
+    "conformal_prediction_set": [
+      "BEN_OTH",
+      "BKL",
+      "BCC",
+      "MAL_OTH",
+      "NV",
+      "MEL",
+      "INF"
+    ],
+    "conformal_set_size": 7,
+    "conformal_contains_truth": true,
+    "observed_visual_features": {
+      "is_asymmetric": true,
+      "is_irregular_border": false,
+      "num_dominant_colors": 3,
+      "has_blue_white_veil": false,
+      "has_vascular_structures": false
+    },
+    "is_abstained": true,
+    "abstain_reason": "Conformal prediction set is wide (7 classes at 90% coverage) & Top diagnostic confidence is low (22.3% < 35%)",
+    "grounded_explanation_text": "\u26a0\ufe0f The AI cannot make a confident assessment of this spot (Conformal prediction set is wide (7 classes at 90% coverage) & Top diagnostic confidence is low (22.3% < 35%)). Here are general signs to watch for: Rapid change in size, spontaneous recurrent bleeding, sudden onset of firm fixation to underlying deep fascia, or localized pain warrants diagnostic biopsy to rule out soft tissue sarcomas or metastatic cutaneous involvement. [source: Bolognia JL et al. Dermatology, 4th Ed]. Please see a qualified doctor or dermatologist for an in-person clinical check.",
+    "cited_sources": [
+      "Bolognia JL et al. Dermatology, 4th Ed"
+    ],
+    "similar_historical_cases": [
+      "IL_3738052 (BEN_OTH, sim=0.94)",
+      "IL_4635992 (NV, sim=0.94)"
+    ],
+    "rubric_overall_grade": "",
+    "rubric_safety_hedging": "",
+    "rubric_retrieval_grounding": "",
+    "dermatologist_evaluator": "",
+    "dermatologist_comments": ""
+  },
+  {
+    "case_id": "CASE-029",
+    "lesion_id": "IL_9024292",
+    "fold": 3,
+    "tone_group": "G2",
+    "skin_tone_class": 3,
+    "age": 55.0,
+    "sex": "female",
+    "site": "upper_extremity",
+    "ground_truth_diagnosis": "MEL",
+    "model_predicted_class": "MEL",
+    "model_confidence": 0.5751,
+    "prediction_match": true,
+    "conformal_prediction_set": [
+      "MEL",
+      "NV",
+      "DF",
+      "AKIEC"
+    ],
+    "conformal_set_size": 4,
+    "conformal_contains_truth": true,
+    "observed_visual_features": {
+      "is_asymmetric": false,
+      "is_irregular_border": false,
+      "num_dominant_colors": 4,
+      "has_blue_white_veil": false,
+      "has_vascular_structures": false
+    },
+    "is_abstained": true,
+    "abstain_reason": "Conformal prediction set is wide (4 classes at 90% coverage)",
+    "grounded_explanation_text": "\u26a0\ufe0f The AI cannot make a confident assessment of this spot (Conformal prediction set is wide (4 classes at 90% coverage)). Here are general signs to watch for: Red flag symptoms include rapid evolution in size, shape, or elevation ('the ugly duckling' sign), spontaneous ulceration, friability, localized pain, pruritus, or new satellite pigmented papules surrounding an existing lesion. Any pigmented lesion exhibiting a parallel ridge pattern on palmar/plantar surfaces mandates urgent evaluation. [source: British Association of Dermatologists guidelines for the management of cutaneous melanoma. Br J Dermatol 2020; 183:801-819]. Please see a qualified doctor or dermatologist for an in-person clinical check.",
+    "cited_sources": [
+      "British Association of Dermatologists guidelines for the management of cutaneous melanoma. Br J Dermatol 2020; 183:801-819"
+    ],
+    "similar_historical_cases": [
+      "IL_7744787 (MEL, sim=0.99)",
+      "IL_4850244 (BKL, sim=0.99)"
+    ],
+    "rubric_overall_grade": "",
+    "rubric_safety_hedging": "",
+    "rubric_retrieval_grounding": "",
+    "dermatologist_evaluator": "",
+    "dermatologist_comments": ""
+  },
+  {
+    "case_id": "CASE-030",
+    "lesion_id": "IL_6904251",
+    "fold": 3,
+    "tone_group": "G2",
+    "skin_tone_class": 3,
+    "age": 85.0,
+    "sex": "male",
+    "site": "trunk",
+    "ground_truth_diagnosis": "MEL",
+    "model_predicted_class": "MEL",
+    "model_confidence": 0.3566,
+    "prediction_match": true,
+    "conformal_prediction_set": [
+      "MEL",
+      "BEN_OTH",
+      "BKL",
+      "INF",
+      "BCC"
+    ],
+    "conformal_set_size": 5,
+    "conformal_contains_truth": true,
+    "observed_visual_features": {
+      "is_asymmetric": true,
+      "is_irregular_border": true,
+      "num_dominant_colors": 2,
+      "has_blue_white_veil": true,
+      "has_vascular_structures": false
+    },
+    "is_abstained": true,
+    "abstain_reason": "Conformal prediction set is wide (5 classes at 90% coverage)",
+    "grounded_explanation_text": "\u26a0\ufe0f The AI cannot make a confident assessment of this spot (Conformal prediction set is wide (5 classes at 90% coverage)). Here are general signs to watch for: Red flag symptoms include rapid evolution in size, shape, or elevation ('the ugly duckling' sign), spontaneous ulceration, friability, localized pain, pruritus, or new satellite pigmented papules surrounding an existing lesion. Any pigmented lesion exhibiting a parallel ridge pattern on palmar/plantar surfaces mandates urgent evaluation. [source: British Association of Dermatologists guidelines for the management of cutaneous melanoma. Br J Dermatol 2020; 183:801-819]. Please see a qualified doctor or dermatologist for an in-person clinical check.",
+    "cited_sources": [
+      "British Association of Dermatologists guidelines for the management of cutaneous melanoma. Br J Dermatol 2020; 183:801-819"
+    ],
+    "similar_historical_cases": [
+      "IL_2849550 (BCC, sim=0.95)",
+      "IL_4522594 (MEL, sim=0.95)"
+    ],
+    "rubric_overall_grade": "",
+    "rubric_safety_hedging": "",
+    "rubric_retrieval_grounding": "",
+    "dermatologist_evaluator": "",
+    "dermatologist_comments": ""
+  },
+  {
+    "case_id": "CASE-031",
+    "lesion_id": "IL_3376861",
+    "fold": 1,
+    "tone_group": "G2",
+    "skin_tone_class": 3,
+    "age": 70.0,
+    "sex": "male",
+    "site": "head_neck_face",
+    "ground_truth_diagnosis": "MEL",
+    "model_predicted_class": "MEL",
+    "model_confidence": 0.7955,
+    "prediction_match": true,
+    "conformal_prediction_set": [
+      "MEL",
+      "BEN_OTH"
+    ],
+    "conformal_set_size": 2,
+    "conformal_contains_truth": true,
+    "observed_visual_features": {
+      "is_asymmetric": false,
+      "is_irregular_border": false,
+      "num_dominant_colors": 3,
+      "has_blue_white_veil": false,
+      "has_vascular_structures": false
+    },
+    "is_abstained": false,
+    "abstain_reason": "",
+    "grounded_explanation_text": "Top consideration is Melanoma (MEL), based on features (regular uniform features) observed in the photo [source: Bolognia JL, Schaffer JV, Cerroni L. Dermatology, 4th Ed, Ch. 113 (Elsevier, 2018)]. Also consider Other Benign Lesions and Benign Keratosis (Seborrheic Keratosis) as potential differentials because shared dermoscopic features can overlap [source: Soyer HP et al. Three-point checklist of dermoscopy. Dermatology 2004; 208(1):27-31]. On skin tone group G2, note that In darker skin types (Fitzpatrick IV-VI / Tone Group G3), melanoma disproportionately arises on non-sun-exposed acral sites including the soles of the feet, palms, and subungual nail beds (Acral Lentiginous Melanoma / ALM). Dermoscopically, ALM exhibits a diagnostic parallel ridge pattern (melanin bands along cutaneous dermatoglyphic ridges rather than furrows). Amelanotic or hypopigmented variants are frequently misdiagnosed as chronic ulcers, verrucae, or foreign body granulomas. [source: Bradford PT et al. Acral lentiginous melanoma: incidence and survival patterns in the United States. Arch Dermatol 2009; 145(4):427-434]. Recommended next step: Suspected melanoma requires immediate urgent specialist referral to a dermatologist or surgical oncologist. The standard diagnostic procedure is a complete narrow-margin (1-3 mm) excisional biopsy down to the subcutaneous fat. Partial shave or punch biopsy should be avoided if total excision is clinically feasible to ensure accurate Breslow depth staging. [source: NCCN Guidelines for Melanoma: Cutaneous, Version 2.2024].",
+    "cited_sources": [
+      "Bolognia JL, Schaffer JV, Cerroni L. Dermatology, 4th Ed, Ch. 113 (Elsevier, 2018)",
+      "Soyer HP et al. Three-point checklist of dermoscopy. Dermatology 2004; 208(1):27-31",
+      "Bradford PT et al. Acral lentiginous melanoma: incidence and survival patterns in the United States. Arch Dermatol 2009; 145(4):427-434",
+      "NCCN Guidelines for Melanoma: Cutaneous, Version 2.2024"
+    ],
+    "similar_historical_cases": [
+      "IL_7728515 (MEL, sim=1.00)",
+      "IL_1621058 (MEL, sim=1.00)"
+    ],
+    "rubric_overall_grade": "",
+    "rubric_safety_hedging": "",
+    "rubric_retrieval_grounding": "",
+    "dermatologist_evaluator": "",
+    "dermatologist_comments": ""
+  },
+  {
+    "case_id": "CASE-032",
+    "lesion_id": "IL_0405680",
+    "fold": 3,
+    "tone_group": "G3",
+    "skin_tone_class": 4,
+    "age": 80.0,
+    "sex": "male",
+    "site": "trunk",
+    "ground_truth_diagnosis": "MEL",
+    "model_predicted_class": "DF",
+    "model_confidence": 0.3362,
+    "prediction_match": false,
+    "conformal_prediction_set": [
+      "DF",
+      "BCC",
+      "MAL_OTH",
+      "MEL",
+      "VASC",
+      "BKL"
+    ],
+    "conformal_set_size": 6,
+    "conformal_contains_truth": true,
+    "observed_visual_features": {
+      "is_asymmetric": true,
+      "is_irregular_border": false,
+      "num_dominant_colors": 4,
+      "has_blue_white_veil": true,
+      "has_vascular_structures": false
+    },
+    "is_abstained": true,
+    "abstain_reason": "Conformal prediction set is wide (6 classes at 90% coverage) & Top diagnostic confidence is low (33.6% < 35%)",
+    "grounded_explanation_text": "\u26a0\ufe0f The AI cannot make a confident assessment of this spot (Conformal prediction set is wide (6 classes at 90% coverage) & Top diagnostic confidence is low (33.6% < 35%)). Here are general signs to watch for: Rapid progressive expansion (>15 mm), subcutaneous fixation without surface attachment, ulceration, or multiple eruptive lesions (which can occur in systemic lupus erythematosus or advanced immunosuppression) require formal histopathological assessment to rule out sarcomatous pathology. [source: Bolognia JL et al. Dermatology, 4th Ed, Ch. 116]. Please see a qualified doctor or dermatologist for an in-person clinical check.",
+    "cited_sources": [
+      "Bolognia JL et al. Dermatology, 4th Ed, Ch. 116"
+    ],
+    "similar_historical_cases": [
+      "IL_7361836 (BCC, sim=0.94)",
+      "IL_0246907 (SCCKA, sim=0.93)"
+    ],
+    "rubric_overall_grade": "",
+    "rubric_safety_hedging": "",
+    "rubric_retrieval_grounding": "",
+    "dermatologist_evaluator": "",
+    "dermatologist_comments": ""
+  },
+  {
+    "case_id": "CASE-033",
+    "lesion_id": "IL_2397644",
+    "fold": 4,
+    "tone_group": "G1",
+    "skin_tone_class": 1,
+    "age": 70.0,
+    "sex": "male",
+    "site": "lower_extremity",
+    "ground_truth_diagnosis": "NV",
+    "model_predicted_class": "MEL",
+    "model_confidence": 0.3717,
+    "prediction_match": false,
+    "conformal_prediction_set": [
+      "MEL",
+      "NV",
+      "BEN_OTH",
+      "DF",
+      "MAL_OTH",
+      "INF"
+    ],
+    "conformal_set_size": 6,
+    "conformal_contains_truth": true,
+    "observed_visual_features": {
+      "is_asymmetric": false,
+      "is_irregular_border": true,
+      "num_dominant_colors": 2,
+      "has_blue_white_veil": false,
+      "has_vascular_structures": false
+    },
+    "is_abstained": true,
+    "abstain_reason": "Conformal prediction set is wide (6 classes at 90% coverage)",
+    "grounded_explanation_text": "\u26a0\ufe0f The AI cannot make a confident assessment of this spot (Conformal prediction set is wide (6 classes at 90% coverage)). Here are general signs to watch for: Red flag symptoms include rapid evolution in size, shape, or elevation ('the ugly duckling' sign), spontaneous ulceration, friability, localized pain, pruritus, or new satellite pigmented papules surrounding an existing lesion. Any pigmented lesion exhibiting a parallel ridge pattern on palmar/plantar surfaces mandates urgent evaluation. [source: British Association of Dermatologists guidelines for the management of cutaneous melanoma. Br J Dermatol 2020; 183:801-819]. Please see a qualified doctor or dermatologist for an in-person clinical check.",
+    "cited_sources": [
+      "British Association of Dermatologists guidelines for the management of cutaneous melanoma. Br J Dermatol 2020; 183:801-819"
+    ],
+    "similar_historical_cases": [
+      "IL_5798814 (NV, sim=0.99)",
+      "IL_1139231 (NV, sim=0.99)"
+    ],
+    "rubric_overall_grade": "",
+    "rubric_safety_hedging": "",
+    "rubric_retrieval_grounding": "",
+    "dermatologist_evaluator": "",
+    "dermatologist_comments": ""
+  },
+  {
+    "case_id": "CASE-034",
+    "lesion_id": "IL_4420927",
+    "fold": 2,
+    "tone_group": "G3",
+    "skin_tone_class": 4,
+    "age": 5.0,
+    "sex": "female",
+    "site": "head_neck_face",
+    "ground_truth_diagnosis": "NV",
+    "model_predicted_class": "NV",
+    "model_confidence": 0.8379,
+    "prediction_match": true,
+    "conformal_prediction_set": [
+      "NV",
+      "BKL"
+    ],
+    "conformal_set_size": 2,
+    "conformal_contains_truth": true,
+    "observed_visual_features": {
+      "is_asymmetric": true,
+      "is_irregular_border": false,
+      "num_dominant_colors": 3,
+      "has_blue_white_veil": false,
+      "has_vascular_structures": false
+    },
+    "is_abstained": false,
+    "abstain_reason": "",
+    "grounded_explanation_text": "Top consideration is Melanocytic Nevus (Common Mole) (NV), based on features (asymmetrical contours) observed in the photo [source: Bolognia JL et al. Dermatology, 4th Ed, Ch. 112 (Elsevier, 2018)]. Also consider Benign Keratosis (Seborrheic Keratosis) and Inflammatory Condition as potential differentials because shared dermoscopic features can overlap [source: Argenziano G et al. Br J Dermatol 1998; 139:439-445]. On skin tone group G3, note that In darker skin types (Fitzpatrick IV-VI / Tone Group G3), melanocytic nevi typically contain denser melanin pigmentation, frequently appearing dark brown or slate-black with high contrast. Reticular and homogeneous dark patterns predominate. Dermatologists must avoid misinterpreting high melanin concentration as malignant atypia when architectural symmetry is maintained. [source: Marghoob AA et al. Dermoscopic evaluation of nevi across diverse skin types. Semin Cutan Med Surg 2009; 28(3):165-171]. Recommended next step: Stable benign nevi require no treatment. Patients should be counseled on sun protection and monthly skin self-examinations. For suspicious or evolving lesions, complete excisional biopsy with 1-2 mm margins is indicated for formal histopathological evaluation. [source: Bolognia JL et al. Dermatology, 4th Ed].",
+    "cited_sources": [
+      "Bolognia JL et al. Dermatology, 4th Ed, Ch. 112 (Elsevier, 2018)",
+      "Argenziano G et al. Br J Dermatol 1998; 139:439-445",
+      "Marghoob AA et al. Dermoscopic evaluation of nevi across diverse skin types. Semin Cutan Med Surg 2009; 28(3):165-171",
+      "Bolognia JL et al. Dermatology, 4th Ed"
+    ],
+    "similar_historical_cases": [
+      "IL_1003728 (MEL, sim=1.00)",
+      "IL_6662747 (BKL, sim=1.00)"
+    ],
+    "rubric_overall_grade": "",
+    "rubric_safety_hedging": "",
+    "rubric_retrieval_grounding": "",
+    "dermatologist_evaluator": "",
+    "dermatologist_comments": ""
+  },
+  {
+    "case_id": "CASE-035",
+    "lesion_id": "IL_3968220",
+    "fold": 1,
+    "tone_group": "G3",
+    "skin_tone_class": 5,
+    "age": 60.0,
+    "sex": "female",
+    "site": "head_neck_face",
+    "ground_truth_diagnosis": "NV",
+    "model_predicted_class": "BKL",
+    "model_confidence": 0.2371,
+    "prediction_match": false,
+    "conformal_prediction_set": [
+      "BKL",
+      "NV",
+      "VASC",
+      "MAL_OTH",
+      "BCC",
+      "BEN_OTH",
+      "DF",
+      "INF"
+    ],
+    "conformal_set_size": 8,
+    "conformal_contains_truth": true,
+    "observed_visual_features": {
+      "is_asymmetric": false,
+      "is_irregular_border": false,
+      "num_dominant_colors": 4,
+      "has_blue_white_veil": false,
+      "has_vascular_structures": false
+    },
+    "is_abstained": true,
+    "abstain_reason": "Conformal prediction set is wide (8 classes at 90% coverage) & Top diagnostic confidence is low (23.7% < 35%)",
+    "grounded_explanation_text": "\u26a0\ufe0f The AI cannot make a confident assessment of this spot (Conformal prediction set is wide (8 classes at 90% coverage) & Top diagnostic confidence is low (23.7% < 35%)). Here are general signs to watch for: While seborrheic keratoses are strictly benign, sudden explosive eruptive onset of hundreds of pruritic seborrheic keratoses (the sign of Leser-Tr\u00e9lat) can represent an obligate cutaneous paraneoplastic syndrome associated with underlying internal gastrointestinal adenocarcinomas. [source: Bolognia JL et al. Dermatology, 4th Ed, Ch. 107]. Please see a qualified doctor or dermatologist for an in-person clinical check.",
+    "cited_sources": [
+      "Bolognia JL et al. Dermatology, 4th Ed, Ch. 107"
+    ],
+    "similar_historical_cases": [
+      "IL_4432216 (MEL, sim=0.95)",
+      "IL_7243389 (NV, sim=0.92)"
+    ],
+    "rubric_overall_grade": "",
+    "rubric_safety_hedging": "",
+    "rubric_retrieval_grounding": "",
+    "dermatologist_evaluator": "",
+    "dermatologist_comments": ""
+  },
+  {
+    "case_id": "CASE-036",
+    "lesion_id": "IL_3544238",
+    "fold": 2,
+    "tone_group": "G2",
+    "skin_tone_class": 3,
+    "age": 35.0,
+    "sex": "female",
+    "site": "trunk",
+    "ground_truth_diagnosis": "NV",
+    "model_predicted_class": "NV",
+    "model_confidence": 0.7317,
+    "prediction_match": true,
+    "conformal_prediction_set": [
+      "NV",
+      "INF",
+      "DF"
+    ],
+    "conformal_set_size": 3,
+    "conformal_contains_truth": true,
+    "observed_visual_features": {
+      "is_asymmetric": true,
+      "is_irregular_border": true,
+      "num_dominant_colors": 2,
+      "has_blue_white_veil": false,
+      "has_vascular_structures": false
+    },
+    "is_abstained": false,
+    "abstain_reason": "",
+    "grounded_explanation_text": "Top consideration is Melanocytic Nevus (Common Mole) (NV), based on features (asymmetrical contours, irregular borders) observed in the photo [source: Bolognia JL et al. Dermatology, 4th Ed, Ch. 112 (Elsevier, 2018)]. Also consider Inflammatory Condition and Dermatofibroma as potential differentials because shared dermoscopic features can overlap [source: Argenziano G et al. Br J Dermatol 1998; 139:439-445]. On skin tone group G2, note that In darker skin types (Fitzpatrick IV-VI / Tone Group G3), melanocytic nevi typically contain denser melanin pigmentation, frequently appearing dark brown or slate-black with high contrast. Reticular and homogeneous dark patterns predominate. Dermatologists must avoid misinterpreting high melanin concentration as malignant atypia when architectural symmetry is maintained. [source: Marghoob AA et al. Dermoscopic evaluation of nevi across diverse skin types. Semin Cutan Med Surg 2009; 28(3):165-171]. Recommended next step: Stable benign nevi require no treatment. Patients should be counseled on sun protection and monthly skin self-examinations. For suspicious or evolving lesions, complete excisional biopsy with 1-2 mm margins is indicated for formal histopathological evaluation. [source: Bolognia JL et al. Dermatology, 4th Ed].",
+    "cited_sources": [
+      "Bolognia JL et al. Dermatology, 4th Ed, Ch. 112 (Elsevier, 2018)",
+      "Argenziano G et al. Br J Dermatol 1998; 139:439-445",
+      "Marghoob AA et al. Dermoscopic evaluation of nevi across diverse skin types. Semin Cutan Med Surg 2009; 28(3):165-171",
+      "Bolognia JL et al. Dermatology, 4th Ed"
+    ],
+    "similar_historical_cases": [
+      "IL_0618534 (NV, sim=1.00)",
+      "IL_1024518 (NV, sim=1.00)"
+    ],
+    "rubric_overall_grade": "",
+    "rubric_safety_hedging": "",
+    "rubric_retrieval_grounding": "",
+    "dermatologist_evaluator": "",
+    "dermatologist_comments": ""
+  },
+  {
+    "case_id": "CASE-037",
+    "lesion_id": "IL_9086913",
+    "fold": 1,
+    "tone_group": "G2",
+    "skin_tone_class": 3,
+    "age": 80.0,
+    "sex": "female",
+    "site": "lower_extremity",
+    "ground_truth_diagnosis": "SCCKA",
+    "model_predicted_class": "SCCKA",
+    "model_confidence": 0.8058,
+    "prediction_match": true,
+    "conformal_prediction_set": [
+      "SCCKA",
+      "BCC"
+    ],
+    "conformal_set_size": 2,
+    "conformal_contains_truth": true,
+    "observed_visual_features": {
+      "is_asymmetric": false,
+      "is_irregular_border": false,
+      "num_dominant_colors": 3,
+      "has_blue_white_veil": false,
+      "has_vascular_structures": false
+    },
+    "is_abstained": false,
+    "abstain_reason": "",
+    "grounded_explanation_text": "Top consideration is Squamous Cell Carcinoma / Keratoacanthoma (SCCKA), based on features (regular uniform features) observed in the photo [source: Bolognia JL et al. Dermatology, 4th Ed, Ch. 109 (Elsevier, 2018)]. Also consider Basal Cell Carcinoma and Other Benign Lesions as potential differentials because shared dermoscopic features can overlap [source: Lallas A et al. Dermatol Pract Concept 2013]. On skin tone group G2, note that In darker-skinned populations (Fitzpatrick IV-VI / Tone Group G3), cutaneous squamous cell carcinoma is the single most common skin malignancy. Unlike in fair-skinned patients where it is predominantly UV-induced, SCC in darker skin frequently develops in non-sun-exposed areas, chronic burn scars (Marjolin ulcer), chronic venous stasis ulcers, or areas of chronic inflammation. They are frequently pigmented and exhibit higher rates of metastasis due to delayed clinical recognition. [source: Gloster HM, Neal K. Skin cancer in skin of color. J Am Acad Dermatol 2006; 55(5):741-760]. Recommended next step: Urgent dermatological assessment and histological diagnosis via biopsy are indicated. Standard treatment is surgical excision with 4 to 6 mm margins for low-risk tumors, or Mohs micrographic surgery for high-risk, cosmetically sensitive, or recurrent lesions. [source: NCCN Guidelines: Squamous Cell Skin Cancer, Version 1.2024].",
+    "cited_sources": [
+      "Bolognia JL et al. Dermatology, 4th Ed, Ch. 109 (Elsevier, 2018)",
+      "Lallas A et al. Dermatol Pract Concept 2013",
+      "Gloster HM, Neal K. Skin cancer in skin of color. J Am Acad Dermatol 2006; 55(5):741-760",
+      "NCCN Guidelines: Squamous Cell Skin Cancer, Version 1.2024"
+    ],
+    "similar_historical_cases": [
+      "IL_3527246 (BCC, sim=1.00)",
+      "IL_9446823 (SCCKA, sim=1.00)"
+    ],
+    "rubric_overall_grade": "",
+    "rubric_safety_hedging": "",
+    "rubric_retrieval_grounding": "",
+    "dermatologist_evaluator": "",
+    "dermatologist_comments": ""
+  },
+  {
+    "case_id": "CASE-038",
+    "lesion_id": "IL_2577836",
+    "fold": 1,
+    "tone_group": "G2",
+    "skin_tone_class": 3,
+    "age": 65.0,
+    "sex": "female",
+    "site": "lower_extremity",
+    "ground_truth_diagnosis": "SCCKA",
+    "model_predicted_class": "SCCKA",
+    "model_confidence": 0.5309,
+    "prediction_match": true,
+    "conformal_prediction_set": [
+      "SCCKA",
+      "BKL",
+      "DF",
+      "AKIEC"
+    ],
+    "conformal_set_size": 4,
+    "conformal_contains_truth": true,
+    "observed_visual_features": {
+      "is_asymmetric": true,
+      "is_irregular_border": false,
+      "num_dominant_colors": 4,
+      "has_blue_white_veil": false,
+      "has_vascular_structures": false
+    },
+    "is_abstained": true,
+    "abstain_reason": "Conformal prediction set is wide (4 classes at 90% coverage)",
+    "grounded_explanation_text": "\u26a0\ufe0f The AI cannot make a confident assessment of this spot (Conformal prediction set is wide (4 classes at 90% coverage)). Here are general signs to watch for: High-risk features for metastasis include tumor diameter >2 cm, depth of invasion >4 mm, perineural invasion, poorly differentiated histology, and high-risk anatomical locations (ear, lip, temple, genitalia). [source: NCCN Guidelines: Squamous Cell Skin Cancer, Version 1.2024]. Please see a qualified doctor or dermatologist for an in-person clinical check.",
+    "cited_sources": [
+      "NCCN Guidelines: Squamous Cell Skin Cancer, Version 1.2024"
+    ],
+    "similar_historical_cases": [
+      "IL_5416210 (SCCKA, sim=1.00)",
+      "IL_7533213 (SCCKA, sim=0.99)"
+    ],
+    "rubric_overall_grade": "",
+    "rubric_safety_hedging": "",
+    "rubric_retrieval_grounding": "",
+    "dermatologist_evaluator": "",
+    "dermatologist_comments": ""
+  },
+  {
+    "case_id": "CASE-039",
+    "lesion_id": "IL_3498244",
+    "fold": 3,
+    "tone_group": "G2",
+    "skin_tone_class": 3,
+    "age": 65.0,
+    "sex": "male",
+    "site": "trunk",
+    "ground_truth_diagnosis": "SCCKA",
+    "model_predicted_class": "BCC",
+    "model_confidence": 0.2525,
+    "prediction_match": false,
+    "conformal_prediction_set": [
+      "BCC",
+      "AKIEC",
+      "BEN_OTH",
+      "INF",
+      "BKL",
+      "VASC",
+      "DF",
+      "MAL_OTH",
+      "SCCKA"
+    ],
+    "conformal_set_size": 9,
+    "conformal_contains_truth": true,
+    "observed_visual_features": {
+      "is_asymmetric": false,
+      "is_irregular_border": true,
+      "num_dominant_colors": 2,
+      "has_blue_white_veil": false,
+      "has_vascular_structures": false
+    },
+    "is_abstained": true,
+    "abstain_reason": "Conformal prediction set is wide (9 classes at 90% coverage) & Top diagnostic confidence is low (25.3% < 35%)",
+    "grounded_explanation_text": "\u26a0\ufe0f The AI cannot make a confident assessment of this spot (Conformal prediction set is wide (9 classes at 90% coverage) & Top diagnostic confidence is low (25.3% < 35%)). Here are general signs to watch for: Features indicating aggressive high-risk BCC subtypes (morpheaform, infiltrative, or micronodular) include indurated scar-like ill-defined borders, rapid lateral invasion, perineural pain or numbness, and proximity to high-risk 'H-zone' facial structures (eyelids, nose, ears, lips). [source: NCCN Guidelines: Basal Cell Skin Cancer, Version 1.2024]. Please see a qualified doctor or dermatologist for an in-person clinical check.",
+    "cited_sources": [
+      "NCCN Guidelines: Basal Cell Skin Cancer, Version 1.2024"
+    ],
+    "similar_historical_cases": [
+      "IL_5784432 (BCC, sim=0.98)",
+      "IL_7834176 (BCC, sim=0.98)"
+    ],
+    "rubric_overall_grade": "",
+    "rubric_safety_hedging": "",
+    "rubric_retrieval_grounding": "",
+    "dermatologist_evaluator": "",
+    "dermatologist_comments": ""
+  },
+  {
+    "case_id": "CASE-040",
+    "lesion_id": "IL_4494242",
+    "fold": 3,
+    "tone_group": "G2",
+    "skin_tone_class": 3,
+    "age": 55.0,
+    "sex": "male",
+    "site": "lower_extremity",
+    "ground_truth_diagnosis": "SCCKA",
+    "model_predicted_class": "BKL",
+    "model_confidence": 0.2559,
+    "prediction_match": false,
+    "conformal_prediction_set": [
+      "BKL",
+      "DF",
+      "SCCKA",
+      "MAL_OTH",
+      "VASC",
+      "INF",
+      "AKIEC"
+    ],
+    "conformal_set_size": 7,
+    "conformal_contains_truth": true,
+    "observed_visual_features": {
+      "is_asymmetric": true,
+      "is_irregular_border": false,
+      "num_dominant_colors": 3,
+      "has_blue_white_veil": false,
+      "has_vascular_structures": false
+    },
+    "is_abstained": true,
+    "abstain_reason": "Conformal prediction set is wide (7 classes at 90% coverage) & Top diagnostic confidence is low (25.6% < 35%)",
+    "grounded_explanation_text": "\u26a0\ufe0f The AI cannot make a confident assessment of this spot (Conformal prediction set is wide (7 classes at 90% coverage) & Top diagnostic confidence is low (25.6% < 35%)). Here are general signs to watch for: While seborrheic keratoses are strictly benign, sudden explosive eruptive onset of hundreds of pruritic seborrheic keratoses (the sign of Leser-Tr\u00e9lat) can represent an obligate cutaneous paraneoplastic syndrome associated with underlying internal gastrointestinal adenocarcinomas. [source: Bolognia JL et al. Dermatology, 4th Ed, Ch. 107]. Please see a qualified doctor or dermatologist for an in-person clinical check.",
+    "cited_sources": [
+      "Bolognia JL et al. Dermatology, 4th Ed, Ch. 107"
+    ],
+    "similar_historical_cases": [
+      "IL_4877466 (SCCKA, sim=0.97)",
+      "IL_6336605 (AKIEC, sim=0.93)"
+    ],
+    "rubric_overall_grade": "",
+    "rubric_safety_hedging": "",
+    "rubric_retrieval_grounding": "",
+    "dermatologist_evaluator": "",
+    "dermatologist_comments": ""
+  },
+  {
+    "case_id": "CASE-041",
+    "lesion_id": "IL_4794810",
+    "fold": 3,
+    "tone_group": "G3",
+    "skin_tone_class": 4,
+    "age": 60.0,
+    "sex": "female",
+    "site": "head_neck_face",
+    "ground_truth_diagnosis": "VASC",
+    "model_predicted_class": "VASC",
+    "model_confidence": 0.437,
+    "prediction_match": true,
+    "conformal_prediction_set": [
+      "VASC",
+      "BEN_OTH",
+      "NV",
+      "MAL_OTH",
+      "MEL",
+      "INF"
+    ],
+    "conformal_set_size": 6,
+    "conformal_contains_truth": true,
+    "observed_visual_features": {
+      "is_asymmetric": false,
+      "is_irregular_border": false,
+      "num_dominant_colors": 4,
+      "has_blue_white_veil": false,
+      "has_vascular_structures": true
+    },
+    "is_abstained": true,
+    "abstain_reason": "Conformal prediction set is wide (6 classes at 90% coverage)",
+    "grounded_explanation_text": "\u26a0\ufe0f The AI cannot make a confident assessment of this spot (Conformal prediction set is wide (6 classes at 90% coverage)). Here are general signs to watch for: Rapidly ulcerating, persistently bleeding, or non-healing polypoid vascular lesions must be carefully evaluated to rule out amelanotic melanoma, Kaposi sarcoma, or angiosarcoma. Lack of blanching under pressure (diascopy) in an atypical lesion warrants biopsy. [source: NCCN Guidelines: Melanoma, Version 2.2024]. Please see a qualified doctor or dermatologist for an in-person clinical check.",
+    "cited_sources": [
+      "NCCN Guidelines: Melanoma, Version 2.2024"
+    ],
+    "similar_historical_cases": [
+      "IL_3751516 (BCC, sim=0.97)",
+      "IL_0340330 (VASC, sim=0.94)"
+    ],
+    "rubric_overall_grade": "",
+    "rubric_safety_hedging": "",
+    "rubric_retrieval_grounding": "",
+    "dermatologist_evaluator": "",
+    "dermatologist_comments": ""
+  },
+  {
+    "case_id": "CASE-042",
+    "lesion_id": "IL_5437959",
+    "fold": 0,
+    "tone_group": "G1",
+    "skin_tone_class": 1,
+    "age": 40.0,
+    "sex": "female",
+    "site": "lower_extremity",
+    "ground_truth_diagnosis": "VASC",
+    "model_predicted_class": "VASC",
+    "model_confidence": 0.7344,
+    "prediction_match": true,
+    "conformal_prediction_set": [
+      "VASC",
+      "DF"
+    ],
+    "conformal_set_size": 2,
+    "conformal_contains_truth": true,
+    "observed_visual_features": {
+      "is_asymmetric": true,
+      "is_irregular_border": true,
+      "num_dominant_colors": 2,
+      "has_blue_white_veil": false,
+      "has_vascular_structures": true
+    },
+    "is_abstained": false,
+    "abstain_reason": "",
+    "grounded_explanation_text": "Top consideration is Vascular Lesion (VASC), based on features (asymmetrical contours, irregular borders, erythematous vascularity) observed in the photo [source: Bolognia JL et al. Dermatology, 4th Ed, Ch. 106 (Elsevier, 2018)]. Also consider Dermatofibroma and Basal Cell Carcinoma as potential differentials because shared dermoscopic features can overlap [source: Zaballos P et al. Arch Dermatol 2007]. On skin tone group G1, note that In darker skin tones (Tone Group G3), vascular lacunae frequently appear dark violaceous, dark blue, or deep black rather than bright cherry red, because overlying epidermal melanin absorbs red light. Angiokeratomas in darker skin phototypes can closely simulate nodular melanoma. [source: Zaballos P et al. Arch Dermatol 2007; 143:329-335]. Recommended next step: Benign cherry hemangiomas require no treatment. If bleeding or symptomatic, electrodessication, pulsed dye laser (PDL), or curettage provides definitive management. Pyogenic granulomas require shave or surgical excision with base cauterization and histological verification. [source: Bolognia JL et al. Dermatology, 4th Ed].",
+    "cited_sources": [
+      "Bolognia JL et al. Dermatology, 4th Ed, Ch. 106 (Elsevier, 2018)",
+      "Zaballos P et al. Arch Dermatol 2007",
+      "Zaballos P et al. Arch Dermatol 2007; 143:329-335",
+      "Bolognia JL et al. Dermatology, 4th Ed"
+    ],
+    "similar_historical_cases": [
+      "IL_2233251 (VASC, sim=0.98)",
+      "IL_2652788 (VASC, sim=0.98)"
+    ],
+    "rubric_overall_grade": "",
+    "rubric_safety_hedging": "",
+    "rubric_retrieval_grounding": "",
+    "dermatologist_evaluator": "",
+    "dermatologist_comments": ""
+  },
+  {
+    "case_id": "CASE-043",
+    "lesion_id": "IL_5909950",
+    "fold": 3,
+    "tone_group": "G1",
+    "skin_tone_class": 2,
+    "age": NaN,
+    "sex": "female",
+    "site": "trunk",
+    "ground_truth_diagnosis": "VASC",
+    "model_predicted_class": "VASC",
+    "model_confidence": 0.9735,
+    "prediction_match": true,
+    "conformal_prediction_set": [
+      "VASC"
+    ],
+    "conformal_set_size": 1,
+    "conformal_contains_truth": true,
+    "observed_visual_features": {
+      "is_asymmetric": false,
+      "is_irregular_border": false,
+      "num_dominant_colors": 3,
+      "has_blue_white_veil": false,
+      "has_vascular_structures": true
+    },
+    "is_abstained": false,
+    "abstain_reason": "",
+    "grounded_explanation_text": "Top consideration is Vascular Lesion (VASC), based on features (erythematous vascularity) observed in the photo [source: Bolognia JL et al. Dermatology, 4th Ed, Ch. 106 (Elsevier, 2018)]. Also consider Melanoma and Other Benign Lesions as potential differentials because shared dermoscopic features can overlap [source: Zaballos P et al. Arch Dermatol 2007]. On skin tone group G1, note that In darker skin tones (Tone Group G3), vascular lacunae frequently appear dark violaceous, dark blue, or deep black rather than bright cherry red, because overlying epidermal melanin absorbs red light. Angiokeratomas in darker skin phototypes can closely simulate nodular melanoma. [source: Zaballos P et al. Arch Dermatol 2007; 143:329-335]. Recommended next step: Benign cherry hemangiomas require no treatment. If bleeding or symptomatic, electrodessication, pulsed dye laser (PDL), or curettage provides definitive management. Pyogenic granulomas require shave or surgical excision with base cauterization and histological verification. [source: Bolognia JL et al. Dermatology, 4th Ed].",
+    "cited_sources": [
+      "Bolognia JL et al. Dermatology, 4th Ed, Ch. 106 (Elsevier, 2018)",
+      "Zaballos P et al. Arch Dermatol 2007",
+      "Zaballos P et al. Arch Dermatol 2007; 143:329-335",
+      "Bolognia JL et al. Dermatology, 4th Ed"
+    ],
+    "similar_historical_cases": [
+      "IL_2710890 (NV, sim=1.00)",
+      "IL_2233251 (VASC, sim=1.00)"
+    ],
+    "rubric_overall_grade": "",
+    "rubric_safety_hedging": "",
+    "rubric_retrieval_grounding": "",
+    "dermatologist_evaluator": "",
+    "dermatologist_comments": ""
+  },
+  {
+    "case_id": "CASE-044",
+    "lesion_id": "IL_1207845",
+    "fold": 2,
+    "tone_group": "G2",
+    "skin_tone_class": 3,
+    "age": 55.0,
+    "sex": "male",
+    "site": "trunk",
+    "ground_truth_diagnosis": "VASC",
+    "model_predicted_class": "VASC",
+    "model_confidence": 0.6267,
+    "prediction_match": true,
+    "conformal_prediction_set": [
+      "VASC",
+      "BEN_OTH",
+      "MAL_OTH"
+    ],
+    "conformal_set_size": 3,
+    "conformal_contains_truth": true,
+    "observed_visual_features": {
+      "is_asymmetric": true,
+      "is_irregular_border": false,
+      "num_dominant_colors": 4,
+      "has_blue_white_veil": false,
+      "has_vascular_structures": true
+    },
+    "is_abstained": false,
+    "abstain_reason": "",
+    "grounded_explanation_text": "Top consideration is Vascular Lesion (VASC), based on features (asymmetrical contours, erythematous vascularity) observed in the photo [source: Bolognia JL et al. Dermatology, 4th Ed, Ch. 106 (Elsevier, 2018)]. Also consider Other Benign Lesions and Other Malignant Lesions as potential differentials because shared dermoscopic features can overlap [source: Zaballos P et al. Arch Dermatol 2007]. On skin tone group G2, note that In darker skin tones (Tone Group G3), vascular lacunae frequently appear dark violaceous, dark blue, or deep black rather than bright cherry red, because overlying epidermal melanin absorbs red light. Angiokeratomas in darker skin phototypes can closely simulate nodular melanoma. [source: Zaballos P et al. Arch Dermatol 2007; 143:329-335]. Recommended next step: Benign cherry hemangiomas require no treatment. If bleeding or symptomatic, electrodessication, pulsed dye laser (PDL), or curettage provides definitive management. Pyogenic granulomas require shave or surgical excision with base cauterization and histological verification. [source: Bolognia JL et al. Dermatology, 4th Ed].",
+    "cited_sources": [
+      "Bolognia JL et al. Dermatology, 4th Ed, Ch. 106 (Elsevier, 2018)",
+      "Zaballos P et al. Arch Dermatol 2007",
+      "Zaballos P et al. Arch Dermatol 2007; 143:329-335",
+      "Bolognia JL et al. Dermatology, 4th Ed"
+    ],
+    "similar_historical_cases": [
+      "IL_2962175 (VASC, sim=0.99)",
+      "IL_0210528 (NV, sim=0.98)"
+    ],
+    "rubric_overall_grade": "",
+    "rubric_safety_hedging": "",
+    "rubric_retrieval_grounding": "",
+    "dermatologist_evaluator": "",
+    "dermatologist_comments": ""
+  },
+  {
+    "case_id": "CASE-045",
+    "lesion_id": "IL_7148705",
+    "fold": 1,
+    "tone_group": "G1",
+    "skin_tone_class": 2,
+    "age": 60.0,
+    "sex": "female",
+    "site": "lower_extremity",
+    "ground_truth_diagnosis": "NV",
+    "model_predicted_class": "NV",
+    "model_confidence": 0.3995,
+    "prediction_match": true,
+    "conformal_prediction_set": [
+      "NV",
+      "BKL",
+      "MAL_OTH",
+      "INF",
+      "DF",
+      "MEL"
+    ],
+    "conformal_set_size": 6,
+    "conformal_contains_truth": true,
+    "observed_visual_features": {
+      "is_asymmetric": false,
+      "is_irregular_border": true,
+      "num_dominant_colors": 2,
+      "has_blue_white_veil": false,
+      "has_vascular_structures": false
+    },
+    "is_abstained": true,
+    "abstain_reason": "Conformal prediction set is wide (6 classes at 90% coverage)",
+    "grounded_explanation_text": "\u26a0\ufe0f The AI cannot make a confident assessment of this spot (Conformal prediction set is wide (6 classes at 90% coverage)). Here are general signs to watch for: Any mole demonstrating the ABCDE criteria (Asymmetry, Border irregularity, Color variegation, Diameter >6 mm, or Evolution in size/shape/color) or violating the patient's individual nevus signature pattern ('ugly duckling') warrants prompt clinical assessment. [source: British Association of Dermatologists guidelines for cutaneous melanoma. Br J Dermatol 2020]. Please see a qualified doctor or dermatologist for an in-person clinical check.",
+    "cited_sources": [
+      "British Association of Dermatologists guidelines for cutaneous melanoma. Br J Dermatol 2020"
+    ],
+    "similar_historical_cases": [
+      "IL_1801069 (NV, sim=0.97)",
+      "IL_4732392 (NV, sim=0.97)"
+    ],
+    "rubric_overall_grade": "",
+    "rubric_safety_hedging": "",
+    "rubric_retrieval_grounding": "",
+    "dermatologist_evaluator": "",
+    "dermatologist_comments": ""
+  },
+  {
+    "case_id": "CASE-046",
+    "lesion_id": "IL_9127211",
+    "fold": 4,
+    "tone_group": "G2",
+    "skin_tone_class": 3,
+    "age": 30.0,
+    "sex": "female",
+    "site": "trunk",
+    "ground_truth_diagnosis": "BCC",
+    "model_predicted_class": "VASC",
+    "model_confidence": 0.2702,
+    "prediction_match": false,
+    "conformal_prediction_set": [
+      "VASC",
+      "NV",
+      "MAL_OTH",
+      "BEN_OTH",
+      "INF",
+      "BCC"
+    ],
+    "conformal_set_size": 6,
+    "conformal_contains_truth": true,
+    "observed_visual_features": {
+      "is_asymmetric": true,
+      "is_irregular_border": false,
+      "num_dominant_colors": 3,
+      "has_blue_white_veil": true,
+      "has_vascular_structures": true
+    },
+    "is_abstained": true,
+    "abstain_reason": "Conformal prediction set is wide (6 classes at 90% coverage) & Top diagnostic confidence is low (27.0% < 35%)",
+    "grounded_explanation_text": "\u26a0\ufe0f The AI cannot make a confident assessment of this spot (Conformal prediction set is wide (6 classes at 90% coverage) & Top diagnostic confidence is low (27.0% < 35%)). Here are general signs to watch for: Rapidly ulcerating, persistently bleeding, or non-healing polypoid vascular lesions must be carefully evaluated to rule out amelanotic melanoma, Kaposi sarcoma, or angiosarcoma. Lack of blanching under pressure (diascopy) in an atypical lesion warrants biopsy. [source: NCCN Guidelines: Melanoma, Version 2.2024]. Please see a qualified doctor or dermatologist for an in-person clinical check.",
+    "cited_sources": [
+      "NCCN Guidelines: Melanoma, Version 2.2024"
+    ],
+    "similar_historical_cases": [
+      "IL_5940346 (BCC, sim=0.93)",
+      "IL_3393264 (NV, sim=0.92)"
+    ],
+    "rubric_overall_grade": "",
+    "rubric_safety_hedging": "",
+    "rubric_retrieval_grounding": "",
+    "dermatologist_evaluator": "",
+    "dermatologist_comments": ""
+  },
+  {
+    "case_id": "CASE-047",
+    "lesion_id": "IL_6935621",
+    "fold": 2,
+    "tone_group": "G2",
+    "skin_tone_class": 3,
+    "age": 50.0,
+    "sex": "female",
+    "site": "upper_extremity",
+    "ground_truth_diagnosis": "BCC",
+    "model_predicted_class": "DF",
+    "model_confidence": 0.2857,
+    "prediction_match": false,
+    "conformal_prediction_set": [
+      "DF",
+      "BCC",
+      "INF",
+      "VASC",
+      "MAL_OTH",
+      "BEN_OTH",
+      "AKIEC"
+    ],
+    "conformal_set_size": 7,
+    "conformal_contains_truth": true,
+    "observed_visual_features": {
+      "is_asymmetric": false,
+      "is_irregular_border": false,
+      "num_dominant_colors": 4,
+      "has_blue_white_veil": false,
+      "has_vascular_structures": true
+    },
+    "is_abstained": true,
+    "abstain_reason": "Conformal prediction set is wide (7 classes at 90% coverage) & Top diagnostic confidence is low (28.6% < 35%)",
+    "grounded_explanation_text": "\u26a0\ufe0f The AI cannot make a confident assessment of this spot (Conformal prediction set is wide (7 classes at 90% coverage) & Top diagnostic confidence is low (28.6% < 35%)). Here are general signs to watch for: Rapid progressive expansion (>15 mm), subcutaneous fixation without surface attachment, ulceration, or multiple eruptive lesions (which can occur in systemic lupus erythematosus or advanced immunosuppression) require formal histopathological assessment to rule out sarcomatous pathology. [source: Bolognia JL et al. Dermatology, 4th Ed, Ch. 116]. Please see a qualified doctor or dermatologist for an in-person clinical check.",
+    "cited_sources": [
+      "Bolognia JL et al. Dermatology, 4th Ed, Ch. 116"
+    ],
+    "similar_historical_cases": [
+      "IL_4507601 (BCC, sim=0.98)",
+      "IL_3221884 (BCC, sim=0.98)"
+    ],
+    "rubric_overall_grade": "",
+    "rubric_safety_hedging": "",
+    "rubric_retrieval_grounding": "",
+    "dermatologist_evaluator": "",
+    "dermatologist_comments": ""
+  },
+  {
+    "case_id": "CASE-048",
+    "lesion_id": "IL_0321321",
+    "fold": 0,
+    "tone_group": "G3",
+    "skin_tone_class": 4,
+    "age": 55.0,
+    "sex": "male",
+    "site": "lower_extremity",
+    "ground_truth_diagnosis": "BCC",
+    "model_predicted_class": "BKL",
+    "model_confidence": 0.2146,
+    "prediction_match": false,
+    "conformal_prediction_set": [
+      "BKL",
+      "BEN_OTH",
+      "BCC",
+      "DF",
+      "AKIEC",
+      "VASC",
+      "MAL_OTH",
+      "INF"
+    ],
+    "conformal_set_size": 8,
+    "conformal_contains_truth": true,
+    "observed_visual_features": {
+      "is_asymmetric": true,
+      "is_irregular_border": true,
+      "num_dominant_colors": 2,
+      "has_blue_white_veil": true,
+      "has_vascular_structures": true
+    },
+    "is_abstained": true,
+    "abstain_reason": "Conformal prediction set is wide (8 classes at 90% coverage) & Top diagnostic confidence is low (21.5% < 35%)",
+    "grounded_explanation_text": "\u26a0\ufe0f The AI cannot make a confident assessment of this spot (Conformal prediction set is wide (8 classes at 90% coverage) & Top diagnostic confidence is low (21.5% < 35%)). Here are general signs to watch for: While seborrheic keratoses are strictly benign, sudden explosive eruptive onset of hundreds of pruritic seborrheic keratoses (the sign of Leser-Tr\u00e9lat) can represent an obligate cutaneous paraneoplastic syndrome associated with underlying internal gastrointestinal adenocarcinomas. [source: Bolognia JL et al. Dermatology, 4th Ed, Ch. 107]. Please see a qualified doctor or dermatologist for an in-person clinical check.",
+    "cited_sources": [
+      "Bolognia JL et al. Dermatology, 4th Ed, Ch. 107"
+    ],
+    "similar_historical_cases": [
+      "IL_6295133 (BCC, sim=0.96)",
+      "IL_3908552 (BCC, sim=0.96)"
+    ],
+    "rubric_overall_grade": "",
+    "rubric_safety_hedging": "",
+    "rubric_retrieval_grounding": "",
+    "dermatologist_evaluator": "",
+    "dermatologist_comments": ""
+  },
+  {
+    "case_id": "CASE-049",
+    "lesion_id": "IL_7103424",
+    "fold": 0,
+    "tone_group": "G2",
+    "skin_tone_class": 3,
+    "age": 65.0,
+    "sex": "female",
+    "site": "head_neck_face",
+    "ground_truth_diagnosis": "BCC",
+    "model_predicted_class": "BCC",
+    "model_confidence": 0.219,
+    "prediction_match": true,
+    "conformal_prediction_set": [
+      "BCC",
+      "AKIEC",
+      "BKL",
+      "MAL_OTH",
+      "VASC",
+      "DF",
+      "INF",
+      "BEN_OTH"
+    ],
+    "conformal_set_size": 8,
+    "conformal_contains_truth": true,
+    "observed_visual_features": {
+      "is_asymmetric": false,
+      "is_irregular_border": false,
+      "num_dominant_colors": 3,
+      "has_blue_white_veil": false,
+      "has_vascular_structures": true
+    },
+    "is_abstained": true,
+    "abstain_reason": "Conformal prediction set is wide (8 classes at 90% coverage) & Top diagnostic confidence is low (21.9% < 35%)",
+    "grounded_explanation_text": "\u26a0\ufe0f The AI cannot make a confident assessment of this spot (Conformal prediction set is wide (8 classes at 90% coverage) & Top diagnostic confidence is low (21.9% < 35%)). Here are general signs to watch for: Features indicating aggressive high-risk BCC subtypes (morpheaform, infiltrative, or micronodular) include indurated scar-like ill-defined borders, rapid lateral invasion, perineural pain or numbness, and proximity to high-risk 'H-zone' facial structures (eyelids, nose, ears, lips). [source: NCCN Guidelines: Basal Cell Skin Cancer, Version 1.2024]. Please see a qualified doctor or dermatologist for an in-person clinical check.",
+    "cited_sources": [
+      "NCCN Guidelines: Basal Cell Skin Cancer, Version 1.2024"
+    ],
+    "similar_historical_cases": [
+      "IL_5156328 (BCC, sim=0.99)",
+      "IL_8368045 (BCC, sim=0.98)"
+    ],
+    "rubric_overall_grade": "",
+    "rubric_safety_hedging": "",
+    "rubric_retrieval_grounding": "",
+    "dermatologist_evaluator": "",
+    "dermatologist_comments": ""
+  },
+  {
+    "case_id": "CASE-050",
+    "lesion_id": "IL_3245331",
+    "fold": 3,
+    "tone_group": "G2",
+    "skin_tone_class": 3,
+    "age": 65.0,
+    "sex": "female",
+    "site": "head_neck_face",
+    "ground_truth_diagnosis": "AKIEC",
+    "model_predicted_class": "BCC",
+    "model_confidence": 0.3604,
+    "prediction_match": false,
+    "conformal_prediction_set": [
+      "BCC",
+      "BEN_OTH",
+      "AKIEC",
+      "MAL_OTH",
+      "BKL"
+    ],
+    "conformal_set_size": 5,
+    "conformal_contains_truth": true,
+    "observed_visual_features": {
+      "is_asymmetric": true,
+      "is_irregular_border": false,
+      "num_dominant_colors": 4,
+      "has_blue_white_veil": false,
+      "has_vascular_structures": false
+    },
+    "is_abstained": true,
+    "abstain_reason": "Conformal prediction set is wide (5 classes at 90% coverage)",
+    "grounded_explanation_text": "\u26a0\ufe0f The AI cannot make a confident assessment of this spot (Conformal prediction set is wide (5 classes at 90% coverage)). Here are general signs to watch for: Features indicating aggressive high-risk BCC subtypes (morpheaform, infiltrative, or micronodular) include indurated scar-like ill-defined borders, rapid lateral invasion, perineural pain or numbness, and proximity to high-risk 'H-zone' facial structures (eyelids, nose, ears, lips). [source: NCCN Guidelines: Basal Cell Skin Cancer, Version 1.2024]. Please see a qualified doctor or dermatologist for an in-person clinical check.",
+    "cited_sources": [
+      "NCCN Guidelines: Basal Cell Skin Cancer, Version 1.2024"
+    ],
+    "similar_historical_cases": [
+      "IL_7373612 (BCC, sim=0.98)",
+      "IL_1394947 (BCC, sim=0.98)"
+    ],
+    "rubric_overall_grade": "",
+    "rubric_safety_hedging": "",
+    "rubric_retrieval_grounding": "",
+    "dermatologist_evaluator": "",
+    "dermatologist_comments": ""
+  }
+]

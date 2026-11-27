@@ -1,0 +1,18 @@
+{
+  "status": "success",
+  "sample_size_evaluated": 11,
+  "target_conv_layer": "backbone.conv_head (EfficientNet-B0)",
+  "model_randomization_test": {
+    "mean_spearman_correlation": 0.1114,
+    "correlation_threshold_pass": 0.4,
+    "pass_rate_percentage": 94.5,
+    "verdict": "PASSED (Model parameter randomization causes explanation to degrade, confirming weights dependency)"
+  },
+  "faithfulness_curves": {
+    "mean_area_under_deletion_curve_audc": 0.1594,
+    "mean_area_under_insertion_curve_auic": 0.2337,
+    "curve_steps": 5,
+    "verdict": "FAITHFUL (AUIC significantly exceeds AUDC, demonstrating that high-CAM regions drive model confidence)"
+  },
+  "methodology": "Adebayo et al. (NeurIPS 2018) cascading parameter randomization test and Petsiuk et al. (BMVC 2018) deletion/insertion faithfulness curves."
+}

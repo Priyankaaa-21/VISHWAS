@@ -1,0 +1,248 @@
+{
+  "AKIEC": {
+    "code": "AKIEC",
+    "name": "Actinic Keratosis / Bowen's Disease",
+    "category": "Premalignant / In Situ",
+    "needs_dermatologist_review": false,
+    "clinical_features": [
+      "Rough sandpaper or gritty palpable texture on skin surface",
+      "Persistent erythematous or yellowish-brown scaly macule or thin plaque",
+      "Typically located on chronic sun-exposed areas (head, face, scalp, forearms)"
+    ],
+    "dermoscopic_features": [
+      "Strawberry pattern: erythematous pseudo-network around hair follicles",
+      "Yellowish-white keratotic plugs filling follicle openings",
+      "Fine wavy rosettes under polarized light",
+      "Fine surface scale and crust"
+    ],
+    "darker_skin_considerations": "Erythema is often masked by melanin; lesions may present as mottled hyperpigmented macules or brownish-gray plaques with subtle scale. Pigmented Bowen's disease is more common and can simulate melanoma.",
+    "sources": [
+      "Soyer HP et al., 'Dermoscopy of Actinic Keratosis and Bowen's Disease', JDDG 2015",
+      "Kittler H et al., 'Dermatoscopy: Pattern Analysis of Pigmented and Nonpigmented Lesions', 2nd Ed",
+      "Dadzie OE et al., 'Ethnic Dermatology: Principles and Practice', Ch. 14"
+    ]
+  },
+  "BCC": {
+    "code": "BCC",
+    "name": "Basal Cell Carcinoma",
+    "category": "Malignant",
+    "needs_dermatologist_review": false,
+    "clinical_features": [
+      "Pearly translucent papule or nodule with rolled borders",
+      "Fine visible surface telangiectasia",
+      "Central ulceration, crusting, or non-healing bleeding sore"
+    ],
+    "dermoscopic_features": [
+      "Arborizing (tree-like) telangiectasias with distinct branching",
+      "Blue-gray ovoid nests and blue-gray globules",
+      "Spoke-wheel areas and leaf-like structures at periphery",
+      "Shiny white blotches and short crossing strands (crystalline structures)",
+      "Ulceration and small erosions"
+    ],
+    "darker_skin_considerations": "Over 50% of BCCs in Fitzpatrick IV-VI are pigmented (vs <10% in fair skin). They frequently present as brown-to-black nodules mimicking melanoma or seborrheic keratosis. Blue-gray nests, shiny white lines, and arborizing vessels remain key dermoscopic markers.",
+    "sources": [
+      "Argenziano G et al., 'Dermoscopy of Basal Cell Carcinoma', Arch Dermatol 2002; 138(9):1157-1162",
+      "Bigby M et al., 'Pigmented basal cell carcinoma in dark-skinned individuals', JAAD 2004",
+      "Bolognia JL et al., 'Dermatology', 4th Ed, Ch. 108"
+    ]
+  },
+  "BEN_OTH": {
+    "code": "BEN_OTH",
+    "name": "Other Benign Lesions",
+    "category": "Benign",
+    "needs_dermatologist_review": true,
+    "clinical_features": [
+      "Stable, non-progressive flesh-colored, yellowish, or brown papule or nodule",
+      "Smooth circumscribed margins with absence of spontaneous bleeding or rapid evolution"
+    ],
+    "dermoscopic_features": [
+      "Absence of melanoma-specific and malignant criteria",
+      "Homogeneous or structureless benign patterns",
+      "Regular linear or comma vessels without polymorphous atypia"
+    ],
+    "darker_skin_considerations": "Post-inflammatory hyperpigmentation or heavy melanin deposition can give benign papules (e.g. skin tags, cysts) a dark brown or black appearance, occasionally prompting unnecessary excision.",
+    "sources": [
+      "Kittler H et al., 'Dermatoscopy', 2nd Ed",
+      "Bolognia JL et al., 'Dermatology', 4th Ed"
+    ]
+  },
+  "BKL": {
+    "code": "BKL",
+    "name": "Benign Keratosis (Seborrheic Keratosis / Solar Lentigo)",
+    "category": "Benign",
+    "needs_dermatologist_review": false,
+    "clinical_features": [
+      "Well-demarcated 'stuck-on' waxy, verrucous, or velvety appearance",
+      "Uniform to variegated tan, brown, or black coloration",
+      "Dry, crumbly, or keratinaceous surface"
+    ],
+    "dermoscopic_features": [
+      "Milia-like cysts (small, round, bright white or yellowish spots)",
+      "Comedo-like openings / crypts (brown or black sharply circumscribed craters)",
+      "Gyri and sulci forming a brain-like (cerebriform) pattern",
+      "Hairpin vessels surrounded by a white halo",
+      "Fingerprint-like regular parallel delicate brown ridges"
+    ],
+    "darker_skin_considerations": "Frequently presents as Dermatosis Papulosa Nigra (DPN) on the face and neck of darker skin individuals as multiple small, smooth, hyperpigmented papules exhibiting cerebriform or comedo-like patterns.",
+    "sources": [
+      "Braun RP et al., 'Dermoscopy of seborrheic keratosis', JAMA Dermatol 2002; 138(4):518-523",
+      "Babapour R et al., 'Dermatosis papulosa nigra: A review', JAAD 2017",
+      "Kittler H et al., 'Dermatoscopy', 2nd Ed"
+    ]
+  },
+  "DF": {
+    "code": "DF",
+    "name": "Dermatofibroma",
+    "category": "Benign",
+    "needs_dermatologist_review": false,
+    "clinical_features": [
+      "Firm, button-like dermal nodule commonly on lower extremities",
+      "Positive 'dimple sign' (central depression upon lateral pinch)",
+      "Hyperpigmented peripheral border with paler center"
+    ],
+    "dermoscopic_features": [
+      "Central white patch or scar-like structureless area",
+      "Delicate, uniform pigment network at the periphery",
+      "Occasional fine dotted or hairpin vessels in center"
+    ],
+    "darker_skin_considerations": "In darker skin tones, the central area may exhibit marked post-inflammatory hyperpigmentation rather than classic white scar tissue; the peripheral network is frequently dense and dark brown.",
+    "sources": [
+      "Zaballos P et al., 'Dermoscopic patterns of dermatofibroma: a study of 412 cases', Arch Dermatol 2008; 144(1):55-60",
+      "Bolognia JL et al., 'Dermatology', 4th Ed"
+    ]
+  },
+  "INF": {
+    "code": "INF",
+    "name": "Inflammatory Condition (Eczema / Psoriasis / Lichen Planus)",
+    "category": "Non-tumour / Inflammatory",
+    "needs_dermatologist_review": false,
+    "clinical_features": [
+      "Pruritic erythematous, violaceous, or hyperpigmented scaly macules/plaques",
+      "Ill-defined borders with excoriations (eczema) or sharply demarcated micaceous scale (psoriasis)",
+      "Polygonal flat-topped violaceous papules with Wickham striae (lichen planus)"
+    ],
+    "dermoscopic_features": [
+      "Uniformly distributed dotted vessels on a diffuse pink background (psoriasis)",
+      "Patchy dotted vessels with yellowish-orange serocrusts (eczema)",
+      "White crossing reticular lines (Wickham striae) with peripheral dotted/radial vessels (lichen planus)",
+      "Absence of pigment network or malignant tumor vessels"
+    ],
+    "darker_skin_considerations": "Erythema rarely presents as bright red; it commonly appears as violaceous, gray, or dark brown hyperpigmented plaques. Post-inflammatory pigmentary alteration (hyperpigmentation or hypopigmentation) is prominent and can obscure underlying vessel patterns.",
+    "sources": [
+      "Errichetti E, Stinco G, 'Dermoscopy in General Dermatology: A Practical Overview', Dermatol Ther 2016; 6(4):471-507",
+      "Alexis AF et al., 'Dermatology for Skin of Color', 2nd Ed, McGraw-Hill"
+    ]
+  },
+  "MAL_OTH": {
+    "code": "MAL_OTH",
+    "name": "Other Malignant Lesions",
+    "category": "Malignant",
+    "needs_dermatologist_review": true,
+    "clinical_features": [
+      "Rapidly enlarging or indurated ulcerated nodule or plaque",
+      "Spontaneous bleeding, necrosis, or atypical infiltration"
+    ],
+    "dermoscopic_features": [
+      "Polymorphous and atypical vessels (corkscrew, looped, hairpin)",
+      "Shiny white lines and structureless areas",
+      "Irregular central necrosis or bleeding ulcerations"
+    ],
+    "darker_skin_considerations": "Atypical tumors (e.g. dermatofibrosarcoma protuberans, atypical fibroxanthoma) can be misdiagnosed as benign keloids or cysts in darker skin due to firm subcutaneous feel and hyperpigmentation.",
+    "sources": [
+      "Bolognia JL et al., 'Dermatology', 4th Ed",
+      "Lallas A et al., 'Dermoscopy of Rare Skin Tumours', Eur J Dermatol 2014"
+    ]
+  },
+  "MEL": {
+    "code": "MEL",
+    "name": "Melanoma",
+    "category": "Malignant",
+    "needs_dermatologist_review": false,
+    "clinical_features": [
+      "Asymmetry (shape and pigment distribution unequal across axes)",
+      "Border irregularity (scalloped, notched, or poorly defined edges)",
+      "Color variegation (multiple shades of brown, black, red, blue, or white)",
+      "Diameter frequently >6 mm, or rapid evolution in size, shape, or symptom"
+    ],
+    "dermoscopic_features": [
+      "Atypical pigment network with thick lines and irregular meshes",
+      "Irregularly distributed dots and globules of varying size",
+      "Blue-white veil (confluent blue-gray pigmentation with overlying ground-glass haze)",
+      "Atypical polymorphous vessels (corkscrew, dotted, serpentine)",
+      "Regression structures (peppering, white scar-like depigmentation)",
+      "Irregular peripheral streaks and pseudopods"
+    ],
+    "darker_skin_considerations": "Melanoma in darker skin individuals disproportionately occurs in acral sites (soles of feet, palms, nail beds - Acral Lentiginous Melanoma / ALM). Dermoscopy shows a characteristic parallel ridge pattern (pigment on ridges rather than furrows). Amelanotic variants can present as non-pigmented nodules mimicking pyogenic granuloma.",
+    "sources": [
+      "Argenziano G et al., 'Seven-point checklist of dermoscopy: a new approach', Br J Dermatol 1998; 139:439-445",
+      "Bradford PT et al., 'Acral lentiginous melanoma: incidence and survival patterns in the United States', Arch Dermatol 2009; 145(4):427-434",
+      "Gloster HM, Neal K, 'Skin cancer in skin of color', JAAD 2006; 55(5):741-760"
+    ]
+  },
+  "NV": {
+    "code": "NV",
+    "name": "Melanocytic Nevus (Common Mole)",
+    "category": "Benign",
+    "needs_dermatologist_review": false,
+    "clinical_features": [
+      "Symmetric, uniformly pigmented tan, brown, or dark brown macule or papule",
+      "Smooth, round or oval, well-defined regular borders",
+      "Generally stable size under 6 mm without evolution"
+    ],
+    "dermoscopic_features": [
+      "Regular pigment network thinning out gradually at the periphery",
+      "Uniformly distributed dots and globules in center or concentric ring",
+      "Homogeneous brown or tan structureless background",
+      "Absence of atypical vessels, blue-white veil, or focal pseudopods"
+    ],
+    "darker_skin_considerations": "In darker skin phototypes, normal nevi typically show denser and darker melanin pigmentation (dark brown to slate black) with intense contrast. Reticular and homogeneous dark patterns predominate and can be mistaken for dysplastic lesions if fair-skin baselines are applied.",
+    "sources": [
+      "Kittler H et al., 'Dermatoscopy', 2nd Ed",
+      "Marghoob AA et al., 'Dermoscopic evaluation of nevi across diverse skin types', Semin Cutan Med Surg 2009"
+    ]
+  },
+  "SCCKA": {
+    "code": "SCCKA",
+    "name": "Squamous Cell Carcinoma / Keratoacanthoma",
+    "category": "Malignant",
+    "needs_dermatologist_review": false,
+    "clinical_features": [
+      "Firm indurated hyperkeratotic nodule or plaque with central keratin crater",
+      "Rapid explosive growth over weeks (keratoacanthoma variant)",
+      "Frequent tenderness, scaling, and sun-exposed location"
+    ],
+    "dermoscopic_features": [
+      "Central amorphous keratin mass, crust, or ulceration",
+      "White circles surrounding hair follicle openings or dilated vessels",
+      "Hairpin and looped vessels surrounded by a distinctive white halo",
+      "Linear-irregular or serpentine atypical vessels"
+    ],
+    "darker_skin_considerations": "In patients with darker skin, SCC is the most common cutaneous malignancy and frequently arises in non-sun-exposed regions, chronic scars, burns (Marjolin ulcer), or chronic inflammatory ulcers. They are frequently pigmented and may mimic melanoma.",
+    "sources": [
+      "Lallas A et al., 'Dermoscopy of Squamous Cell Carcinoma and Keratoacanthoma', Dermatol Pract Concept 2013; 3(2):61-68",
+      "Gloster HM, Neal K, 'Skin cancer in skin of color', JAAD 2006"
+    ]
+  },
+  "VASC": {
+    "code": "VASC",
+    "name": "Vascular Lesion (Hemangioma / Angioma / Pyogenic Granuloma)",
+    "category": "Benign / Vascular",
+    "needs_dermatologist_review": false,
+    "clinical_features": [
+      "Well-circumscribed bright red, violaceous, or blue-black papule or nodule",
+      "Blanches under diascopy (pressure) unless thrombosed",
+      "May bleed easily on minor friction"
+    ],
+    "dermoscopic_features": [
+      "Red, purple, or blue-black round/oval lacunae (vascular lagoons)",
+      "Pale whitish-pink fibrous septa separating lacunae",
+      "Reddish homogeneous structureless areas without pigment network",
+      "Absence of atypical branched vessels or melanin network"
+    ],
+    "darker_skin_considerations": "In darker skin tones, the lacunae frequently appear dark violaceous, dark blue, or deep black rather than bright ruby red; thrombosed hemangiomas and angiokeratomas can closely mimic nodular melanoma.",
+    "sources": [
+      "Zaballos P et al., 'Dermoscopy of vascular lesions: a study of 422 cases', Arch Dermatol 2007; 143(3):329-335",
+      "Kittler H et al., 'Dermatoscopy', 2nd Ed"
+    ]
+  }
+}

@@ -1,0 +1,128 @@
+{
+  "timestamp": "2026-11-27T19:03:50.539965",
+  "retrieval_evaluation": {
+    "macro_recall@1": 0.8182,
+    "macro_recall@3": 0.9273,
+    "macro_recall@5": 0.9818,
+    "total_test_queries": 55,
+    "per_class": {
+      "AKIEC": {
+        "num_queries": 5,
+        "recall@1": 1.0,
+        "recall@3": 1.0,
+        "recall@5": 1.0
+      },
+      "BCC": {
+        "num_queries": 5,
+        "recall@1": 0.8,
+        "recall@3": 1.0,
+        "recall@5": 1.0
+      },
+      "BEN_OTH": {
+        "num_queries": 5,
+        "recall@1": 0.8,
+        "recall@3": 0.8,
+        "recall@5": 1.0
+      },
+      "BKL": {
+        "num_queries": 5,
+        "recall@1": 0.8,
+        "recall@3": 1.0,
+        "recall@5": 1.0
+      },
+      "DF": {
+        "num_queries": 5,
+        "recall@1": 0.6,
+        "recall@3": 0.6,
+        "recall@5": 1.0
+      },
+      "INF": {
+        "num_queries": 5,
+        "recall@1": 0.8,
+        "recall@3": 0.8,
+        "recall@5": 0.8
+      },
+      "MAL_OTH": {
+        "num_queries": 5,
+        "recall@1": 1.0,
+        "recall@3": 1.0,
+        "recall@5": 1.0
+      },
+      "MEL": {
+        "num_queries": 5,
+        "recall@1": 1.0,
+        "recall@3": 1.0,
+        "recall@5": 1.0
+      },
+      "NV": {
+        "num_queries": 5,
+        "recall@1": 0.6,
+        "recall@3": 1.0,
+        "recall@5": 1.0
+      },
+      "SCCKA": {
+        "num_queries": 5,
+        "recall@1": 0.6,
+        "recall@3": 1.0,
+        "recall@5": 1.0
+      },
+      "VASC": {
+        "num_queries": 5,
+        "recall@1": 1.0,
+        "recall@3": 1.0,
+        "recall@5": 1.0
+      }
+    }
+  },
+  "faithfulness_evaluation": {
+    "citation_precision": 1.0,
+    "total_citations_checked": 44,
+    "valid_citations_count": 44,
+    "mean_lexical_grounding_overlap": 0.4218,
+    "faithfulness_rate": 1.0
+  },
+  "conformal_and_equity_evaluation": {
+    "overall": {
+      "sample_count": 5240,
+      "conformal_coverage": 0.9084,
+      "mean_set_size": 5.73,
+      "abstention_rate": 0.8393,
+      "retrieval_hit_rate": 1.0,
+      "skin_of_colour_note_share": 1.0
+    },
+    "per_tone_group": {
+      "G1": {
+        "sample_count": 617,
+        "conformal_coverage": 0.8995,
+        "mean_set_size": 5.36,
+        "abstention_rate": 0.8055,
+        "retrieval_hit_rate": 1.0,
+        "skin_of_colour_note_share": 1.0
+      },
+      "G2": {
+        "sample_count": 3174,
+        "conformal_coverage": 0.9121,
+        "mean_set_size": 5.77,
+        "abstention_rate": 0.8403,
+        "retrieval_hit_rate": 1.0,
+        "skin_of_colour_note_share": 1.0
+      },
+      "G3": {
+        "sample_count": 1449,
+        "conformal_coverage": 0.9041,
+        "mean_set_size": 5.81,
+        "abstention_rate": 0.8516,
+        "retrieval_hit_rate": 1.0,
+        "skin_of_colour_note_share": 1.0
+      }
+    },
+    "inter_group_gaps": {
+      "conformal_coverage": 0.0126,
+      "abstention_rate": 0.0461,
+      "retrieval_hit_rate": 0.0,
+      "skin_of_colour_note_share": 0.0
+    },
+    "disparity_flags": [],
+    "equity_pass": true
+  }
+}

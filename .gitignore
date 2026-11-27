@@ -13,6 +13,9 @@ data/*
 !data/milk10k_folds.csv
 !data/slice3d_split_100k.csv
 !data/diseases.json
+!data/disease_features.json
+!data/knowledge_base/
+!data/knowledge_base/**
 data/slice3d/
 
 # Cache and Checkpoints

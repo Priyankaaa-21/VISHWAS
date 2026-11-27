@@ -47,6 +47,19 @@ STRINGS: Dict[str, Dict[str, str]] = {
         "camera_closeup": "Capture Close-up Photo",
         "camera_dermo": "Capture Magnified Photo",
         "single_photo_notice": "ℹ️ Note: You have provided one photo. The AI will still analyze it, but results are generally more reliable when both close-up and magnified views are provided.",
+        "input_mode_label": "Photo Input Mode",
+        "input_mode_both": "Both Views (Clinical + Dermoscopic)",
+        "input_mode_clinical_only": "Clinical Close-up Only",
+        "input_mode_dermo_only": "Dermoscopic Magnified Only",
+        "single_photo_clinical_note": "ℹ️ Single close-up photo provided: Evaluated using a clinical-only model path. Results from a single photo are less reliable than paired clinical + dermoscopic views.",
+        "single_photo_dermo_note": "ℹ️ Single magnified photo provided: Evaluated using dermoscopic input. Results from a single photo are less reliable than paired views.",
+        "no_clinical_model_warn": "⚠️ A clinical-only model is not available; results for single photos are less reliable.",
+        "no_dermo_model_warn": "⚠️ A dermoscopic-only model is not available; results for single photos are less reliable.",
+        "low_reliability_badge": "⚠️ Low Reliability: Single Photo Analysis",
+        "hedged_finding_prefix": "Shows features commonly seen in",
+        "expert_model_route_clinical": "Route: ClinicalOnlyClassifier (Experiment a_cw_128) across folds",
+        "expert_model_route_fusion": "Route: TwoImageTabularFusionClassifier (Experiment d_cw_128) across folds",
+        "expert_model_route_dermo": "Route: Dermoscopic-only model across folds",
         "photo_tips_title": "💡 Tips for taking a good photo",
         "photo_tips_content": "• **Good lighting**: Use bright, indirect natural daylight or a clean flash.\n• **In focus**: Tap your screen on the spot so the image is sharp, not blurry.\n• **Fill the frame**: Center the spot so it takes up 30-50% of the image.\n• **No beauty filters**: Turn off skin-smoothing or color-altering filters.\n• **Size reference**: If possible, place a coin or small ruler next to the spot for scale.",
 
@@ -101,6 +114,37 @@ STRINGS: Dict[str, Dict[str, str]] = {
         "download_pdf_btn": "📥 Download My Result (PDF)",
         "download_json_btn": "📥 Download My Result (JSON)",
         "pdf_fallback_notice": "ℹ️ Note: Diagnostic PDF report is generated in English for clinical documentation clarity.",
+
+        # Conformal Prediction & Calibration (Phase B)
+        "conformal_set_title": "Conformal Prediction Set (90% Coverage)",
+        "conformal_likely_prefix": "The AI thinks it is most likely one of:",
+        "conformal_uncertain_alert": "⚠️ The AI is uncertain about this spot. Please see a doctor.",
+        "conformal_expert_heading": "Calibrated Conformal Prediction (Split-Conformal, 90% Coverage Target)",
+        "conformal_how_to_read": "How to read this: A mathematically grounded set guaranteed to contain the true diagnosis 90% of the time.",
+
+        # Explainability & Concept Features (Phase C)
+        "features_plain_summary": "Observed features: {details}. Shows features commonly seen in {condition}.",
+        "features_plain_hedged": "The AI observed surface features commonly seen in {condition}, including {features}.",
+        "features_agreement_heading": "Features Seen vs Typical Features Checklist",
+        "features_agreement_score": "Feature Agreement Score",
+        "features_criteria_col": "Dermatological Criterion",
+        "features_observed_col": "Observed in Image?",
+        "gradcam_heading": "Visual Focus & Attribution (Grad-CAM & Grad-CAM++)",
+        "gradcam_opacity_label": "Heatmap Overlay Opacity:",
+        "explain_sanity_heading": "Explainability Sanity Checks (Randomization & Faithfulness)",
+
+        # Knowledge Base & Retrieval (Phase D)
+        "rag_kb_heading": "Clinical Literature & Guideline Retrieval (BM25)",
+        "rag_kb_caption": "How to read this: Real-time retrieved textbook and guideline chunks providing evidence-based context for top candidate conditions.",
+        "rag_cases_heading": "Similar Historical Cases (Same Skin Tone Group)",
+        "rag_cases_caption": "How to read this: Nearest reference cases from the training set within the same skin tone group. Never retrieves query patient or eval fold.",
+        "rag_similarity_label": "Cosine Similarity:",
+        "rag_zero_leakage_badge": "🔒 Zero-Leakage Verified: Cross-validation fold and patient strictly isolated.",
+
+        # Grounded Explanations & Abstention (Phase E)
+        "grounded_explanation_heading": "Grounded Clinical Context & Guidance",
+        "grounded_abstention_badge": "⚠️ Clinical Abstention Triggered (High Uncertainty)",
+        "grounded_sources_heading": "Verified Literature Sources",
 
         # Triage verdicts (titles without duplicate leading emoji)
         "triage_red_title": "See a doctor soon",
@@ -191,6 +235,19 @@ STRINGS: Dict[str, Dict[str, str]] = {
         "camera_closeup": "क्लोज़-अप फ़ोटो खींचें",
         "camera_dermo": "आवर्धित फ़ोटो खींचें",
         "single_photo_notice": "ℹ️ सूचना: आपने केवल एक तस्वीर दी है। AI इसका विश्लेषण करेगा, लेकिन दोनों कोणों की तस्वीरें होने पर परिणाम अधिक सटीक होते हैं।",
+        "input_mode_label": "फ़ोटो इनपुट मोड",
+        "input_mode_both": "दोनों दृश्य (क्लोज़-अप + आवर्धित)",
+        "input_mode_clinical_only": "केवल क्लोज़-अप तस्वीर",
+        "input_mode_dermo_only": "केवल आवर्धित तस्वीर",
+        "single_photo_clinical_note": "ℹ️ केवल क्लोज़-अप तस्वीर दी गई है: क्लिनिकल-ओनली मॉडल द्वारा मूल्यांकित। दोहरी तस्वीर (क्लोज़-अप + आवर्धित) की तुलना में एकल तस्वीर के परिणाम कम विश्वसनीय होते हैं।",
+        "single_photo_dermo_note": "ℹ️ केवल आवर्धित तस्वीर दी गई है: आवर्धित इनपुट द्वारा मूल्यांकित। एकल तस्वीर के परिणाम कम विश्वसनीय होते हैं।",
+        "no_clinical_model_warn": "⚠️ क्लिनिकल-ओनली मॉडल उपलब्ध नहीं है; एकल तस्वीर के परिणाम कम विश्वसनीय हैं।",
+        "no_dermo_model_warn": "⚠️ डर्मोस्कोपिक-ओनली मॉडल उपलब्ध नहीं है; एकल तस्वीर के परिणाम कम विश्वसनीय हैं।",
+        "low_reliability_badge": "⚠️ कम विश्वसनीयता: एकल तस्वीर विश्लेषण",
+        "hedged_finding_prefix": "छवि में दिखने वाले लक्षण जो सामान्यतः इसमें देखे जाते हैं:",
+        "expert_model_route_clinical": "रूट: ClinicalOnlyClassifier (प्रयोग a_cw_128) सभी फ़ोल्ड्स में",
+        "expert_model_route_fusion": "रूट: TwoImageTabularFusionClassifier (प्रयोग d_cw_128) सभी फ़ोल्ड्स में",
+        "expert_model_route_dermo": "रूट: डर्मोस्कोपिक-ओनली मॉडल सभी फ़ोल्ड्स में",
         "photo_tips_title": "💡 अच्छी तस्वीर लेने के महत्वपूर्ण सुझाव",
         "photo_tips_content": "• **अच्छी रोशनी**: प्राकृतिक दिन के उजाले या साफ़ फ़्लैश का प्रयोग करें।\n• **स्पष्ट फ़ोकस**: स्क्रीन पर धब्बे को छूकर फ़ोकस करें ताकि तस्वीर धुंधली न हो।\n• **तस्वीर में धब्बे का आकार**: धब्बा फ़्रेम के 30-50% हिस्से में दिखना चाहिए।\n• **कोई फ़िल्टर नहीं**: त्वचा को साफ़ करने वाले ब्यूटी फ़िल्टर बंद रखें।\n• **आकार का संदर्भ**: यदि संभव हो तो धब्बे के पास एक सिक्का या छोटा पैमाना रखें।",
 
@@ -245,6 +302,37 @@ STRINGS: Dict[str, Dict[str, str]] = {
         "download_pdf_btn": "📥 परिणाम सारांश डाउनलोड करें (PDF)",
         "download_json_btn": "📥 परिणाम डाउनलोड करें (JSON)",
         "pdf_fallback_notice": "ℹ️ सूचना: नैदानिक स्पष्टता के लिए PDF रिपोर्ट अंग्रेजी में तैयार की जाती है।",
+
+        # Conformal Prediction & Calibration (Phase B)
+        "conformal_set_title": "कनफ़ॉर्मल प्रेडिक्शन सेट (90% सांख्यिकीय कवरेज सेट)",
+        "conformal_likely_prefix": "AI का अनुमान है कि यह इनमें से एक हो सकता है:",
+        "conformal_uncertain_alert": "⚠️ AI इस त्वचा स्थल के बारे में अनिश्चित है। कृपया किसी डॉक्टर को दिखाएं।",
+        "conformal_expert_heading": "कैलिब्रेटेड कनफ़ॉर्मल प्रेडिक्शन (स्प्लिट-कनफ़ॉर्मल, 90% कवरेज लक्ष्य)",
+        "conformal_how_to_read": "इसे कैसे समझें: एक सांख्यिकीय रूप से सत्यापित सेट जिसमें 90% मामलों में वास्तविक निदान शामिल होता है।",
+
+        # Explainability & Concept Features (Phase C)
+        "features_plain_summary": "देखे गए लक्षण: {details}। छवि में दिखने वाले लक्षण जो सामान्यतः {condition} में देखे जाते हैं।",
+        "features_plain_hedged": "AI ने {condition} में आमतौर पर देखे जाने वाले सतही लक्षणों को पहचाना है, जिनमें {features} शामिल हैं।",
+        "features_agreement_heading": "देखे गए लक्षण बनाम रोग के सामान्य लक्षण",
+        "features_agreement_score": "लक्षण मिलान स्कोर",
+        "features_criteria_col": "त्वचा रोग मापदंड",
+        "features_observed_col": "छवि में मौजूद?",
+        "gradcam_heading": "दृश्य ध्यान और आकर्षण (Grad-CAM और Grad-CAM++)",
+        "gradcam_opacity_label": "हीटमैप पारदर्शिता:",
+        "explain_sanity_heading": "व्याख्यात्मक विश्वसनीयता जांच (यादृच्छिकीकरण और निष्ठा)",
+
+        # Knowledge Base & Retrieval (Phase D)
+        "rag_kb_heading": "नैदानिक साहित्य एवं दिशानिर्देश पुनर्प्राप्ति (BM25)",
+        "rag_kb_caption": "इसे कैसे समझें: शीर्ष संभावित स्थितियों के लिए साक्ष्य-आधारित संदर्भ प्रदान करने वाले प्रामाणिक पाठ्यपुस्तक और दिशानिर्देश अंश।",
+        "rag_cases_heading": "समान ऐतिहासिक मामले (समान त्वचा टोन समूह)",
+        "rag_cases_caption": "इसे कैसे समझें: समान त्वचा टोन समूह के प्रशिक्षण सेट से निकटतम संदर्भ मामले। शून्य-लीकेज गारंटी द्वारा सुरक्षित।",
+        "rag_similarity_label": "कोसाइन समानता:",
+        "rag_zero_leakage_badge": "🔒 शून्य-लीकेज सत्यापित: क्रॉस-वैलिडेशन फ़ोल्ड और रोगी पूर्णतः पृथक हैं।",
+
+        # Grounded Explanations & Abstention (Phase E)
+        "grounded_explanation_heading": "साक्ष्य-आधारित नैदानिक संदर्भ एवं मार्गदर्शन",
+        "grounded_abstention_badge": "⚠️ नैदानिक अनिश्चितता चेतावनी (उच्च अनिश्चितता)",
+        "grounded_sources_heading": "सत्यापित साहित्य स्रोत",
 
         # Triage verdicts (without duplicate emoji)
         "triage_red_title": "शीघ्र डॉक्टर को दिखाएं",
@@ -335,6 +423,19 @@ STRINGS: Dict[str, Dict[str, str]] = {
         "camera_closeup": "ಹತ್ತಿರದ ಫೋಟೋ ಸೆರೆಹಿಡಿಯಿರಿ",
         "camera_dermo": "ವರ್ಧಿತ ಫೋಟೋ ಸೆರೆಹಿಡಿಯಿರಿ",
         "single_photo_notice": "ℹ️ ಸೂಚನೆ: ನೀವು ಒಂದೇ ಫೋಟೋ ನೀಡಿದ್ದೀರಿ. AI ವಿಶ್ಲೇಷಿಸುತ್ತದೆ, ಆದರೆ ಎರಡೂ ಫೋಟೋಗಳಿದ್ದರೆ ಫಲಿತಾಂಶ ಹೆಚ್ಚು ವಿಶ್ವಾಸಾರ್ಹವಾಗಿರುತ್ತದೆ.",
+        "input_mode_label": "ಫೋಟೋ ಇನ್‌ಪುಟ್ ವಿಧಾನ",
+        "input_mode_both": "ಎರಡೂ ವೀಕ್ಷಣೆಗಳು (ಹತ್ತಿರದ + ವರ್ಧಿತ)",
+        "input_mode_clinical_only": "ಹತ್ತಿರದ ಫೋಟೋ ಮಾತ್ರ",
+        "input_mode_dermo_only": "ವರ್ಧಿತ ಫೋಟೋ ಮಾತ್ರ",
+        "single_photo_clinical_note": "ℹ️ ಕೇವಲ ಹತ್ತಿರದ ಫೋಟೋ ನೀಡಲಾಗಿದೆ: ಕ್ಲಿನಿಕಲ್-ಮಾತ್ರ ಮಾದರಿಯಿಂದ ಮೌಲ್ಯಮಾಪನ ಮಾಡಲಾಗಿದೆ. ಎರಡೂ ವೀಕ್ಷಣೆಗಳಿಗೆ ಹೋಲಿಸಿದರೆ ಏಕೈಕ ಫೋಟೋದ ಫಲಿತಾಂಶಗಳು ಕಡಿಮೆ ವಿಶ್ವಾಸಾರ್ಹವಾಗಿರುತ್ತವೆ.",
+        "single_photo_dermo_note": "ℹ️ ಕೇವಲ ವರ್ಧಿತ ಫೋಟೋ ನೀಡಲಾಗಿದೆ: ವರ್ಧಿತ ಇನ್‌ಪುಟ್ ಮೂಲಕ ಮೌಲ್ಯಮಾಪನ ಮಾಡಲಾಗಿದೆ. ಏಕೈಕ ಫೋಟೋದ ಫಲಿತಾಂಶಗಳು ಕಡಿಮೆ ವಿಶ್ವಾಸಾರ್ಹವಾಗಿರುತ್ತವೆ.",
+        "no_clinical_model_warn": "⚠️ ಕ್ಲಿನಿಕಲ್-ಮಾತ್ರ ಮಾದರಿ ಲಭ್ಯವಿಲ್ಲ; ಏಕೈಕ ಫೋಟೋದ ಫಲಿತಾಂಶಗಳು ಕಡಿಮೆ ವಿಶ್ವಾಸಾರ್ಹವಾಗಿವೆ.",
+        "no_dermo_model_warn": "⚠️ ಡರ್ಮೋಸ್ಕೋಪಿಕ್-ಮಾತ್ರ ಮಾದರಿ ಲಭ್ಯವಿಲ್ಲ; ಏಕೈಕ ಫೋಟೋದ ಫಲಿತಾಂಶಗಳು ಕಡಿಮೆ ವಿಶ್ವಾಸಾರ್ಹವಾಗಿವೆ.",
+        "low_reliability_badge": "⚠️ ಕಡಿಮೆ ವಿಶ್ವಾಸಾರ್ಹತೆ: ಏಕ ಫೋಟೋ ವಿಶ್ಲೇಷಣೆ",
+        "hedged_finding_prefix": "ಚಿತ್ರದಲ್ಲಿ ಸಾಮಾನ್ಯವಾಗಿ ಕಂಡುಬರುವ ಲಕ್ಷಣಗಳು:",
+        "expert_model_route_clinical": "ಮಾರ್ಗ: ClinicalOnlyClassifier (ಪ್ರಯೋಗ a_cw_128) ಎಲ್ಲಾ ಫೋಲ್ಡ್‌ಗಳಲ್ಲಿ",
+        "expert_model_route_fusion": "ಮಾರ್ಗ: TwoImageTabularFusionClassifier (ಪ್ರಯೋಗ d_cw_128) ಎಲ್ಲಾ ಫೋಲ್ಡ್‌ಗಳಲ್ಲಿ",
+        "expert_model_route_dermo": "ಮಾರ್ಗ: ಡರ್ಮೋಸ್ಕೋಪಿಕ್-ಮಾತ್ರ ಮಾದರಿ ಎಲ್ಲಾ ಫೋಲ್ಡ್‌ಗಳಲ್ಲಿ",
         "photo_tips_title": "💡 ಉತ್ತಮ ಫೋಟೋ ತೆಗೆಯಲು ಸಲಹೆಗಳು",
         "photo_tips_content": "• **ಉತ್ತಮ ಬೆಳಕು**: ನೈಸರ್ಗಿಕ ಹಗಲು ಬೆಳಕು ಅಥವಾ ಸ್ಪಷ್ಟ ಫ್ಲ್ಯಾಶ್ ಬಳಸಿ.\n• **ಸ್ಪಷ್ಟ ಫೋಕಸ್**: ಫೋಟೋ ಮಸುಕಾಗದಂತೆ ಪರದೆಯ ಮೇಲೆ ಮಚ್ಚೆಯನ್ನು ಸ್ಪರ್ಶಿಸಿ ಫೋಕಸ್ ಮಾಡಿ.\n• **ಫ್ರೇಮ್ ತುಂಬಿಸಿ**: ಮಚ್ಚೆ ಫ್ರೇಮ್‌ನ 30-50% ಜಾಗವನ್ನು ಆವರಿಸಿರಬೇಕು.\n• **ಫಿಲ್ಟರ್ ಬೇಡ**: ಚರ್ಮವನ್ನು ನಯಗೊಳಿಸುವ ಬ್ಯೂಟಿ ಫಿಲ್ಟರ್‌ಗಳನ್ನು ಆಫ್ ಮಾಡಿ.\n• **ಗಾತ್ರದ ಉಲ್ಲೇಖ**: ಸಾಧ್ಯವಾದರೆ ಮಚ್ಚೆಯ ಪಕ್ಕದಲ್ಲಿ ನಾಣ್ಯ ಅಥವಾ ಸಣ್ಣ ಅಳತೆಪಟ್ಟಿ ಇರಿಸಿ.",
 
@@ -389,6 +490,37 @@ STRINGS: Dict[str, Dict[str, str]] = {
         "download_pdf_btn": "📥 ಫಲಿತಾಂಶ ಸಾರಾಂಶ ಡೌನ್‌ಲೋಡ್ (PDF)",
         "download_json_btn": "📥 ಫಲಿತಾಂಶ ಡೌನ್‌ಲೋಡ್ (JSON)",
         "pdf_fallback_notice": "ℹ️ ಸೂಚನೆ: ಕ್ಲಿನಿಕಲ್ ಸ್ಪಷ್ಟತೆಗಾಗಿ PDF ವರದಿಯನ್ನು ಇಂಗ್ಲಿಷ್‌ನಲ್ಲಿ ರಚಿಸಲಾಗಿದೆ.",
+
+        # Conformal Prediction & Calibration (Phase B)
+        "conformal_set_title": "ಕಾನ್‌ಫಾರ್ಮಲ್ ಭವಿಷ್ಯ ಸೆಟ್ (90% ವಿಶ್ವಾಸಾರ್ಹ ಗುಂಪು)",
+        "conformal_likely_prefix": "AI ಇದು ಈ ಕೆಳಗಿನವುಗಳಲ್ಲಿ ಒಂದಾಗಿರಬಹುದು ಎಂದು ಊಹಿಸುತ್ತದೆ:",
+        "conformal_uncertain_alert": "⚠️ AI ಈ ಚರ್ಮದ ಗುರುತಿನ ಬಗ್ಗೆ ಅನಿಶ್ಚಿತವಾಗಿದೆ. ದಯವಿಟ್ಟು ವೈದ್ಯರನ್ನು ಸಂಪರ್ಕಿಸಿ.",
+        "conformal_expert_heading": "ಕ್ಯಾಲಿಬ್ರೇಟ್ ಮಾಡಿದ ಕಾನ್‌ಫಾರ್ಮಲ್ ಭವಿಷ್ಯ (ಸ್ಪ್ಲಿಟ್-ಕಾನ್‌ಫಾರ್ಮಲ್, 90% ಗುರಿ ಕವರೇಜ್)",
+        "conformal_how_to_read": "ಇದನ್ನು ಹೇಗೆ ಓದುವುದು: ನಿಜವಾದ ರೋಗನಿರ್ಣಯವು 90% ಸಮಯ ಈ ಗುಂಪಿನಲ್ಲಿರುತ್ತದೆ ಎಂಬ ಸಂಖ್ಯಾಶಾಸ್ತ್ರೀಯ ಖಾತರಿ.",
+
+        # Explainability & Concept Features (Phase C)
+        "features_plain_summary": "ಕಂಡುಬಂದ ಲಕ್ಷಣಗಳು: {details}. ಚಿತ್ರದಲ್ಲಿ {condition} ಸ್ಥಿತಿಯಲ್ಲಿ ಸಾಮಾನ್ಯವಾಗಿ ಕಂಡುಬರುವ ಲಕ್ಷಣಗಳಿವೆ.",
+        "features_plain_hedged": "AI {condition} ಸ್ಥಿತಿಯಲ್ಲಿ ಸಾಮಾನ್ಯವಾಗಿ ಕಂಡುಬರುವ ಮೇಲ್ಮೈ ಲಕ್ಷಣಗಳನ್ನು ಗಮನಿಸಿದೆ, ಇದರಲ್ಲಿ {features} ಸೇರಿವೆ.",
+        "features_agreement_heading": "ಕಂಡುಬಂದ ಲಕ್ಷಣಗಳು ವಿರುದ್ಧ ವಿಶಿಷ್ಟ ಲಕ್ಷಣಗಳ ಪರಿಶೀಲನಾ ಪಟ್ಟಿ",
+        "features_agreement_score": "ಲಕ್ಷಣ ಹೊಂದಾಣಿಕೆ ಅಂಕ",
+        "features_criteria_col": "ಚರ್ಮರೋಗ ಮಾನದಂಡ",
+        "features_observed_col": "ಚಿತ್ರದಲ್ಲಿ ಕಂಡುಬಂದಿದೆಯೇ?",
+        "gradcam_heading": "ದೃಶ್ಯ ಗಮನ ಮತ್ತು ಕಾರಣಗಳು (Grad-CAM ಮತ್ತು Grad-CAM++)",
+        "gradcam_opacity_label": "ಹೀಟ್‌ಮ್ಯಾಪ್ ಪಾರದರ್ಶಕತೆ:",
+        "explain_sanity_heading": "ವಿವರಣೆಯ ನಂಬಿಕಸ್ಥತೆ ಪರೀಕ್ಷೆಗಳು (ರ್ಯಾಂಡಮೈಸೇಶನ್ ಮತ್ತು ನಿಷ್ಠೆ)",
+
+        # Knowledge Base & Retrieval (Phase D)
+        "rag_kb_heading": "ಕ್ಲಿನಿಕಲ್ ಸಾಹಿತ್ಯ ಮತ್ತು ಮಾರ್ಗಸೂಚಿ ಮರುಪಡೆಯುವಿಕೆ (BM25)",
+        "rag_kb_caption": "ಇದನ್ನು ಹೇಗೆ ಓದುವುದು: ಪ್ರಮುಖ ರೋಗಸ್ಥಿತಿಗಳಿಗೆ ಸಾಕ್ಷ್ಯ-ಆಧಾರಿತ ಸಂದರ್ಭ ಒದಗಿಸುವ ಅಧಿಕೃತ ಪಠ್ಯಪುಸ್ತಕ ಮತ್ತು ಮಾರ್ಗಸೂಚಿ ಮಾಹಿತಿ.",
+        "rag_cases_heading": "ಹೋಲುವ ಐತಿಹಾಸಿಕ ಪ್ರಕರಣಗಳು (ಅದೇ ಚರ್ಮದ ಟೋನ್ ಗುಂಪು)",
+        "rag_cases_caption": "ಇದನ್ನು ಹೇಗೆ ಓದುವುದು: ಅದೇ ಚರ್ಮದ ಟೋನ್ ಗುಂಪಿನ ತರಬೇತಿ ಸೆಟ್‌ನಿಂದ ಆಯ್ದ ಸಮೀಪದ ಉಲ್ಲೇಖ ಪ್ರಕರಣಗಳು. ಶೂನ್ಯ-ಸೋರಿಕೆ ನಿಯಮಗಳಿಂದ ಸುರಕ್ಷಿತ.",
+        "rag_similarity_label": "ಕೋಸೈನ್ ಹೋಲಿಕೆ:",
+        "rag_zero_leakage_badge": "🔒 ಶೂನ್ಯ-ಸೋರಿಕೆ ದೃಢೀಕರಿಸಲಾಗಿದೆ: ಕ್ರಾಸ್-ವ್ಯಾಲಿಡೇಶನ್ ಫೋಲ್ಡ್ ಮತ್ತು ರೋಗಿಯನ್ನು ಪ್ರತ್ಯೇಕಿಸಲಾಗಿದೆ.",
+
+        # Grounded Explanations & Abstention (Phase E)
+        "grounded_explanation_heading": "ಆಧಾರಿತ ಕ್ಲಿನಿಕಲ್ ಸಂದರ್ಭ ಮತ್ತು ಮಾರ್ಗದರ್ಶನ",
+        "grounded_abstention_badge": "⚠️ ಕ್ಲಿನಿಕಲ್ ಅನಿಶ್ಚಿತತೆಯ ಎಚ್ಚರಿಕೆ (ಹೆಚ್ಚಿನ ಅನಿಶ್ಚಿತತೆ)",
+        "grounded_sources_heading": "ದೃಢೀಕರಿಸಿದ ಸಾಹಿತ್ಯ ಮೂಲಗಳು",
 
         # Triage verdicts (without duplicate emoji)
         "triage_red_title": "ಕೂಡಲೇ ವೈದ್ಯರನ್ನು ಭೇಟಿ ಮಾಡಿ",
