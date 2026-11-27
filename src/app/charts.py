@@ -315,7 +315,14 @@ def plot_top3_horizontal(
 
     # Invert order for top-to-bottom display
     rev_top3 = top3_list[::-1]
-    names = [x.get("name", x.get("class", x.get("code", ""))) for x in rev_top3]
+    names = []
+    for x in rev_top3:
+        code = x.get("code") or x.get("class", "")
+        full_name = x.get("name", code)
+        if full_name and full_name != code:
+            names.append(f"{code} — {full_name}")
+        else:
+            names.append(code)
     probs = [x.get("prob", 0.0) * 100 for x in rev_top3]
 
     colors = ["#2563eb"] * len(names)

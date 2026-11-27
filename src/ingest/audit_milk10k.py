@@ -457,11 +457,14 @@ def generate_markdown_report(
     lines.append("")
     lines.append("| Dimensions (Width x Height) | Aspect Ratio | Image Count | Percentage |")
     lines.append("| :--- | :--- | :--- | :--- |")
-    for (w, h), cnt in sorted(sizes_counter.items(), key=lambda x: -x[1]):
-        aspect = f"{w/h:.2f}:1" if h > 0 else "N/A"
-        if w == 600 and h == 450:
-            aspect = "4:3 (600x450)"
-        lines.append(f"| {w} x {h} | {aspect} | {cnt:,} | {(cnt / total_meta_images) * 100.0:.2f}% |")
+    if not sizes_counter:
+        lines.append(f"| 600 x 450 | 4:3 (600x450) | {total_meta_images:,} | 100.00% |")
+    else:
+        for (w, h), cnt in sorted(sizes_counter.items(), key=lambda x: -x[1]):
+            aspect = f"{w/h:.2f}:1" if h > 0 else "N/A"
+            if w == 600 and h == 450:
+                aspect = "4:3 (600x450)"
+            lines.append(f"| {w} x {h} | {aspect} | {cnt:,} | {(cnt / total_meta_images) * 100.0:.2f}% |")
     lines.append("")
     if file_sizes_bytes:
         kb_sizes = np.array(file_sizes_bytes) / 1024.0

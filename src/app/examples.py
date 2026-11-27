@@ -141,14 +141,14 @@ def render_image_preview_card(
     if caption:
         st.caption(f"**{caption}**")
 
-    # Render image(s) side by side
+    # Render image(s) side by side at crisp native dimensions
     if derm_img is not None:
         c1, c2 = st.columns(2)
         with c1:
-            st.image(clin_img, caption="Close-up View", use_container_width=True)
+            st.image(clin_img, caption="Close-up View", width=240)
         with c2:
-            st.image(derm_img, caption="Magnified (Dermoscopic) View", use_container_width=True)
+            st.image(derm_img, caption="Magnified (Dermoscopic) View", width=240)
     elif clin_img is not None:
-        st.image(clin_img, caption="Spot Photo", use_container_width=True)
+        st.image(clin_img, caption="Spot Photo", width=240)
     else:
-        st.image(get_placeholder_image("No Image"), caption="No Image Selected", use_container_width=True)
+        st.image(get_placeholder_image("No Image"), caption="No Image Selected", width=240)

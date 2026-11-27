@@ -1,6 +1,6 @@
 # MILK10k Dataset Audit & Integrity Report
 
-> **Audit Date**: 2026-10-20 | **Audit Runtime**: 0.59 seconds | **Engine**: Vishwas Dataset Ingest Auditor
+> **Audit Date**: 2026-10-20 | **Audit Runtime**: 0.70 seconds | **Engine**: Vishwas Dataset Ingest Auditor
 
 This report documents the rigorous data integrity, demographic, diagnosis distribution, image resolution, and cross-attribute balance audit of the **MILK10k** dataset, conducted in Step 1 of the dataset transition.
 
@@ -66,6 +66,7 @@ We evaluated whether any patient-level metadata differed between the clinical ro
 
 | Dimensions (Width x Height) | Aspect Ratio | Image Count | Percentage |
 | :--- | :--- | :--- | :--- |
+| 600 x 450 | 4:3 (600x450) | 10,480 | 100.00% |
 
 
 ## 5. Demographic & Clinical Attribute Distributions

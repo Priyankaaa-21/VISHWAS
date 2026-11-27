@@ -252,7 +252,7 @@ def render_skin_conditions_guide(lang: str = "en") -> None:
             with col1:
                 thumb_path = root / "assets" / "examples" / f"{code}_clinical.jpg"
                 if thumb_path.exists():
-                    st.image(str(thumb_path), use_container_width=True)
+                    st.image(str(thumb_path), width=220)
                 else:
                     st.caption("No thumbnail")
             with col2:

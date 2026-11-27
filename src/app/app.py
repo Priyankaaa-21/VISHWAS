@@ -221,29 +221,51 @@ def get_tone_group_for_class(tone_group: str, skin_tone_class: Any) -> Tuple[str
     return tg, f"{tg} (Skin Tone Class {skin_tone_class})"
 
 
+def get_checkpoint_path(experiment_name: str, fold: int) -> Optional[Path]:
+    """Finds existing trained checkpoint path matching multiple standard naming conventions."""
+    root = get_vishwas_root()
+    candidates = [
+        root / "checkpoints" / f"best_{experiment_name}_fold{fold}.pt",
+        root / "checkpoints" / f"{experiment_name}_fold{fold}.pt",
+        root / "checkpoints" / f"best_{experiment_name}_fold_{fold}.pt",
+        root / "checkpoints" / f"{experiment_name}_fold_{fold}.pt",
+    ]
+    for c in candidates:
+        if c.exists():
+            return c
+    return None
+
+
+def get_available_checkpoint_folds(experiment_name: str) -> List[int]:
+    """Returns list of available fold indices (0..4) for a given experiment."""
+    return [f for f in range(5) if get_checkpoint_path(experiment_name, f) is not None]
+
+
 # Model and Checkpoint Cache
 @st.cache_resource
 def load_checkpoint_model(experiment_name: str, fold: int) -> Optional[torch.nn.Module]:
     """Loads a specific trained checkpoint fold onto MPS or CPU."""
-    root = get_vishwas_root()
-    ckpt_path = root / "checkpoints" / f"{experiment_name}_fold_{fold}.pt"
-    if not ckpt_path.exists():
-        logging.warning("Checkpoint %s does not exist.", ckpt_path)
+    ckpt_path = get_checkpoint_path(experiment_name, fold)
+    if ckpt_path is None:
+        logging.warning("Checkpoint for %s fold %d does not exist.", experiment_name, fold)
         return None
 
     try:
-        model_type = "fusion" if experiment_name.startswith("d_") else "image_only"
+        is_fusion = experiment_name.startswith("d_")
+        model_type = "full_fusion" if is_fusion else "clinical_only"
         model = build_model(
             model_type=model_type,
-            backbone="resnet18",
+            backbone="efficientnet_b0",
             num_classes=11,
-            num_tabular_features=18 if model_type == "fusion" else 0,
+            tabular_dim=13 if is_fusion else 0,
             pretrained=False,
         )
         ckpt = torch.load(ckpt_path, map_location=device)
-        model.load_state_dict(ckpt["model_state_dict"])
+        state_dict = ckpt.get("model_state_dict", ckpt)
+        model.load_state_dict(state_dict)
         model.to(device)
         model.eval()
+        logging.info("Successfully loaded checkpoint %s for fold %d", ckpt_path.name, fold)
         return model
     except Exception as exc:
         logging.error("Failed loading checkpoint %s: %s", ckpt_path, exc)
@@ -288,7 +310,7 @@ def predict_single_model(
         if is_fusion:
             logits = model(clin_tensor, dermo_tensor, tab_tensor)
         else:
-            logits = model(dermo_tensor)
+            logits = model(clin_tensor)
         probs = torch.softmax(logits, dim=1).cpu().numpy()[0]
     return probs
 
@@ -303,19 +325,23 @@ def predict_ensemble(
     """Computes mean ensemble prediction across available checkpoints."""
     is_fusion = experiment_name.startswith("d_")
     accum_probs = np.zeros(11, dtype=np.float32)
-    models_evaluated = 0
+    loaded_folds: List[int] = []
 
     for f in folds:
         m = load_checkpoint_model(experiment_name, f)
         if m is not None:
             p = predict_single_model(m, clin_tensor, dermo_tensor, tab_tensor, is_fusion)
             accum_probs += p
-            models_evaluated += 1
+            loaded_folds.append(f)
 
-    if models_evaluated == 0:
-        return np.ones(11, dtype=np.float32) / 11.0
+    logging.info("predict_ensemble evaluated %d folds: %s for %s", len(loaded_folds), loaded_folds, experiment_name)
 
-    return accum_probs / float(models_evaluated)
+    if not loaded_folds:
+        raise RuntimeError(
+            "Model files not found in checkpoints/. Live analysis is unavailable; curated examples still work."
+        )
+
+    return accum_probs / float(len(loaded_folds))
 
 
 # ==============================================================================
@@ -348,6 +374,14 @@ if hasattr(st, "dialog"):
         </div>
         """, unsafe_allow_html=True)
 
+        if res_data.get("is_precomputed"):
+            st.markdown('<div class="precomputed-note-pill">ℹ️ Precomputed result for this example</div>', unsafe_allow_html=True)
+            gt = res_data.get("gt_diagnosis")
+            if gt:
+                gt_meta = CONDITION_DESCRIPTIONS.get(gt, {})
+                gt_name = res_data.get("gt_diagnosis_name") or gt_meta.get(f"{lang_code}_name") or gt_meta.get("en_name", gt)
+                st.markdown(f"🎯 **True Diagnosis (Ground Truth)**: **{gt_name}** (`{gt}`)")
+
         # 2. Predicted Condition & Confidence
         title_tag = t("most_likely_uncertain", lang_code) if triage.get("is_uncertain") else t("most_likely", lang_code)
         st.markdown(f"#### {title_tag}: **{display_name}** (`{pred_c}`)")
@@ -368,8 +402,9 @@ if hasattr(st, "dialog"):
 
         # 5. Top-3 Horizontal Ranked Bars Chart (Plotly)
         st.markdown(f"##### 📊 {t('top3_title', lang_code)}")
+        st.caption("How to read this: Ranked probability distribution across top 3 predicted conditions.")
         top3_fig = plot_top3_horizontal(res_data.get("top3", []), theme_mode=theme_name, lang=lang_code)
-        st.plotly_chart(top3_fig, use_container_width=True)
+        st.plotly_chart(top3_fig, width="stretch")
 
         # 6. Condition Explainer Card
         render_disease_card(pred_c, lang_code)
@@ -383,14 +418,80 @@ if hasattr(st, "dialog"):
                 data=pdf_bytes,
                 file_name=f"VISHWAS_Result_{datetime.now().strftime('%Y%m%d_%H%M')}.pdf",
                 mime="application/pdf",
-                use_container_width=True,
+                width="stretch",
                 key="popup_pdf_btn",
             )
         with p_col2:
-            if st.button(t("popup_close_btn", lang_code), use_container_width=True, key="popup_close_btn"):
+            if st.button(t("popup_close_btn", lang_code), width="stretch", key="popup_close_btn"):
                 st.rerun()
 else:
     show_result_dialog = None
+
+
+def select_curated_example(chosen_ex: Dict[str, Any], app_cfg: Dict[str, Any], lang: str) -> None:
+    """Populates session state with curated example and its stored precomputed results."""
+    c_img = load_image_safe(chosen_ex.get("clinical_image"))
+    d_img = load_image_safe(chosen_ex.get("dermoscopic_image"))
+    age_v = float(chosen_ex.get("age", 50))
+    sex_v = str(chosen_ex.get("sex", "male"))
+    site_v = str(chosen_ex.get("site", "torso"))
+    gt_c = chosen_ex.get("diagnosis", "MEL")
+    gt_n = chosen_ex.get("diagnosis_name", gt_c)
+    tone_g = chosen_ex.get("tone_group", "G2")
+    cap = chosen_ex.get("caption", f"{gt_n} ({gt_c})")
+
+    st.session_state["active_c_img"] = c_img
+    st.session_state["active_d_img"] = d_img
+    st.session_state["active_age"] = int(age_v)
+    st.session_state["active_sex"] = sex_v
+    st.session_state["active_site"] = site_v
+    st.session_state["active_gt"] = gt_c
+    st.session_state["active_gt_name"] = gt_n
+    st.session_state["active_tone"] = tone_g
+    st.session_state["example_name"] = cap
+    st.session_state["is_precomputed_example"] = True
+
+    # Extract precomputed probabilities and format them
+    probs_raw = chosen_ex.get("probabilities", {})
+    if isinstance(probs_raw, dict):
+        probs_arr = np.array([probs_raw.get(c, 0.0) for c in MILK10K_CLASSES], dtype=np.float32)
+    else:
+        probs_arr = np.array(probs_raw, dtype=np.float32)
+
+    if probs_arr.sum() > 0:
+        probs_arr = probs_arr / probs_arr.sum()
+
+    top_idx = int(np.argmax(probs_arr))
+    pred_c = chosen_ex.get("predicted_class", MILK10K_IDX_TO_CLASS[top_idx])
+    conf_v = float(chosen_ex.get("confidence", probs_arr[top_idx]))
+
+    sorted_idx = np.argsort(probs_arr)[::-1]
+    top3 = [{"code": MILK10K_IDX_TO_CLASS[i], "class": MILK10K_IDX_TO_CLASS[i], "name": CLASS_INFO.get(MILK10K_IDX_TO_CLASS[i], {}).get("name", MILK10K_IDX_TO_CLASS[i]), "prob": float(probs_arr[i])} for i in sorted_idx[:3]]
+
+    mal_pre_p = sum(float(probs_arr[MILK10K_CLASS_TO_IDX[c]]) for c in MALIGNANT_OR_PREMALIGNANT_CLASSES if c in MILK10K_CLASS_TO_IDX)
+    triage = compute_triage_verdict(pred_c, conf_v, mal_pre_p, False, app_cfg, lang)
+    is_high_risk = (triage["level"] == "red") or (mal_pre_p >= float(app_cfg.get("high_risk_threshold", 0.35)))
+
+    res = {
+        "pred_class": pred_c,
+        "conf": conf_v,
+        "probs": probs_arr,
+        "top3": top3,
+        "mal_pre_prob": mal_pre_p,
+        "is_high_risk": is_high_risk,
+        "triage": triage,
+        "c_img": c_img,
+        "d_img": d_img,
+        "age": age_v,
+        "sex": sex_v,
+        "site": site_v,
+        "gt_diagnosis": gt_c,
+        "gt_diagnosis_name": gt_n,
+        "tone_group": tone_g,
+        "example_name": cap,
+        "is_precomputed": True,
+    }
+    st.session_state["precomputed_result"] = res
 
 
 # ==============================================================================
@@ -497,7 +598,7 @@ def main():
         st.info(t("privacy_badge", lang))
 
         # Start Over Button
-        if st.button(t("start_over_btn", lang), use_container_width=True, type="secondary"):
+        if st.button(t("start_over_btn", lang), width="stretch", type="secondary"):
             st.session_state["active_c_img"] = None
             st.session_state["active_d_img"] = None
             st.session_state["active_gt"] = None
@@ -602,61 +703,75 @@ def main():
             # ------------------------------------------------------------------
             # AUTOMATIC INFERENCE ON INPUT CHANGE
             # ------------------------------------------------------------------
+            res: Optional[Dict[str, Any]] = None
+
             if c_img_active is not None or d_img_active is not None:
-                input_hash = compute_input_hash(img_for_clin, img_for_dermo, age_val, sex_val, site_val)
-
-                if input_hash in st.session_state["cache"]:
-                    res = st.session_state["cache"][input_hash]
+                if st.session_state.get("is_precomputed_example") and st.session_state.get("precomputed_result"):
+                    res = st.session_state["precomputed_result"]
+                    input_hash = f"precomputed_{res.get('gt_diagnosis')}_{res.get('example_name')}"
                 else:
-                    with st.status(t("progress_looking", lang), expanded=True) as status_box:
-                        status_box.update(label=t("progress_models", lang))
-                        c_tensor = IMAGE_TRANSFORMS(img_for_clin.convert("RGB")).unsqueeze(0).to(device)
-                        d_tensor = IMAGE_TRANSFORMS(img_for_dermo.convert("RGB")).unsqueeze(0).to(device)
-                        tab_tensor = encode_tabular_vector(age_val, sex_val, site_val)
+                    input_hash = compute_input_hash(img_for_clin, img_for_dermo, age_val, sex_val, site_val)
 
-                        status_box.update(label=t("progress_preparing", lang))
-                        probs = predict_ensemble("d_cw_128", c_tensor, d_tensor, tab_tensor, folds=[0, 1, 2, 3, 4])
-                        top_idx = int(np.argmax(probs))
-                        pred_class = MILK10K_IDX_TO_CLASS[top_idx]
-                        conf = float(probs[top_idx])
+                    if input_hash in st.session_state["cache"]:
+                        res = st.session_state["cache"][input_hash]
+                    else:
+                        avail_folds = get_available_checkpoint_folds("d_cw_128")
+                        if not avail_folds:
+                            st.error("⚠️ Model files not found in checkpoints/. Live analysis is unavailable; curated examples still work.")
+                            res = None
+                        else:
+                            with st.status(t("progress_looking", lang), expanded=True) as status_box:
+                                status_box.update(label=t("progress_models", lang))
+                                c_tensor = IMAGE_TRANSFORMS(img_for_clin.convert("RGB")).unsqueeze(0).to(device)
+                                d_tensor = IMAGE_TRANSFORMS(img_for_dermo.convert("RGB")).unsqueeze(0).to(device)
+                                tab_tensor = encode_tabular_vector(age_val, sex_val, site_val)
 
-                        sorted_indices = np.argsort(probs)[::-1]
-                        top3 = [{"code": MILK10K_IDX_TO_CLASS[i], "class": MILK10K_IDX_TO_CLASS[i], "name": CLASS_INFO[MILK10K_IDX_TO_CLASS[i]]["name"], "prob": float(probs[i])} for i in sorted_indices[:3]]
+                                status_box.update(label=t("progress_preparing", lang))
+                                probs = predict_ensemble("d_cw_128", c_tensor, d_tensor, tab_tensor, folds=avail_folds)
+                                top_idx = int(np.argmax(probs))
+                                pred_class = MILK10K_IDX_TO_CLASS[top_idx]
+                                conf = float(probs[top_idx])
 
-                        mal_pre_prob = sum(float(probs[MILK10K_CLASS_TO_IDX[c]]) for c in MALIGNANT_OR_PREMALIGNANT_CLASSES if c in MILK10K_CLASS_TO_IDX)
+                                sorted_indices = np.argsort(probs)[::-1]
+                                top3 = [{"code": MILK10K_IDX_TO_CLASS[i], "class": MILK10K_IDX_TO_CLASS[i], "name": CLASS_INFO[MILK10K_IDX_TO_CLASS[i]]["name"], "prob": float(probs[i])} for i in sorted_indices[:3]]
 
-                        # Photo Quality Checks
-                        warns_c = check_image_quality(c_img_active, app_cfg, lang)[1] if c_img_active else []
-                        warns_d = check_image_quality(d_img_active, app_cfg, lang)[1] if d_img_active else []
-                        has_quality_warns = (len(warns_c) > 0 or len(warns_d) > 0)
+                                mal_pre_prob = sum(float(probs[MILK10K_CLASS_TO_IDX[c]]) for c in MALIGNANT_OR_PREMALIGNANT_CLASSES if c in MILK10K_CLASS_TO_IDX)
 
-                        triage = compute_triage_verdict(pred_class, conf, mal_pre_prob, has_quality_warns, app_cfg, lang)
-                        is_high_risk = (triage["level"] == "red") or (mal_pre_prob >= float(app_cfg.get("high_risk_threshold", 0.35)))
+                                # Photo Quality Checks
+                                warns_c = check_image_quality(c_img_active, app_cfg, lang)[1] if c_img_active else []
+                                warns_d = check_image_quality(d_img_active, app_cfg, lang)[1] if d_img_active else []
+                                has_quality_warns = (len(warns_c) > 0 or len(warns_d) > 0)
 
-                        res = {
-                            "pred_class": pred_class,
-                            "conf": conf,
-                            "probs": probs,
-                            "top3": top3,
-                            "mal_pre_prob": mal_pre_prob,
-                            "is_high_risk": is_high_risk,
-                            "triage": triage,
-                            "c_img": img_for_clin,
-                            "d_img": img_for_dermo,
-                            "age": age_val,
-                            "sex": sex_val,
-                            "site": site_val,
-                            "gt_diagnosis": st.session_state.get("active_gt"),
-                            "tone_group": st.session_state.get("active_tone", "Unknown"),
-                            "example_name": st.session_state.get("example_name"),
-                        }
+                                triage = compute_triage_verdict(pred_class, conf, mal_pre_prob, has_quality_warns, app_cfg, lang)
+                                is_high_risk = (triage["level"] == "red") or (mal_pre_prob >= float(app_cfg.get("high_risk_threshold", 0.35)))
 
-                        st.session_state["cache"][input_hash] = res
-                        status_box.update(label=t("toast_done", lang), state="complete", expanded=False)
-                        st.toast(t("toast_done", lang))
+                                res = {
+                                    "pred_class": pred_class,
+                                    "conf": conf,
+                                    "probs": probs,
+                                    "top3": top3,
+                                    "mal_pre_prob": mal_pre_prob,
+                                    "is_high_risk": is_high_risk,
+                                    "triage": triage,
+                                    "c_img": img_for_clin,
+                                    "d_img": img_for_dermo,
+                                    "age": age_val,
+                                    "sex": sex_val,
+                                    "site": site_val,
+                                    "gt_diagnosis": st.session_state.get("active_gt"),
+                                    "gt_diagnosis_name": st.session_state.get("active_gt_name"),
+                                    "tone_group": st.session_state.get("active_tone", "Unknown"),
+                                    "example_name": st.session_state.get("example_name"),
+                                    "is_precomputed": False,
+                                }
 
+                                st.session_state["cache"][input_hash] = res
+                                status_box.update(label=t("toast_done", lang), state="complete", expanded=False)
+                                st.toast(t("toast_done", lang))
+
+            if res is not None:
                 # Localize triage verdict
-                if res and "triage" in res:
+                if "triage" in res:
                     res["triage"] = compute_triage_verdict(
                         res["pred_class"],
                         res["conf"],
@@ -688,11 +803,12 @@ def main():
                 st.markdown('<div id="result-anchor"></div>', unsafe_allow_html=True)
                 strip_c1, strip_c2 = st.columns([4, 1])
                 with strip_c1:
+                    pre_badge = '<span class="precomputed-note-pill" style="margin-right:8px;">ℹ️ Precomputed</span>' if res.get("is_precomputed") else ''
                     st.markdown(f"""
                     <div class="result-strip result-strip-{strip_level}">
                         <div>
                             <span style="font-size:1.15rem; font-weight:800;">
-                                {triage_info['icon']} {triage_info['title']} — {display_name} ({pred_c})
+                                {pre_badge}{triage_info['icon']} {triage_info['title']} — {display_name} ({pred_c})
                             </span>
                             <div style="font-size:0.9rem; font-weight:600; opacity:0.9; margin-top:2px;">
                                 {conf_word} ({conf_val*100:.1f}%) • {advice}
@@ -701,7 +817,7 @@ def main():
                     </div>
                     """, unsafe_allow_html=True)
                 with strip_c2:
-                    if st.button(t("view_details_btn", lang), key="btn_reopen_popup_strip", use_container_width=True):
+                    if st.button(t("view_details_btn", lang), key="btn_reopen_popup_strip", width="stretch"):
                         st.session_state["open_popup_now"] = True
                         st.rerun()
 
@@ -745,6 +861,15 @@ def main():
                 # Right Column: Step 3 Result Details
                 with col_result:
                     st.markdown(f'<div class="simple-step-header">{t("step3_title", lang)}</div>', unsafe_allow_html=True)
+
+                    if res.get("is_precomputed"):
+                        st.markdown('<span class="precomputed-note-pill">ℹ️ Precomputed result for this example</span>', unsafe_allow_html=True)
+                        gt = res.get("gt_diagnosis")
+                        if gt:
+                            gt_meta = CONDITION_DESCRIPTIONS.get(gt, {})
+                            gt_name = res.get("gt_diagnosis_name") or gt_meta.get(f"{lang}_name") or gt_meta.get("en_name", gt)
+                            st.markdown(f"🎯 **True Diagnosis (Ground Truth)**: **{gt_name}** (`{gt}`)")
+
                     card_title_tag = t("most_likely_uncertain", lang) if triage_info.get("is_uncertain") else t("most_likely", lang)
 
                     st.markdown(f"""
@@ -792,13 +917,14 @@ def main():
 
                     # Top-3 Horizontal Ranked Bars Chart (Plotly)
                     st.markdown(f"#### 📊 {t('top3_title', lang)}")
+                    st.caption("How to read this: Ranked probability distribution across top 3 predicted conditions.")
                     top3_chart = plot_top3_horizontal(res["top3"], theme_mode=theme, lang=lang)
-                    st.plotly_chart(top3_chart, use_container_width=True)
+                    st.plotly_chart(top3_chart, width="stretch")
 
                     # Action Buttons
                     act_col1, act_col2 = st.columns(2)
                     with act_col1:
-                        if st.button(t("rerun_btn", lang), use_container_width=True, key="btn_rerun_simple"):
+                        if st.button(t("rerun_btn", lang), width="stretch", key="btn_rerun_simple"):
                             st.session_state["cache"].pop(input_hash, None)
                             st.session_state["popup_shown_for"] = None
                             st.rerun()
@@ -809,7 +935,7 @@ def main():
                             data=pdf_bytes,
                             file_name=f"VISHWAS_Result_{datetime.now().strftime('%Y%m%d_%H%M')}.pdf",
                             mime="application/pdf",
-                            use_container_width=True,
+                            width="stretch",
                             key="btn_pdf_simple",
                         )
 
@@ -827,7 +953,7 @@ def main():
                         "Category": [CLASS_INFO[c]["type"] for c in MILK10K_CLASSES],
                         "Probability (%)": [res["probs"][i] * 100 for i in range(11)],
                     }).set_index("Diagnosis Code")
-                    st.dataframe(all_classes_df, use_container_width=True)
+                    st.dataframe(all_classes_df, width="stretch")
 
                     if res.get("gt_diagnosis"):
                         st.markdown(f"**Dataset Reference Ground Truth**: `{res['gt_diagnosis']}` ({'✅ Match' if pred_c == res['gt_diagnosis'] else '⚠️ Discrepancy'})")
@@ -860,45 +986,24 @@ def main():
                     st.error(f"⚠️ {gallery_err}")
 
                 with ex_col1:
-                    if st.button(t("example_mel", lang), use_container_width=True):
+                    if st.button(t("example_mel", lang), width="stretch"):
                         ex_m = get_example_by_id("mel")
                         if ex_m:
-                            st.session_state["active_c_img"] = load_image_safe(ex_m.get("clinical_image"))
-                            st.session_state["active_d_img"] = load_image_safe(ex_m.get("dermoscopic_image"))
-                            st.session_state["active_age"] = int(ex_m.get("age", 55))
-                            st.session_state["active_sex"] = ex_m.get("sex", "male")
-                            st.session_state["active_site"] = ex_m.get("site", "torso")
-                            st.session_state["active_gt"] = ex_m.get("diagnosis", "MEL")
-                            st.session_state["active_tone"] = ex_m.get("tone_group", "G1")
-                            st.session_state["example_name"] = ex_m.get("caption", "Melanoma (MEL, Tone G1)")
+                            select_curated_example(ex_m, app_cfg, lang)
                             st.rerun()
 
                 with ex_col2:
-                    if st.button(t("example_bcc", lang), use_container_width=True):
+                    if st.button(t("example_bcc", lang), width="stretch"):
                         ex_b = get_example_by_id("bcc")
                         if ex_b:
-                            st.session_state["active_c_img"] = load_image_safe(ex_b.get("clinical_image"))
-                            st.session_state["active_d_img"] = load_image_safe(ex_b.get("dermoscopic_image"))
-                            st.session_state["active_age"] = int(ex_b.get("age", 65))
-                            st.session_state["active_sex"] = ex_b.get("sex", "male")
-                            st.session_state["active_site"] = ex_b.get("site", "head/neck")
-                            st.session_state["active_gt"] = ex_b.get("diagnosis", "BCC")
-                            st.session_state["active_tone"] = ex_b.get("tone_group", "G3")
-                            st.session_state["example_name"] = ex_b.get("caption", "Basal Cell Carcinoma (BCC, Tone G3)")
+                            select_curated_example(ex_b, app_cfg, lang)
                             st.rerun()
 
                 with ex_col3:
-                    if st.button(t("example_nv", lang), use_container_width=True):
+                    if st.button(t("example_nv", lang), width="stretch"):
                         ex_n = get_example_by_id("nv")
                         if ex_n:
-                            st.session_state["active_c_img"] = load_image_safe(ex_n.get("clinical_image"))
-                            st.session_state["active_d_img"] = load_image_safe(ex_n.get("dermoscopic_image"))
-                            st.session_state["active_age"] = int(ex_n.get("age", 40))
-                            st.session_state["active_sex"] = ex_n.get("sex", "male")
-                            st.session_state["active_site"] = ex_n.get("site", "torso")
-                            st.session_state["active_gt"] = ex_n.get("diagnosis", "NV")
-                            st.session_state["active_tone"] = ex_n.get("tone_group", "G3")
-                            st.session_state["example_name"] = ex_n.get("caption", "Normal Mole (NV, Tone G3)")
+                            select_curated_example(ex_n, app_cfg, lang)
                             st.rerun()
 
                 # Curated gallery dropdown for all 11 conditions
@@ -906,16 +1011,9 @@ def main():
                     with st.expander("🔍 Or pick from all 11 curated conditions (Skin tone groups G1-G3):", expanded=False):
                         labels = [f"{ex['diagnosis']} — {ex['diagnosis_name']} ({ex['tone_group']})" for ex in curated_exs]
                         chosen_idx = st.selectbox("Select condition:", range(len(labels)), format_func=lambda i: labels[i])
-                        if st.button("Load Selected Example", key="btn_load_dropdown_ex"):
+                        if st.button("Load Selected Example", key="btn_load_dropdown_ex", width="stretch"):
                             chosen_ex = curated_exs[chosen_idx]
-                            st.session_state["active_c_img"] = load_image_safe(chosen_ex.get("clinical_image"))
-                            st.session_state["active_d_img"] = load_image_safe(chosen_ex.get("dermoscopic_image"))
-                            st.session_state["active_age"] = int(chosen_ex.get("age", 50))
-                            st.session_state["active_sex"] = chosen_ex.get("sex", "unknown")
-                            st.session_state["active_site"] = chosen_ex.get("site", "torso")
-                            st.session_state["active_gt"] = chosen_ex.get("diagnosis")
-                            st.session_state["active_tone"] = chosen_ex.get("tone_group")
-                            st.session_state["example_name"] = chosen_ex.get("caption")
+                            select_curated_example(chosen_ex, app_cfg, lang)
                             st.rerun()
 
                 st.markdown("---")
@@ -943,14 +1041,20 @@ def main():
                 )
                 if up_c_file:
                     st.session_state["active_c_img"] = Image.open(up_c_file)
+                    st.session_state["is_precomputed_example"] = False
+                    st.session_state["precomputed_result"] = None
                     st.session_state["example_name"] = None
+                    st.session_state["active_gt"] = None
 
                 # Optional Camera Input
                 if hasattr(st, "camera_input"):
                     cam_c = st.camera_input(t("camera_closeup", lang), key="cam_closeup")
                     if cam_c:
                         st.session_state["active_c_img"] = Image.open(cam_c)
+                        st.session_state["is_precomputed_example"] = False
+                        st.session_state["precomputed_result"] = None
                         st.session_state["example_name"] = None
+                        st.session_state["active_gt"] = None
 
             with col_u2:
                 st.markdown(f"**{t('label_dermo', lang)}**")
@@ -963,14 +1067,20 @@ def main():
                 )
                 if up_d_file:
                     st.session_state["active_d_img"] = Image.open(up_d_file)
+                    st.session_state["is_precomputed_example"] = False
+                    st.session_state["precomputed_result"] = None
                     st.session_state["example_name"] = None
+                    st.session_state["active_gt"] = None
 
                 # Optional Camera Input for Dermoscopic / Macro
                 if hasattr(st, "camera_input"):
                     cam_d = st.camera_input(t("camera_dermo", lang), key="cam_dermo")
                     if cam_d:
                         st.session_state["active_d_img"] = Image.open(cam_d)
+                        st.session_state["is_precomputed_example"] = False
+                        st.session_state["precomputed_result"] = None
                         st.session_state["example_name"] = None
+                        st.session_state["active_gt"] = None
 
             st.markdown("---")
 
@@ -1116,18 +1226,18 @@ def main():
                     with m_c3:
                         sample_site = st.selectbox("Anatomical Site:", SITE_CATEGORIES)
 
-                # Display images side by side
+                # Display images side by side at crisp native dimensions
                 img_c1, img_c2 = st.columns(2)
                 with img_c1:
                     st.markdown("**Clinical Close-up View**")
                     if selected_c_img:
-                        st.image(selected_c_img, caption="Clinical Close-up View", use_container_width=True)
+                        st.image(selected_c_img, caption="Clinical Close-up View", width=240)
                     else:
                         st.caption("No clinical image selected.")
                 with img_c2:
                     st.markdown("**Dermoscopic Microscopic View**")
                     if selected_d_img:
-                        st.image(selected_d_img, caption="Dermoscopic Microscopic View", use_container_width=True)
+                        st.image(selected_d_img, caption="Dermoscopic Microscopic View", width=240)
                     else:
                         st.caption("No dermoscopic image selected.")
 
@@ -1142,12 +1252,20 @@ def main():
                     ],
                 )
 
+                exp_target = "d_cw_128" if "Fusion" in model_choice else "a_cw_128"
+                avail_folds = get_available_checkpoint_folds(exp_target)
+
+                ckpt_options = [f"5-Fold Cross-Validation Ensemble ({len(avail_folds)}/5 loaded)"]
+                for f in range(5):
+                    status_tag = "Ready" if f in avail_folds else "Not Found"
+                    ckpt_options.append(f"Fold {f} ({status_tag})")
+
                 ckpt_choice = st.selectbox(
                     "Checkpoint Selection:",
-                    ["5-Fold Cross-Validation Ensemble (Recommended)", "Fold 0", "Fold 1", "Fold 2", "Fold 3", "Fold 4"],
+                    ckpt_options,
                 )
 
-                folds_to_eval = [0, 1, 2, 3, 4] if "Ensemble" in ckpt_choice else [int(ckpt_choice.split(" ")[1])]
+                folds_to_eval = avail_folds if "Ensemble" in ckpt_choice else ([int(ckpt_choice.split(" ")[1])] if int(ckpt_choice.split(" ")[1]) in avail_folds else [])
                 tabular_tensor = encode_tabular_vector(sample_age, sample_sex, sample_site)
 
                 # Robust tone group label resolution (Never "Tone Group: unknown")
@@ -1161,7 +1279,14 @@ def main():
                 </div>
                 """, unsafe_allow_html=True)
 
-                run_clicked = st.button("🚀 Run Diagnostic Inference", type="primary", use_container_width=True)
+                if input_mode == "Select from Dataset Gallery":
+                    st.markdown('<span class="precomputed-note-pill">ℹ️ Precomputed result available for this example</span>', unsafe_allow_html=True)
+
+                if not avail_folds and input_mode != "Select from Dataset Gallery":
+                    st.error("⚠️ Model files not found in checkpoints/. Live analysis is unavailable; curated examples still work.")
+
+                run_disabled = (len(avail_folds) == 0 and input_mode != "Select from Dataset Gallery")
+                run_clicked = st.button("🚀 Run Diagnostic Inference", type="primary", disabled=run_disabled, width="stretch")
 
                 if run_clicked or (selected_c_img is not None and selected_d_img is not None):
                     if selected_d_img is None and selected_c_img is None:
@@ -1170,32 +1295,45 @@ def main():
                         c_img_to_use = selected_c_img if selected_c_img is not None else selected_d_img
                         d_img_to_use = selected_d_img if selected_d_img is not None else selected_c_img
 
-                        with st.spinner("Executing neural inference on Apple Silicon MPS/CPU..."):
-                            c_tensor = IMAGE_TRANSFORMS(c_img_to_use.convert("RGB")).unsqueeze(0).to(device)
-                            d_tensor = IMAGE_TRANSFORMS(d_img_to_use.convert("RGB")).unsqueeze(0).to(device)
+                        if input_mode == "Select from Dataset Gallery" and (not folds_to_eval or not run_clicked):
+                            # Use stored precomputed result
+                            probs_raw = chosen_ex.get("probabilities", {})
+                            if isinstance(probs_raw, dict):
+                                probs = np.array([probs_raw.get(c, 0.0) for c in MILK10K_CLASSES], dtype=np.float32)
+                            else:
+                                probs = np.array(probs_raw, dtype=np.float32)
+                            if probs.sum() > 0:
+                                probs = probs / probs.sum()
+                            st.info("ℹ️ Displaying stored precomputed result for this curated example.")
+                        else:
+                            with st.spinner("Executing neural inference on Apple Silicon MPS/CPU..."):
+                                c_tensor = IMAGE_TRANSFORMS(c_img_to_use.convert("RGB")).unsqueeze(0).to(device)
+                                d_tensor = IMAGE_TRANSFORMS(d_img_to_use.convert("RGB")).unsqueeze(0).to(device)
+                                probs = predict_ensemble(exp_target, c_tensor, d_tensor, tabular_tensor, folds_to_eval)
+                                st.success("✅ Live Neural Inference Executed Across Available Checkpoints")
 
-                            exp_target = "d_cw_128" if "Fusion" in model_choice else "a_cw_128"
-                            probs = predict_ensemble(exp_target, c_tensor, d_tensor, tabular_tensor, folds_to_eval)
+                        top_idx = int(np.argmax(probs))
+                        pred_class = MILK10K_IDX_TO_CLASS[top_idx]
+                        conf = float(probs[top_idx])
 
-                            top_idx = int(np.argmax(probs))
-                            pred_class = MILK10K_IDX_TO_CLASS[top_idx]
-                            conf = float(probs[top_idx])
+                        st.markdown(f"**Predicted Finding**: `{pred_class}` — **{CLASS_INFO[pred_class]['name']}** ({conf*100:.1f}%)")
+                        if gt_diagnosis:
+                            st.caption(f"🎯 **True Diagnosis (Ground Truth)**: `{gt_diagnosis}` — **{CLASS_INFO.get(gt_diagnosis, {}).get('name', gt_diagnosis)}**")
 
-                            st.success(f"**Predicted Finding**: `{pred_class}` — **{CLASS_INFO[pred_class]['name']}** ({conf*100:.1f}%)")
+                        # Top-3 chart
+                        sorted_idx = np.argsort(probs)[::-1]
+                        top3_exp = [{"code": MILK10K_IDX_TO_CLASS[i], "class": MILK10K_IDX_TO_CLASS[i], "prob": float(probs[i]), "name": CLASS_INFO[MILK10K_IDX_TO_CLASS[i]]["name"]} for i in sorted_idx[:3]]
+                        st.caption("How to read this: Top 3 condition probabilities predicted by the model.")
+                        st.plotly_chart(plot_top3_horizontal(top3_exp, theme_mode=theme, lang=lang), width="stretch")
 
-                            # Top-3 chart
-                            sorted_idx = np.argsort(probs)[::-1]
-                            top3_exp = [{"class": MILK10K_IDX_TO_CLASS[i], "prob": float(probs[i]), "name": CLASS_INFO[MILK10K_IDX_TO_CLASS[i]]["name"]} for i in sorted_idx[:3]]
-                            st.plotly_chart(plot_top3_horizontal(top3_exp, theme_mode=theme, lang=lang), use_container_width=True)
-
-                            # 11-class probability table
-                            with st.expander("📊 Complete 11-Class Softmax Differential Distribution", expanded=False):
-                                df_exp = pd.DataFrame({
-                                    "Code": MILK10K_CLASSES,
-                                    "Condition": [CLASS_INFO[c]["name"] for c in MILK10K_CLASSES],
-                                    "Probability (%)": [probs[i] * 100 for i in range(11)]
-                                }).set_index("Code")
-                                st.dataframe(df_exp, use_container_width=True)
+                        # 11-class probability table
+                        with st.expander("📊 Complete 11-Class Softmax Differential Distribution", expanded=False):
+                            df_exp = pd.DataFrame({
+                                "Code": MILK10K_CLASSES,
+                                "Condition": [CLASS_INFO[c]["name"] for c in MILK10K_CLASSES],
+                                "Probability (%)": [probs[i] * 100 for i in range(11)]
+                            }).set_index("Code")
+                            st.dataframe(df_exp, width="stretch")
 
     # ==========================================================================
     # TAB 2: HOW FAIR IS IT? (FAIRNESS BENCHMARK)
@@ -1224,9 +1362,10 @@ def main():
 
         st.markdown("---")
         st.markdown("### 1. Interactive Subgroup Parity Across Skin Tone Groups")
+        st.caption("How to read this: Taller bars mean higher accuracy (blue) or balanced F1-score (green). Close bar heights across G1, G2, and G3 show that the AI performs equitably across lighter, medium, and darker skin tones.")
         
         if fairness_data:
-            st.plotly_chart(plot_fairness_bars(fairness_data, theme_mode=theme), use_container_width=True)
+            st.plotly_chart(plot_fairness_bars(fairness_data, theme_mode=theme), width="stretch")
             if "clinical_verdict" in fairness_data:
                 st.info(f"💡 **Clinical Fairness Verdict**: {fairness_data['clinical_verdict']}")
 
@@ -1279,7 +1418,7 @@ def main():
                     "8.87%",
                 ],
             }
-            st.dataframe(pd.DataFrame(comp_table_data).set_index("Metric / Dimension"), use_container_width=True)
+            st.dataframe(pd.DataFrame(comp_table_data).set_index("Metric / Dimension"), width="stretch")
 
     # ==========================================================================
     # TAB 3: HOW RELIABLE IS IT? (CALIBRATION & CONFUSION EXPLORER)
@@ -1295,6 +1434,7 @@ def main():
         conf_data = load_summary_json("confusion")
 
         st.markdown("### 1. Confidence Calibration: 'When the AI says X% sure, how often is it right?'")
+        st.caption("How to read this: Blue bars show actual real-world accuracy for each confidence bucket, while the green dotted line shows ideal calibration. Bars matching the line mean the AI's confidence percentages are trustworthy.")
         
         # Tone Group Selector for Calibration
         tg_opts = ["All", "G1", "G2", "G3"]
@@ -1307,7 +1447,7 @@ def main():
         chosen_tg = st.segmented_control("Tone Group Filter:", tg_opts, default="All", format_func=lambda k: tg_labels[k])
 
         if rel_data:
-            st.plotly_chart(plot_reliability_chart(rel_data, tone_group=chosen_tg, theme_mode=theme), use_container_width=True)
+            st.plotly_chart(plot_reliability_chart(rel_data, tone_group=chosen_tg, theme_mode=theme), width="stretch")
             if "clinical_verdict" in rel_data:
                 st.caption(f"ℹ️ **Verdict**: {rel_data['clinical_verdict']}")
 
@@ -1317,19 +1457,21 @@ def main():
         st.markdown("---")
         st.markdown("### 2. Diagnostic Sensitivity Ranking & Confusion Analysis")
         st.write("Ranked sensitivity across all 11 conditions. Critical malignant conditions (Melanoma, Basal Cell) achieve high recall.")
+        st.caption("How to read this: Longer horizontal bars mean higher detection sensitivity (recall). High-risk conditions like Melanoma and Basal Cell Carcinoma prioritize high recall to avoid missing true cancers.")
 
         if conf_data:
-            st.plotly_chart(plot_confusion_recall_chart(conf_data, theme_mode=theme), use_container_width=True)
+            st.plotly_chart(plot_confusion_recall_chart(conf_data, theme_mode=theme), width="stretch")
 
             # Interactive Disease Confusion Inspector
             st.markdown("#### 🔍 What does the AI confuse it with?")
+            st.caption("How to read this: Shows the top alternative conditions the AI mistakes this disease for when it errs, helping clinicians understand potential diagnostic overlaps.")
             all_classes = conf_data.get("classes", MILK10K_CLASSES)
             disease_picker = st.selectbox(
                 "Select a skin condition to inspect its confusion profile:",
                 all_classes,
                 format_func=lambda c: f"{c} — {conf_data.get('by_disease', {}).get(c, {}).get('name', c)}"
             )
-            st.plotly_chart(plot_confusion_detail_chart(conf_data, disease_picker, theme_mode=theme), use_container_width=True)
+            st.plotly_chart(plot_confusion_detail_chart(conf_data, disease_picker, theme_mode=theme), width="stretch")
 
             entry = conf_data.get("by_disease", {}).get(disease_picker, {})
             if "plain_explanation" in entry:
@@ -1341,7 +1483,7 @@ def main():
             rep_d = root / "reports" / "d_cw_128"
             cm_p1 = rep_d / "confusion_matrix.png"
             if cm_p1.exists():
-                st.image(str(cm_p1), caption="Multimodal Tabular Fusion 11x11 Confusion Matrix", use_container_width=True)
+                st.image(str(cm_p1), caption="Multimodal Tabular Fusion 11x11 Confusion Matrix", width=600)
 
     # ==========================================================================
     # TAB 4: DATA EXPLORER
@@ -1369,12 +1511,12 @@ def main():
                 {"Tone Group": k, "Lesion Count": v["count"], "Percentage": f"{v['percentage']}%"}
                 for k, v in tones.items()
             ]).set_index("Tone Group")
-            st.dataframe(t_df, use_container_width=True)
+            st.dataframe(t_df, width="stretch")
 
         if not folds_df.empty:
             st.markdown("#### Cross-Validation Lesions by Fold and Tone Group")
             ct = pd.crosstab(folds_df["fold"], folds_df["tone_group"])
-            st.dataframe(ct, use_container_width=True)
+            st.dataframe(ct, width="stretch")
 
     # ==========================================================================
     # TAB 5: ABOUT THE DATA
@@ -1403,7 +1545,15 @@ def main():
             {"Dataset": "SLICE-3D Test", "Role": "Held-out Test", "Images": "25,000", "Patients": "256", "Labels": "Binary (Benign/Malignant)"},
             {"Dataset": "MILK10k Folds", "Role": "Multimodal + Fairness", "Images": "10,480 (5,240 pairs)", "Patients": "Strictly Grouped", "Labels": "11 Classes + Tone Groups"},
         ]
-        st.dataframe(pd.DataFrame(cohort_data).set_index("Dataset"), use_container_width=True)
+        st.dataframe(pd.DataFrame(cohort_data).set_index("Dataset"), width="stretch")
+
+        st.markdown("---")
+        st.markdown("#### 📜 Dataset Licenses & Public Attribution")
+        st.markdown(
+            "• **MILK10k Dataset & Example Lesion Images**: International Skin Imaging Collaboration (ISIC) Archive under Creative Commons Attribution-NonCommercial 4.0 International (CC-BY-NC 4.0).\n"
+            "• **SLICE-3D Dataset**: ISIC 2024 Challenge Dataset under Creative Commons Attribution-NonCommercial 4.0 International (CC-BY-NC 4.0).\n"
+            "• **Clinical Prototype Notice**: Research and educational prototype only. Not for clinical diagnostic use without independent medical device certification."
+        )
 
     # ==========================================================================
     # TAB 6: SKIN CONDITIONS GUIDE

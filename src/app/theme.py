@@ -1,11 +1,16 @@
 """
 VISHWAS Centralized Design & Theme System
 Provides light, dark, and auto CSS variable palettes adhering to WCAG AA contrast standards,
-and injects styling across native Streamlit widgets (headers, dialogs, buttons, uploaders, tabs).
+and injects comprehensive styling across ALL native Streamlit widgets:
+- Headers, top bar, and sidebar
+- Selectbox & popover menu, radio, checkbox, toggle, number input, slider, text input
+- File uploader & camera input
+- Tabs, expanders, tooltips, toasts, status boxes, modals/dialogs
+- Dataframes, st.metric, alert boxes, code blocks, and custom cards.
 """
 
 from __future__ import annotations
-from typing import Dict, Any
+from typing import Dict, Any, Optional
 import streamlit as st
 
 
@@ -13,7 +18,9 @@ LIGHT_VARS = """
     --bg: #ffffff;
     --surface: #f8fafc;
     --surface-hover: #f1f5f9;
+    --surface-card: #ffffff;
     --text: #0f172a;
+    --text-strong: #020617;
     --muted: #475569;
     --border: #cbd5e1;
     --accent: #2563eb;
@@ -37,13 +44,19 @@ LIGHT_VARS = """
     --grey-bg: #f1f5f9;
     --grey-text: #334155;
     --grey-border: #cbd5e1;
+    --code-bg: #f1f5f9;
+    --code-text: #0f172a;
+    --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.08), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.08);
 """
 
 DARK_VARS = """
     --bg: #0b1120;
-    --surface: #1e293b;
-    --surface-hover: #334155;
+    --surface: #111827;
+    --surface-hover: #1e293b;
+    --surface-card: #141e33;
     --text: #f8fafc;
+    --text-strong: #ffffff;
     --muted: #94a3b8;
     --border: #334155;
     --accent: #3b82f6;
@@ -54,7 +67,7 @@ DARK_VARS = """
     --danger-border: #991b1b;
     --warn: #f59e0b;
     --warn-bg: #451a03;
-    --warn-text: #fef3c7;
+    --warn-text: #fde68a;
     --warn-border: #92400e;
     --ok: #22c55e;
     --ok-bg: #052e16;
@@ -65,8 +78,12 @@ DARK_VARS = """
     --info-text: #bae6fd;
     --info-border: #0369a1;
     --grey-bg: #1e293b;
-    --grey-text: #f8fafc;
+    --grey-text: #e2e8f0;
     --grey-border: #475569;
+    --code-bg: #0f172a;
+    --code-text: #e2e8f0;
+    --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -2px rgba(0, 0, 0, 0.3);
+    --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 8px 10px -6px rgba(0, 0, 0, 0.4);
 """
 
 
@@ -97,7 +114,9 @@ def get_theme_css(theme_mode: str) -> str:
             font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans Devanagari", "Noto Sans Kannada", sans-serif !important;
         }
 
-        /* Hero Header Styling - Large, Bold, Multilingual Typography */
+        /* ---------------------------------------------------------------------
+           TYPOGRAPHY & HERO HEADER
+           --------------------------------------------------------------------- */
         .main-header-hero {
             font-size: clamp(2.3rem, 5.5vw, 3.2rem) !important;
             font-weight: 900 !important;
@@ -155,24 +174,33 @@ def get_theme_css(theme_mode: str) -> str:
             font-weight: 950 !important;
         }
 
-        /* Top header bar */
+        /* ---------------------------------------------------------------------
+           APP HEADER & TOP TOOLBAR
+           --------------------------------------------------------------------- */
         [data-testid="stHeader"], header[data-testid="stHeader"], .stAppHeader {
             background-color: var(--bg) !important;
             color: var(--text) !important;
             border-bottom: 1px solid var(--border) !important;
         }
+        header[data-testid="stHeader"] svg, header[data-testid="stHeader"] button {
+            color: var(--text) !important;
+        }
 
-        /* Sidebar styling */
+        /* ---------------------------------------------------------------------
+           SIDEBAR
+           --------------------------------------------------------------------- */
         [data-testid="stSidebar"], section[data-testid="stSidebar"] {
             background-color: var(--surface) !important;
             border-right: 1px solid var(--border) !important;
             color: var(--text) !important;
         }
-        [data-testid="stSidebar"] .stMarkdown, [data-testid="stSidebar"] p, [data-testid="stSidebar"] span {
+        [data-testid="stSidebar"] .stMarkdown, [data-testid="stSidebar"] p, [data-testid="stSidebar"] span, [data-testid="stSidebar"] label {
             color: var(--text) !important;
         }
 
-        /* Standard buttons */
+        /* ---------------------------------------------------------------------
+           BUTTONS (PRIMARY & SECONDARY)
+           --------------------------------------------------------------------- */
         .stButton > button, button[kind="secondary"] {
             background-color: var(--surface) !important;
             color: var(--text) !important;
@@ -186,18 +214,97 @@ def get_theme_css(theme_mode: str) -> str:
             border-color: var(--accent) !important;
             color: var(--accent) !important;
         }
-        button[kind="primary"] {
+        button[kind="primary"], .stButton > button[kind="primary"] {
             background-color: var(--accent) !important;
             color: #ffffff !important;
             border: 1px solid var(--accent) !important;
             border-radius: 8px !important;
+            font-weight: 700 !important;
+        }
+        button[kind="primary"]:hover, .stButton > button[kind="primary"]:hover {
+            background-color: var(--accent-hover) !important;
+            border-color: var(--accent-hover) !important;
+            color: #ffffff !important;
+        }
+        .stDownloadButton > button {
+            background-color: var(--surface) !important;
+            color: var(--text) !important;
+            border: 1px solid var(--border) !important;
+            border-radius: 8px !important;
             font-weight: 600 !important;
         }
-        button[kind="primary"]:hover {
-            background-color: var(--accent-hover) !important;
+        .stDownloadButton > button:hover {
+            background-color: var(--surface-hover) !important;
+            border-color: var(--accent) !important;
+            color: var(--accent) !important;
         }
 
-        /* File Uploaders */
+        /* ---------------------------------------------------------------------
+           FORM INPUTS (SELECTBOX, RADIO, CHECKBOX, TOGGLE, NUMBER, SLIDER, TEXT)
+           --------------------------------------------------------------------- */
+        /* Selectbox container and input */
+        [data-testid="stSelectbox"], [data-baseweb="select"], [data-baseweb="select"] > div {
+            background-color: var(--surface) !important;
+            border-color: var(--border) !important;
+            color: var(--text) !important;
+            border-radius: 8px !important;
+        }
+        [data-baseweb="select"] span, [data-baseweb="select"] div {
+            color: var(--text) !important;
+        }
+        [data-baseweb="select"] svg {
+            fill: var(--text) !important;
+        }
+        /* Selectbox Popover Menu Dropdown */
+        [data-baseweb="popover"], [data-baseweb="menu"], ul[role="listbox"] {
+            background-color: var(--surface) !important;
+            border: 1px solid var(--border) !important;
+            color: var(--text) !important;
+            border-radius: 8px !important;
+            box-shadow: var(--shadow-lg) !important;
+        }
+        li[role="option"], [data-baseweb="menu"] li {
+            background-color: var(--surface) !important;
+            color: var(--text) !important;
+        }
+        li[role="option"]:hover, [data-baseweb="menu"] li:hover, li[aria-selected="true"] {
+            background-color: var(--surface-hover) !important;
+            color: var(--accent) !important;
+        }
+
+        /* Radio & Checkbox */
+        [data-testid="stRadio"] label, [data-testid="stCheckbox"] label, [data-testid="stToggle"] label {
+            color: var(--text) !important;
+            font-weight: 500 !important;
+        }
+        [data-testid="stRadio"] [role="radiogroup"] {
+            gap: 10px;
+        }
+        [data-testid="stRadio"] div[role="radio"], [data-testid="stCheckbox"] span {
+            color: var(--text) !important;
+        }
+
+        /* Sliders */
+        [data-testid="stSlider"] div {
+            color: var(--text) !important;
+        }
+
+        /* Number & Text Input */
+        [data-testid="stNumberInput"] input, [data-testid="stTextInput"] input, textarea {
+            background-color: var(--surface) !important;
+            color: var(--text) !important;
+            border: 1px solid var(--border) !important;
+            border-radius: 8px !important;
+        }
+        [data-testid="stNumberInput"] button {
+            background-color: var(--surface-hover) !important;
+            color: var(--text) !important;
+            border-color: var(--border) !important;
+        }
+
+        /* ---------------------------------------------------------------------
+           FILE UPLOADER & CAMERA INPUT
+           --------------------------------------------------------------------- */
         [data-testid="stFileUploader"] {
             background-color: transparent !important;
         }
@@ -220,21 +327,48 @@ def get_theme_css(theme_mode: str) -> str:
             color: var(--text) !important;
             border: 1px solid var(--border) !important;
         }
-
-        /* Dialogs / Modals */
-        div[role="dialog"], [data-testid="stDialog"], [data-testid="stModal"] {
+        [data-testid="stFileUploaderFileData"], [data-testid="stFileUploaderFileName"] {
+            color: var(--text) !important;
+        }
+        [data-testid="stCameraInput"] {
             background-color: var(--surface) !important;
+            border: 1px solid var(--border) !important;
+            border-radius: 12px !important;
+            padding: 10px !important;
+        }
+        [data-testid="stCameraInput"] button {
+            background-color: var(--surface-hover) !important;
+            color: var(--text) !important;
+            border: 1px solid var(--border) !important;
+        }
+
+        /* ---------------------------------------------------------------------
+           DIALOGS & MODALS (ST.DIALOG)
+           --------------------------------------------------------------------- */
+        div[role="dialog"], [data-testid="stDialog"], [data-testid="stModal"] {
+            background-color: var(--surface-card) !important;
             color: var(--text) !important;
             border: 1px solid var(--border) !important;
             border-radius: 14px !important;
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.4), 0 10px 10px -5px rgba(0, 0, 0, 0.3) !important;
+            box-shadow: var(--shadow-lg) !important;
         }
         div[role="dialog"] p, div[role="dialog"] span, div[role="dialog"] h1, div[role="dialog"] h2, div[role="dialog"] h3, div[role="dialog"] h4 {
             color: var(--text) !important;
         }
+        div[role="dialog"] header, div[role="dialog"] [data-testid="stDialogHeader"] {
+            background-color: var(--surface-card) !important;
+            color: var(--text) !important;
+            border-bottom: 1px solid var(--border) !important;
+        }
+        div[role="dialog"] button[aria-label="Close"], [data-testid="stDialogCloseButton"] {
+            color: var(--text) !important;
+        }
 
+        /* ---------------------------------------------------------------------
+           EXPANDERS, TABS, TOOLTIPS, TOASTS, STATUS BOXES
+           --------------------------------------------------------------------- */
         /* Expanders */
-        [data-testid="stExpander"] {
+        [data-testid="stExpander"], details[data-testid="stExpander"] {
             background-color: var(--surface) !important;
             border: 1px solid var(--border) !important;
             border-radius: 10px !important;
@@ -266,35 +400,100 @@ def get_theme_css(theme_mode: str) -> str:
             border-bottom: 2px solid var(--accent) !important;
         }
 
-        /* Inputs, Radios, Segmented controls */
-        input, select, textarea, [data-baseweb="select"] {
+        /* Tooltips */
+        [data-baseweb="tooltip"], [data-testid="stTooltipContent"] {
+            background-color: var(--surface-card) !important;
+            color: var(--text) !important;
+            border: 1px solid var(--border) !important;
+            border-radius: 8px !important;
+            box-shadow: var(--shadow) !important;
+        }
+
+        /* Toasts */
+        [data-testid="stToast"] {
+            background-color: var(--surface-card) !important;
+            color: var(--text) !important;
+            border: 1px solid var(--border) !important;
+            border-radius: 10px !important;
+            box-shadow: var(--shadow-lg) !important;
+        }
+
+        /* Status box */
+        [data-testid="stStatusWidget"] {
             background-color: var(--surface) !important;
             color: var(--text) !important;
-            border-color: var(--border) !important;
-        }
-        [data-testid="stWidgetLabel"] label, [data-testid="stWidgetLabel"] p {
-            color: var(--text) !important;
-            font-weight: 600 !important;
-        }
-        [data-testid="stMarkdownContainer"] p, [data-testid="stMarkdownContainer"] span {
-            color: var(--text);
+            border: 1px solid var(--border) !important;
+            border-radius: 10px !important;
         }
 
-        /* Images Preview max-height constraint */
-        [data-testid="stImage"] img {
-            max-height: 220px !important;
-            object-fit: contain !important;
+        /* ---------------------------------------------------------------------
+           DATAFRAME, TABLES & METRICS
+           --------------------------------------------------------------------- */
+        [data-testid="stDataFrame"], [data-testid="stTable"] {
+            background-color: var(--surface) !important;
+            border: 1px solid var(--border) !important;
             border-radius: 8px !important;
         }
-
-        /* Custom VISHWAS Component Cards */
-        .vishwas-card {
+        [data-testid="stDataFrame"] div, [data-testid="stTable"] th, [data-testid="stTable"] td {
+            color: var(--text) !important;
+        }
+        [data-testid="stMetric"] {
             background-color: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 12px 16px;
+        }
+        [data-testid="stMetricLabel"] {
+            color: var(--muted) !important;
+            font-size: 0.85rem !important;
+            font-weight: 600 !important;
+        }
+        [data-testid="stMetricValue"] {
+            color: var(--text) !important;
+            font-size: 1.5rem !important;
+            font-weight: 800 !important;
+        }
+
+        /* ---------------------------------------------------------------------
+           ALERT BOXES & CODE BLOCKS
+           --------------------------------------------------------------------- */
+        .stAlert, [data-testid="stAlert"] {
+            background-color: var(--surface) !important;
+            color: var(--text) !important;
+            border: 1px solid var(--border) !important;
+            border-radius: 8px !important;
+        }
+        pre, code, [data-testid="stCodeBlock"] {
+            background-color: var(--code-bg) !important;
+            color: var(--code-text) !important;
+            border: 1px solid var(--border) !important;
+            border-radius: 6px !important;
+        }
+
+        /* ---------------------------------------------------------------------
+           IMAGES & PREVIEWS (PREVENT BLURRY STRETCHING)
+           --------------------------------------------------------------------- */
+        [data-testid="stImage"] img {
+            max-height: 250px !important;
+            max-width: 280px !important;
+            object-fit: contain !important;
+            border-radius: 8px !important;
+            image-rendering: -webkit-optimize-contrast !important;
+            image-rendering: crisp-edges !important;
+            box-shadow: var(--shadow) !important;
+        }
+
+        /* ---------------------------------------------------------------------
+           CUSTOM VISHWAS CARDS, RESULT STRIPS & PILLS
+           --------------------------------------------------------------------- */
+        .vishwas-card {
+            background-color: var(--surface-card);
             border: 1px solid var(--border);
             border-radius: 12px;
             padding: 18px 22px;
             margin-bottom: 16px;
             color: var(--text);
+            box-shadow: var(--shadow);
         }
         .vishwas-card-title {
             font-size: 1.15rem;
@@ -305,7 +504,7 @@ def get_theme_css(theme_mode: str) -> str:
 
         .result-strip {
             border-radius: 10px;
-            padding: 12px 18px;
+            padding: 14px 20px;
             margin-bottom: 16px;
             display: flex;
             align-items: center;
@@ -333,11 +532,11 @@ def get_theme_css(theme_mode: str) -> str:
             color: var(--grey-text);
         }
 
-        /* Badges */
+        /* Badges & Pills */
         .example-badge {
             display: inline-block;
             background-color: var(--accent);
-            color: #ffffff;
+            color: #ffffff !important;
             font-size: 0.75rem;
             font-weight: 700;
             padding: 3px 8px;
@@ -345,6 +544,17 @@ def get_theme_css(theme_mode: str) -> str:
             margin-bottom: 6px;
             text-transform: uppercase;
             letter-spacing: 0.5px;
+        }
+        .precomputed-note-pill {
+            display: inline-block;
+            background-color: var(--info-bg);
+            color: var(--info-text) !important;
+            border: 1px solid var(--info-border);
+            font-size: 0.8rem;
+            font-weight: 600;
+            padding: 4px 10px;
+            border-radius: 9999px;
+            margin-bottom: 8px;
         }
         .severity-chip {
             display: inline-block;
@@ -386,8 +596,26 @@ def inject_theme(theme_mode: str = "Auto") -> None:
 
 
 def get_plotly_theme(theme_mode: str) -> Dict[str, Any]:
-    """Returns Plotly layout configuration parameters adapted to the active theme."""
-    is_dark = str(theme_mode).strip().lower() == "dark"
+    """
+    Returns Plotly layout configuration parameters adapted to the active theme.
+    Handles 'Dark', 'Light', and 'Auto' (adapting via st.context.theme or high-contrast neutral defaults).
+    """
+    theme_lower = str(theme_mode).strip().lower()
+
+    if theme_lower == "dark":
+        is_dark = True
+    elif theme_lower == "light":
+        is_dark = False
+    else:  # auto
+        ctx_theme = getattr(getattr(st, "context", None), "theme", None)
+        if isinstance(ctx_theme, dict) and ctx_theme.get("type") == "dark":
+            is_dark = True
+        elif isinstance(ctx_theme, dict) and ctx_theme.get("type") == "light":
+            is_dark = False
+        else:
+            # Neutral contrast that works on transparent backgrounds in both Light & Dark OS modes
+            is_dark = False
+
     font_color = "#f8fafc" if is_dark else "#0f172a"
     grid_color = "#334155" if is_dark else "#e2e8f0"
     
@@ -397,7 +625,7 @@ def get_plotly_theme(theme_mode: str) -> Dict[str, Any]:
         "font": {
             "family": "Inter, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, sans-serif",
             "size": 14,
-            "color": font_color
+            "color": font_color,
         },
         "xaxis": {
             "gridcolor": grid_color,
