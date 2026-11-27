@@ -137,28 +137,28 @@ def get_theme_css(theme_mode: str) -> str:
         }
 
         /* Hero Title Header */
-        .main-header-hero {
-            margin-top: 6px;
-            margin-bottom: 8px;
-            line-height: 1.35;
+        h1.main-header-hero, .main-header-hero {
+            margin-top: 10px !important;
+            margin-bottom: 8px !important;
+            line-height: 1.3 !important;
         }
         .hero-brand {
-            font-size: 1.85rem;
-            font-weight: 850;
-            color: var(--accent);
-            letter-spacing: -0.02em;
+            font-size: 2.35rem !important;
+            font-weight: 900 !important;
+            color: var(--accent) !important;
+            letter-spacing: -0.025em !important;
         }
         .hero-colon {
-            font-size: 1.85rem;
-            font-weight: 850;
-            color: var(--accent);
-            margin-right: 6px;
+            font-size: 2.35rem !important;
+            font-weight: 900 !important;
+            color: var(--accent) !important;
+            margin-right: 8px !important;
         }
         .hero-tagline {
-            font-size: 1.25rem;
-            font-weight: 600;
-            color: var(--text);
-            line-height: 1.35;
+            font-size: 1.65rem !important;
+            font-weight: 800 !important;
+            color: var(--text) !important;
+            line-height: 1.35 !important;
         }
 
         /* Headings hierarchy */

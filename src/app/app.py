@@ -745,29 +745,26 @@ def main():
     # Prominent Hero Title
     if lang == "kn":
         st.markdown(
-            '<div class="main-header-hero">'
-            '<span class="hero-brand">ವಿಶ್ವಾಸ (Vishwas)</span>'
-            '<span class="hero-colon">:</span> '
+            '<h1 class="main-header-hero">'
+            '<span class="hero-brand">ವಿಶ್ವಾಸ (Vishwas):</span> '
             '<span class="hero-tagline">Equitable Skin Disease Detection Across Skin Tones Using Multimodal Learning and Retrieval-Grounded Explanations</span>'
-            '</div>',
+            '</h1>',
             unsafe_allow_html=True,
         )
     elif lang == "hi":
         st.markdown(
-            '<div class="main-header-hero">'
-            '<span class="hero-brand">विश्वास (Vishwas)</span>'
-            '<span class="hero-colon">:</span> '
+            '<h1 class="main-header-hero">'
+            '<span class="hero-brand">विश्वास (Vishwas):</span> '
             '<span class="hero-tagline">Equitable Skin Disease Detection Across Skin Tones Using Multimodal Learning and Retrieval-Grounded Explanations</span>'
-            '</div>',
+            '</h1>',
             unsafe_allow_html=True,
         )
     else:
         st.markdown(
-            '<div class="main-header-hero">'
-            '<span class="hero-brand">Vishwas</span>'
-            '<span class="hero-colon">:</span> '
+            '<h1 class="main-header-hero">'
+            '<span class="hero-brand">Vishwas:</span> '
             '<span class="hero-tagline">Equitable Skin Disease Detection Across Skin Tones Using Multimodal Learning and Retrieval-Grounded Explanations</span>'
-            '</div>',
+            '</h1>',
             unsafe_allow_html=True,
         )
 
