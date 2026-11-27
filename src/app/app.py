@@ -779,7 +779,7 @@ def main():
     else:
         st.markdown(f'<div class="main-header-sub">{t("app_subtitle_expert", lang)}</div>', unsafe_allow_html=True)
 
-    # Medical Disclaimer Banner
+    # Medical Disclaimer Banner (Single slim notice)
     st.warning(t("medical_disclaimer", lang))
 
     # Optional local metadata loading if present
@@ -806,37 +806,312 @@ def main():
     # ==========================================================================
     with tabs[0]:
         # ----------------------------------------------------------------------
-        # SIMPLE MODE: GUIDED FLOW (PINNED STRIP -> RESULT -> PHOTOS -> DETAILS)
+        # SIMPLE MODE: CLEAN 3-STEP FLOW (1. Photo -> 2. Details -> 3. Result)
         # ----------------------------------------------------------------------
         if st.session_state["app_mode"] == "Simple":
+            st.markdown('<div class="simple-mode-container">', unsafe_allow_html=True)
+
             c_img_active = st.session_state.get("active_c_img")
             d_img_active = st.session_state.get("active_d_img")
             age_val = None if st.session_state.get("active_dont_know_age") else float(st.session_state.get("active_age", 50))
             sex_val = str(st.session_state.get("active_sex", "unknown"))
             site_val = str(st.session_state.get("active_site", "unknown"))
 
-            # Phase A: Input-type determination (clinical only, dermoscopic only, both)
-            if c_img_active is not None and d_img_active is not None:
-                input_type = "both"
-            elif c_img_active is not None:
-                input_type = "clinical only"
-            elif d_img_active is not None:
-                input_type = "dermoscopic only"
+            has_photo = (c_img_active is not None or d_img_active is not None)
+            analysis_done = st.session_state.get("analysis_done", False)
+
+            # ------------------------------------------------------------------
+            # STEP PROGRESS BAR
+            # ------------------------------------------------------------------
+            s1_cls = "active" if not has_photo else "done"
+            s2_cls = "active" if has_photo and not analysis_done else ("done" if analysis_done else "")
+            s3_cls = "active" if analysis_done else ""
+
+            st.markdown(f"""
+            <div class="step-progress-bar">
+                <div class="step-item {s1_cls}">
+                    <span class="step-circle">1</span>
+                    <span class="step-label">{t("step_1_indicator", lang)}</span>
+                </div>
+                <div class="step-line {'done' if has_photo else ''}"></div>
+                <div class="step-item {s2_cls}">
+                    <span class="step-circle">2</span>
+                    <span class="step-label">{t("step_2_indicator", lang)}</span>
+                </div>
+                <div class="step-line {'done' if analysis_done else ''}"></div>
+                <div class="step-item {s3_cls}">
+                    <span class="step-circle">3</span>
+                    <span class="step-label">{t("step_3_indicator", lang)}</span>
+                </div>
+            </div>
+            """, unsafe_allow_html=True)
+
+            # ------------------------------------------------------------------
+            # STEP 1: ADD A PHOTO
+            # ------------------------------------------------------------------
+            st.markdown(f'<div class="simple-step-header">{t("step1_title", lang)}</div>', unsafe_allow_html=True)
+
+            method_options = [
+                t("method_example", lang),
+                t("method_upload", lang),
+                t("method_camera", lang),
+            ]
+            if "simple_method_idx" not in st.session_state:
+                st.session_state["simple_method_idx"] = 0
+
+            chosen_method = st.radio(
+                t("input_method_label", lang),
+                method_options,
+                index=st.session_state["simple_method_idx"],
+                horizontal=True,
+                key="simple_method_radio",
+            )
+            if chosen_method in method_options:
+                st.session_state["simple_method_idx"] = method_options.index(chosen_method)
+
+            # Option A: Try an Example
+            if chosen_method == t("method_example", lang):
+                st.markdown(f"#### {t('try_example_title', lang)}")
+                ex_c1, ex_c2, ex_c3 = st.columns(3)
+                with ex_c1:
+                    if st.button(t("example_mel", lang), key="ex_mel_btn", use_container_width=True):
+                        ex_m = get_example_by_id("mel")
+                        if ex_m:
+                            select_curated_example(ex_m, app_cfg, lang)
+                            st.session_state["analysis_done"] = True
+                            st.rerun()
+                with ex_c2:
+                    if st.button(t("example_bcc", lang), key="ex_bcc_btn", use_container_width=True):
+                        ex_b = get_example_by_id("bcc")
+                        if ex_b:
+                            select_curated_example(ex_b, app_cfg, lang)
+                            st.session_state["analysis_done"] = True
+                            st.rerun()
+                with ex_c3:
+                    if st.button(t("example_nv", lang), key="ex_nv_btn", use_container_width=True):
+                        ex_n = get_example_by_id("nv")
+                        if ex_n:
+                            select_curated_example(ex_n, app_cfg, lang)
+                            st.session_state["analysis_done"] = True
+                            st.rerun()
+
+                curated_exs, _ = load_curated_examples_with_status()
+                if curated_exs:
+                    with st.expander("🔍 Or pick from all 11 curated conditions (Skin tone groups G1-G3):", expanded=False):
+                        labels = [f"{ex['diagnosis']} — {ex['diagnosis_name']} ({ex['tone_group']})" for ex in curated_exs]
+                        chosen_idx = st.selectbox("Select condition:", range(len(labels)), format_func=lambda i: labels[i], key="simple_ex_dd")
+                        if st.button("Load Selected Example", key="btn_load_dropdown_ex_simple", use_container_width=True):
+                            select_curated_example(curated_exs[chosen_idx], app_cfg, lang)
+                            st.session_state["analysis_done"] = True
+                            st.rerun()
+
+            # Option B: Upload a Photo
+            elif chosen_method == t("method_upload", lang):
+                with st.expander(t("photo_tips_title", lang), expanded=False):
+                    st.markdown(t("photo_tips_content", lang))
+
+                up_c_file = st.file_uploader(
+                    t("label_closeup", lang),
+                    type=["jpg", "jpeg", "png"],
+                    key="simple_up_c_file",
+                    help=t("help_closeup", lang),
+                )
+                if up_c_file:
+                    st.session_state["active_c_img"] = Image.open(up_c_file)
+                    st.session_state["is_precomputed_example"] = False
+                    st.session_state["precomputed_result"] = None
+                    st.session_state["example_name"] = None
+                    st.session_state["active_gt"] = None
+
+                with st.expander("➕ Add magnified / dermoscopic photo (optional second view)", expanded=False):
+                    up_d_file = st.file_uploader(
+                        t("label_dermo", lang),
+                        type=["jpg", "jpeg", "png"],
+                        key="simple_up_d_file",
+                        help=t("help_dermo", lang),
+                    )
+                    if up_d_file:
+                        st.session_state["active_d_img"] = Image.open(up_d_file)
+                        st.session_state["is_precomputed_example"] = False
+                        st.session_state["precomputed_result"] = None
+                        st.session_state["example_name"] = None
+                        st.session_state["active_gt"] = None
+
+            # Option C: Use Camera
             else:
-                input_type = None
+                if hasattr(st, "camera_input"):
+                    cam_c = st.camera_input(t("camera_closeup", lang), key="cam_single_close")
+                    if cam_c:
+                        st.session_state["active_c_img"] = Image.open(cam_c)
+                        st.session_state["is_precomputed_example"] = False
+                        st.session_state["precomputed_result"] = None
+                        st.session_state["example_name"] = None
+                        st.session_state["active_gt"] = None
+
+                    opt_second_cam = st.checkbox(t("opt_magnified_camera", lang), value=False, key="chk_opt_macro_cam")
+                    if opt_second_cam:
+                        cam_d = st.camera_input(t("camera_dermo", lang), key="cam_single_macro")
+                        if cam_d:
+                            st.session_state["active_d_img"] = Image.open(cam_d)
+                            st.session_state["is_precomputed_example"] = False
+                            st.session_state["precomputed_result"] = None
+                            st.session_state["example_name"] = None
+                            st.session_state["active_gt"] = None
+
+                with st.expander(f"ℹ️ {t('camera_help_title', lang)}", expanded=False):
+                    st.markdown(t("camera_help_chrome", lang))
+                    st.markdown(t("camera_help_macos", lang))
+                    if st.button(t("btn_use_upload_instead", lang), key="btn_cam_to_upload"):
+                        st.session_state["simple_method_idx"] = 0
+                        st.rerun()
+
+                st.caption(t("scanner_unavailable_notice", lang))
 
             # ------------------------------------------------------------------
-            # AUTOMATIC INFERENCE ON INPUT CHANGE
+            # PHOTO PREVIEW & QUALITY CHECK (if photo exists)
             # ------------------------------------------------------------------
-            res: Optional[Dict[str, Any]] = None
+            c_img_active = st.session_state.get("active_c_img")
+            d_img_active = st.session_state.get("active_d_img")
+            has_photo = (c_img_active is not None or d_img_active is not None)
 
-            if input_type is not None:
+            if has_photo:
+                st.markdown(f"#### 📸 {t('preview_card_title', lang)}")
+                prev_c1, prev_c2 = st.columns([3, 2])
+                with prev_c1:
+                    is_ex = bool(st.session_state.get("example_name"))
+                    ex_cap = st.session_state.get("example_name", "")
+                    render_image_preview_card(
+                        is_example=is_ex,
+                        caption=ex_cap,
+                        clin_img=c_img_active,
+                        derm_img=d_img_active,
+                        badge_text=t("example_badge", lang) if is_ex else t("user_photo_badge", lang),
+                    )
+                with prev_c2:
+                    warns_c = check_image_quality(c_img_active, app_cfg, lang)[1] if c_img_active else []
+                    warns_d = check_image_quality(d_img_active, app_cfg, lang)[1] if d_img_active else []
+                    if warns_c or warns_d:
+                        st.markdown("**Image Quality Warnings:**")
+                        for w in warns_c + warns_d:
+                            st.warning(f"⚠️ {w}")
+                    else:
+                        st.success("✅ **Quality Check Passed**: Image clarity, resolution, and lighting are suitable for analysis.")
+
+                    if st.button(t("btn_remove_retake", lang), key="btn_remove_photo_simple", use_container_width=True):
+                        st.session_state["active_c_img"] = None
+                        st.session_state["active_d_img"] = None
+                        st.session_state["is_precomputed_example"] = False
+                        st.session_state["precomputed_result"] = None
+                        st.session_state["example_name"] = None
+                        st.session_state["active_gt"] = None
+                        st.session_state["analysis_done"] = False
+                        st.rerun()
+
+            # Single photo guidance note
+            if c_img_active is not None and d_img_active is None:
+                st.info(t("single_photo_clinical_note", lang))
+            elif d_img_active is not None and c_img_active is None:
+                st.info(t("single_photo_dermo_note", lang))
+
+            # ------------------------------------------------------------------
+            # STEP 2: PATIENT DETAILS (OPTIONAL) - COLLAPSED BY DEFAULT
+            # ------------------------------------------------------------------
+            with st.expander(f"👤 {t('step2_expand_label', lang)}", expanded=False):
+                col_p1, col_p2, col_p3 = st.columns(3)
+                with col_p1:
+                    st.markdown(f"**{t('label_age', lang)}**")
+                    dont_know_age = st.checkbox(
+                        t("dont_know_age", lang),
+                        value=st.session_state.get("active_dont_know_age", False),
+                        key="chk_dont_know_age_v2",
+                    )
+                    st.session_state["active_dont_know_age"] = dont_know_age
+                    current_age = int(st.session_state.get("active_age", 50))
+                    age_input = st.slider(
+                        "Patient Age",
+                        min_value=1,
+                        max_value=100,
+                        value=current_age,
+                        disabled=dont_know_age,
+                        label_visibility="collapsed",
+                        help=t("help_age", lang),
+                    )
+                    if not dont_know_age:
+                        st.session_state["active_age"] = age_input
+
+                with col_p2:
+                    st.markdown(f"**{t('label_sex', lang)}**")
+                    sex_options = [t("sex_male", lang), t("sex_female", lang), t("sex_unknown", lang)]
+                    current_sex = st.session_state.get("active_sex", "unknown")
+                    sex_idx = 0 if current_sex == "male" else (1 if current_sex == "female" else 2)
+                    chosen_sex = st.radio(
+                        "Sex Assigned at Birth",
+                        sex_options,
+                        index=sex_idx,
+                        horizontal=True,
+                        label_visibility="collapsed",
+                        help=t("help_sex", lang),
+                        key="radio_sex_v2",
+                    )
+                    if chosen_sex:
+                        st.session_state["active_sex"] = "male" if chosen_sex == sex_options[0] else ("female" if chosen_sex == sex_options[1] else "unknown")
+
+                with col_p3:
+                    st.markdown(f"**{t('label_site', lang)}**")
+                    site_map = {
+                        "torso": t("site_trunk", lang),
+                        "head/neck": t("site_head_neck", lang),
+                        "lower extremity": t("site_lower_ext", lang),
+                        "upper extremity": t("site_upper_ext", lang),
+                        "palms/soles": t("site_foot", lang),
+                        "genital": t("site_genital", lang),
+                        "unknown": t("site_unknown", lang),
+                    }
+                    inv_site_map = {v: k for k, v in site_map.items()}
+                    site_options = list(site_map.values())
+                    current_site = st.session_state.get("active_site", "unknown")
+                    site_idx = site_options.index(site_map.get(current_site, t("site_unknown", lang)))
+                    chosen_site_display = st.selectbox(
+                        "Anatomical Location",
+                        site_options,
+                        index=site_idx,
+                        label_visibility="collapsed",
+                        help=t("help_site", lang),
+                        key="select_site_v2",
+                    )
+                    site_val = inv_site_map[chosen_site_display]
+                    st.session_state["active_site"] = site_val
+
+            # ------------------------------------------------------------------
+            # PRIMARY ACTION BUTTON: "Check my photo"
+            # ------------------------------------------------------------------
+            st.markdown('<div style="margin: 18px 0 24px 0;">', unsafe_allow_html=True)
+            if has_photo:
+                if st.button(t("btn_check_photo", lang), type="primary", key="btn_check_photo_main", use_container_width=True):
+                    st.session_state["analysis_done"] = True
+                    st.rerun()
+            else:
+                st.button(t("btn_check_photo", lang), disabled=True, key="btn_check_photo_disabled", use_container_width=True)
+                st.markdown(f'<div style="text-align:center; font-size:0.85rem; color:var(--text-muted); margin-top:6px;">{t("btn_check_photo_hint", lang)}</div>', unsafe_allow_html=True)
+            st.markdown('</div>', unsafe_allow_html=True)
+
+            # ------------------------------------------------------------------
+            # STEP 3: RESULT RENDERING
+            # ------------------------------------------------------------------
+            if has_photo and st.session_state.get("analysis_done"):
+                if c_img_active is not None and d_img_active is not None:
+                    input_type = "both"
+                elif c_img_active is not None:
+                    input_type = "clinical only"
+                else:
+                    input_type = "dermoscopic only"
+
+                res = None
                 if st.session_state.get("is_precomputed_example") and st.session_state.get("precomputed_result"):
                     res = st.session_state["precomputed_result"]
                     input_hash = f"precomputed_{res.get('gt_diagnosis')}_{res.get('example_name')}"
                 else:
                     input_hash = compute_input_hash(c_img_active, d_img_active, age_val, sex_val, site_val, model_type=input_type)
-
                     if input_hash in st.session_state["cache"]:
                         res = st.session_state["cache"][input_hash]
                     else:
@@ -850,7 +1125,7 @@ def main():
                             c_tensor = IMAGE_TRANSFORMS(c_img_active.convert("RGB")).unsqueeze(0).to(device)
                             d_tensor = None
                             tab_tensor = None
-                        else:  # dermoscopic only
+                        else:
                             exp_target = "b_cw_128"
                             c_tensor = None
                             d_tensor = IMAGE_TRANSFORMS(d_img_active.convert("RGB")).unsqueeze(0).to(device)
@@ -879,7 +1154,6 @@ def main():
 
                                 mal_pre_prob = sum(float(probs[MILK10K_CLASS_TO_IDX[c]]) for c in MALIGNANT_OR_PREMALIGNANT_CLASSES if c in MILK10K_CLASS_TO_IDX)
 
-                                # Photo Quality Checks
                                 warns_c = check_image_quality(c_img_active, app_cfg, lang)[1] if c_img_active else []
                                 warns_d = check_image_quality(d_img_active, app_cfg, lang)[1] if d_img_active else []
                                 has_quality_warns = (len(warns_c) > 0 or len(warns_d) > 0)
@@ -917,94 +1191,74 @@ def main():
                                     "example_name": st.session_state.get("example_name"),
                                     "is_precomputed": False,
                                 }
-
                                 st.session_state["cache"][input_hash] = res
                                 status_box.update(label=t("toast_done", lang), state="complete", expanded=False)
                                 st.toast(t("toast_done", lang))
 
-            if res is not None:
-                # Localize triage verdict
-                if "triage" in res:
-                    res["triage"] = compute_triage_verdict(
-                        res["pred_class"],
-                        res["conf"],
-                        res.get("mal_pre_prob", 0.0),
-                        has_quality_warnings=False,
-                        cfg=app_cfg,
-                        lang=lang,
-                    )
+                if res is not None:
+                    # Anchor for scrolling
+                    st.markdown('<div id="result-anchor"></div>', unsafe_allow_html=True)
+                    st.markdown("---")
+                    st.markdown(f'<div class="simple-step-header">{t("step3_title", lang)}</div>', unsafe_allow_html=True)
 
-                # Gate Result Popup Dialog: open once per new result
-                if show_result_dialog and (st.session_state.get("popup_shown_for") != input_hash or st.session_state.get("open_popup_now")):
-                    st.session_state["popup_shown_for"] = input_hash
-                    st.session_state["open_popup_now"] = False
-                    show_result_dialog(res, lang, theme, oof_bins)
+                    # Provenance / Curated vs Live Badge
+                    if res.get("is_precomputed"):
+                        prov_html = f'<span class="precomputed-note-pill">ℹ️ {t("provenance_curated", lang)}</span>'
+                    else:
+                        prov_html = f'<span class="precomputed-note-pill" style="border-color:#3B82F6; color:#3B82F6;">🔬 {t("provenance_live", lang)}</span>'
+                    if res.get("is_single_photo"):
+                        prov_html += f' <span class="precomputed-note-pill" style="border-color:rgba(234,179,8,0.5); color:var(--warn);">{t("low_reliability_badge", lang)}</span>'
 
-                # --------------------------------------------------------------
-                # PINNED COMPACT RESULT STRIP AT THE VERY TOP OF TAB 1
-                # --------------------------------------------------------------
-                triage_info = res["triage"]
-                pred_c = res["pred_class"]
-                conf_val = res["conf"]
-                c_meta = CONDITION_DESCRIPTIONS.get(pred_c, {})
-                display_name = c_meta.get(f"{lang}_name", c_meta.get("en_name", pred_c))
-                display_desc = c_meta.get(f"{lang}_desc", c_meta.get("en_desc", ""))
-                conf_word = get_confidence_label(conf_val, app_cfg, lang)
-                advice = get_next_steps(pred_c, res.get("is_high_risk", False), lang)
+                    st.markdown(f'<div style="margin-bottom:12px;">{prov_html}</div>', unsafe_allow_html=True)
 
-                strip_level = triage_info.get("level", "grey")
-                st.markdown('<div id="result-anchor"></div>', unsafe_allow_html=True)
-                strip_c1, strip_c2 = st.columns([4, 1])
-                with strip_c1:
-                    pre_badge = '<span class="precomputed-note-pill" style="margin-right:8px;">ℹ️ Precomputed</span>' if res.get("is_precomputed") else ''
-                    single_badge = f'<span class="precomputed-note-pill" style="margin-right:8px; background-color:rgba(234,179,8,0.15); border-color:rgba(234,179,8,0.5); color:var(--warn);">{t("low_reliability_badge", lang)}</span>' if res.get("is_single_photo") else ''
+                    # Triage & Meta
+                    triage_info = res["triage"]
+                    pred_c = res["pred_class"]
+                    conf_val = res["conf"]
+                    c_meta = CONDITION_DESCRIPTIONS.get(pred_c, {})
+                    display_name = c_meta.get(f"{lang}_name", c_meta.get("en_name", pred_c))
+                    display_desc = c_meta.get(f"{lang}_desc", c_meta.get("en_desc", ""))
+                    conf_word = get_confidence_label(conf_val, app_cfg, lang)
+                    advice = get_next_steps(pred_c, res.get("is_high_risk", False), lang)
+                    strip_level = triage_info.get("level", "grey")
+                    card_title_tag = t("most_likely_uncertain", lang) if triage_info.get("is_uncertain") else t("most_likely", lang)
+
+                    # Prominent Verdict Card
                     st.markdown(f"""
-                    <div class="result-strip result-strip-{strip_level}">
-                        <div>
-                            <span style="font-size:1.15rem; font-weight:800;">
-                                {pre_badge}{single_badge}{triage_info['icon']} {triage_info['title']} — {t('hedged_finding_prefix', lang)}: {display_name} ({pred_c})
-                            </span>
-                            <div style="font-size:0.9rem; font-weight:600; opacity:0.9; margin-top:2px;">
-                                {conf_word} ({conf_val*100:.1f}%) • {advice}
-                            </div>
+                    <div class="verdict-card verdict-card-{strip_level}">
+                        <div style="font-weight:700; font-size:0.85rem; letter-spacing:0.5px; opacity:0.9;">
+                            {triage_info['icon']} {card_title_tag.upper()}
+                        </div>
+                        <div style="font-size:1.85rem; font-weight:800; margin-top:4px;">
+                            {display_name} <span style="font-size:1.1rem; opacity:0.75; font-weight:600;">({pred_c})</span>
+                        </div>
+                        <p style="font-size:1.05rem; opacity:0.95; margin-top:8px; margin-bottom:12px; line-height:1.5;">
+                            {display_desc}
+                        </p>
+                        <div style="font-size:0.9rem; font-weight:600; padding:10px 14px; background:rgba(255,255,255,0.06); border-radius:8px;">
+                            💡 <b>{t("next_steps_title", lang)}</b>: {advice}
                         </div>
                     </div>
                     """, unsafe_allow_html=True)
-                with strip_c2:
-                    if st.button(t("view_details_btn", lang), key="btn_reopen_popup_strip", width="stretch"):
-                        st.session_state["open_popup_now"] = True
-                        st.rerun()
 
-                # --------------------------------------------------------------
-                # SIDE-BY-SIDE RESULT & IMAGE PREVIEW
-                # --------------------------------------------------------------
-                col_preview, col_result = st.columns([5, 7])
-
-                # Left Column: Image Previews & Demographics
-                with col_preview:
-                    st.markdown("#### 📸 Analyzed Lesion Photos")
-                    is_ex = bool(st.session_state.get("example_name"))
-                    ex_cap = st.session_state.get("example_name", "")
-                    render_image_preview_card(
-                        is_example=is_ex,
-                        caption=ex_cap,
-                        clin_img=c_img_active,
-                        derm_img=d_img_active,
-                        badge_text=t("example_badge", lang) if is_ex else t("user_photo_badge", lang)
-                    )
-
-                    # Quality Warnings
-                    warns_c = check_image_quality(c_img_active, app_cfg, lang)[1] if c_img_active else []
-                    warns_d = check_image_quality(d_img_active, app_cfg, lang)[1] if d_img_active else []
-                    for w in warns_c + warns_d:
-                        st.warning(w)
-
-                    # Patient Details Summary Card
-                    with st.container():
+                    # Side-by-side: Photo Preview vs Top Possibilities & Conformal
+                    res_c1, res_c2 = st.columns([5, 7])
+                    with res_c1:
+                        st.markdown("##### 📸 Analyzed Lesion Photo")
+                        is_ex = bool(st.session_state.get("example_name"))
+                        ex_cap = st.session_state.get("example_name", "")
+                        render_image_preview_card(
+                            is_example=is_ex,
+                            caption=ex_cap,
+                            clin_img=c_img_active,
+                            derm_img=d_img_active,
+                            badge_text=t("example_badge", lang) if is_ex else t("user_photo_badge", lang),
+                        )
+                        # Patient Details Card
                         st.markdown(f"""
                         <div class="vishwas-card" style="padding:12px 16px; margin-top:10px;">
                             <div style="font-weight:700; font-size:0.9rem; margin-bottom:4px;">👤 Patient Information</div>
-                            <div style="font-size:0.85rem; color:var(--muted);">
+                            <div style="font-size:0.85rem; color:var(--text-muted);">
                                 • <b>Age</b>: {f'{age_val:.0f} yrs' if age_val else 'Unspecified'}<br>
                                 • <b>Sex</b>: {sex_val.capitalize()}<br>
                                 • <b>Body Site</b>: {site_val.capitalize()}
@@ -1012,77 +1266,28 @@ def main():
                         </div>
                         """, unsafe_allow_html=True)
 
-                # Right Column: Step 3 Result Details
-                with col_result:
-                    st.markdown(f'<div class="simple-step-header">{t("step3_title", lang)}</div>', unsafe_allow_html=True)
+                    with res_c2:
+                        # Top Possibilities Horizontal Bar Chart
+                        st.markdown(f"##### 📊 {t('top3_title', lang)}")
+                        st.caption("How to read this: Ranked probability distribution across top 3 predicted conditions.")
+                        top3_chart = plot_top3_horizontal(res["top3"], theme_mode=theme, lang=lang)
+                        st.plotly_chart(top3_chart, width="stretch")
 
-                    if res.get("is_precomputed"):
-                        st.markdown('<span class="precomputed-note-pill">ℹ️ Precomputed result for this example</span>', unsafe_allow_html=True)
-                        gt = res.get("gt_diagnosis")
-                        if gt:
-                            gt_meta = CONDITION_DESCRIPTIONS.get(gt, {})
-                            gt_name = res.get("gt_diagnosis_name") or gt_meta.get(f"{lang}_name") or gt_meta.get("en_name", gt)
-                            st.markdown(f"🎯 **True Diagnosis (Ground Truth)**: **{gt_name}** (`{gt}`)")
+                        # Conformal Prediction Plain-Language Explanation
+                        cf_info = res.get("conformal")
+                        if cf_info:
+                            cf_set_size = cf_info.get("set_size", 1)
+                            if cf_set_size <= 2:
+                                cf_msg = t("conformal_plain_safe", lang).format(set_size=cf_set_size)
+                                st.info(f"🛡️ **{t('conformal_set_title', lang)}**: {cf_msg}")
+                            else:
+                                cf_msg = t("conformal_plain_uncertain", lang).format(set_size=cf_set_size)
+                                st.warning(f"⚠️ **{t('conformal_set_title', lang)}**: {cf_msg}")
 
-                    card_title_tag = t("most_likely_uncertain", lang) if triage_info.get("is_uncertain") else t("most_likely", lang)
+                            cf_names = [f"**{CONDITION_DESCRIPTIONS.get(c, {}).get(f'{lang}_name', c)}** (`{c}`)" for c in cf_info.get("prediction_set", [])]
+                            st.markdown(f"🎯 **{t('conformal_likely_prefix', lang)}** {', '.join(cf_names)}")
 
-                    st.markdown(f"""
-                    <div class="result-strip result-strip-{strip_level}" style="display:block; padding:18px 22px; margin-bottom:14px;">
-                        <span style="font-weight:700; font-size:0.85rem; letter-spacing:0.5px;">
-                            {triage_info['icon']} {card_title_tag.upper()}
-                        </span>
-                        <div style="font-size:1.75rem; font-weight:800; margin-top:2px;">
-                            {display_name} <span style="font-size:1.1rem; opacity:0.8; font-weight:600;">({pred_c})</span>
-                        </div>
-                        <p style="font-size:1.0rem; opacity:0.95; margin-top:6px; margin-bottom:10px; line-height:1.5;">
-                            {display_desc}
-                        </p>
-                        <div style="font-size:0.85rem; opacity:0.8;">
-                            {t('ai_estimate_tag', lang)}
-                        </div>
-                    </div>
-                    """, unsafe_allow_html=True)
-
-                    # Confidence meter
-                    c_col1, c_col2 = st.columns([1, 2])
-                    with c_col1:
-                        st.metric(
-                            t("confidence_level", lang),
-                            f"{conf_val*100:.1f}%",
-                            f"{conf_word}",
-                            delta_color="normal" if conf_val >= 0.55 else "off",
-                        )
-                    with c_col2:
-                        st.markdown(f"**{t('confidence_level', lang)}: {conf_word}**")
-                        st.progress(float(min(max(conf_val, 0.0), 1.0)))
-
-                    # Evidence Line from Out-of-Fold Predictions
-                    ev_line = get_evidence_line(conf_val, oof_bins, lang)
-                    if ev_line:
-                        st.markdown(f"📈 *{ev_line}*")
-
-                    # High-Risk Alert Banner
-                    if res.get("is_high_risk"):
-                        st.error(t("clinical_review_banner", lang))
-
-                    # What you can do next
-                    st.markdown(f"#### 💡 {t('next_steps_title', lang)}")
-                    st.info(advice)
-
-                    # Conformal Prediction Set (Phase B)
-                    cf_info = res.get("conformal")
-                    if cf_info:
-                        cf_names = []
-                        for c_code in cf_info.get("prediction_set", []):
-                            m = CONDITION_DESCRIPTIONS.get(c_code, {})
-                            c_localized = m.get(f"{lang}_name", m.get("en_name", c_code))
-                            cf_names.append(f"**{c_localized}** (`{c_code}`)")
-                        cf_joined = ", ".join(cf_names)
-                        st.markdown(f"🎯 **{t('conformal_likely_prefix', lang)}** {cf_joined}")
-                        if cf_info.get("is_uncertain"):
-                            st.warning(t("conformal_uncertain_alert", lang))
-
-                    # One-sentence Plain Language Feature Summary (Phase C)
+                    # One-sentence Plain Language Feature Summary
                     feats = res.get("features", {})
                     if feats:
                         seen_traits = []
@@ -1100,9 +1305,10 @@ def main():
                         traits_str = ", ".join(seen_traits) if seen_traits else ("uniform contours" if lang == "en" else "समान बनावट")
                         st.markdown(f"🔬 *{t('features_plain_hedged', lang).format(condition=display_name, features=traits_str)}*")
 
-                    # Grounded Clinical Explanation & Principled Abstention (Phase E)
+                    # Grounded Clinical Explanation
                     grounded_gen = get_grounded_generator()
-                    quality_warns_list = warns_c + warns_d
+                    warns_c = check_image_quality(c_img_active, app_cfg, lang)[1] if c_img_active else []
+                    warns_d = check_image_quality(d_img_active, app_cfg, lang)[1] if d_img_active else []
                     explanation_data = grounded_gen.generate(
                         pred_class=pred_c,
                         conf=conf_val,
@@ -1110,7 +1316,7 @@ def main():
                         conformal_info=res.get("conformal"),
                         observed_features=res.get("features"),
                         patient_metadata={"tone_group": res.get("tone_group", "Unknown")},
-                        quality_warnings=quality_warns_list,
+                        quality_warnings=warns_c + warns_d,
                         lang=lang,
                         use_llm=bool(app_cfg.get("use_llm_explanation", False)),
                     )
@@ -1118,37 +1324,27 @@ def main():
 
                     st.markdown(f"#### 🩺 {t('grounded_explanation_heading', lang)}")
                     if explanation_data.get("is_abstained"):
-                        st.warning(f"⚠️ **{t('conformal_uncertain_alert', lang)}**\n\n{explanation_data['full_text']}")
+                        st.warning(f"⚠️ **{t('conformal_uncertain_alert', lang)}**\\n\\n{explanation_data['full_text']}")
                     else:
                         st.markdown(f"""
                         <div class="vishwas-card" style="padding:14px 18px; border-left:4px solid var(--primary); margin-bottom:12px;">
                             <p style="font-size:0.95rem; line-height:1.6; margin-bottom:8px;">
                                 {explanation_data['full_text']}
                             </p>
-                            <div style="font-size:0.85rem; color:var(--muted); font-weight:600;">
+                            <div style="font-size:0.85rem; color:var(--text-muted); font-weight:600;">
                                 🩺 <b>Clinical Guidance</b>: {advice}
                             </div>
                         </div>
                         """, unsafe_allow_html=True)
-                        if explanation_data.get("citations"):
-                            with st.expander(f"📖 {t('grounded_sources_heading', lang)} ({len(explanation_data['citations'])})", expanded=False):
-                                for cite_str in explanation_data["citations"]:
-                                    st.markdown(f"• *{cite_str}*")
 
-                    # Top-3 Horizontal Ranked Bars Chart (Plotly)
-                    st.markdown(f"#### 📊 {t('top3_title', lang)}")
-                    st.caption("How to read this: Ranked probability distribution across top 3 predicted conditions.")
-                    top3_chart = plot_top3_horizontal(res["top3"], theme_mode=theme, lang=lang)
-                    st.plotly_chart(top3_chart, width="stretch")
-
-                    # Action Buttons
-                    act_col1, act_col2 = st.columns(2)
-                    with act_col1:
+                    # Action buttons
+                    act_c1, act_c2 = st.columns(2)
+                    with act_c1:
                         if st.button(t("rerun_btn", lang), width="stretch", key="btn_rerun_simple"):
                             st.session_state["cache"].pop(input_hash, None)
-                            st.session_state["popup_shown_for"] = None
+                            st.session_state["analysis_done"] = True
                             st.rerun()
-                    with act_col2:
+                    with act_c2:
                         pdf_bytes = generate_pdf_report(res, res.get("c_img"), res.get("d_img"), lang)
                         st.download_button(
                             label=t("download_pdf_btn", lang),
@@ -1159,240 +1355,21 @@ def main():
                             key="btn_pdf_simple",
                         )
 
-                # Explanations Expanders below the side-by-side row
-                st.markdown("---")
-                render_disease_card(pred_c, lang)
-                render_top3_differentials(res["top3"], lang)
+                    # Technical Expanders
+                    with st.expander(t("show_details", lang), expanded=False):
+                        st.markdown("##### 11-Class Complete Differential Softmax Probabilities")
+                        all_classes_df = pd.DataFrame({
+                            "Diagnosis Code": MILK10K_CLASSES,
+                            "Full Condition Name": [CLASS_INFO[c]["name"] for c in MILK10K_CLASSES],
+                            "Category": [CLASS_INFO[c]["type"] for c in MILK10K_CLASSES],
+                            "Probability (%)": [res["probs"][i] * 100 for i in range(11)],
+                        }).set_index("Diagnosis Code")
+                        st.dataframe(all_classes_df, width="stretch")
 
-                # Technical Expander for curious visitors
-                with st.expander(t("show_details", lang), expanded=False):
-                    st.markdown("##### 11-Class Complete Differential Softmax Probabilities")
-                    all_classes_df = pd.DataFrame({
-                        "Diagnosis Code": MILK10K_CLASSES,
-                        "Full Condition Name": [CLASS_INFO[c]["name"] for c in MILK10K_CLASSES],
-                        "Category": [CLASS_INFO[c]["type"] for c in MILK10K_CLASSES],
-                        "Probability (%)": [res["probs"][i] * 100 for i in range(11)],
-                    }).set_index("Diagnosis Code")
-                    st.dataframe(all_classes_df, width="stretch")
+                        render_disease_card(pred_c, lang)
+                        render_top3_differentials(res["top3"], lang)
 
-                    if res.get("gt_diagnosis"):
-                        st.markdown(f"**Dataset Reference Ground Truth**: `{res['gt_diagnosis']}` ({'✅ Match' if pred_c == res['gt_diagnosis'] else '⚠️ Discrepancy'})")
-
-                st.markdown("---")
-
-            # ------------------------------------------------------------------
-            # EMPTY STATE BANNER & EXAMPLES (when no photos uploaded yet)
-            # ------------------------------------------------------------------
-            if c_img_active is None and d_img_active is None:
-                if not st.session_state["dismiss_banner"]:
-                    with st.container():
-                        st.markdown(f"""
-                        <div class="vishwas-card" style="padding:18px 24px; margin-bottom:18px;">
-                            <h4 style="margin-top:0;">{t('how_it_works_title', lang)}</h4>
-                            <p style="margin-bottom:6px;">{t('how_it_works_step1', lang)}</p>
-                            <p style="margin-bottom:6px;">{t('how_it_works_step2', lang)}</p>
-                            <p style="margin-bottom:12px;">{t('how_it_works_step3', lang)}</p>
-                        </div>
-                        """, unsafe_allow_html=True)
-                        if st.button(t("dismiss_banner", lang), key="btn_dismiss_guide"):
-                            st.session_state["dismiss_banner"] = True
-                            st.rerun()
-
-                st.markdown(f"#### {t('try_example_title', lang)}")
-                ex_col1, ex_col2, ex_col3 = st.columns(3)
-
-                curated_exs, gallery_err = load_curated_examples_with_status()
-                if gallery_err:
-                    st.error(f"⚠️ {gallery_err}")
-
-                with ex_col1:
-                    if st.button(t("example_mel", lang), width="stretch"):
-                        ex_m = get_example_by_id("mel")
-                        if ex_m:
-                            select_curated_example(ex_m, app_cfg, lang)
-                            st.rerun()
-
-                with ex_col2:
-                    if st.button(t("example_bcc", lang), width="stretch"):
-                        ex_b = get_example_by_id("bcc")
-                        if ex_b:
-                            select_curated_example(ex_b, app_cfg, lang)
-                            st.rerun()
-
-                with ex_col3:
-                    if st.button(t("example_nv", lang), width="stretch"):
-                        ex_n = get_example_by_id("nv")
-                        if ex_n:
-                            select_curated_example(ex_n, app_cfg, lang)
-                            st.rerun()
-
-                # Curated gallery dropdown for all 11 conditions
-                if curated_exs:
-                    with st.expander("🔍 Or pick from all 11 curated conditions (Skin tone groups G1-G3):", expanded=False):
-                        labels = [f"{ex['diagnosis']} — {ex['diagnosis_name']} ({ex['tone_group']})" for ex in curated_exs]
-                        chosen_idx = st.selectbox("Select condition:", range(len(labels)), format_func=lambda i: labels[i])
-                        if st.button("Load Selected Example", key="btn_load_dropdown_ex", width="stretch"):
-                            chosen_ex = curated_exs[chosen_idx]
-                            select_curated_example(chosen_ex, app_cfg, lang)
-                            st.rerun()
-
-                st.markdown("---")
-
-            # ------------------------------------------------------------------
-            # STEP 1: ADD PHOTOS
-            # ------------------------------------------------------------------
-            st.markdown(f'<div class="simple-step-header">{t("step1_title", lang)}</div>', unsafe_allow_html=True)
-            st.markdown(t("step1_desc", lang))
-
-            # Photography Tips Expander
-            with st.expander(t("photo_tips_title", lang), expanded=False):
-                st.markdown(t("photo_tips_content", lang))
-
-            col_u1, col_u2 = st.columns(2)
-
-            with col_u1:
-                st.markdown(f"**{t('label_closeup', lang)}**")
-                up_c_file = st.file_uploader(
-                    "Upload Close-up Image",
-                    type=["jpg", "jpeg", "png"],
-                    key="simple_c_file",
-                    label_visibility="collapsed",
-                    help=t("help_closeup", lang),
-                )
-                if up_c_file:
-                    st.session_state["active_c_img"] = Image.open(up_c_file)
-                    st.session_state["is_precomputed_example"] = False
-                    st.session_state["precomputed_result"] = None
-                    st.session_state["example_name"] = None
-                    st.session_state["active_gt"] = None
-
-                # Optional Camera Input
-                if hasattr(st, "camera_input"):
-                    cam_c = st.camera_input(t("camera_closeup", lang), key="cam_closeup")
-                    if cam_c:
-                        st.session_state["active_c_img"] = Image.open(cam_c)
-                        st.session_state["is_precomputed_example"] = False
-                        st.session_state["precomputed_result"] = None
-                        st.session_state["example_name"] = None
-                        st.session_state["active_gt"] = None
-
-            with col_u2:
-                st.markdown(f"**{t('label_dermo', lang)}**")
-                up_d_file = st.file_uploader(
-                    "Upload Magnified Image",
-                    type=["jpg", "jpeg", "png"],
-                    key="simple_d_file",
-                    label_visibility="collapsed",
-                    help=t("help_dermo", lang),
-                )
-                if up_d_file:
-                    st.session_state["active_d_img"] = Image.open(up_d_file)
-                    st.session_state["is_precomputed_example"] = False
-                    st.session_state["precomputed_result"] = None
-                    st.session_state["example_name"] = None
-                    st.session_state["active_gt"] = None
-
-                # Optional Camera Input for Dermoscopic / Macro
-                if hasattr(st, "camera_input"):
-                    cam_d = st.camera_input(t("camera_dermo", lang), key="cam_dermo")
-                    if cam_d:
-                        st.session_state["active_d_img"] = Image.open(cam_d)
-                        st.session_state["is_precomputed_example"] = False
-                        st.session_state["precomputed_result"] = None
-                        st.session_state["example_name"] = None
-                        st.session_state["active_gt"] = None
-
-            # Phase A: Single-Photo vs Dual-Photo Input Guidance
-            if c_img_active is not None and d_img_active is None:
-                st.info(t("single_photo_clinical_note", lang))
-            elif d_img_active is not None and c_img_active is None:
-                st.info(t("single_photo_dermo_note", lang))
-            elif c_img_active is not None and d_img_active is not None:
-                st.caption(f"✅ {t('input_mode_both', lang)}")
-
-            st.markdown("---")
-
-            # ------------------------------------------------------------------
-            # STEP 2: PATIENT DETAILS (OPTIONAL)
-            # ------------------------------------------------------------------
-            st.markdown(f'<div class="simple-step-header">{t("step2_title", lang)}</div>', unsafe_allow_html=True)
-            st.markdown(t("step2_desc", lang))
-
-            col_p1, col_p2, col_p3 = st.columns(3)
-
-            with col_p1:
-                st.markdown(f"**{t('label_age', lang)}**")
-                dont_know_age = st.checkbox(
-                    t("dont_know_age", lang),
-                    value=st.session_state.get("active_dont_know_age", False),
-                    key="chk_dont_know_age",
-                )
-                st.session_state["active_dont_know_age"] = dont_know_age
-
-                current_age = int(st.session_state.get("active_age", 50))
-                age_input = st.slider(
-                    "Patient Age",
-                    min_value=1,
-                    max_value=100,
-                    value=current_age,
-                    disabled=dont_know_age,
-                    label_visibility="collapsed",
-                    help=t("help_age", lang),
-                )
-                if not dont_know_age:
-                    st.session_state["active_age"] = age_input
-
-            with col_p2:
-                st.markdown(f"**{t('label_sex', lang)}**")
-                sex_options = [t("sex_male", lang), t("sex_female", lang), t("sex_unknown", lang)]
-                current_sex = st.session_state.get("active_sex", "unknown")
-                sex_idx = 0 if current_sex == "male" else (1 if current_sex == "female" else 2)
-
-                if hasattr(st, "segmented_control"):
-                    chosen_sex = st.segmented_control(
-                        "Sex Assigned at Birth",
-                        sex_options,
-                        default=sex_options[sex_idx],
-                        label_visibility="collapsed",
-                        help=t("help_sex", lang),
-                    )
-                else:
-                    chosen_sex = st.radio(
-                        "Sex Assigned at Birth",
-                        sex_options,
-                        index=sex_idx,
-                        horizontal=True,
-                        label_visibility="collapsed",
-                        help=t("help_sex", lang),
-                    )
-                if chosen_sex:
-                    st.session_state["active_sex"] = "male" if chosen_sex == sex_options[0] else ("female" if chosen_sex == sex_options[1] else "unknown")
-
-            with col_p3:
-                st.markdown(f"**{t('label_site', lang)}**")
-                site_map = {
-                    "torso": t("site_trunk", lang),
-                    "head/neck": t("site_head_neck", lang),
-                    "lower extremity": t("site_lower_ext", lang),
-                    "upper extremity": t("site_upper_ext", lang),
-                    "palms/soles": t("site_foot", lang),
-                    "genital": t("site_genital", lang),
-                    "unknown": t("site_unknown", lang),
-                }
-                inv_site_map = {v: k for k, v in site_map.items()}
-                site_options = list(site_map.values())
-                current_site = st.session_state.get("active_site", "unknown")
-                site_idx = site_options.index(site_map.get(current_site, t("site_unknown", lang)))
-
-                chosen_site_display = st.selectbox(
-                    "Anatomical Location",
-                    site_options,
-                    index=site_idx,
-                    label_visibility="collapsed",
-                    help=t("help_site", lang),
-                )
-                site_val = inv_site_map[chosen_site_display]
-                st.session_state["active_site"] = site_val
+            st.markdown('</div>', unsafe_allow_html=True)
 
         # ----------------------------------------------------------------------
         # EXPERT MODE: TECHNICAL RESEARCH INTERFACE

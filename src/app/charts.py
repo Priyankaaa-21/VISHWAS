@@ -333,16 +333,19 @@ def plot_top3_horizontal(
         x=probs,
         y=names,
         orientation="h",
-        marker=dict(color=colors, line=dict(color="#1e293b", width=1)),
+        marker=dict(color=colors, line=dict(color=t_cfg.get("line_color", "#222222"), width=1)),
         text=[f"{p:.1f}%" for p in probs],
-        textposition="outside",
+        textposition="auto",
+        insidetextanchor="end",
+        cliponaxis=False,
+        textfont=dict(size=13, color=t_cfg["font"]["color"]),
         hovertemplate="<b>%{y}</b>: %{x:.1f}%<extra></extra>"
     ))
 
     max_p = max(probs) if probs else 50
     xaxis_dict = dict(t_cfg["xaxis"])
     xaxis_dict["title"] = "Probability (%)"
-    xaxis_dict["range"] = [0, min(100, max_p * 1.25 + 10)]
+    xaxis_dict["range"] = [0, max(100.0, min(108.0, max_p * 1.15 + 8))]
 
     yaxis_dict = dict(t_cfg["yaxis"])
     yaxis_dict["title"] = ""
@@ -354,7 +357,7 @@ def plot_top3_horizontal(
         paper_bgcolor=t_cfg["paper_bgcolor"],
         plot_bgcolor=t_cfg["plot_bgcolor"],
         font=t_cfg["font"],
-        margin=dict(l=140, r=40, t=20, b=30),
-        height=200
+        margin=dict(l=150, r=65, t=20, b=30),
+        height=210
     )
     return fig
