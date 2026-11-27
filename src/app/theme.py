@@ -271,6 +271,9 @@ def get_theme_css(theme_mode: str) -> str:
         /* ---------------------------------------------------------------------
            RADIO BUTTONS & SEGMENTED CONTROLS (Calm Blue, Never Red)
            --------------------------------------------------------------------- */
+        input[type="radio"], input[type="checkbox"], input[type="range"] {
+            accent-color: #3b82f6 !important;
+        }
         div[data-testid="stRadio"] div[role="radiogroup"] label {
             color: var(--text) !important;
         }
@@ -278,12 +281,30 @@ def get_theme_css(theme_mode: str) -> str:
             color: var(--text) !important;
             font-size: 1rem !important;
         }
-        div[data-testid="stRadio"] input[type="radio"]:checked + div {
+        div[data-testid="stRadio"] input[type="radio"]:checked + div,
+        div[data-testid="stRadio"] [data-baseweb="radio"] input:checked + div,
+        div[data-testid="stRadio"] [data-baseweb="radio"] div[style*="rgb(255, 75, 75)"],
+        div[data-testid="stRadio"] [data-baseweb="radio"] div[style*="rgb(255, 43, 43)"],
+        div[data-testid="stRadio"] [data-baseweb="radio"] div[style*="#ff4b4b"],
+        div[data-testid="stRadio"] [data-baseweb="radio"] div[style*="#ff2b2b"] {
             border-color: var(--accent) !important;
             background-color: var(--accent) !important;
         }
         div[data-testid="stRadio"] input[type="radio"] + div {
             border-color: var(--border) !important;
+        }
+
+        /* Sliders (Calm Blue, Never Red) */
+        div[data-testid="stSlider"] div[role="slider"] {
+            background-color: var(--accent) !important;
+            border-color: var(--accent) !important;
+        }
+        div[data-testid="stSlider"] [data-baseweb="slider"] div[style*="rgb(255, 75, 75)"],
+        div[data-testid="stSlider"] [data-baseweb="slider"] div[style*="rgb(255, 43, 43)"],
+        div[data-testid="stSlider"] [data-baseweb="slider"] div[style*="#ff4b4b"],
+        div[data-testid="stSlider"] [data-baseweb="slider"] div[style*="#ff2b2b"] {
+            background: var(--accent) !important;
+            background-color: var(--accent) !important;
         }
 
         /* Segmented control buttons */
@@ -471,9 +492,21 @@ def get_theme_css(theme_mode: str) -> str:
             background: var(--accent);
             color: #ffffff;
         }
-        .step-item.completed .step-circle {
+        .step-item.completed .step-circle, .step-item.done .step-circle {
             background: var(--ok);
             color: #ffffff;
+        }
+        .step-item.done {
+            color: var(--ok);
+        }
+        .step-line {
+            flex: 1;
+            height: 2px;
+            background: var(--border);
+            margin: 0 12px;
+        }
+        .step-line.done {
+            background: var(--ok);
         }
 
         /* ---------------------------------------------------------------------

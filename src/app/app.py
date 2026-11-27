@@ -729,6 +729,7 @@ def main():
             st.session_state["active_site"] = "unknown"
             st.session_state["popup_shown_for"] = None
             st.session_state["open_popup_now"] = False
+            st.session_state["analysis_done"] = False
             st.rerun()
 
         # Plain-Language Glossary Expander
@@ -827,24 +828,16 @@ def main():
             s2_cls = "active" if has_photo and not analysis_done else ("done" if analysis_done else "")
             s3_cls = "active" if analysis_done else ""
 
-            st.markdown(f"""
-            <div class="step-progress-bar">
-                <div class="step-item {s1_cls}">
-                    <span class="step-circle">1</span>
-                    <span class="step-label">{t("step_1_indicator", lang)}</span>
-                </div>
-                <div class="step-line {'done' if has_photo else ''}"></div>
-                <div class="step-item {s2_cls}">
-                    <span class="step-circle">2</span>
-                    <span class="step-label">{t("step_2_indicator", lang)}</span>
-                </div>
-                <div class="step-line {'done' if analysis_done else ''}"></div>
-                <div class="step-item {s3_cls}">
-                    <span class="step-circle">3</span>
-                    <span class="step-label">{t("step_3_indicator", lang)}</span>
-                </div>
-            </div>
-            """, unsafe_allow_html=True)
+            step_html = (
+                f'<div class="step-progress-bar">'
+                f'<div class="step-item {s1_cls}"><span class="step-circle">1</span><span class="step-label">{t("step_1_indicator", lang)}</span></div>'
+                f'<div class="step-line {"done" if has_photo else ""}"></div>'
+                f'<div class="step-item {s2_cls}"><span class="step-circle">2</span><span class="step-label">{t("step_2_indicator", lang)}</span></div>'
+                f'<div class="step-line {"done" if analysis_done else ""}"></div>'
+                f'<div class="step-item {s3_cls}"><span class="step-circle">3</span><span class="step-label">{t("step_3_indicator", lang)}</span></div>'
+                f'</div>'
+            )
+            st.markdown(step_html, unsafe_allow_html=True)
 
             # ------------------------------------------------------------------
             # STEP 1: ADD A PHOTO
@@ -916,12 +909,15 @@ def main():
                     key="simple_up_c_file",
                     help=t("help_closeup", lang),
                 )
-                if up_c_file:
-                    st.session_state["active_c_img"] = Image.open(up_c_file)
-                    st.session_state["is_precomputed_example"] = False
-                    st.session_state["precomputed_result"] = None
-                    st.session_state["example_name"] = None
-                    st.session_state["active_gt"] = None
+                if up_c_file is not None:
+                    try:
+                        st.session_state["active_c_img"] = Image.open(up_c_file).convert("RGB")
+                        st.session_state["is_precomputed_example"] = False
+                        st.session_state["precomputed_result"] = None
+                        st.session_state["example_name"] = None
+                        st.session_state["active_gt"] = None
+                    except Exception as e:
+                        st.error(f"Error loading image: {e}")
 
                 with st.expander("➕ Add magnified / dermoscopic photo (optional second view)", expanded=False):
                     up_d_file = st.file_uploader(
@@ -930,12 +926,15 @@ def main():
                         key="simple_up_d_file",
                         help=t("help_dermo", lang),
                     )
-                    if up_d_file:
-                        st.session_state["active_d_img"] = Image.open(up_d_file)
-                        st.session_state["is_precomputed_example"] = False
-                        st.session_state["precomputed_result"] = None
-                        st.session_state["example_name"] = None
-                        st.session_state["active_gt"] = None
+                    if up_d_file is not None:
+                        try:
+                            st.session_state["active_d_img"] = Image.open(up_d_file).convert("RGB")
+                            st.session_state["is_precomputed_example"] = False
+                            st.session_state["precomputed_result"] = None
+                            st.session_state["example_name"] = None
+                            st.session_state["active_gt"] = None
+                        except Exception as e:
+                            st.error(f"Error loading image: {e}")
 
             # Option C: Use Camera
             else:
