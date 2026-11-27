@@ -30,7 +30,7 @@ import yaml
 
 # Set page config as first Streamlit call
 st.set_page_config(
-    page_title="VISHWAS (विश्वास) - Skin AI",
+    page_title="Vishwas: Equitable Skin Disease Detection Across Skin Tones Using Multimodal Learning and Retrieval-Grounded Explanations",
     page_icon="🩺",
     layout="wide",
     initial_sidebar_state="expanded",
@@ -742,34 +742,31 @@ def main():
             st.markdown(t("glossary_f1", lang))
             st.markdown(t("glossary_calibration", lang))
 
-    # Prominent Hero Title with Devanagari & Kannada Support
+    # Prominent Hero Title
     if lang == "kn":
         st.markdown(
             '<div class="main-header-hero">'
-            '<span class="hero-brand">ವಿಶ್ವಾಸ</span> '
-            '<span class="hero-devanagari">(VISHWAS)</span>'
+            '<span class="hero-brand">ವಿಶ್ವಾಸ (Vishwas)</span>'
             '<span class="hero-colon">:</span> '
-            '<span class="hero-tagline">ಚರ್ಮ ಆರೋಗ್ಯ ತಪಾಸಣೆ</span>'
+            '<span class="hero-tagline">Equitable Skin Disease Detection Across Skin Tones Using Multimodal Learning and Retrieval-Grounded Explanations</span>'
             '</div>',
             unsafe_allow_html=True,
         )
     elif lang == "hi":
         st.markdown(
             '<div class="main-header-hero">'
-            '<span class="hero-brand">VISHWAS</span> '
-            '<span class="hero-devanagari">(विश्वास)</span>'
+            '<span class="hero-brand">विश्वास (Vishwas)</span>'
             '<span class="hero-colon">:</span> '
-            '<span class="hero-tagline">त्वचा स्वास्थ्य जांच</span>'
+            '<span class="hero-tagline">Equitable Skin Disease Detection Across Skin Tones Using Multimodal Learning and Retrieval-Grounded Explanations</span>'
             '</div>',
             unsafe_allow_html=True,
         )
     else:
         st.markdown(
             '<div class="main-header-hero">'
-            '<span class="hero-brand">VISHWAS</span> '
-            '<span class="hero-devanagari">(विश्वास)</span>'
+            '<span class="hero-brand">Vishwas</span>'
             '<span class="hero-colon">:</span> '
-            '<span class="hero-tagline">Skin AI Check</span>'
+            '<span class="hero-tagline">Equitable Skin Disease Detection Across Skin Tones Using Multimodal Learning and Retrieval-Grounded Explanations</span>'
             '</div>',
             unsafe_allow_html=True,
         )

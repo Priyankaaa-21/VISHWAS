@@ -12,7 +12,7 @@ from typing import Dict, Any
 STRINGS: Dict[str, Dict[str, str]] = {
     "en": {
         # App identity
-        "app_title": "VISHWAS (विश्वास): Skin AI Check",
+        "app_title": "Vishwas: Equitable Skin Disease Detection Across Skin Tones Using Multimodal Learning and Retrieval-Grounded Explanations",
         "app_subtitle_simple": "A research prototype for equitable, skin-tone-aware dermatological health screening.",
         "app_subtitle_expert": "Certified 5-Fold Cross-Validation, Multimodal Fusion (Clinical + Dermoscopic + Tabular), and Subgroup Fairness Auditing.",
         "mode_selector": "Interface Mode",

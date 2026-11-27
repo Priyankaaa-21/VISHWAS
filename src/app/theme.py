@@ -136,6 +136,31 @@ def get_theme_css(theme_mode: str) -> str:
             padding: 0 8px;
         }
 
+        /* Hero Title Header */
+        .main-header-hero {
+            margin-top: 6px;
+            margin-bottom: 8px;
+            line-height: 1.35;
+        }
+        .hero-brand {
+            font-size: 1.85rem;
+            font-weight: 850;
+            color: var(--accent);
+            letter-spacing: -0.02em;
+        }
+        .hero-colon {
+            font-size: 1.85rem;
+            font-weight: 850;
+            color: var(--accent);
+            margin-right: 6px;
+        }
+        .hero-tagline {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text);
+            line-height: 1.35;
+        }
+
         /* Headings hierarchy */
         h1, .stMarkdown h1 {
             font-size: 1.85rem !important;
